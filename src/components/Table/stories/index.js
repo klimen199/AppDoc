@@ -10,5 +10,6 @@ storiesOf('Table', module)
     .add('basic', () => (<div>
             <Table dataSource={dataSource} columns={columns} />
             <p className="lol">asd</p>
+            <p>test</p>
         </div>
     ))
