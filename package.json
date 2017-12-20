@@ -18,6 +18,10 @@
   "devDependencies": {
     "@storybook/addon-actions": "^3.2.18",
     "@storybook/react": "^3.2.18",
-    "prop-types": "^15.6.0"
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
+    "prop-types": "^15.6.0",
+    "webpack": "^3.10.0",
+    "webpack-config": "^7.5.0"
   }
 }
