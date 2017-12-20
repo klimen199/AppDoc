@@ -13,6 +13,7 @@ const loadStories = () => {
     addDecorator(LocalProviderDecorator)
 
     require('../src/components/Button/stories')
+    require('../src/components/Table/stories')
 }
 
 configure(loadStories, module)
