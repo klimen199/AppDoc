@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { LocaleProvider } from 'antd'
 import ruRu from 'antd/lib/locale-provider/ru_RU'
 
-//import '../../node_modules/antd/dist/antd.less';
+import '../../node_modules/antd/dist/antd.css';
 
 const StylesProvider = props => {
     const { children } = props
