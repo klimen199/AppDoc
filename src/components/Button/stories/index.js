@@ -5,8 +5,24 @@ import Button from '../';
 
 storiesOf('Button', module)
     .add('with text', () => (
-        <Button onClick={action('clicked')}>Hello Button</Button>
+        <div>
+            <Button onClick={action('clicked')}
+                    btnText='its a btn'
+                    size='large'
+                    icon='bulb'
+            />
+            <br/>
+            <Button onClick={action('clicked')}
+                    btnText='its a btn'
+                    size='default'
+                    type="primary"
+                    icon='bulb'
+            />
+            <br/>
+            <Button onClick={action('clicked')}
+                    btnText='its a btn'
+                    size='small'
+                    disable
+            />
+        </div>
     ))
-    .add('with some emoji', () => (
-        <Button onClick={action('clicked')}>😀 😎 👍 💯</Button>
-    ));
