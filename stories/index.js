@@ -7,15 +7,16 @@ const LocalProviderDecorator = story => (
     <div>
         <StorybookStylesProvider>{story()}</StorybookStylesProvider>
     </div>
-)
+);
 
 const loadStories = () => {
-    addDecorator(LocalProviderDecorator)
+    addDecorator(LocalProviderDecorator);
 
-    require('../src/components/Button/stories')
-    require('../src/components/Table/stories')
-    require('../src/components/Switch/stories')
-    require('../src/components/SwitchPanel/stories')
-}
+    require('../src/components/Button/stories');
+    require('../src/components/Table/stories');
+    require('../src/components/Switch/stories');
+    require('../src/components/SwitchPanel/stories');
+    require('../src/components/DatePicker/stories');
+};
 
-configure(loadStories, module)
+configure(loadStories, module);
