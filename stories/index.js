@@ -14,6 +14,7 @@ const loadStories = () => {
 
     require('../src/components/Button/stories')
     require('../src/components/Table/stories')
+    require('../src/components/Switch/stories')
 }
 
 configure(loadStories, module)
