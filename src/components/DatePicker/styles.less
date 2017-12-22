@@ -1,7 +1,9 @@
+
+@height: 20px;
+
 .ant-calendar-picker-icon{
   display: none;
 }
-
 
 .ant-calendar-picker-input{
   border: none;
@@ -13,4 +15,30 @@
   &:hover{
     color: #0495ff;
   }
+}
+
+.datepicker-base{
+  cursor: pointer;
+  display: inline-block;
+
+  > i{
+    position: relative;
+    z-Index: 99;
+    font-size: @height;
+  }
+}
+
+.inputs(){
+  font-size: 12px;
+  cursor: pointer;
+  height: @height;
+}
+.ant-calendar-picker-input{
+  .inputs();
+  width: 170px;
+  padding: 0 0 0 18px;
+}
+.ant-calendar-range-picker-input{
+  .inputs();
+  width: 65px;
 }
