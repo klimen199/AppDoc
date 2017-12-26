@@ -8,7 +8,6 @@ class Modal extends React.Component{
 
 
     render(){
-
         const {visible, title} = this.props;
 
         return (
