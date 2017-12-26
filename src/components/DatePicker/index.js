@@ -31,7 +31,7 @@ class DatePicker extends React.Component{
     render(){
         const {defaultValue, range} = this.props;
         const dpStyle = this.state.isEmpty ? {} : {display:'inline-block'};
-        console.log(this.state.isEmpty);
+        //console.log(this.state.isEmpty);
 
         return (
             <div onFocus={() => this.setState({isOpen:true})}
