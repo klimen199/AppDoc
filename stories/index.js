@@ -17,6 +17,7 @@ const loadStories = () => {
     require('../src/components/Switch/stories');
     require('../src/components/SwitchPanel/stories');
     require('../src/components/DatePicker/stories');
+    require('../src/components/Modal/stories');
 };
 
 configure(loadStories, module);

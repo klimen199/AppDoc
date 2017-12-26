@@ -1,0 +1,12 @@
+/* COLORS */
+.ant-modal-header {
+  background-color: #0495ff;
+  color: #fff;
+}
+.ant-modal-header .ant-modal-title {
+  color: #fff;
+  font-size: 20px;
+}
+.ant-modal-close-x {
+  color: #fff;
+}
