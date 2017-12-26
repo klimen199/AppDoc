@@ -1,0 +1,61 @@
+@import url('../../styles/variables');
+
+.ant{
+
+	&-input{
+		border: none;
+		border-bottom: 1px solid #e1e1e1;
+		border-radius: 0;
+		outline: 0;
+		color: #191919;
+		font-size: 0.875rem;
+
+		&:focus{
+			border-color: @blue;
+			box-shadow: none;
+		}
+
+		&-group{
+
+			&-addon{
+				background-color: transparent;
+				border: none;
+				border-radius: 0;
+				color: #777777;
+				font-size: 0.875rem;
+				border-bottom: 1px solid #e1e1e1;
+			}
+		}
+
+		&-search{
+			
+			.ant-input{
+				font-size: 0.75rem;
+				border-radius: 2rem;
+				height: 2.5rem;
+				padding-left: 2rem;
+				border: 1px solid #ebebeb;
+			}
+
+			&:not(.ant-input-search-small) > .ant-input-suffix{
+				right: 1.5rem;
+			}
+		}
+
+		&-suffix{
+
+			&:hover{
+				
+				.ant-input-search-icon{
+					color: @blue;
+				}
+			}
+		}
+	}
+}
+
+textarea.ant-input{
+	border: 1px solid #e1e1e1;
+	font-size: 0.75rem;
+	line-height: 1.375rem;
+}
