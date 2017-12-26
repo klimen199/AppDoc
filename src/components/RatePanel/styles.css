@@ -1,0 +1,11 @@
+/* COLORS */
+.ratePanel {
+  font-size: 12px;
+}
+.ratePanel .value {
+  margin-right: 10px;
+  color: #fdc401;
+}
+.ratePanel .times {
+  margin-left: 12px;
+}
