@@ -10,6 +10,22 @@
 		color: #191919;
 		font-size: 0.875rem;
 
+		&:focus{
+			border-color: @blue;
+			box-shadow: none;
+		}
+
+		&-group{
+
+			&-addon{
+				background-color: transparent;
+				border: none;
+				border-radius: 0;
+				color: #777777;
+				font-size: 0.875rem;
+				border-bottom: 1px solid #e1e1e1;
+			}
+		}
 
 		&-search{
 			
@@ -36,4 +52,10 @@
 			}
 		}
 	}
+}
+
+textarea.ant-input{
+	border: 1px solid #e1e1e1;
+	font-size: 0.75rem;
+	line-height: 1.375rem;
 }
