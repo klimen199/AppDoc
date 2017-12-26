@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import cn from 'classnames'
 
 import './styles.css'
 
@@ -17,9 +16,7 @@ class SwitchPanel extends React.Component{
 
     render(){
         const {icon, title, disabled, defaultChecked} = this.props;
-        console.log('isChecked', this.state.isChecked)
         const icColor = this.state.isChecked ? '#ef5350' : '#d3d3d3';
-        console.log('color', icColor)
 
         const icStyle = {
             fontSize: 19,
