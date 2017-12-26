@@ -20,6 +20,7 @@ const loadStories = () => {
     require('../src/components/DatePicker/stories');
     require('../src/components/Modal/stories');
     require('../src/components/Rate/stories');
+    require('../src/components/RatePanel/stories');
 };
 
 configure(loadStories, module);
