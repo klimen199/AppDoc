@@ -9,6 +9,7 @@ storiesOf('Inputs', module)
         <div>
            <Input.Search
 		      placeholder="Поиск..."
+		      onSearch={action('onSearch')}
 		    />
         </div>
     ))
