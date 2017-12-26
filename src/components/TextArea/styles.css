@@ -1,0 +1,11 @@
+/* COLORS */
+.textarea-label {
+  margin-bottom: 15px;
+  color: #777777;
+}
+.textarea-field {
+  font-size: 14px;
+  resize: none;
+  height: 80px;
+  width: 100%;
+}
