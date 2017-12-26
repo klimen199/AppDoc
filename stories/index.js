@@ -13,6 +13,7 @@ const loadStories = () => {
     addDecorator(LocalProviderDecorator);
 
     require('../src/components/Button/stories');
+    require('../src/components/Input/stories');
     require('../src/components/Table/stories');
     require('../src/components/Switch/stories');
     require('../src/components/SwitchPanel/stories');
