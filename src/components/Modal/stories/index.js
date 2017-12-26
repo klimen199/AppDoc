@@ -9,7 +9,7 @@ storiesOf('Modal', module)
         <div>
             <Modal title="Basic Modal"
                    visible={true}>
-                <p>Some contents...</p>
+                <div>Some contents...</div>
                 <p>Some contents...</p>
                 <p>Some contents...</p>
             </Modal>
