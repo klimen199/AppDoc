@@ -19,11 +19,4 @@ storiesOf('Inputs', module)
 				<Input addonBefore="Email" />
 			</div>
 		</div>
-    ))
-    .add('TextArea', () => (
-		<div>
-			<div style={{ padding: 16 }}>
-				<TextArea rows={4} />
-			</div>
-		</div>
-    ))
+    ));
