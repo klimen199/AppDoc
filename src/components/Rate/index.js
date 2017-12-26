@@ -8,7 +8,7 @@ class Rate extends React.Component{
 
     render() {
         return(
-            <AntRate {...this.props} className='ant-rate-root'/>
+            <AntRate {...this.props}/>
         )
     }
 }
