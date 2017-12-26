@@ -1,4 +1,7 @@
 /* COLORS */
+:global(.ant-modal-body) {
+  padding: 20px 30px 30px 30px;
+}
 .ant-modal-header {
   background-color: #0495ff;
   color: #fff;

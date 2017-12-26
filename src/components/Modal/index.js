@@ -13,6 +13,7 @@ class Modal extends React.Component{
         return (
             <AntModal visible={visible}
                       title={title}
+                      width={395}
                       footer={null}>
                 {this.props.children}
             </AntModal>
