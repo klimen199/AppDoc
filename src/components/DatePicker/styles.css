@@ -1,0 +1,45 @@
+/* COLORS */
+.ant-calendar-picker-icon {
+  display: none;
+}
+.ant-calendar-picker-input {
+  border: none;
+}
+.ant-calendar-picker-clear {
+  opacity: 1;
+  color: #d8d8d8;
+}
+.ant-calendar-picker-clear:hover {
+  color: #0495ff;
+}
+.datepicker-base {
+  cursor: pointer;
+  display: inline-block;
+}
+.datepicker-base > i {
+  position: relative;
+  z-Index: 99;
+  font-size: 20px;
+}
+.datepicker-base .ant-calendar-picker-clear {
+  position: static;
+}
+.ant-calendar-range-picker-input {
+  font-size: 12px;
+  cursor: pointer;
+  height: 20px;
+  width: 60px;
+}
+.ant-calendar-picker-input {
+  font-size: 12px;
+  cursor: pointer;
+  height: 20px;
+  width: 80px;
+}
+.rangePicker .ant-calendar-picker-input {
+  font-size: 12px;
+  cursor: pointer;
+  height: 20px;
+  width: 170px;
+  padding: 0 0 0 15px;
+}

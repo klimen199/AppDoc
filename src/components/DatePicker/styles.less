@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 
 @height: 20px;
 
@@ -11,9 +13,9 @@
 
 .ant-calendar-picker-clear{
   opacity: 1;
-  color: #b5b5b5;
+  color: @grey;
   &:hover{
-    color: #0495ff;
+    color: @blue;
   }
 }
 
@@ -26,19 +28,29 @@
     z-Index: 99;
     font-size: @height;
   }
+
+  .ant-calendar-picker-clear{
+    position: static;
+  }
 }
+
+
 
 .inputs(){
   font-size: 12px;
   cursor: pointer;
   height: @height;
 }
-.ant-calendar-picker-input{
-  .inputs();
-  width: 170px;
-  padding: 0 0 0 18px;
-}
 .ant-calendar-range-picker-input{
   .inputs();
-  width: 65px;
+  width: 60px;
+}
+.ant-calendar-picker-input{
+  .inputs();
+  width: 80px;
+}
+.rangePicker .ant-calendar-picker-input{
+  .inputs();
+  width: 170px;
+  padding: 0 0 0 15px;
 }

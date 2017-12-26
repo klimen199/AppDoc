@@ -14,10 +14,11 @@ class DatePicker extends React.Component{
     constructor(props){
         super(props);
         const isEmpty = !props.defaultValue;
-
+        const isDisplay = !!props.defaultValue;
         this.state = {
             isOpen: false,
             isEmpty,
+            isDisplay,
         }
     }
 
@@ -28,29 +29,29 @@ class DatePicker extends React.Component{
     }
 
     render(){
-
         const {defaultValue, range} = this.props;
-
-        const dpStyle = this.state.isEmpty ? {display:'none'} : {display:'inline-block'} ;
-
+        const dpStyle = this.state.isEmpty ? {} : {display:'inline-block'};
+        console.log(this.state.isEmpty);
 
         return (
             <div onFocus={() => this.setState({isOpen:true})}
                  onBlur={() => this.setState({isOpen:false})}
                  className="datepicker-base">
+                {/*<Icon type="calendar"*/}
+                      {/*onClick={()=>this.setState({isOpen: (!this.state.isOpen)})}/>*/}
 
-                <Icon type="calendar"
-                      onClick={()=>this.setState({isOpen: (!this.state.isOpen)})}/>
+                <Icon type="calendar"/>
+
                 {range ? (
                     <RangePicker defaultValue={defaultValue}
                                  format={dateFormat}
+                                 placeholder={['с','по']}
+                                 className="rangePicker"
                                  />
                     ) : (
-                        <AntDatePicker open={this.state.isOpen}
-                                       onChange={this.dpOnChange}
-                                       defaultValue={defaultValue}
+                        <AntDatePicker defaultValue={defaultValue}
                                        format={dateFormat}
-                                       style={dpStyle}/>
+                                       placeholder={['с','по']}/>
                     )
                 }
             </div>
