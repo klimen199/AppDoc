@@ -51,7 +51,7 @@ class DatePicker extends React.Component{
                     ) : (
                         <AntDatePicker defaultValue={defaultValue}
                                        format={dateFormat}
-                                       placeholder={['с','по']}/>
+                                       placeholder={['дата']}/>
                     )
                 }
             </div>
