@@ -12,6 +12,7 @@ const LocalProviderDecorator = story => (
 const loadStories = () => {
     addDecorator(LocalProviderDecorator);
 
+    require('../src/components/Arrow/stories');
     require('../src/components/Button/stories');
     require('../src/components/Input/stories');
     require('../src/components/Table/stories');
