@@ -1,5 +1,5 @@
-@import url('../../styles/variables');
-/* TEST */
+@import url("../../styles/variables");
+
 .flexTest{
 	display: flex;
 	flex-wrap: wrap;
@@ -25,7 +25,7 @@
 	border: none;
 	font-family: @f-r;
 
-	i{
+	.icon{
 		margin-right: 0.75rem;
 		font-weight: 700;
 	}
@@ -63,7 +63,7 @@
 			background-color: #fff;
 			border: 1px solid transparent;
 
-			.anticon{
+			.icon{
 				margin-right: 0;
 				font-size: 1.25rem;
 				font-weight: 400;
@@ -77,10 +77,23 @@
 			&:focus{
 				background-color: @blue;
 
-				.anticon{
+				.icon{
 					color: #fff;
 				}
 			}
+		}
+
+		&-link{
+			font-size: 11px;
+			text-transform: uppercase;
+
+			.icon{
+				
+			}
+		}
+
+		&-file{
+
 		}
 	}
 
@@ -164,8 +177,41 @@
 			}
 		}
 
-		&-icon{
+		&-light-blue{
+			background-color: #e1f2fe;
+			color: #204d8d;
+			.icon{
+				color: #204d8d;
+			}
 
+			&:hover{
+				background-color: @blue;
+				color: #fff;
+				border-color: @blue;
+				.icon{
+					color: #fff;
+				}
+			}
+		}
+
+		&-link{
+			color: @dark-blue;
+			background-color: #fff;
+
+			.icon{
+				color: @dark-blue;
+			}
+
+			&:hover{
+
+				.icon{
+					color: @blue;
+				}
+			}
+		}
+
+		&-file{
+			
 		}
 	}
 

@@ -5,6 +5,7 @@ import cn from 'classnames'
 import {Icon} from 'antd'
 
 import './style.css'
+import '../../icon/style.css'
 
 class Button extends React.Component{
 
@@ -21,7 +22,7 @@ class Button extends React.Component{
                     {...(disable ? { disabled: true } : {})}
             >
                 {icon && (
-                    <Icon type={icon} />
+                    <i class={icon} />
                 )}
                 {type !== 'icon' && <span style={btnTextStyle}>{btnText}</span>}
             </button>
@@ -30,7 +31,7 @@ class Button extends React.Component{
 }
 
 Button.propTypes ={
-    type: PropTypes.oneOf(['blue','dark-blue','float','yellow','gradient','icon']),
+    type: PropTypes.oneOf(['blue','dark-blue','float','yellow','gradient','icon','light-blue']),
     size: PropTypes.oneOf(['small', 'default', 'large', 'icon']),
     btnText: PropTypes.string,
     icon: PropTypes.string,
