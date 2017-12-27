@@ -2,56 +2,97 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import cn from 'classnames'
 
-import {DatePicker as AntDatePicker, Icon} from 'antd'
-const { RangePicker } = AntDatePicker;
+import {DatePicker as AntDatePicker} from 'antd'
 
 import './styles.css'
-
 
 const dateFormat = 'DD.MM.YYYY';
 
 class DatePicker extends React.Component{
     constructor(props){
         super(props);
-        const isEmpty = !props.defaultValue;
-        const isDisplay = !!props.defaultValue;
+        const {rangeSet} = props;
+        const {defaultStartValue,defaultEndValue} = rangeSet;
+
         this.state = {
-            isOpen: false,
-            isEmpty,
-            isDisplay,
+            startValue: defaultStartValue,
+            endValue: defaultEndValue,
+            endChosen: !!defaultStartValue && !!defaultEndValue,
+            defaultEnd: null,
+        };
+    }
+
+    disabledStartDate = (startValue) => {
+        const endValue = this.state.endValue;
+        if (!startValue || !endValue) {
+            return false;
         }
-    }
+        return startValue.valueOf() > endValue.valueOf();
+    };
 
-    dpOnChange = (e) =>{
-        const isEmpty = !e;
-        this.setState({isOpen:false, isEmpty});
+    disabledEndDate = (endValue) => {
+        const startValue = this.state.startValue;
+        if (!endValue || !startValue) {
+            return false;
+        }
+        return endValue.valueOf() <= startValue.valueOf();
+    };
 
-    }
+    onChange = (field, value) => {
+        (field === 'endValue' && value) ?
+            this.setState({
+                [field]: value,
+                defaultEnd: value,
+                endChosen: true,
+            })
+            :
+            this.setState({
+                [field]: value,
+                defaultEnd: value,
+                endChosen: false,
+            })
+    };
 
     render(){
-        const {defaultValue, range} = this.props;
-        const dpStyle = this.state.isEmpty ? {} : {display:'inline-block'};
-        //console.log(this.state.isEmpty);
+        const {defaultValue, range, rangeSet, time, delimiter} = this.props;
+        const {placeholderStart,placeholderEnd} = rangeSet;
+        const { startValue, endValue,defaultEnd, endChosen } = this.state;
+
+        const classRPend = cn({'datepicker-base-range-chosen': endChosen});
 
         return (
-            <div onFocus={() => this.setState({isOpen:true})}
-                 onBlur={() => this.setState({isOpen:false})}
-                 className="datepicker-base">
-                {/*<Icon type="calendar"*/}
-                      {/*onClick={()=>this.setState({isOpen: (!this.state.isOpen)})}/>*/}
+            <div className="datepicker-base">
 
-                <Icon type="calendar"/>
+                {/*<Icon type="calendar"/>*/}
 
                 {range ? (
-                    <RangePicker defaultValue={defaultValue}
-                                 format={dateFormat}
-                                 placeholder={['с','по']}
-                                 className="rangePicker"
-                                 />
+                        <div className="datepicker-base-range">
+                            <AntDatePicker format={dateFormat}
+                                           placeholder={placeholderStart}
+                                           className="datepicker-base-range-chosen"
+
+                                           disabledDate={this.disabledStartDate}
+                                           value={startValue}
+                                           onChange={(val) => this.onChange('startValue', val)}/>
+
+                            {delimiter && <span className="datepicker-base-range-delim"> {delimiter} </span>}
+
+                            <AntDatePicker format={dateFormat}
+                                           placeholder={placeholderEnd}
+                                           className={classRPend}
+
+                                           disabledDate={this.disabledEndDate}
+                                           value={defaultEnd}
+                                           onChange={(val) => this.onChange('endValue', val)}/>
+                        </div>
                     ) : (
-                        <AntDatePicker defaultValue={defaultValue}
-                                       format={dateFormat}
-                                       placeholder={['дата']}/>
+                        time ? (
+                                <div>-</div>
+                            ) : (
+                                <AntDatePicker defaultValue={defaultValue}
+                                               format={dateFormat}
+                                               placeholder={'дата'}/>
+                            )
                     )
                 }
             </div>
@@ -62,11 +103,22 @@ class DatePicker extends React.Component{
 DatePicker.propTypes = {
     defaultValue: PropTypes.object,
     range: PropTypes.bool,
+    rangeSet: PropTypes.shape({
+        defaultStartValue: PropTypes.object,
+        placeholderStart: PropTypes.string,
+        defaultEndValue: PropTypes.object,
+        placeholderEnd: PropTypes.string,
+    }),
+    time: PropTypes.bool,
+    delimiter: PropTypes.string,
 };
 
 DatePicker.defaultProps = {
     defaultValue: null,
     range: false,
+    rangeSet: {},
+    time: false,
+    delimiter: '',
 };
 
 export default  DatePicker;
