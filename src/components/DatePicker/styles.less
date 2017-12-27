@@ -3,16 +3,19 @@
 
 @height: 20px;
 
-.ant-calendar-picker-icon{
-  display: none;
-}
+//.ant-calendar-picker-icon{
+//  display: none;
+//}
 
 .ant-calendar-picker-input{
   border: none;
 }
+.ant-calendar-picker-icon:after{
+  color: @blue;
+}
 
 .ant-calendar-picker-clear{
-  opacity: 1;
+  //opacity: 1;
   color: @grey;
   &:hover{
     color: @blue;
@@ -23,34 +26,53 @@
   cursor: pointer;
   display: inline-block;
 
+  &-range{
+    width: 100%;
+    min-width: 340px;
+
+    &-chosen input {
+      color: @blue;
+    }
+
+    &-delim{
+      display: inline-block;
+      width: 30px;
+      text-align: center;
+    }
+  }
+
   > i{
-    position: relative;
-    z-Index: 99;
     font-size: @height;
   }
 
-  .ant-calendar-picker-clear{
-    position: static;
+  .ant-calendar-picker-clear, .ant-calendar-picker-icon{
+    position: absolute;
+    right: 5px;
   }
 }
 
 
 
 .inputs(){
-  font-size: 12px;
+  font-size: 14px;
   cursor: pointer;
   height: @height;
 }
-.ant-calendar-range-picker-input{
-  .inputs();
-  width: 60px;
+//.ant-calendar-range-picker-input{
+//  .inputs();
+//  width: 60px;
+//}
+.ant-calendar-picker{
+  min-width: 150px;
+  max-width: 44%;
+  border-bottom: 1px solid #ebebeb;
 }
 .ant-calendar-picker-input{
   .inputs();
-  width: 80px;
+
 }
-.rangePicker .ant-calendar-picker-input{
-  .inputs();
-  width: 170px;
-  padding: 0 0 0 15px;
-}
+//.rangePicker .ant-calendar-picker-input{
+//  .inputs();
+//  width: 170px;
+//  padding: 0 0 0 15px;
+//}

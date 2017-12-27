@@ -1,12 +1,11 @@
 /* COLORS */
-.ant-calendar-picker-icon {
-  display: none;
-}
 .ant-calendar-picker-input {
   border: none;
 }
+.ant-calendar-picker-icon:after {
+  color: #0495ff;
+}
 .ant-calendar-picker-clear {
-  opacity: 1;
   color: #d8d8d8;
 }
 .ant-calendar-picker-clear:hover {
@@ -16,30 +15,33 @@
   cursor: pointer;
   display: inline-block;
 }
+.datepicker-base-range {
+  width: 100%;
+  min-width: 340px;
+}
+.datepicker-base-range-chosen input {
+  color: #0495ff;
+}
+.datepicker-base-range-delim {
+  display: inline-block;
+  width: 30px;
+  text-align: center;
+}
 .datepicker-base > i {
-  position: relative;
-  z-Index: 99;
   font-size: 20px;
 }
-.datepicker-base .ant-calendar-picker-clear {
-  position: static;
+.datepicker-base .ant-calendar-picker-clear,
+.datepicker-base .ant-calendar-picker-icon {
+  position: absolute;
+  right: 5px;
 }
-.ant-calendar-range-picker-input {
-  font-size: 12px;
-  cursor: pointer;
-  height: 20px;
-  width: 60px;
+.ant-calendar-picker {
+  min-width: 150px;
+  max-width: 44%;
+  border-bottom: 1px solid #ebebeb;
 }
 .ant-calendar-picker-input {
-  font-size: 12px;
+  font-size: 14px;
   cursor: pointer;
   height: 20px;
-  width: 80px;
-}
-.rangePicker .ant-calendar-picker-input {
-  font-size: 12px;
-  cursor: pointer;
-  height: 20px;
-  width: 170px;
-  padding: 0 0 0 15px;
 }
