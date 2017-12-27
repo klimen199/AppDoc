@@ -13,45 +13,39 @@ const dateFormat = 'DD.MM.YYYY';
 class DatePicker extends React.Component{
     constructor(props){
         super(props);
-        const isEmpty = !props.defaultValue;
-        const isDisplay = !!props.defaultValue;
-        this.state = {
-            isOpen: false,
-            isEmpty,
-            isDisplay,
-        }
-    }
-
-    dpOnChange = (e) =>{
-        const isEmpty = !e;
-        this.setState({isOpen:false, isEmpty});
-
     }
 
     render(){
-        const {defaultValue, range} = this.props;
-        const dpStyle = this.state.isEmpty ? {} : {display:'inline-block'};
-        //console.log(this.state.isEmpty);
+        const {defaultValue, range, time} = this.props;
 
         return (
-            <div onFocus={() => this.setState({isOpen:true})}
-                 onBlur={() => this.setState({isOpen:false})}
-                 className="datepicker-base">
-                {/*<Icon type="calendar"*/}
-                      {/*onClick={()=>this.setState({isOpen: (!this.state.isOpen)})}/>*/}
+            <div className="datepicker-base">
 
                 <Icon type="calendar"/>
 
                 {range ? (
-                    <RangePicker defaultValue={defaultValue}
-                                 format={dateFormat}
-                                 placeholder={['с','по']}
-                                 className="rangePicker"
-                                 />
-                    ) : (
+                    <div>
+                        <Icon type="calendar"/>
                         <AntDatePicker defaultValue={defaultValue}
                                        format={dateFormat}
-                                       placeholder={['дата']}/>
+                                       style={{border:'1px solid black'}}
+                                       placeholder={'c'}/>
+                        <Icon type="calendar"/>
+                        <AntDatePicker defaultValue={defaultValue}
+                                       format={dateFormat}
+                                       style={{border:'1px solid black'}}
+                                       placeholder={'по'}/>
+                    </div>
+                    ) : (
+                        time ? (
+                                <AntDatePicker showTime format="HH:mm"
+                                               onOpenChange={e=>console.log('onChangeOpen',e)}
+                                               ref={dp => console.log(dp)}/>
+                            ) : (
+                                <AntDatePicker defaultValue={defaultValue}
+                                               format={dateFormat}
+                                               placeholder={'дата'}/>
+                            )
                     )
                 }
             </div>
@@ -62,11 +56,13 @@ class DatePicker extends React.Component{
 DatePicker.propTypes = {
     defaultValue: PropTypes.object,
     range: PropTypes.bool,
+    time: PropTypes.bool,
 };
 
 DatePicker.defaultProps = {
     defaultValue: null,
     range: false,
+    time: false,
 };
 
 export default  DatePicker;

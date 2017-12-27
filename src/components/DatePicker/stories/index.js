@@ -10,6 +10,8 @@ storiesOf('DatePicker', module)
         <div>
             Single: <DatePicker/>
             <br/>
+            Time: <DatePicker time/>
+            <br/>
             Range: <DatePicker range/>
         </div>
     ));
