@@ -121,26 +121,26 @@ storiesOf('Button', module)
                     btnText='Добавить'
                     size='default'
                     type='blue'
-                    icon='plus'
+                    icon='icon icon-clock'
             />
             <Button onClick={action('clicked')}
                     btnText='Добавить'
                     size='large'
                     type='yellow'
-                    icon='plus'
+                    icon='icon icon-clock'
             />
             <Button onClick={action('clicked')}
                     btnText=''
                     size='icon'
                     type='icon'
-                    icon='phone'
+                    icon='icon icon-clock'
             />
 
             <Button onClick={action('clicked')}
                     btnText=''
                     size='icon'
                     type='light-blue'
-                    icon='mail'
+                    icon='icon icon-clock'
             />
         </div>
     ))
@@ -156,7 +156,7 @@ storiesOf('Button', module)
                     btnText='Отменить приемы'
                     size='link'
                     type='link'
-                    icon='close-circle-o'
+                    icon='icon icon-add-button'
             />
         </div>
     ))
