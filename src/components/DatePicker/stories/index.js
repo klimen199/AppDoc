@@ -12,9 +12,14 @@ const rangeSet = {
 };
 
 storiesOf('DatePicker', module)
-    .add('default', () => (
+    .add('single', () => (
         <div>
-            Single: <DatePicker/>
+            <br/>
+            <DatePicker/>
+        </div>
+    ))
+    .add('range', () => (
+        <div>
             <br/>
             Time: <DatePicker time/>
             <br/>
