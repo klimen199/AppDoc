@@ -147,16 +147,28 @@ storiesOf('Button', module)
     .add('Link', () => (
         <div className='flexTest'>
             <Button onClick={action('clicked')}
-                    btnText='Отменить приемы'
+                    btnText='Показать еще'
                     size='link'
                     type='link'
-                    icon='close-circle-o'
+                    icon='icon icon-circle_arrow_down'
             />
             <Button onClick={action('clicked')}
                     btnText='Отменить приемы'
                     size='link'
                     type='link'
+                    icon='icon icon-circle_close'
+            />
+            <Button onClick={action('clicked')}
+                    btnText='Добавить интервал'
+                    size='file'
+                    type='file'
                     icon='icon icon-add-button'
+            />
+            <Button onClick={action('clicked')}
+                    btnText='Обращение от 13.09.2017'
+                    size='go'
+                    type='go'
+                    icon='icon icon-circle_arrow_right'
             />
         </div>
     ))
