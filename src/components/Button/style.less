@@ -1,5 +1,5 @@
-@import url('../../styles/variables');
-/* TEST */
+@import url("../../styles/variables");
+
 .flexTest{
 	display: flex;
 	flex-wrap: wrap;
@@ -81,6 +81,19 @@
 					color: #fff;
 				}
 			}
+		}
+
+		&-link{
+			font-size: 11px;
+			text-transform: uppercase;
+
+			i{
+				
+			}
+		}
+
+		&-file{
+
 		}
 	}
 
@@ -164,8 +177,41 @@
 			}
 		}
 
-		&-icon{
+		&-light-blue{
+			background-color: #e1f2fe;
+			color: #204d8d;
+			i{
+				color: #204d8d;
+			}
 
+			&:hover{
+				background-color: @blue;
+				color: #fff;
+				border-color: @blue;
+				i{
+					color: #fff;
+				}
+			}
+		}
+
+		&-link{
+			color: @dark-blue;
+			background-color: #fff;
+
+			i{
+				color: @dark-blue;
+			}
+
+			&:hover{
+
+				i{
+					color: @blue;
+				}
+			}
+		}
+
+		&-file{
+			
 		}
 	}
 

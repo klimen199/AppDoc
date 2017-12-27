@@ -30,7 +30,7 @@ class Button extends React.Component{
 }
 
 Button.propTypes ={
-    type: PropTypes.oneOf(['blue','dark-blue','float','yellow','gradient','icon']),
+    type: PropTypes.oneOf(['blue','dark-blue','float','yellow','gradient','icon','light-blue']),
     size: PropTypes.oneOf(['small', 'default', 'large', 'icon']),
     btnText: PropTypes.string,
     icon: PropTypes.string,

@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'icon';
+  src:  url('fonts/icon.eot?nn0ldu');
+  src:  url('fonts/icon.eot?nn0ldu#iefix') format('embedded-opentype'),
+    url('fonts/icon.ttf?nn0ldu') format('truetype'),
+    url('fonts/icon.woff?nn0ldu') format('woff'),
+    url('fonts/icon.svg?nn0ldu#icon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+

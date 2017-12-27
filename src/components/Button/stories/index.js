@@ -135,5 +135,28 @@ storiesOf('Button', module)
                     type='icon'
                     icon='phone'
             />
+
+            <Button onClick={action('clicked')}
+                    btnText=''
+                    size='icon'
+                    type='light-blue'
+                    icon='mail'
+            />
+        </div>
+    ))
+    .add('Link', () => (
+        <div className='flexTest'>
+            <Button onClick={action('clicked')}
+                    btnText='Отменить приемы'
+                    size='link'
+                    type='link'
+                    icon='close-circle-o'
+            />
+            <Button onClick={action('clicked')}
+                    btnText='Отменить приемы'
+                    size='link'
+                    type='link'
+                    icon='close-circle-o'
+            />
         </div>
     ))
