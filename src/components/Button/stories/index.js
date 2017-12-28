@@ -121,26 +121,31 @@ storiesOf('Button', module)
                     btnText='Добавить'
                     size='default'
                     type='blue'
-                    icon='icon icon-clock'
+                    icon='clock'
+                    svg
             />
             <Button onClick={action('clicked')}
-                    btnText='Добавить'
+                    btnText='Добавить (antIcon)'
                     size='large'
                     type='yellow'
-                    icon='icon icon-clock'
+                    icon='plus-square'
+                    iconSize={15}
             />
             <Button onClick={action('clicked')}
                     btnText=''
                     size='icon'
                     type='icon'
-                    icon='icon icon-clock'
+                    icon='clock'
+                    svg
             />
 
             <Button onClick={action('clicked')}
                     btnText=''
                     size='icon'
                     type='light-blue'
-                    icon='icon icon-clock'
+                    icon='clock'
+                    svg
+                    iconSize={30}
             />
         </div>
     ))
@@ -150,25 +155,28 @@ storiesOf('Button', module)
                     btnText='Показать еще'
                     size='link'
                     type='link'
-                    icon='icon icon-circle_arrow_down'
+                    icon='play-circle'
             />
             <Button onClick={action('clicked')}
                     btnText='Отменить приемы'
                     size='link'
                     type='link'
-                    icon='icon icon-circle_close'
+                    icon='circle_close'
+                    svg
             />
             <Button onClick={action('clicked')}
                     btnText='Добавить интервал'
                     size='file'
                     type='file'
-                    icon='icon icon-add-button'
+                    icon='add-button'
+                    svg
             />
             <Button onClick={action('clicked')}
                     btnText='Обращение от 13.09.2017'
                     size='go'
                     type='go'
-                    icon='icon icon-circle_arrow_right'
+                    icon='circle_arrow_right'
+                    svg
             />
         </div>
     ))

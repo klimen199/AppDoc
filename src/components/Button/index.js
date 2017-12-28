@@ -22,7 +22,7 @@ class Button extends React.Component{
                     {...(disable ? { disabled: true } : {})}
             >
                 {icon && (
-                    <Icon svg type={icon} size={iconSize}/>
+                    <Icon svg={svg} type={icon} size={iconSize}/>
                 )}
                 {type !== 'icon' && <span style={btnTextStyle}>{btnText}</span>}
             </button>
