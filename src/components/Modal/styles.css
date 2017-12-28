@@ -1,8 +1,11 @@
 /* fonts */
 /* COLORS */
 /* VAR */
-:global(.ant-modal-body) {
-  padding: 20px 30px 30px 30px;
+.ant-modal-body {
+  padding: 0;
+}
+.ant-modal-title {
+  font-family: 'GothamPro';
 }
 .ant-modal-header {
   background-color: #0495ff;

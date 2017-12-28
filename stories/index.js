@@ -20,6 +20,7 @@ const loadStories = () => {
     require('../src/components/SwitchPanel/stories');
     require('../src/components/DatePicker/stories');
     require('../src/components/Modal/stories');
+    require('../src/components/CompleteAppeal/stories');
     require('../src/components/Rate/stories');
     require('../src/components/RatePanel/stories');
     require('../src/components/TextArea/stories');
