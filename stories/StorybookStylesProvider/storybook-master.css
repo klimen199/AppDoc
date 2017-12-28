@@ -18160,3 +18160,7 @@ li.ant-select-tree-treenode-disabled > .ant-select-tree-node-content-wrapper:hov
 /* fonts */
 /* COLORS */
 /* VAR */
+p,
+div {
+  font-family: 'GothamPro';
+}
