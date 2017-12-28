@@ -9,8 +9,9 @@
 		outline: 0;
 		color: #191919;
 		font-size: 0.875rem;
+		order: 2;
 
-		&:focus{
+		&:focus,&:hover{
 			border-color: @blue;
 			box-shadow: none;
 
@@ -20,6 +21,7 @@
 		}
 
 		&-group{
+			display: flex;
 
 			&-addon{
 				background-color: transparent;
@@ -28,6 +30,11 @@
 				color: #777777;
 				font-size: 0.875rem;
 				border-bottom: 1px solid #e1e1e1;
+				display: flex;
+				order: 1;
+				width: auto;
+				align-items: center;
+				padding-left: 0;
 			}
 		}
 

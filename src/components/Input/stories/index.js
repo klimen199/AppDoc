@@ -16,14 +16,7 @@ storiesOf('Inputs', module)
     .add('Input', () => (
 		<div>
 			<div style={{ padding: 16 }}>
-				<Input addonBefore="Email" />
-			</div>
-		</div>
-    ))
-    .add('TextArea', () => (
-		<div>
-			<div style={{ padding: 16 }}>
-				<TextArea rows={4} />
+				<Input addonAfter="Email" />
 			</div>
 		</div>
     ))
