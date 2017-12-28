@@ -27,6 +27,7 @@ const loadStories = () => {
     require('../src/components/RatePanel/stories');
     require('../src/components/TextArea/stories');
     require('../src/components/Icon/stories');
+    require('../src/components/Tabs/stories');
 };
 
 configure(loadStories, module);
