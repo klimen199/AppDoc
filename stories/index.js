@@ -14,6 +14,7 @@ const loadStories = () => {
 
     require('../src/components/Arrow/stories');
     require('../src/components/Button/stories');
+    require('../src/components/Checkbox/stories');
     require('../src/components/Input/stories');
     require('../src/components/Table/stories');
     require('../src/components/Switch/stories');
