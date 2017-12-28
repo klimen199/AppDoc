@@ -5,6 +5,7 @@ import cn from 'classnames'
 import {Icon} from 'antd'
 
 import './style.css'
+import '../../icon/style.css'
 
 class Button extends React.Component{
 
@@ -12,7 +13,7 @@ class Button extends React.Component{
 
         const {type, size, btnText, icon, disable, onClick} = this.props;
 
-        const rootClass = cn(`btn-size-${size}`, `btn-type-${type}`)
+        const rootClass = cn( 'btn',`btn-size-${size}`, `btn-type-${type}`)
         let btnTextStyle = {}
 
         return (
@@ -21,7 +22,7 @@ class Button extends React.Component{
                     {...(disable ? { disabled: true } : {})}
             >
                 {icon && (
-                    <Icon type={icon} />
+                    <i class={icon} />
                 )}
                 {type !== 'icon' && <span style={btnTextStyle}>{btnText}</span>}
             </button>
@@ -30,8 +31,8 @@ class Button extends React.Component{
 }
 
 Button.propTypes ={
-    type: PropTypes.oneOf(['default', 'primary','icon']),
-    size: PropTypes.oneOf(['small', 'default', 'large']),
+    type: PropTypes.oneOf(['blue','dark-blue','float','yellow','gradient','icon','light-blue']),
+    size: PropTypes.oneOf(['small', 'default', 'large', 'icon']),
     btnText: PropTypes.string,
     icon: PropTypes.string,
     disable: PropTypes.bool,
@@ -39,7 +40,7 @@ Button.propTypes ={
 }
 
 Button.defaultProps = {
-    type: 'default',
+    type: 'float',
     size: 'default',
     btnText: '',
     icon: '',
