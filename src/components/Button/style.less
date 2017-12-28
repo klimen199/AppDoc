@@ -16,7 +16,7 @@
 	position: relative;
 	display: inline-flex;
 	justify-content: center;
-	align-items: baseline;
+	align-items: center;
 	text-decoration: none;
 	cursor: pointer;
 	line-height: 1;
@@ -88,12 +88,30 @@
 			text-transform: uppercase;
 
 			.icon{
-				
+				font-size: 1.25rem;
+				font-weight: 300;
 			}
 		}
 
 		&-file{
+			font-size: 0.75rem;
 
+			.icon{
+				font-size: 1.75rem;
+				font-weight: 300;
+			}
+		}
+
+		&-go{
+			font-size: 0.875rem;
+			flex-direction: row-reverse;
+			align-items: baseline;
+
+			.icon{
+				font-size: 1rem;
+				margin-right: 0;
+				margin-left: 0.75rem;
+			}
 		}
 	}
 
@@ -211,7 +229,44 @@
 		}
 
 		&-file{
-			
+			color: #cccbcb;
+			background-color: transparent;
+
+			.icon{
+				color: #cccbcb;
+			}
+
+			&:hover{
+				color: @blue;
+
+				.icon{
+					color: @blue;
+				}
+			}
+		}
+
+		&-go{
+			color: #204d8d;
+			background-color: transparent;
+
+			span{
+				border-bottom: 1px solid transparent;
+			}
+
+			.icon{
+				color: #204d8d;
+			}
+
+			&:hover{
+
+				.icon{
+					color: @blue;
+				}
+
+				span{
+					border-bottom: 1px solid #204d8d;
+				}
+			}
 		}
 	}
 
