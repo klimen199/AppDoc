@@ -40,38 +40,56 @@ storiesOf('Button', module)
         </div>
     ))
     .add('Default', () => (
-        <div className='flexTest'>
+        <div>
             <Button onClick={action('clicked')}
                     btnText='Добавить'
                     size='default'
                     type='float'
             />
+            <span> size='default'
+            type='float' </span>
+            <br/>
             <Button onClick={action('clicked')}
                     btnText='Добавить'
                     size='default'
                     type='blue'
             />
+            <span> size='default'
+                type='blue'</span>
+            <br/>
             <Button onClick={action('clicked')}
                     btnText='Добавить'
                     size='default'
                     type='dark-blue'
             />
+            <span> size='default'
+                type='dark-blue'</span>
+            <br/>
             <Button onClick={action('clicked')}
                     btnText='Добавить'
                     size='default'
                     type='yellow'
             />
+            <span> size='default'
+                type='yellow'</span>
+            <br/>
             <Button onClick={action('clicked')}
                     btnText='Добавить'
                     size='default'
                     type='gradient'
             />
+            <span> size='default'
+                type='gradient'</span>
+            <br/>
             <Button onClick={action('clicked')}
                     btnText='Добавить'
                     size='default'
                     type='gradient'
                     disable
             />
+            <span> size='default'
+                type='gradient'
+                disable</span>
         </div>
     ))
     .add('Large', () => (

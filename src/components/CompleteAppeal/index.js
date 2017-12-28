@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Modal from '../Modal'
 import Button from '../Button'
-//import './styles.css'
+import './styles.css'
 
 class CompleteAppealModal extends React.Component{
 
@@ -11,9 +11,11 @@ class CompleteAppealModal extends React.Component{
         return (
             <Modal title='Завершение обращения'
                    visible={true}>
-                <Button btnText="Запись"/>
-                <br/>
-                <Button btnText="Запись на прием"/>
+                <div className='completeAppealModal'>
+                    <Button btnText="Добавить" size='default' type='float' icon='form'/>
+                    <br/>
+                    <Button btnText="Завершить обращение" size='default' type='yellow'/>
+                </div>
             </Modal>
         )
     }
