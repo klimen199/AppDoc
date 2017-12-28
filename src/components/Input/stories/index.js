@@ -15,8 +15,6 @@ storiesOf('Inputs', module)
     ))
     .add('Input', () => (
 		<div>
-			<div style={{ padding: 16 }}>
-				<Input addonAfter="Email" />
-			</div>
+			<Input addonBefore="Email" />
 		</div>
-    ))
+    ));

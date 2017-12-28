@@ -1,5 +1,5 @@
-@import url('../../styles/variables');
-/* TEST */
+@import url("../../styles/variables");
+
 .flexTest{
 	display: flex;
 	flex-wrap: wrap;
@@ -16,7 +16,7 @@
 	position: relative;
 	display: inline-flex;
 	justify-content: center;
-	align-items: baseline;
+	align-items: center;
 	text-decoration: none;
 	cursor: pointer;
 	line-height: 1;
@@ -25,7 +25,7 @@
 	border: none;
 	font-family: @f-r;
 
-	i{
+	.icon{
 		margin-right: 0.75rem;
 		font-weight: 700;
 	}
@@ -43,7 +43,7 @@
 
 		&-default{
 			text-transform: uppercase;
-			padding: .985rem 1.5rem;
+			padding: 13.5px 1.5rem;
 			font-size: 11px;
 			font-family: GothamPro-Medium;
 			min-width: 8.75rem;
@@ -63,7 +63,7 @@
 			background-color: #fff;
 			border: 1px solid transparent;
 
-			.anticon{
+			.icon{
 				margin-right: 0;
 				font-size: 1.25rem;
 				font-weight: 400;
@@ -77,9 +77,39 @@
 			&:focus{
 				background-color: @blue;
 
-				.anticon{
+				.icon{
 					color: #fff;
 				}
+			}
+		}
+
+		&-link{
+			font-size: 11px;
+			text-transform: uppercase;
+
+			.icon{
+				font-size: 1.25rem;
+				font-weight: 300;
+			}
+		}
+
+		&-file{
+			font-size: 0.75rem;
+
+			.icon{
+				font-size: 1.75rem;
+				font-weight: 300;
+			}
+		}
+
+		&-go{
+			font-size: 0.875rem;
+			flex-direction: row-reverse;
+
+			.icon{
+				font-size: 1rem;
+				margin-right: 0;
+				margin-left: 0.75rem;
 			}
 		}
 	}
@@ -164,8 +194,78 @@
 			}
 		}
 
-		&-icon{
+		&-light-blue{
+			background-color: #e1f2fe;
+			color: #204d8d;
+			.icon{
+				color: #204d8d;
+			}
 
+			&:hover{
+				background-color: @blue;
+				color: #fff;
+				border-color: @blue;
+				.icon{
+					color: #fff;
+				}
+			}
+		}
+
+		&-link{
+			color: @dark-blue;
+			background-color: #fff;
+
+			.icon{
+				color: @dark-blue;
+			}
+
+			&:hover{
+
+				.icon{
+					color: @blue;
+				}
+			}
+		}
+
+		&-file{
+			color: #cccbcb;
+			background-color: transparent;
+
+			.icon{
+				color: #cccbcb;
+			}
+
+			&:hover{
+				color: @blue;
+
+				.icon{
+					color: @blue;
+				}
+			}
+		}
+
+		&-go{
+			color: #204d8d;
+			background-color: transparent;
+
+			span{
+				border-bottom: 1px solid transparent;
+			}
+
+			.icon{
+				color: #204d8d;
+			}
+
+			&:hover{
+
+				.icon{
+					color: @blue;
+				}
+
+				span{
+					border-bottom: 1px solid #204d8d;
+				}
+			}
 		}
 	}
 
