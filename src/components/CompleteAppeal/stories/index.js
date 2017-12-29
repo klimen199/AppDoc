@@ -3,8 +3,8 @@ import { storiesOf } from '@storybook/react';
 import CompleteAppealModal from '../';
 
 storiesOf('Modal - CompleteAppealModal', module)
-    .add('CompleteAppealModal', () => (
+    .add('modal', () => (
         <div>
-            <CompleteAppealModal/>
+            <CompleteAppealModal visible={true}/>
         </div>
     ));

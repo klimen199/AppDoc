@@ -11,9 +11,9 @@ class Button extends React.Component{
 
     render(){
 
-        const {type, size, btnText, icon, iconSize, svg, disable, onClick} = this.props;
+        const {className, type, size, btnText, icon, iconSize, svg, disable, onClick} = this.props;
 
-        const rootClass = cn( 'btn',`btn-size-${size}`, `btn-type-${type}`)
+        const rootClass = cn( className, 'btn',`btn-size-${size}`, `btn-type-${type}`)
         let btnTextStyle = {}
 
         return (
@@ -32,6 +32,7 @@ class Button extends React.Component{
 }
 
 Button.propTypes ={
+    className: PropTypes.string,
     type: PropTypes.oneOf(['blue','dark-blue','float','yellow','gradient','icon','light-blue', 'file', 'link']),
     size: PropTypes.oneOf(['small', 'default', 'large', 'icon', 'file', 'link']),
     btnText: PropTypes.string,
@@ -43,6 +44,7 @@ Button.propTypes ={
 }
 
 Button.defaultProps = {
+    className: '',
     type: 'float',
     size: 'default',
     btnText: '',

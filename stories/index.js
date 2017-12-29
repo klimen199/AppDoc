@@ -28,6 +28,7 @@ const loadStories = () => {
     require('../src/components/TextArea/stories');
     require('../src/components/Icon/stories');
     require('../src/components/Tabs/stories');
+    require('../src/components/CancelVisitModal/stories');
     require('../src/components/Upload/stories');
 };
 

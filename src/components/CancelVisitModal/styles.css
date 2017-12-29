@@ -1,0 +1,40 @@
+/* fonts */
+/* COLORS */
+/* VAR */
+.cancelVisitModal {
+  padding: 20px 30px 40px 30px;
+}
+.cancelVisitModal-user {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 30px;
+}
+.cancelVisitModal-user-icon {
+  position: absolute;
+  display: inline-block;
+}
+.cancelVisitModal-user-name {
+  margin-left: 40px;
+  display: inline-block;
+  font-family: 'GothamPro-Medium';
+  font-size: 14px;
+  color: #344051;
+  line-height: 18px;
+}
+.cancelVisitModal-txtarea {
+  margin-bottom: 12px;
+}
+.cancelVisitModal-upload {
+  display: block;
+  margin-bottom: 35px;
+}
+.cancelVisitModal-datepickers {
+  margin-bottom: 20px;
+}
+.cancelVisitModal .datepicker-base {
+  margin-bottom: 5px;
+}
+.cancelVisitModal-dpAdd {
+  display: block;
+  margin-bottom: 40px;
+}
