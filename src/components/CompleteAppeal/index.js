@@ -8,9 +8,11 @@ import './styles.css'
 class CompleteAppealModal extends React.Component{
 
     render(){
+        const {visible} = this.props;
+
         return (
             <Modal title='Завершение обращения'
-                   visible={true}>
+                   visible={visible}>
                 <div className='completeAppealModal'>
                     <Button btnText="Добавить" size='default' type='float' icon='form'/>
                     <br/>
@@ -21,8 +23,12 @@ class CompleteAppealModal extends React.Component{
     }
 }
 
-CompleteAppealModal.propTypes = {};
+CompleteAppealModal.propTypes = {
+    visible: PropTypes.bool,
+};
 
-CompleteAppealModal.defaultProps = {};
+CompleteAppealModal.defaultProps = {
+    visible: false,
+};
 
 export default CompleteAppealModal;
