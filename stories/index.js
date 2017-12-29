@@ -32,6 +32,7 @@ const loadStories = () => {
     require('../src/components/Upload/stories');
     require('../src/components/NewMessageModal/stories');
     require('../src/components/Links/stories');
+    require('../src/components/Popover/stories');
 };
 
 configure(loadStories, module);
