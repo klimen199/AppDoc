@@ -29,6 +29,7 @@ const loadStories = () => {
     require('../src/components/Icon/stories');
     require('../src/components/Tabs/stories');
     require('../src/components/CancelVisitModal/stories');
+    require('../src/components/Upload/stories');
 };
 
 configure(loadStories, module);
