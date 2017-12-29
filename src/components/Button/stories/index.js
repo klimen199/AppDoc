@@ -128,13 +128,14 @@ storiesOf('Button', module)
         </div>
     ))
     .add('Icon', () => (
-        <div className='flexTest'>
+        <div>
             <Button onClick={action('clicked')}
                     btnText='Добавить'
                     size='small'
                     type='float'
                     icon='form'
             />
+            <br/>
             <Button onClick={action('clicked')}
                     btnText='Добавить'
                     size='default'
@@ -142,6 +143,7 @@ storiesOf('Button', module)
                     icon='clock'
                     svg
             />
+            <br/>
             <Button onClick={action('clicked')}
                     btnText='Добавить (antIcon)'
                     size='large'
@@ -149,6 +151,7 @@ storiesOf('Button', module)
                     icon='plus-square'
                     iconSize={15}
             />
+            <br/>
             <Button onClick={action('clicked')}
                     btnText=''
                     size='icon'
@@ -156,7 +159,7 @@ storiesOf('Button', module)
                     icon='clock'
                     svg
             />
-
+            <br/>
             <Button onClick={action('clicked')}
                     btnText=''
                     size='icon'
