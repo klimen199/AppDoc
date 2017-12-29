@@ -1,15 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+import cn from 'classnames'
 
 import './styles.css'
 
 class TextArea extends React.Component{
 
     render(){
-        const {label} = this.props;
+        const {label, className} = this.props;
+        const clName = cn("textarea", className);
 
         return (
-            <div className="textarea">
+            <div className={clName}>
                 <div className="textarea-label">{label}</div>
                 <textarea className="textarea-field"/>
             </div>
@@ -19,10 +21,12 @@ class TextArea extends React.Component{
 
 TextArea.propTypes = {
     label: PropTypes.string,
+    className: PropTypes.string,
 };
 
 TextArea.defaultProps = {
     label: '',
+    className: '',
 };
 
 export default TextArea;

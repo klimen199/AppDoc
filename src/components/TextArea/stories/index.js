@@ -6,6 +6,6 @@ import TextArea from '../';
 storiesOf('TextArea', module)
     .add('default', () => (
         <div>
-            <TextArea/>
+            <TextArea label='Текст'/>
         </div>
     ));
