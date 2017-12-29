@@ -24,6 +24,7 @@
 	transition: .2s ease-out;
 	border: none;
 	font-family: @f-r;
+	z-index: 1;
 
 	.icon{
 		margin-right: 0.75rem;
@@ -119,16 +120,17 @@
 		&-float{
 			background-color: #fff;
 			color: @blue;
+			border: 1px solid @blue;
 
 			&:hover{
 				background-color: @blue;
 				color: #fff;
 			}
 
-			&:before,&:after{
-				content: "";
-				position: absolute;
-			}
+			// &:before,&:after{
+			// 	content: "";
+			// 	position: absolute;
+			// }
 
 			&:before{
 				top: -1px;
@@ -260,6 +262,7 @@
 
 				.icon{
 					color: @blue;
+					border-bottom: 0;
 				}
 
 				span{
