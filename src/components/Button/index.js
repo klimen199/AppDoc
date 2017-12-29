@@ -13,7 +13,7 @@ class Button extends React.Component{
 
         const {className, type, size, btnText, icon, iconSize, svg, disable, onClick} = this.props;
 
-        const rootClass = cn( className, 'btn',`btn-size-${size}`, `btn-type-${type}`)
+        const rootClass = cn( `${className}`, 'btn',`btn-size-${size}`, `btn-type-${type}`)
         let btnTextStyle = {}
 
         return (

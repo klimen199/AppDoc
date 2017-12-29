@@ -30,6 +30,7 @@ const loadStories = () => {
     require('../src/components/Tabs/stories');
     require('../src/components/CancelVisitModal/stories');
     require('../src/components/Upload/stories');
+    require('../src/components/NewMessageModal/stories');
 };
 
 configure(loadStories, module);
