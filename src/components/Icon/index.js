@@ -5,7 +5,7 @@ import cn from 'classnames'
 import { Icon as AntdIcon } from 'antd'
 
 const Icon = props => {
-    const { svg, type, size, onClick } = props;
+    const { svg, type, size, num, onClick } = props;
 
     if (!svg)
         return (<AntdIcon onClick={onClick}
@@ -16,6 +16,7 @@ const Icon = props => {
 
     return <span onClick={onClick}
                  className={clName}
+                 num={num}
                  style={{fontSize:size}}/>
 };
 
@@ -23,12 +24,14 @@ Icon.propTypes = {
     svg: PropTypes.bool,
     type: PropTypes.string.isRequired,
     size: PropTypes.number,
+    num: PropTypes.number,
     onClick: PropTypes.func,
 };
 
 Icon.defaultProps = {
     svg: false,
     size: 36,
+    num: '0',
     onClick: () => {},
 };
 
