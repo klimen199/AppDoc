@@ -1,0 +1,25 @@
+@import url("../../styles/variables");
+
+.topPanel{
+	position: relative;
+	overflow: hidden;
+	padding: 2.25rem 0;
+
+	&:before{
+		content: '';
+		background-color: #fdc401;
+		width: 100rem;
+		height: 100rem;
+		border: none;
+		border-radius: 100%;
+		position: absolute;
+		left: -70rem;
+		top: -20rem;
+	}
+}
+
+.flexCol{
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+}
