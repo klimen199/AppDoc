@@ -3,23 +3,23 @@ import { storiesOf } from '@storybook/react';
 import moment from 'moment';
 import { action } from '@storybook/addon-actions';
 
-import DatePicker from '../';
+import TimePicker from '../';
 
-const dateFormat = 'DD.MM.YYYY';
+const timeFormat = 'HH:mm';
 const rangeSet = {
     placeholderStart: 'Начало',
-    //defaultEndValue: moment('12.12.2017', dateFormat),
+    //defaultEndValue: moment('12.12.2017', timeFormat),
 };
 
-storiesOf('DatePicker', module)
+storiesOf('TimePicker', module)
     .add('single', () => (
         <div>
             <br/>
-            <DatePicker/>
+            <TimePicker/>
         </div>
     ))
     .add('range', () => (
         <div>
-            <DatePicker range rangeSet={rangeSet} delimiter="&mdash;"/>
+            <TimePicker range rangeSet={rangeSet} delimiter="&mdash;"/>
         </div>
     ));

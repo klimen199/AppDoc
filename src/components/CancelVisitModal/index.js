@@ -36,7 +36,7 @@ class CancelVisitModal extends React.Component{
     };
 
     render(){
-        const {visible, userName} = this.props;
+        const {visible} = this.props;
 
         return (
             <Modal title='Отмена приема'
@@ -65,12 +65,10 @@ class CancelVisitModal extends React.Component{
 
 CancelVisitModal.propTypes = {
     visible: PropTypes.bool,
-    userName: PropTypes.string,
 };
 
 CancelVisitModal.defaultProps = {
     visible: false,
-    userName: '',
 };
 
 export default CancelVisitModal;

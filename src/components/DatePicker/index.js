@@ -54,7 +54,7 @@ class DatePicker extends React.Component{
     };
 
     render(){
-        const {defaultValue, range, rangeSet, time, delimiter} = this.props;
+        const {defaultValue, range, rangeSet, delimiter} = this.props;
         const {placeholderStart,placeholderEnd} = rangeSet;
         const { startValue, endValue,defaultEnd, endChosen } = this.state;
 
@@ -86,13 +86,9 @@ class DatePicker extends React.Component{
                                            onChange={(val) => this.onChange('endValue', val)}/>
                         </div>
                     ) : (
-                        time ? (
-                                <div>-</div>
-                            ) : (
-                                <AntDatePicker defaultValue={defaultValue}
-                                               format={dateFormat}
-                                               placeholder={'дата'}/>
-                            )
+                        <AntDatePicker defaultValue={defaultValue}
+                                       format={dateFormat}
+                                       placeholder={'дата'}/>
                     )
                 }
             </div>
@@ -109,7 +105,6 @@ DatePicker.propTypes = {
         defaultEndValue: PropTypes.object,
         placeholderEnd: PropTypes.string,
     }),
-    time: PropTypes.bool,
     delimiter: PropTypes.string,
 };
 
@@ -117,8 +112,7 @@ DatePicker.defaultProps = {
     defaultValue: null,
     range: false,
     rangeSet: {},
-    time: false,
-    delimiter: '',
+    delimiter: ' ',
 };
 
 export default  DatePicker;
