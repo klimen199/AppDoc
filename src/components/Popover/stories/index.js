@@ -35,7 +35,6 @@ const content = (
     />
 
     <Button onClick={action('clicked')}
-            btnText=''
             size='file all-download'
             type='file'
             icon='download'
