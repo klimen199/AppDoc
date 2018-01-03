@@ -15,7 +15,7 @@ storiesOf('TimePicker', module)
     .add('single', () => (
         <div>
             <br/>
-            <TimePicker/>
+            <TimePicker title='Интервал рабочего времени'/>
         </div>
     ))
     .add('range', () => (

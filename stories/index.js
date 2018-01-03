@@ -36,6 +36,7 @@ const loadStories = () => {
     require('../src/components/Popover/stories');
     require('../src/components/TopPanel/stories');
     require('../src/components/TopPanelItem/stories');
+    require('../src/components/ReceptionsScheduleModal/stories');
 };
 
 configure(loadStories, module);
