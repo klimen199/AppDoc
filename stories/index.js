@@ -34,6 +34,8 @@ const loadStories = () => {
     require('../src/components/TimePicker/stories');
     require('../src/components/Links/stories');
     require('../src/components/Popover/stories');
+    require('../src/components/TopPanel/stories');
+    require('../src/components/TopPanelItem/stories');
 };
 
 configure(loadStories, module);
