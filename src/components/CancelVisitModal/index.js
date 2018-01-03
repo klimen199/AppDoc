@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Modal from '../Modal'
-import Icon from '../Icon'
 import TextArea from '../TextArea'
 import Upload from '../Upload'
 import DatePicker from '../DatePicker'

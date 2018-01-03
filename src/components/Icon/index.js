@@ -31,7 +31,7 @@ Icon.propTypes = {
 Icon.defaultProps = {
     svg: false,
     size: 36,
-    num: '0',
+    num: 0,
     onClick: () => {},
 };
 

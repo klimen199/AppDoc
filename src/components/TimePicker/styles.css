@@ -5,6 +5,10 @@
   cursor: pointer;
   display: inline-block;
 }
+.timepicker-base-title {
+  color: #999999;
+  margin-bottom: 25px;
+}
 .timepicker-base-range {
   width: 100%;
   min-width: 340px;
