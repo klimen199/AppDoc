@@ -1,1 +1,33 @@
-.link{display:flex;justify-content:flex-start;align-items:baseline;color:#204d8d;font-size:14px;border-bottom:1px solid transparent;cursor:pointer}.link .icon{margin-right:1rem}.link:hover{color:#204d8d;text-decoration:none}.link:hover span{text-decoration:underline}.link:hover .icon{text-decoration:none}.link:active,.link:focus{color:#344051}.link:active .icon,.link:focus .icon{color:#b7b7b7}
+/* fonts */
+/* COLORS */
+/* VAR */
+.link {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  color: #204d8d;
+  font-size: 14px;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+}
+.link .icon {
+  margin-right: 1rem;
+}
+.link:hover {
+  color: #204d8d;
+  text-decoration: none;
+}
+.link:hover span {
+  text-decoration: underline;
+}
+.link:hover .icon {
+  text-decoration: none;
+}
+.link:active,
+.link:focus {
+  color: #344051;
+}
+.link:active .icon,
+.link:focus .icon {
+  color: #b7b7b7;
+}

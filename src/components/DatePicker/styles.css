@@ -30,7 +30,7 @@
   text-align: center;
 }
 .datepicker-base > i {
-  font-size: 20px;
+  font-size: 35px;
 }
 .datepicker-base .ant-calendar-picker-clear,
 .datepicker-base .ant-calendar-picker-icon {
@@ -45,5 +45,5 @@
 .ant-calendar-picker-input {
   font-size: 14px;
   cursor: pointer;
-  height: 20px;
+  height: 35px;
 }
