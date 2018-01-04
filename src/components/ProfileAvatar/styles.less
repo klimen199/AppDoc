@@ -1,0 +1,62 @@
+@import "../../styles/variables";
+
+.profileAvatar{
+  .indicator(@top, @left){
+    position: absolute;
+    top: @top;//5.6%;
+    left: @left;//76%;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    border: 3px solid white;
+  }
+
+  .indicColor(@top, @left){
+    .profileAvatar-indicator{
+      .indicator(@top, @left);
+      background-color: @grey;
+      &-online{
+        .indicator(@top, @left);
+        background-color: #00c853;
+      }
+    }
+  }
+
+  .root(@a){
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    width: @a;
+    height: @a;
+  }
+
+  &-root{
+    display: inline-flex;
+  }
+  &-patient{
+    .root(160px);
+    .indicColor(5.6%, 76%);
+  }
+  &-doctor{
+    margin: auto;
+    .root(134px);
+    .indicColor(8.2%, 82.5%);
+  }
+
+}
+
+.doctorAvatarBorder{
+  border: 2px solid @grey;
+  width: 143px;
+  height: 143px;
+  border-radius: 50%;
+
+  &-online{
+    border: 2px solid #00c853;
+    width: 143px;
+    height: 143px;
+    border-radius: 50%;
+  }
+}
