@@ -63,15 +63,57 @@
   border: 3px solid white;
   background-color: #00c853;
 }
+.profileAvatar-doctor-short {
+  margin: auto;
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  width: 94px;
+  height: 94px;
+}
+.profileAvatar-doctor-short .profileAvatar-indicator {
+  position: absolute;
+  top: 8.2%;
+  left: 82.5%;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  border: 3px solid white;
+  background-color: #d8d8d8;
+}
+.profileAvatar-doctor-short .profileAvatar-indicator-online {
+  position: absolute;
+  top: 8.2%;
+  left: 82.5%;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  border: 3px solid white;
+  background-color: #00c853;
+}
 .doctorAvatarBorder {
   border: 2px solid #d8d8d8;
   width: 143px;
   height: 143px;
   border-radius: 50%;
 }
+.doctorAvatarBorder-short {
+  border: 2px solid #d8d8d8;
+  width: 103px;
+  height: 103px;
+  border-radius: 50%;
+}
 .doctorAvatarBorder-online {
   border: 2px solid #00c853;
   width: 143px;
   height: 143px;
+  border-radius: 50%;
+}
+.doctorAvatarBorder-online-short {
+  border: 2px solid #00c853;
+  width: 103px;
+  height: 103px;
   border-radius: 50%;
 }

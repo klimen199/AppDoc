@@ -38,6 +38,7 @@ const loadStories = () => {
     require('../src/components/TopPanelItem/stories');
     require('../src/components/ReceptionsScheduleModal/stories');
     require('../src/components/ProfileAvatar/stories');
+    require('../src/components/DoctorProfileCard/stories');
 };
 
 configure(loadStories, module);

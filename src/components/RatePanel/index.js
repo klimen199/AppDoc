@@ -15,7 +15,7 @@ class RatePanel extends React.Component{
                 <span className="value">{rateValue.toFixed(1)}</span>
                 <Rate style={{fontSize:12}}
                       defaultValue={Math.ceil(rateValue)}
-                      disabled={true}/>
+                      {...this.props}/>
                 <span className="times">({timesRated})</span>
             </div>
         )
@@ -25,11 +25,13 @@ class RatePanel extends React.Component{
 RatePanel.propTypes = {
     rateValue: PropTypes.number,
     timesRated: PropTypes.number,
+    disabled: PropTypes.bool,
 };
 
 RatePanel.defaultProps = {
     rateValue: 0,
     timesRated: 0,
+    disabled: true,
 };
 
 export default RatePanel;

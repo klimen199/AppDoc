@@ -2,12 +2,13 @@
 /* COLORS */
 /* VAR */
 .ratePanel {
-  font-size: 12px;
+  font-size: 11px;
 }
 .ratePanel .value {
-  margin-right: 10px;
+  margin-right: 9px;
   color: #fdc401;
 }
 .ratePanel .times {
-  margin-left: 12px;
+  margin-left: 11px;
+  color: #333333;
 }
