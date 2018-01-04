@@ -39,6 +39,7 @@ const loadStories = () => {
     require('../src/components/ReceptionsScheduleModal/stories');
     require('../src/components/ProfileAvatar/stories');
     require('../src/components/DoctorProfileCard/stories');
+    require('../src/components/CompletionReceptionModal/stories');
 };
 
 configure(loadStories, module);
