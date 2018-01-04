@@ -44,19 +44,32 @@
     .root(134px);
     .indicColor(8.2%, 82.5%);
   }
+  &-doctor-short{
+    margin: auto;
+    .root(94px);
+    .indicColor(8.2%, 82.5%);
+  }
+}
 
+.docBorderRoot(@a, @color){
+  border: 2px solid @color;
+  width: @a;
+  height: @a;
+  border-radius: 50%;
 }
 
 .doctorAvatarBorder{
-  border: 2px solid @grey;
-  width: 143px;
-  height: 143px;
-  border-radius: 50%;
+  .docBorderRoot(143px, @grey);
+
+  &-short{
+    .docBorderRoot(103px, @grey);
+  }
 
   &-online{
-    border: 2px solid #00c853;
-    width: 143px;
-    height: 143px;
-    border-radius: 50%;
+    .docBorderRoot(143px, #00c853);
+
+    &-short{
+      .docBorderRoot(103px, #00c853);
+    }
   }
 }

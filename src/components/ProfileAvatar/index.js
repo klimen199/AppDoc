@@ -6,13 +6,14 @@ import './styles.css'
 class ProfileAvatar extends React.Component{
 
     render() {
-        const {img, online, owner} = this.props;
+        const {img, online, owner, short} = this.props;
         const back = 'url(' + img + ') center';
 
-        const live = online ? "-online" : "";
-        const rootClass = owner === 'doctor' ? 'profileAvatar-root doctorAvatarBorder'+live : 'profileAvatar-root',
-            avatarClass = "profileAvatar-" + owner;
-        const indicatorClass = "profileAvatar-indicator"+live;
+        const live = online ? "-online" : "",
+            small = (short && owner === 'doctor') ? '-short' : '';
+        const rootClass = owner === 'doctor' ? 'profileAvatar-root doctorAvatarBorder'+ live + small : 'profileAvatar-root',
+            avatarClass = "profileAvatar-" + owner + small;
+        const indicatorClass = "profileAvatar-indicator" + live;
 
         return(
             <div className={rootClass}>
@@ -29,12 +30,14 @@ ProfileAvatar.propTypes = {
     img: PropTypes.string,
     online: PropTypes.bool,
     owner: PropTypes.oneOf(['patient','doctor']).isRequired,
+    short: PropTypes.bool,
 };
 
 ProfileAvatar.defaultProps = {
     img: '',
     online: false,
     owner: '',
+    short: false,
 };
 
 export default ProfileAvatar;
