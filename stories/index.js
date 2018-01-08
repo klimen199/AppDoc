@@ -43,6 +43,7 @@ const loadStories = () => {
     require('../src/components/Review/stories');
     require('../src/components/Card/stories');
     require('../src/components/Reviews/stories');
+    require('../src/components/RadioIcon/stories');
     
 };
 
