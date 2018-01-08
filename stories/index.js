@@ -40,6 +40,7 @@ const loadStories = () => {
     require('../src/components/ProfileAvatar/stories');
     require('../src/components/DoctorProfileCard/stories');
     require('../src/components/CompletionReceptionModal/stories');
+    require('../src/components/Review/stories');
 };
 
 configure(loadStories, module);
