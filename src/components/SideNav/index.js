@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import cn from 'classnames'
+import { NavLink } from 'react-router-dom'
 
 import './styles.css'
 
@@ -16,34 +17,45 @@ class SideNav extends React.Component{
         this.state = {
             isShort: false,
         }
-
     }
 
-    renderMenuItems = (selectedKey, menuItems, withCount) =>{
-        menuItems.map( ({menu, items, name, title, index, onClick, count}) => {
-            const path = `/${menu}/${name}/`
-            const isActive = () => path === selectedKey
+    getSelectedKeys = () => {
+        // const { location: { hash, pathname }, selectedKeys} = this.props
+        //
+        // if (selectedKeys && selectedKeys.length) return selectedKeys
+        // return [pathname + hash]
+    }
 
-            return (
-                <Menu.Item className={css['nav-item']} key={path}>
-                    <NavLink isActive={isActive} to={path} onClick={onClick}>
-                        {renderIndex(index)}
-                        <div className={css['nav-title']}>
-                            <div className={css['nav-title-inner']}>{title}</div>
-                        </div>
-                        {withCount && renderItemCount(count)}
-                    </NavLink>
-                    {items && renderSubMenu(items)}
-                </Menu.Item>
-            )
+    renderMenuItems = (selectedKey, menuItems, isShort) =>{
+        let items = [];
+        const clName = 'sidenav-root-menu-item' + (isShort ? '-short':'');
+
+        menuItems.map(({name, title, iconType, svg, onClick},i) => {
+            const path = `/${name}/`;
+            const isActive = () => path === selectedKey;
+
+            items.push(<Menu.Item key={path}>
+                {/*<NavLink isActive={isActive} to={path} onClick={onClick}>*/}
+                    <div className={clName}>
+
+                            {iconType && <Icon type={iconType} size={26} svg={svg}/>}
+
+                        <span className="item-title">
+                            {title}
+                        </span>
+                    </div>
+                {/*</NavLink>*/}
+            </Menu.Item>);
         })
+        return items;
+
     };
 
     render(){
         const {isShort} = this.state,
-            {} = this.props;
+            {menuItems} = this.props;
 
-
+        //const selectedKeys = this.getSelectedKeys()
         const rootClass = cn('sidenav-root', {'sidenav-root-short' : isShort});
 
         return (
@@ -60,15 +72,14 @@ class SideNav extends React.Component{
                 </button>
 
                 <Menu
-                    defaultSelectedKeys={['1']}
-                    defaultOpenKeys={['sub1']}
                     mode="inline"
                 >
-                    {this.renderMenuItems()}
-                    <Menu.Item key="1">Option 1</Menu.Item>
-                    <Menu.Item key="2">Option 2</Menu.Item>
-                    <Menu.Item key="3">Option 3</Menu.Item>
-                    <Menu.Item key="4">Option 4</Menu.Item>
+                    {/*{this.renderMenuItems(selectedKeys[0], menuItems)}*/}
+                    {this.renderMenuItems('', menuItems, isShort)}
+                    {/*<Menu.Item key="1">Option 1</Menu.Item>*/}
+                    {/*<Menu.Item key="2">Option 2</Menu.Item>*/}
+                    {/*<Menu.Item key="3">Option 3</Menu.Item>*/}
+                    {/*<Menu.Item key="4">Option 4</Menu.Item>*/}
                 </Menu>
             </div>
         )
@@ -77,20 +88,16 @@ class SideNav extends React.Component{
 
 SideNav.propTypes = {
     menuItems: PropTypes.arrayOf(PropTypes.shape({
-        name: PropTypes.string,
-        title: PropTypes.string,
-        icon: PropTypes.string,
+        name: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        iconType: PropTypes.string,
         svg: PropTypes.bool,
+        onClick: PropTypes.func,
     }))
 };
 
 SideNav.defaultProps = {
-    menuItems: [{
-        name: '',
-        title: '',
-        icon: '',
-        svg: false,
-    }]
+    menuItems: [],
 };
 
 export default SideNav;

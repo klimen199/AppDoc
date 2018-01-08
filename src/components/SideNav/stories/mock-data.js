@@ -1,8 +1,10 @@
+// You don't need to specify field 'svg'. There is special check
+
 export const menuItems = [
-    {name: 'main', title: 'Главная', icon: 'dashboard', svg: true},
-    {name: '', title: 'График работы', icon: 'calendar', svg: true},
-    {name: '', title: 'Обращения', icon: 'order-form', svg: true},
-    {name: '', title: 'Мои пациенты', icon: '', svg: false},
-    {name: '', title: 'Личные данные', icon: 'setting_edit', svg: true},
-    {name: '', title: 'Отзывы пациентов', icon: 'chat', svg: true},
+    {name: 'main', title: 'Главная', iconType: 'dashboard', svg: true, onClick: () => {console.log('main')}},
+    {name: 'schedule', title: 'График работы', iconType: 'calendar', svg: true},
+    {name: 'asks', title: 'Обращения', iconType: 'order-form', svg: true},
+    {name: 'patients', title: 'Мои пациенты', iconType: '',},
+    {name: 'info', title: 'Личные данные', iconType: 'setting_edit', svg: true},
+    {name: 'comments', title: 'Отзывы пациентов', iconType: 'chat', svg: true},
 ];

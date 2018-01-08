@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { Router, Route, Switch } from 'react-router'
 
 import SideNav from '../';
 import {menuItems} from './mock-data'
