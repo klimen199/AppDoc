@@ -1,75 +1,116 @@
 @import "../../styles/variables";
 
-.profileAvatar{
-  .indicator(@top, @left){
-    position: absolute;
-    top: @top;//5.6%;
-    left: @left;//76%;
-    width: 17px;
-    height: 17px;
-    border-radius: 50%;
-    border: 3px solid white;
-  }
-
-  .indicColor(@top, @left){
-    .profileAvatar-indicator{
-      .indicator(@top, @left);
-      background-color: @grey;
-      &-online{
-        .indicator(@top, @left);
-        background-color: #00c853;
-      }
-    }
-  }
-
-  .root(@a){
+.profileAvatar {
     position: relative;
-    display: inline-block;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    width: @a;
-    height: @a;
-  }
-
-  &-root{
     display: inline-flex;
-  }
-  &-patient{
-    .root(160px);
-    .indicColor(5.6%, 76%);
-  }
-  &-doctor{
-    margin: auto;
-    .root(134px);
-    .indicColor(8.2%, 82.5%);
-  }
-  &-doctor-short{
-    margin: auto;
-    .root(94px);
-    .indicColor(8.2%, 82.5%);
-  }
-}
+    border-radius: 100%;
 
-.docBorderRoot(@a, @color){
-  border: 2px solid @color;
-  width: @a;
-  height: @a;
-  border-radius: 50%;
-}
-
-.doctorAvatarBorder{
-  .docBorderRoot(143px, @grey);
-
-  &-short{
-    .docBorderRoot(103px, @grey);
-  }
-
-  &-online{
-    .docBorderRoot(143px, #00c853);
-
-    &-short{
-      .docBorderRoot(103px, #00c853);
+    &-indicator{
+        position: absolute;
+        border-radius: 100%;
     }
-  }
+
+    .profileImg{
+        background-size: cover;
+        background-position: 50%;
+        border-radius: 100%;
+    }
+
+    &-owner{
+
+        &-patient {
+
+        }
+
+        &-doctor {
+            
+        }
+    }
+    
+
+    &-size{
+
+        &-small{
+
+            .profileImg{
+                width: 46px;
+                height: 46px;
+                border: 1px solid #fff;
+
+                .profileAvatar-indicator{
+                    right: 2px;
+                    top: 2px;
+                    width: 8px;
+                    height: 8px;
+                    border: 1px solid #fff;
+                }
+            }
+            
+        }
+
+        &-medium{
+            margin-bottom: 20px;
+            
+            .profileImg{
+                width: 90px;
+                height: 90px;
+                border: 2px solid #fff;
+
+                .profileAvatar-indicator{
+                    right: 14px;
+                    top: 2px;
+                    width: 10px;
+                    height: 10px;
+                    border: 1px solid #fff;
+                }
+            }
+            
+        }
+
+        &-large{
+            margin-bottom: 20px;
+
+            .profileImg{
+                width: 132px;
+                height: 132px;
+                border: 3px solid #fff;
+
+                .profileAvatar-indicator{
+                    right: 22px;
+                    top: 2px;
+                    width: 14px;
+                    height: 14px;
+                    border: 2px solid #fff;
+                }
+            }
+            
+        }
+    }
+
+    &-status{
+
+        &-online{
+            border: 2px solid #04c956;
+
+            .profileAvatar-indicator{
+                background-color: #04c956;
+            }
+        }
+
+        &-offline{
+            border: 2px solid @grey;
+
+            .profileAvatar-indicator{
+                background-color: @grey;
+            }
+
+            &.profileAvatar-size-small{
+                border: none;
+               
+                .profileAvatar-indicator{
+                     background-color: #ef5350;
+                }
+            }
+        }
+    }
 }

@@ -11,7 +11,8 @@ storiesOf('DoctorProfileCard', module)
                                name='Иванов Иван Иванович'
                                specialty='терапевт'
                                rateValue={3.8}
-                               timesRated={57}/>
+                               timesRated={57}
+                               size='large'/>
             </div>
 
             <strong style={{marginLeft: 50}}>short: </strong>
@@ -21,6 +22,8 @@ storiesOf('DoctorProfileCard', module)
                                specialty='терапевт'
                                rateValue={4.4}
                                timesRated={34}
+                               size='medium'
+                               online='online'
                                short/>
             </div>
         </div>
