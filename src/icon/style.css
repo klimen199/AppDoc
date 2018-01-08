@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icon';
-  src:  url('fonts/icon.eot?m9l9a3');
-  src:  url('fonts/icon.eot?m9l9a3#iefix') format('embedded-opentype'),
-    url('fonts/icon.ttf?m9l9a3') format('truetype'),
-    url('fonts/icon.woff?m9l9a3') format('woff'),
-    url('fonts/icon.svg?m9l9a3#icon') format('svg');
+  src:  url('fonts/icon.eot?gtjnh8');
+  src:  url('fonts/icon.eot?gtjnh8#iefix') format('embedded-opentype'),
+    url('fonts/icon.ttf?gtjnh8') format('truetype'),
+    url('fonts/icon.woff?gtjnh8') format('woff'),
+    url('fonts/icon.svg?gtjnh8#icon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -25,64 +25,64 @@
 }
 
 .icon-add-button:before {
-  content: "\e901";
+  content: "\e900";
 }
 .icon-alarm:before {
-  content: "\e902";
+  content: "\e901";
 }
 .icon-archive-box:before {
-  content: "\e903";
+  content: "\e902";
 }
 .icon-arrow_down:before {
-  content: "\e904";
+  content: "\e903";
 }
 .icon-arrow_left:before {
-  content: "\e905";
+  content: "\e904";
 }
 .icon-arrow_right:before {
-  content: "\e906";
+  content: "\e905";
 }
 .icon-arrow_up:before {
-  content: "\e907";
+  content: "\e906";
 }
 .icon-arrow2_left:before {
-  content: "\e908";
+  content: "\e907";
 }
 .icon-calendar:before {
-  content: "\e909";
+  content: "\e908";
 }
 .icon-caution:before {
-  content: "\e90a";
+  content: "\e909";
 }
 .icon-chat:before {
-  content: "\e90b";
+  content: "\e90a";
 }
 .icon-chat1:before {
-  content: "\e90c";
+  content: "\e90b";
 }
 .icon-circle_arrow_down:before {
-  content: "\e90d";
+  content: "\e90c";
 }
 .icon-circle_arrow_left:before {
-  content: "\e90e";
+  content: "\e90d";
 }
 .icon-circle_arrow_right:before {
-  content: "\e90f";
+  content: "\e90e";
 }
 .icon-circle_arrow_up:before {
-  content: "\e910";
+  content: "\e90f";
 }
 .icon-circle_close:before {
-  content: "\e911";
+  content: "\e910";
 }
 .icon-circle_plus:before {
-  content: "\e912";
+  content: "\e911";
 }
 .icon-clip:before {
-  content: "\e913";
+  content: "\e912";
 }
 .icon-clock:before {
-  content: "\e900";
+  content: "\e913";
 }
 .icon-close:before {
   content: "\e914";
