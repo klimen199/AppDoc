@@ -3,22 +3,97 @@ import PropTypes from 'prop-types'
 import cn from 'classnames'
 
 import { Icon as AntdIcon } from 'antd'
+const iconList = [
+    "clock",
+    "add-button",
+    "alarm",
+    "archive-box",
+    "arrow_down",
+    "arrow_left",
+    "arrow_right",
+    "arrow_up",
+    "arrow2_left",
+    "calendar",
+    "caution",
+    "chat",
+    "chat1",
+    "circle_arrow_down",
+    "circle_arrow_left",
+    "circle_arrow_right",
+    "circle_arrow_up",
+    "circle_close",
+    "circle_plus",
+    "clip",
+    "close",
+    "dashboard",
+    "download",
+    "emergency-call",
+    "emoticon-face",
+    "empty",
+    "end-call-button",
+    "enter",
+    "exit",
+    "file-download",
+    "file",
+    "hint",
+    "incoming-calls",
+    "left-arrow-forward_small",
+    "mail",
+    "no",
+    "notification",
+    "order-form",
+    "pdf-file",
+    "phone-call-outcoming",
+    "play-button",
+    "plus",
+    "result",
+    "result2",
+    "right-arrow-forward_small",
+    "search",
+    "setting_edit",
+    "star",
+    "telephone",
+    "video-camera",
+    "volume",
+    "xls-file",
+    "icon1",
+    "icon2",
+    "icon3",
+    "icon4",
+];
 
-const Icon = props => {
-    const { svg, type, size, num, onClick } = props;
+class Icon extends React.Component{
+    constructor(props){
+        super(props);
+        const {type, svg} = this.props;
+        let isAntd;
+        (function () {
+            if(!svg)
+            isAntd = iconList.every((elem,i) => {
+                return elem !== type;
+            });
+        }());
+        this.svg = !isAntd;
+    }
 
-    if (!svg)
-        return (<AntdIcon onClick={onClick}
-                          type={type}
-                          style={{fontSize:size}} />);
 
-    const clName = cn('icon', `icon-${type}`)
+    render(){
+        const { svg, type, size, num, onClick } = this.props;
 
-    return <span onClick={onClick}
-                 className={clName}
-                 num={num}
-                 style={{fontSize:size}}/>
-};
+
+        if (!this.svg)
+            return (<AntdIcon onClick={onClick}
+                              type={type}
+                              style={{fontSize:size}} />);
+
+        const clName = cn('icon', `icon-${type}`)
+
+        return <span onClick={onClick}
+                     className={clName}
+                     num={num}
+                     style={{fontSize:size}}/>
+    }
+}
 
 Icon.propTypes = {
     svg: PropTypes.bool,
