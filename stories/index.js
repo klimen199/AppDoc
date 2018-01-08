@@ -40,6 +40,10 @@ const loadStories = () => {
     require('../src/components/ProfileAvatar/stories');
     require('../src/components/DoctorProfileCard/stories');
     require('../src/components/CompletionReceptionModal/stories');
+    require('../src/components/Review/stories');
+    require('../src/components/Card/stories');
+    require('../src/components/Reviews/stories');
+
     require('../src/components/SideNav/stories');
 };
 
