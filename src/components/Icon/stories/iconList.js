@@ -57,4 +57,4 @@ export const iconList = [
     "icon2",
     "icon3",
     "icon4",
-]
+];
