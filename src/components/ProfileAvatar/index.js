@@ -1,19 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
+import cn from 'classnames'
 import './styles.css'
 
 class ProfileAvatar extends React.Component{
 
     render() {
-        const {img, online, owner, short} = this.props;
+        const {img, online, owner, size} = this.props;
         const back = 'url(' + img + ') center';
 
-        const live = online ? "-online" : "",
-            small = (short && owner === 'doctor') ? '-short' : '';
-        const rootClass = owner === 'doctor' ? 'profileAvatar-root doctorAvatarBorder'+ live + small : 'profileAvatar-root',
-            avatarClass = "profileAvatar-" + owner + small;
-        const indicatorClass = "profileAvatar-indicator" + live;
+        const rootClass = cn('profileAvatar',`profileAvatar-status-${online}`, `profileAvatar-size-${size}`);
+        const avatarClass = cn('profileImg', `profileAvatar-owner-${owner}`);
+        const indicatorClass = cn(`profileAvatar-indicator`);
 
         return(
             <div className={rootClass}>
@@ -28,16 +26,16 @@ class ProfileAvatar extends React.Component{
 
 ProfileAvatar.propTypes = {
     img: PropTypes.string,
-    online: PropTypes.bool,
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
+    online: PropTypes.oneOf(['online', 'offline']),
     owner: PropTypes.oneOf(['patient','doctor']).isRequired,
-    short: PropTypes.bool,
 };
 
 ProfileAvatar.defaultProps = {
     img: '',
-    online: false,
-    owner: '',
-    short: false,
+    online: 'offline',
+    owner: 'doctor',
+    size: 'medium'
 };
 
 export default ProfileAvatar;

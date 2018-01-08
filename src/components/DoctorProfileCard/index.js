@@ -8,14 +8,14 @@ import './styles.css'
 class DoctorProfileCard extends React.Component{
 
     render(){
-        const {img, short, name, specialty} = this.props;
+        const {img, short, name, specialty,size,online} = this.props;
         const spec = specialty.toUpperCase();
 
         const rootClass = short ? "doctorProfileCard-short" : "doctorProfileCard";
 
         return (
             <div className={rootClass}>
-                <ProfileAvatar owner="doctor" online img={img} short={short}/>
+                <ProfileAvatar owner="doctor" online={online} img={img} short={short} size={size}/>
                 <div className={rootClass + '-name'}>{name}</div>
                 <div className={rootClass + '-specialty'}>{spec}</div>
                 <RatePanel {...this.props}/>
