@@ -44,6 +44,8 @@ const loadStories = () => {
     require('../src/components/Card/stories');
     require('../src/components/Reviews/stories');
     require('../src/components/RadioIcon/stories');
+    require('../src/components/TableNoHeadItem/stories');
+    require('../src/components/TableNoHead/stories');
     
 };
 

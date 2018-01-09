@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icon';
-  src:  url('fonts/icon.eot?gtjnh8');
-  src:  url('fonts/icon.eot?gtjnh8#iefix') format('embedded-opentype'),
-    url('fonts/icon.ttf?gtjnh8') format('truetype'),
-    url('fonts/icon.woff?gtjnh8') format('woff'),
-    url('fonts/icon.svg?gtjnh8#icon') format('svg');
+  src:  url('fonts/icon.eot?zbgf96');
+  src:  url('fonts/icon.eot?zbgf96#iefix') format('embedded-opentype'),
+    url('fonts/icon.ttf?zbgf96') format('truetype'),
+    url('fonts/icon.woff?zbgf96') format('woff'),
+    url('fonts/icon.svg?zbgf96#icon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -150,52 +150,55 @@
 .icon-plus:before {
   content: "\e929";
 }
-.icon-result:before {
+.icon-printer:before {
   content: "\e92a";
 }
-.icon-result2:before {
+.icon-result:before {
   content: "\e92b";
 }
-.icon-right-arrow-forward_small:before {
+.icon-result2:before {
   content: "\e92c";
 }
-.icon-search:before {
+.icon-right-arrow-forward_small:before {
   content: "\e92d";
 }
-.icon-setting_edit:before {
+.icon-search:before {
   content: "\e92e";
 }
-.icon-star:before {
+.icon-setting_edit:before {
   content: "\e92f";
 }
-.icon-telephone:before {
+.icon-star:before {
   content: "\e930";
 }
-.icon-upload .path1:before {
+.icon-telephone:before {
   content: "\e931";
+}
+.icon-upload .path1:before {
+  content: "\e932";
   color: rgb(1, 1, 1);
 }
 .icon-upload .path2:before {
-  content: "\e932";
-  margin-left: -1em;
-  color: rgb(1, 1, 1);
-}
-.icon-upload .path3:before {
   content: "\e933";
   margin-left: -1em;
   color: rgb(1, 1, 1);
 }
-.icon-upload .path4:before {
+.icon-upload .path3:before {
   content: "\e934";
+  margin-left: -1em;
+  color: rgb(1, 1, 1);
+}
+.icon-upload .path4:before {
+  content: "\e935";
   margin-left: -1em;
   color: rgb(0, 0, 0);
 }
 .icon-video-camera:before {
-  content: "\e935";
-}
-.icon-volume:before {
   content: "\e936";
 }
-.icon-xls-file:before {
+.icon-volume:before {
   content: "\e937";
+}
+.icon-xls-file:before {
+  content: "\e938";
 }

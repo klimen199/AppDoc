@@ -9,7 +9,5 @@ import {dataSource, columns} from './mock-data'
 storiesOf('Table', module)
     .add('basic', () => (<div>
             <Table dataSource={dataSource} columns={columns} />
-            <p className="lol">asd</p>
-            <p>wertyuiuytr</p>
         </div>
     ))
