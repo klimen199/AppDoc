@@ -58,8 +58,6 @@ Rewiew.defaultProps = {
     rewText: '',
     time: '1',
     unit: 'мин.'
-
-
 };
 
 export default Rewiew
