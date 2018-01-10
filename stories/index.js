@@ -48,6 +48,7 @@ const loadStories = () => {
     require('../src/components/TableNoHead/stories');
     require('../src/components/TreatmentTableItem/stories');
     require('../src/components/TreatmentTable/stories');
+    require('../src/components/Accordion/stories');
     
 };
 
