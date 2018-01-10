@@ -46,6 +46,8 @@ const loadStories = () => {
     require('../src/components/RadioIcon/stories');
     require('../src/components/TableNoHeadItem/stories');
     require('../src/components/TableNoHead/stories');
+    require('../src/components/TreatmentTableItem/stories');
+    require('../src/components/TreatmentTable/stories');
     
 };
 
