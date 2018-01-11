@@ -48,6 +48,8 @@ const loadStories = () => {
     require('../src/components/TableNoHead/stories');
     require('../src/components/TreatmentTableItem/stories');
     require('../src/components/TreatmentTable/stories');
+    require('../src/components/DiseasesTableItem/stories');
+    require('../src/components/DiseasesTable/stories');
     
 };
 
