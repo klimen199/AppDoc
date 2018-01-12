@@ -57,8 +57,8 @@ const loadStories = () => {
     require('../src/components/Accordion/stories');
     require('../src/components/Radio/stories');
     require('../src/components/WarningModal/stories');
-
     require('../src/components/SideNav/stories');
+    require('../src/components/CommentItem/stories');
 };
 
 configure(loadStories, module);
