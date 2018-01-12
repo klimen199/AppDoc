@@ -20,7 +20,6 @@ const loadStories = () => {
     require('../src/components/Button/stories');
     require('../src/components/Checkbox/stories');
     require('../src/components/Input/stories');
-    //require('../src/components/Table/stories');
     require('../src/components/Select/stories');
     require('../src/components/Switch/stories');
     require('../src/components/SwitchPanel/stories');
@@ -47,7 +46,7 @@ const loadStories = () => {
     require('../src/components/Review/stories');
     require('../src/components/Card/stories');
     require('../src/components/Reviews/stories');
-    require('../src/components/RadioIcon/stories');
+    //require('../src/components/RadioIcon/stories');
     require('../src/components/TableNoHeadItem/stories');
     require('../src/components/TableNoHead/stories');
     require('../src/components/TreatmentTableItem/stories');
