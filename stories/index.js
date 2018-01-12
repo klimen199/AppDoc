@@ -3,8 +3,12 @@ import { configure, addDecorator } from '@storybook/react'
 
 import StorybookStylesProvider from './StorybookStylesProvider'
 
+const styles = {
+    padding: 15,
+}
+
 const LocalProviderDecorator = story => (
-    <div>
+    <div style={styles}>
         <StorybookStylesProvider>{story()}</StorybookStylesProvider>
     </div>
 );
@@ -52,7 +56,9 @@ const loadStories = () => {
     require('../src/components/DiseasesTable/stories');
     require('../src/components/ProfilePatient/stories');
     require('../src/components/Accordion/stories');
-    
+
+
+    require('../src/components/SideNav/stories');
 };
 
 configure(loadStories, module);
