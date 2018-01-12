@@ -6,10 +6,8 @@ import { NavLink } from 'react-router-dom'
 import './styles.css'
 
 import {Menu} from 'antd'
-import Button from '../Button'
+import DoctorProfileCard from '../DoctorProfileCard'
 import Icon from '../Icon'
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
 
 class SideNav extends React.Component{
     constructor(props){
@@ -72,6 +70,7 @@ class SideNav extends React.Component{
                             )
                     }
                 </button>
+                <DoctorProfileCard/>
 
                 <Menu
                     mode="inline"
