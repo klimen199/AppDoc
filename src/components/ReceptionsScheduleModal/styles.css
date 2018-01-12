@@ -5,6 +5,9 @@
   position: relative;
   padding: 20px 25px 30px 25px;
 }
+.receptionsScheduleModal .datepicker-base-range {
+  margin-bottom: 25px;
+}
 .receptionsScheduleModal-tabs {
   position: relative;
   left: -10px;
@@ -20,6 +23,16 @@
 }
 .receptionsScheduleModal-tabs .ant-tabs-tabpane {
   padding: 0 10px;
+}
+.receptionsScheduleModal-tabs .ant-tabs-tabpane .ant-checkbox-wrapper {
+  display: block;
+  margin-top: 50px;
+}
+.receptionsScheduleModal-tabs .ant-tabs-tabpane .ant-radio-group {
+  margin-bottom: 20px;
+}
+.receptionsScheduleModal-tabs .ant-tabs-tabpane .ant-select {
+  margin-bottom: 28px;
 }
 .receptionsScheduleModal-timepickers {
   margin-bottom: 20px;

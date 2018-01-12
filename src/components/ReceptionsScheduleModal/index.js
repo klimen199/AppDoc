@@ -5,6 +5,9 @@ import Modal from '../Modal'
 import DatePicker from '../DatePicker'
 import Tabs from '../Tabs'
 import TimePicker from '../TimePicker'
+import Radio from '../Radio'
+import Select from '../Select'
+import Checkbox from '../Checkbox'
 import Button from '../Button'
 import './styles.css'
 
@@ -48,19 +51,21 @@ class ReceptionsScheduleModal extends React.Component{
                     Интервал рабочего времени
                 </div>
                 {this.renderTp(tab)}
-                <Button onClick={() => this.addTp(tab)}
-                        btnText='Добавить интервал'
-                        size='file'
-                        type='file'
-                        icon='add-button'
-                        svg
-                />
             </div>
         )
     };
 
+    renderOptions = (selOptions) => {
+        let options = [];
+        selOptions.map((el) => {
+            options.push(<Option value={el}>{el}</Option>)
+        });
+
+        return options;
+    };
+
     render(){
-        const {visible, onSave} = this.props;
+        const {visible, onSave, selOptions} = this.props;
 
         return (
             <Modal title='График приемов'
@@ -71,9 +76,30 @@ class ReceptionsScheduleModal extends React.Component{
                     <Tabs defaultActiveKey="1" className="receptionsScheduleModal-tabs">
                         <Tabs.TabPane tab="Плановые приемы" key="1">
                             {this.renderTpBlock('reception')}
+                            <Radio icons={['telephone', "video-camera", 'chat1']}/>
+                            <Select placeholder="Длительность приема">
+                                {this.renderOptions(selOptions)}
+                            </Select>
+                            <Button onClick={() => {}}
+                                    btnText='Добавить интервал'
+                                    iconSize={30}
+                                    size='file'
+                                    type='file'
+                                    icon='add-button'
+                                    svg/>
+                            <Checkbox>Выходной</Checkbox>
                         </Tabs.TabPane>
+
                         <Tabs.TabPane tab="Экстренные вызовы" key="2">
                             {this.renderTpBlock('call')}
+                            <Button onClick={() => this.addTp('call')}
+                                    btnText='Добавить интервал'
+                                    iconSize={30}
+                                    size='file'
+                                    type='file'
+                                    icon='add-button'
+                                    svg
+                            />
                         </Tabs.TabPane>
                     </Tabs>
                     <Button onClick={onSave}
@@ -90,11 +116,13 @@ class ReceptionsScheduleModal extends React.Component{
 ReceptionsScheduleModal.propTypes = {
     visible: PropTypes.bool,
     onSave: PropTypes.func,
+    selOptions: PropTypes.arrray,
 };
 
 ReceptionsScheduleModal.defaultProps = {
     visible: false,
     onSave: () => {},
+    selOptions: [],
 };
 
 export default ReceptionsScheduleModal;
