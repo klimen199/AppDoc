@@ -2,20 +2,18 @@
 /* COLORS */
 /* VAR */
 :global(.ant-menu-item) {
-  padding-left: 0 !important;
+  padding: 0 !important;
+  display: flex;
+  overflow: visible !important;
+  height: 62px !important;
+  margin: 5px 0 !important;
+}
+:global(.ant-menu-item) > a {
+  margin: auto 0 auto 66px;
 }
 .ant-menu-item-selected {
   background-color: transparent !important;
 }
-.ant-menu-item-selected .sidenav-root-menu-item {
-  width: 240px;
-  height: 63px;
-  background-color: #0495ff;
-  border-radius: 31.5px;
-}
-.ant-menu-vertical .ant-menu-item:after,
-.ant-menu-vertical-left .ant-menu-item:after,
-.ant-menu-vertical-right .ant-menu-item:after,
 .ant-menu-inline .ant-menu-item:after {
   border: none;
 }
@@ -27,23 +25,45 @@
   width: 170px;
   position: relative;
 }
+.sidenav-root-menu .selectedNavLink {
+  display: flex !important;
+  background-color: #0495ff;
+  box-shadow: 5px 5px 27px rgba(4, 149, 255, 0.44);
+  width: 250px;
+  height: 60px;
+  border-radius: 31.5px;
+}
+.sidenav-root-menu .selectedNavLink > .sidenav-root-menu-item {
+  margin: auto 0 auto 25px !important;
+}
 .sidenav-root-menu-item {
-  padding-left: 66px;
   font-size: 16px;
   font-family: 'GothamPro-Medium';
+  display: flex;
 }
 .sidenav-root-menu-item > .icon {
-  margin-right: 30px;
+  margin: auto 20px auto 0;
 }
-.sidenav-root-menu-item-short {
+.sidenav-root-menu-short .selectedNavLink {
+  display: flex !important;
+  background-color: #0495ff;
+  box-shadow: 5px 5px 27px rgba(4, 149, 255, 0.44);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.sidenav-root-menu-short .selectedNavLink > .sidenav-root-menu-item {
+  margin: auto !important;
+}
+.sidenav-root-menu-short .sidenav-root-menu-item {
   display: flex;
   font-size: 16px;
   font-family: 'GothamPro-Medium';
 }
-.sidenav-root-menu-item-short > .item-title {
+.sidenav-root-menu-short .sidenav-root-menu-item > .item-title {
   display: none;
 }
-.sidenav-root-menu-item-short > .icon {
+.sidenav-root-menu-short .sidenav-root-menu-item > .icon {
   margin: auto;
 }
 .sidenav-root-btn {

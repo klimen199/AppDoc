@@ -19,24 +19,24 @@ class SideNav extends React.Component{
         }
     }
 
-    getSelectedKeys = () => {
-        // const { location: { hash, pathname }, selectedKeys} = this.props
-        //
-        // if (selectedKeys && selectedKeys.length) return selectedKeys
-        // return [pathname + hash]
-    }
+    // getSelectedKeys = () => {
+    //     const { location: { hash, pathname }, selectedKeys} = this.props;
+    //
+    //     if (selectedKeys && selectedKeys.length) return selectedKeys;
+    //     return [pathname + hash];
+    // };
 
-    renderMenuItems = (selectedKey, menuItems, isShort) =>{
+    renderMenuItems = (selectedKey, menuItems) =>{
         let items = [];
-        const clName = 'sidenav-root-menu-item' + (isShort ? '-short':'');
 
         menuItems.map(({name, title, iconType, svg, onClick},i) => {
             const path = `/${name}/`;
-            const isActive = () => path === selectedKey;
+            //const isActive = () => path === selectedKey;
+            const isActive = () => path === '/'+selectedKey+'/';
 
             items.push(<Menu.Item key={path}>
-                {/*<NavLink isActive={isActive} to={path} onClick={onClick}>*/}
-                    <div className={clName}>
+                <NavLink isActive={isActive} to={path} onClick={onClick} activeClassName="selectedNavLink">
+                    <div className='sidenav-root-menu-item'>
 
                             {iconType && <Icon type={iconType} size={26} svg={svg}/>}
 
@@ -44,7 +44,7 @@ class SideNav extends React.Component{
                             {title}
                         </span>
                     </div>
-                {/*</NavLink>*/}
+                </NavLink>
             </Menu.Item>);
         })
         return items;
@@ -55,8 +55,10 @@ class SideNav extends React.Component{
         const {isShort} = this.state,
             {menuItems} = this.props;
 
-        //const selectedKeys = this.getSelectedKeys()
         const rootClass = cn('sidenav-root', {'sidenav-root-short' : isShort});
+        const menuClass = 'sidenav-root-menu' + (isShort ? '-short':'');
+
+        //const selectedKeys = this.getSelectedKeys()
 
         return (
             <div className={rootClass}>
@@ -73,13 +75,10 @@ class SideNav extends React.Component{
 
                 <Menu
                     mode="inline"
+                    className={menuClass}
                 >
                     {/*{this.renderMenuItems(selectedKeys[0], menuItems)}*/}
-                    {this.renderMenuItems('', menuItems, isShort)}
-                    {/*<Menu.Item key="1">Option 1</Menu.Item>*/}
-                    {/*<Menu.Item key="2">Option 2</Menu.Item>*/}
-                    {/*<Menu.Item key="3">Option 3</Menu.Item>*/}
-                    {/*<Menu.Item key="4">Option 4</Menu.Item>*/}
+                    {this.renderMenuItems('asks', menuItems)}
                 </Menu>
             </div>
         )

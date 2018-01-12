@@ -1,32 +1,30 @@
 @import "../../styles/variables";
 
 :global(.ant-menu-item){
-  padding-left: 0 !important;
+  padding: 0 !important;
+  display: flex;
+  overflow: visible !important;
+  height: 62px !important;
+  margin: 5px 0 !important;
+
+  & > a {
+    margin: auto 0 auto 66px;
+  }
 }
 
 .ant-menu-item-selected{
   background-color: transparent !important;
-  &:after{
-    //transform: none !important;
-    //content: none;
-    //border: transparent;
-  }
-
-  .sidenav-root-menu-item{
-    width: 240px;
-    height: 63px;
-    background-color: @blue;
-    border-radius: 31.5px;
-
-  }
 }
 
-
-
-.ant-menu-vertical .ant-menu-item:after, .ant-menu-vertical-left .ant-menu-item:after, .ant-menu-vertical-right .ant-menu-item:after, .ant-menu-inline .ant-menu-item:after{
+.ant-menu-inline .ant-menu-item:after{
   border: none;
 }
 
+.selNav(){
+  display: flex !important;
+  background-color: @blue;
+  box-shadow: 5px 5px 27px rgba(4, 149, 255, 0.44);
+}
 
 .sidenav-root{
   width: 340px;
@@ -35,24 +33,46 @@
   &-short{
     width: 170px;
     position: relative;
-
-    .sidenav-root-menu{
-
-    }
   }
 
   &-menu{
+    .selectedNavLink{
+      .selNav();
+      width: 250px;
+      height: 60px;
+      border-radius: 31.5px;
 
-    &-item{
-      padding-left: 66px;
-      font-size: 16px;
-      font-family: @f-m;
-      & > .icon{
-        margin-right: 30px;
+      & > .sidenav-root-menu-item{
+        margin: auto 0 auto 25px !important;
       }
     }
 
-    &-item-short{
+    &-item{
+      font-size: 16px;
+      font-family: @f-m;
+      display: flex;
+      & > .icon{
+        margin: auto 20px auto 0;
+      }
+
+      //&-selected{
+      //  background-color: @blue;
+      //}
+    }
+  }
+  &-menu-short{
+    .selectedNavLink{
+      .selNav();
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+
+      & > .sidenav-root-menu-item{
+        margin: auto !important;
+      }
+    }
+
+    .sidenav-root-menu-item{
       display: flex;
 
       font-size: 16px;
