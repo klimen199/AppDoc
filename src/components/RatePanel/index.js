@@ -8,7 +8,7 @@ class RatePanel extends React.Component{
 
     render(){
         const {rateValue,timesRated } = this.props;
-        console.log(parseFloat(rateValue))
+        //console.log(parseFloat(rateValue))
 
         return (
             <div className="ratePanel">

@@ -7,15 +7,19 @@ import './styles.css'
 
 class DoctorProfileCard extends React.Component{
 
+    shouldComponentUpdate(nextProps){
+        return this.props.short !== nextProps.short;
+    }
+
     render(){
-        const {img, short, name, specialty,size,online} = this.props;
+        const {img, short, name, specialty,online} = this.props;
         const spec = specialty.toUpperCase();
 
         const rootClass = short ? "doctorProfileCard-short" : "doctorProfileCard";
 
         return (
             <div className={rootClass}>
-                <ProfileAvatar owner="doctor" online={online} img={img} short={short} size={size}/>
+                <ProfileAvatar owner="doctor" online={online} img={img} short={short} size={(short ? 'medium' : 'large')}/>
                 <div className={rootClass + '-name'}>{name}</div>
                 <div className={rootClass + '-specialty'}>{spec}</div>
                 <RatePanel {...this.props}/>
@@ -26,6 +30,7 @@ class DoctorProfileCard extends React.Component{
 
 DoctorProfileCard.propTypes = {
     img: PropTypes.string,
+    online: PropTypes.oneOf(['online', 'offline']),
     name: PropTypes.string,
     specialty: PropTypes.string,
     short: PropTypes.bool,

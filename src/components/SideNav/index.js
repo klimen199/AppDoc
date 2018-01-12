@@ -70,7 +70,8 @@ class SideNav extends React.Component{
                             )
                     }
                 </button>
-                <DoctorProfileCard/>
+                <DoctorProfileCard {...this.props}
+                                   short={isShort}/>
 
                 <Menu
                     mode="inline"
@@ -91,7 +92,14 @@ SideNav.propTypes = {
         iconType: PropTypes.string,
         svg: PropTypes.bool,
         onClick: PropTypes.func,
-    }))
+    })),
+    img: PropTypes.string,
+    online: PropTypes.oneOf(['online', 'offline']),
+    name: PropTypes.string,
+    specialty: PropTypes.string,
+    short: PropTypes.bool,
+    rateValue: PropTypes.number,
+    timesRated: PropTypes.number,
 };
 
 SideNav.defaultProps = {
