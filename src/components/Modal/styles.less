@@ -2,6 +2,7 @@
 
 .ant-modal-body{
   padding: 0;
+  position: relative;
 }
 .ant-modal-title{
   font-family: @f-r;
@@ -24,6 +25,20 @@
       &-x{
         color: @white;
       }
+    }
+  }
+
+  &-modal.warning{
+    .ant-modal-header{
+      background-color: @yllw;
+      color: @white;
+    }
+
+    .icon{
+      position: absolute;
+      color: @white;
+      top: -40px;
+      right: 35px;
     }
   }
 }

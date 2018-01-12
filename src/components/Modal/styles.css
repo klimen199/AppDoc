@@ -3,6 +3,7 @@
 /* VAR */
 .ant-modal-body {
   padding: 0;
+  position: relative;
 }
 .ant-modal-title {
   font-family: 'GothamPro';
@@ -17,4 +18,14 @@
 }
 .ant-modal-close-x {
   color: #ffffff;
+}
+.ant-modal.warning .ant-modal-header {
+  background-color: #fdc401;
+  color: #ffffff;
+}
+.ant-modal.warning .icon {
+  position: absolute;
+  color: #ffffff;
+  top: -40px;
+  right: 35px;
 }

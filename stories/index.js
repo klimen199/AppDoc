@@ -56,7 +56,7 @@ const loadStories = () => {
     require('../src/components/ProfilePatient/stories');
     require('../src/components/Accordion/stories');
     require('../src/components/Radio/stories');
-
+    require('../src/components/WarningModal/stories');
 
     require('../src/components/SideNav/stories');
 };
