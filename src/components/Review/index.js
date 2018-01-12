@@ -20,7 +20,7 @@ class Rewiew extends React.Component{
                 <ProfileAvatar owner="patient" online={online} img={img} size={size}/>
                 <div className="patient-info">
                     <div className="flex-row">
-                        <div className="patient-name">{name}</div>
+                        <a href="#" className="patient-name">{name}</a>
                         <div className="patient-time">{time} {unit} назад</div>
                         <RatePanel {...this.props}/>
                     </div>
