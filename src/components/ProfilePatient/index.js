@@ -100,7 +100,7 @@ ProfilePatient.defaultProps = {
     secondname: 'Петров-Иванов',
     firstname: 'Александр',
     patronymic: 'Константинович',
-    img: 'https://s-cdn.sportbox.ru/images/styles/upload/fp_fotos/c9/85/79d7a12dbe9c2984193732ed99dfa7e85602bce0c13d6993963752.jpg',
+    img: 'https://24smi.org/public/media/resize/660x-/person/2017/10/25/cdRRFH0JWoYv_supermen.jpg',
     status: 'offline',
     lastDate: '01.01.2000',
     doctorType: 'врач-терапевт',

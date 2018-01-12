@@ -28,7 +28,8 @@
 
 .sidenav-root {
     width: 340px;
-    position: relative;
+    position: fixed;
+    height: 100vh;
     border-right: 1px solid #e8e8e8;
     transition: 0.3s linear;
 
@@ -40,9 +41,38 @@
     	margin-bottom: 	25px;
     }
 
+    .logo{
+        position: relative;
+        width: 100%;
+        height: 100px;
+        padding: 24px 0;
+        border-bottom: 1px solid #e8e8e8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &-img{
+            display: block;
+            background-image: url('../../img/logo.svg');
+            background-position: 50%;
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 45px;
+            width: 210px;
+        }
+    }
+
     &-short {
         width: 170px;
-        position: relative;
+
+        .logo{
+
+            &-img{
+                background-image: url('../../img/logo-small.svg');
+                height: 51px;
+                width: 66px;
+            }
+        }
 
         a {
             width: 60px;
