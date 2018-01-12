@@ -47,6 +47,16 @@ const loadStories = () => {
     require('../src/components/Review/stories');
     require('../src/components/Card/stories');
     require('../src/components/Reviews/stories');
+    require('../src/components/RadioIcon/stories');
+    require('../src/components/TableNoHeadItem/stories');
+    require('../src/components/TableNoHead/stories');
+    require('../src/components/TreatmentTableItem/stories');
+    require('../src/components/TreatmentTable/stories');
+    require('../src/components/DiseasesTableItem/stories');
+    require('../src/components/DiseasesTable/stories');
+    require('../src/components/ProfilePatient/stories');
+    require('../src/components/Accordion/stories');
+
 
     require('../src/components/SideNav/stories');
 };

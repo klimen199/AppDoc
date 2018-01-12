@@ -1,0 +1,57 @@
+@import url("../../styles/variables");
+a{
+	color: #204d8d;
+
+	&:hover{
+		color: #204d8d;
+		text-decoration: underline;
+	}
+}
+
+.schedule{
+	display: flex;
+	align-items: center;
+	padding: 22.5px 32.5px;
+
+	.flex-col{
+		display: flex;
+		flex-wrap: wrap;
+		margin-right: 20px;
+
+		&.ml-a{
+			margin-left: auto;
+		}
+	}
+
+	.profileAvatar{
+		margin-right: 20px;
+	}
+
+	.patient{
+
+		&-name{
+			color: #204d8d;
+			font-size: 14px;
+			line-height: 18px;
+			width: 100%;
+		}
+
+		&-info{
+			width: 100%;
+			color: #888;
+			font-size: 12px;
+			line-height: 18px;
+			max-width: 360px;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+
+		}
+
+		&-time{
+			color: #344051;
+			font-size: 14px;
+			line-height: 18px;
+		}
+	}
+}
