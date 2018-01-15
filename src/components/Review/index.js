@@ -12,16 +12,10 @@ class Review extends React.Component{
     render(){
         const {date, text, secondary} = this.props;
 
-        return (
-            <div>
-                {
-                    (!secondary) ?
-                        <MainReview {...this.props}/>
-                            :
-                        <SecondaryReview date={date} text={text}/>
-                }
-            </div>
-        )
+        return (!secondary) ?
+            <MainReview {...this.props}/>
+            :
+            <SecondaryReview date={date} text={text}/>;
     }
 }
 
