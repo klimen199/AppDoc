@@ -1,13 +1,13 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import Reviews from '../';
+import ReviewsTree from '../';
 
 import {dataArr} from './mock-data'
 
-storiesOf('Reviews', module)
-    .add('Reviews', () => (
+storiesOf('ReviewsTree', module)
+    .add('ReviewsTree', () => (
         <div>
-            <Reviews data={dataArr}/>
+            <ReviewsTree data={dataArr}/>
         </div>
-    ));
+    ))

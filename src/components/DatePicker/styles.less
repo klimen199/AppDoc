@@ -22,6 +22,12 @@
   }
 }
 
+.inputs(){
+  font-size: 14px;
+  cursor: pointer;
+  height: @height;
+}
+
 .datepicker-base{
   cursor: pointer;
   display: inline-block;
@@ -49,28 +55,25 @@
     position: absolute;
     right: 5px;
   }
+
+  .ant-calendar-picker{
+    min-width: 150px;
+    max-width: 44%;
+    border-bottom: 1px solid #ebebeb;
+  }
+  .ant-calendar-picker-input{
+    .inputs();
+  }
 }
 
 
 
-.inputs(){
-  font-size: 14px;
-  cursor: pointer;
-  height: @height;
-}
+
 //.ant-calendar-range-picker-input{
 //  .inputs();
 //  width: 60px;
 //}
-.ant-calendar-picker{
-  min-width: 150px;
-  max-width: 44%;
-  border-bottom: 1px solid #ebebeb;
-}
-.ant-calendar-picker-input{
-  .inputs();
 
-}
 //.rangePicker .ant-calendar-picker-input{
 //  .inputs();
 //  width: 170px;
