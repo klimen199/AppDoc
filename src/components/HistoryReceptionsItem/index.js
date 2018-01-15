@@ -14,7 +14,7 @@ class HistoryReceptionsItem extends React.Component{
 
     render(){
         const {type, size, time, date, status, diagnostic, comments, price, conclusion, conclusionDownload, review, content} = this.props;
-        const rootClass = cn('receptions');
+        const rootClass = cn('receptions',`${status}`);
         const statusClass = cn('patient-status', 'receptions-status',`${status}`);
 
 
