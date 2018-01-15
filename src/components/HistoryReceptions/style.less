@@ -20,6 +20,9 @@
 		    padding: 22.5px 32.5px;
 		    background-color: #fff;
 		    border: none;
+			position: sticky;
+			z-index: 99;
+			top: 0;
 
 		    &-name {
                 color: #777777;
@@ -35,7 +38,7 @@
 			    border-top: 1px solid #ebebeb;
 			    border-bottom: 1px solid #ebebeb;
 			    justify-content: flex-start;
-
+				top: 66px;
 
 				.flex-col{
 					&:first-child{
@@ -100,6 +103,18 @@
 
 
 		    }
+		}
+
+		.table-footer{
+			height: 96px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.ant-card-body>div{
+			max-height: 640px;
+			overflow-y: scroll;
 		}
 	}
 }
