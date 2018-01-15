@@ -95,7 +95,7 @@ SideNav.propTypes = {
         onClick: PropTypes.func,
     })),
     img: PropTypes.string,
-    online: PropTypes.oneOf(['online', 'offline']),
+    online: PropTypes.bool,
     name: PropTypes.string,
     specialty: PropTypes.string,
     short: PropTypes.bool,
