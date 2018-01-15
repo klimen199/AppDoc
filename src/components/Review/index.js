@@ -17,7 +17,7 @@ class Rewiew extends React.Component{
         let time = dateToString(date);
 
         return (
-            <div className='rewiew'>
+            <div className='review'>
                 <ProfileAvatar owner="patient" img={avatar} online={online} size='small'/>
                 <div className="patient-info">
                     <div className="flex-row">
@@ -31,6 +31,7 @@ class Rewiew extends React.Component{
                     <Button
                         btnText={treatment}
                         size='go'
+                        iconSize={16}
                         type='go'
                         icon='circle_arrow_right'
                         svg

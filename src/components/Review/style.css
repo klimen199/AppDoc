@@ -1,27 +1,28 @@
 /* fonts */
 /* COLORS */
 /* VAR */
-.rewiew {
+.review {
   display: flex;
   border-bottom: 1px dashed #e1e1e1;
   border-radius: 0;
   margin-bottom: 15px;
 }
-.rewiew .flex-row {
+.review .flex-row {
   display: flex;
 }
-.rewiew .ant-rate {
+.review .ant-rate {
   margin-left: auto;
 }
-.rewiew .profileAvatar {
+.review .profileAvatar {
+  margin-top: 15px;
   margin-right: 14px;
 }
-.rewiew .patient-info {
+.review .patient-info {
   margin-top: 20px;
   margin-bottom: 25px;
   width: 100%;
 }
-.rewiew .patient-name {
+.review .patient-name {
   margin-right: 25px;
   color: #204d8d;
   font-size: 14px;
@@ -29,12 +30,12 @@
   margin-bottom: 10px;
   padding-left: 6px;
 }
-.rewiew .patient-time {
+.review .patient-time {
   color: #999;
   font-size: 12px;
   margin-bottom: 10px;
 }
-.rewiew .patient-text {
+.review .patient-text {
   font-size: 12px;
   color: #344051;
   padding: 0 6px;

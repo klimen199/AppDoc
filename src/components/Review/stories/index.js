@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import Rewiew from '../';
+import Review from '../';
 
 const minute = 60 * 1000;
 const hour = minute * 60;
@@ -19,9 +19,9 @@ const data1 = {
     rate: 4,
 };
 
-storiesOf('Rewiew', module)
-    .add('Rewiew', () => (
+storiesOf('Review', module)
+    .add('Review', () => (
         <div>
-            <Rewiew {...data1}/>
+            <Review {...data1}/>
         </div>
     ));
