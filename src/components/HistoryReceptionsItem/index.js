@@ -63,7 +63,7 @@ HistoryReceptionsItem.propTypes = {
     conclusionDownload: PropTypes.string,
     review: PropTypes.string,
     date: PropTypes.string,
-    time: PropTypes.number
+    time: PropTypes.string
 };
 
 HistoryReceptionsItem.defaultProps = {

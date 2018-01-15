@@ -17,7 +17,7 @@ class TableNoHead extends React.Component{
 
         return (
             <div className={rootClass}>
-                <Card title="График работы на сегодня" extra={<div class="sum">Приемы: 12</div>}>
+                <Card title="График работы на сегодня" extra={<div className="sum">Приемы: 12</div>}>
                     <div className="tableheader">
                         <div className="flex-col">
                             <Button

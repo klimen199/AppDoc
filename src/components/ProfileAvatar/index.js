@@ -34,7 +34,6 @@ ProfileAvatar.propTypes = {
 
 ProfileAvatar.defaultProps = {
     img: '',
-    online: 'offline',
     owner: 'doctor',
     size: 'medium'
 };

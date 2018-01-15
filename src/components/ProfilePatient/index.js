@@ -91,9 +91,9 @@ ProfilePatient.propTypes = {
     doctorType: PropTypes.string,
     doctor: PropTypes.string,
     birthday: PropTypes.string,
-    age: PropTypes.number,
-    height: PropTypes.number,
-    weight: PropTypes.number
+    age: PropTypes.string,
+    height: PropTypes.string,
+    weight: PropTypes.string
 };
 
 ProfilePatient.defaultProps = {

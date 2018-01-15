@@ -62,7 +62,7 @@ TreatmentTableItem.propTypes = {
     conclusionDownload: PropTypes.string,
     review: PropTypes.string,
     date: PropTypes.string,
-    time: PropTypes.number
+    time: PropTypes.string
 };
 
 TreatmentTableItem.defaultProps = {
