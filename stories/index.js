@@ -59,6 +59,7 @@ const loadStories = () => {
     require('../src/components/WarningModal/stories');
 
     require('../src/components/SideNav/stories');
+    require('../src/components/HistoryReceptionsItem/stories');
 };
 
 configure(loadStories, module);
