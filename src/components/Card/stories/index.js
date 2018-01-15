@@ -23,7 +23,7 @@ storiesOf('Card', module)
           <div style={{ background: '#ECECEC', padding: '30px' }}>
             <Row gutter={16}>
               <Col span={24}>
-                <Card title="График работы на сегодня" extra={<div class="sum">Приемы: 12</div>}>
+                <Card title="График работы на сегодня" extra={<div className="sum">Приемы: 12</div>}>
                     <p>Card content</p>
                     <p>Card content</p>
                     <p>Card content</p>

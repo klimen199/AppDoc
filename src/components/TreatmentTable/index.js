@@ -17,7 +17,7 @@ class TreatmentTable extends React.Component{
 
         return (
             <div className={rootClass}>
-                <Card title="Актуальные обращения" extra={<a href="#"><Icon svg size="16" type="order-form" /> Все обращения</a>}>
+                <Card title="Актуальные обращения" extra={<a href="#"><Icon svg size={16} type="order-form" /> Все обращения</a>}>
                     <div className="tableheader">
                         <div className="flex-col"><div className="tableheader-name">Имя пациента</div></div>
                         <div className="flex-col"><div className="tableheader-name">Дата приема</div></div>

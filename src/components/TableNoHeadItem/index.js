@@ -42,10 +42,10 @@ TableNoHeadItem.propTypes = {
     name: PropTypes.string,
     type: PropTypes.string.isRequired,
     infoText: PropTypes.string,
-    time: PropTypes.number,
+    time: PropTypes.string,
     specialty: PropTypes.string,
-    rateValue: PropTypes.number,
-    timesRated: PropTypes.number,
+    rateValue: PropTypes.string,
+    timesRated: PropTypes.string,
 };
 
 TableNoHeadItem.defaultProps = {
