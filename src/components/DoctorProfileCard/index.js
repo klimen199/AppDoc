@@ -19,7 +19,7 @@ class DoctorProfileCard extends React.Component{
 
         return (
             <div className={rootClass}>
-                <ProfileAvatar owner="doctor" online={online} img={img} short={short} size={(short ? 'medium' : 'large')}/>
+                <ProfileAvatar owner="doctor" {...this.props} short={short} size={(short ? 'medium' : 'large')}/>
                 <div className={rootClass + '-name'}>{name}</div>
                 <div className={rootClass + '-specialty'}>{spec}</div>
                 <RatePanel {...this.props}/>
@@ -29,8 +29,6 @@ class DoctorProfileCard extends React.Component{
 }
 
 DoctorProfileCard.propTypes = {
-    img: PropTypes.string,
-    online: PropTypes.oneOf(['online', 'offline']),
     name: PropTypes.string,
     specialty: PropTypes.string,
     short: PropTypes.bool,

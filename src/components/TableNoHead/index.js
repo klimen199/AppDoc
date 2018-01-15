@@ -25,7 +25,7 @@ class TableNoHead extends React.Component{
                                 size='default'
                                 type='yellow'
                                 icon='plus'
-                                iconSize="11"
+                                iconSize={11}
                                 svg
                             />
                         </div>

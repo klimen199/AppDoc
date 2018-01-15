@@ -21,7 +21,7 @@ storiesOf('DoctorProfileCard', module)
                                specialty='терапевт'
                                rateValue={4.4}
                                timesRated={34}
-                               online='online'
+                               online
                                short/>
             </div>
         </div>
