@@ -1,63 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import cn from 'classnames'
 
-import ProfileAvatar from '../ProfileAvatar'
-import RatePanel from '../RatePanel'
-import Button from '../Button'
+import MainReview from './MainReview'
+import SecondaryReview from './SecondaryReview'
 
 import './style.css'
 import '../../icon/style.css'
 
-class Rewiew extends React.Component{
+class Review extends React.Component{
 
     render(){
-         const {img, short, name, rewText, size, online, time, unit} = this.props;
-        const rootClass = cn('rewiew');
+        const {date, text, secondary} = this.props;
 
-        return (
-            <div className={rootClass}>
-                <ProfileAvatar owner="patient" online={online} img={img} size={size}/>
-                <div className="patient-info">
-                    <div className="flex-row">
-                        <a href="#" className="patient-name">{name}</a>
-                        <div className="patient-time">{time} {unit} назад</div>
-                        <RatePanel {...this.props}/>
-                    </div>
-                    <div className="flex-row">
-                       <div className="patient-text">{rewText}</div>
-                    </div>
-                    <Button
-                        btnText='Обращение от 13.09.2017'
-                        size='go'
-                        type='go'
-                        icon='circle_arrow_right'
-                        svg
-                    />
-                </div>
-            </div>
-        )
+        return (!secondary) ?
+            <MainReview {...this.props}/>
+            :
+            <SecondaryReview date={date} text={text}/>;
     }
 }
 
-Rewiew.propTypes = {
-    img: PropTypes.string,
-    name: PropTypes.string,
-    rewText: PropTypes.string,
-    time: PropTypes.number,
-    unit: PropTypes.oneOf(['мин.', 'час', 'день', 'месяц']),
-    specialty: PropTypes.string,
-    rateValue: PropTypes.number,
-    timesRated: PropTypes.number,
+Review.propTypes = {
+    author: PropTypes.string,
+    avatar: PropTypes.string,
+    online: PropTypes.bool,
+    text: PropTypes.string,
+    date: PropTypes.instanceOf(Date),
+    treatmentDate: PropTypes.string,
+    rate: PropTypes.number,
+
+
+    secondaryAllowed: PropTypes.bool,
+    secondary: PropTypes.bool,
 };
 
-Rewiew.defaultProps = {
-    img: '',
-    name: 'Валера',
-    size: 'small',
-    rewText: '',
-    time: '1',
-    unit: 'мин.'
+Review.defaultProps = {
+    author: '',
+    avatar: '',
+    text: '',
+    treatmentDate: '',
+    rate: 0,
+
+    secondaryAllowed: false,
+    secondary: false,
 };
 
-export default Rewiew
+export default Review
