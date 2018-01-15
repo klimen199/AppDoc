@@ -1,1 +1,30 @@
-.ant-card-head{background-color:#0495ff;padding:0!important}.ant-card-head-title{color:#fff;font-size:1.25rem;padding:1rem 1.75rem}.ant-card-extra{display:flex;align-items:center;padding:0}.ant-card-extra a{color:#fff;padding:1rem 1.75rem}.ant-card-extra .sum{padding:1rem 1.75rem;background-color:#204d8d;color:#fff;height:100%;display:flex;align-items:center;font-size:1.25rem}
+/* fonts */
+/* COLORS */
+/* VAR */
+.ant-card-head {
+  background-color: #0495ff;
+  padding: 0 !important;
+}
+.ant-card-head-title {
+  color: #fff;
+  font-size: 1.25rem;
+  padding: 1rem 1.75rem;
+}
+.ant-card-extra {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+.ant-card-extra a {
+  color: #fff;
+  padding: 1rem 1.75rem;
+}
+.ant-card-extra .sum {
+  padding: 1rem 1.75rem;
+  background-color: #204d8d;
+  color: #fff;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+}

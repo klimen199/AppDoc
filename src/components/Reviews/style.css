@@ -1,3 +1,6 @@
 /* fonts */
 /* COLORS */
 /* VAR */
+.reviews.ant-card .ant-card-body > div {
+  padding: 20px 30px;
+}
