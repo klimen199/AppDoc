@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import cn from 'classnames'
-import { Col, Row, Icon } from 'antd';
 
 import Rewiew from '../Review'
 import Card from '../Card'
+import Icon from '../Icon'
 
 import './style.css'
 import '../../icon/style.css'
@@ -12,11 +11,10 @@ import '../../icon/style.css'
 class Reviews extends React.Component{
 
     render(){
-        const rootClass = cn('rewiews-all');
 
         return (
-            <div className={rootClass}>
-                <Card title="Новые отзывы" extra={<a href="#"><Icon type="message" /> Все отзывы</a>}>
+            <div className='rewiews-all'>
+                <Card title="Новые отзывы" className="reviews" extra={<a href="#"><Icon type="chat" svg size={20}/> Все отзывы</a>}>
                     <Rewiew 
                         name="Иванова А. К." 
                         rewText="Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. " 
@@ -45,5 +43,13 @@ class Reviews extends React.Component{
         )
     }
 }
+
+Reviews.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.object),
+};
+
+Reviews.defaultProps = {
+    data: [],
+};
 
 export default Reviews

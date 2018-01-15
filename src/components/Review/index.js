@@ -1,39 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import cn from 'classnames'
 
 import ProfileAvatar from '../ProfileAvatar'
-import RatePanel from '../RatePanel'
+import Rate from '../Rate'
 import Button from '../Button'
 
+import {dateToString} from '../../helpers/prepareDate'
 import './style.css'
 import '../../icon/style.css'
 
 class Rewiew extends React.Component{
 
     render(){
-         const {img, short, name, rewText, size, online, time, unit} = this.props;
-        const rootClass = cn('rewiew');
+        const {author, avatar, date, online, text, rate, treatmentDate, secondaryAllowed} = this.props;
+        let treatment = `Обращение от ${treatmentDate}`;
+        let time = dateToString(date);
 
         return (
-            <div className={rootClass}>
-                <ProfileAvatar owner="patient" online={online} img={img} size={size}/>
+            <div className='rewiew'>
+                <ProfileAvatar owner="patient" img={avatar} online={online} size='small'/>
                 <div className="patient-info">
                     <div className="flex-row">
-                        <div className="patient-name">{name}</div>
-                        <div className="patient-time">{time} {unit} назад</div>
-                        <RatePanel {...this.props}/>
+                        <div className="patient-name">{author}</div>
+                        <div className="patient-time">{time}</div>
+                        <Rate defaultValue={rate}/>
                     </div>
                     <div className="flex-row">
-                       <div className="patient-text">{rewText}</div>
+                       <div className="patient-text">{text}</div>
                     </div>
                     <Button
-                        btnText='Обращение от 13.09.2017'
+                        btnText={treatment}
                         size='go'
                         type='go'
                         icon='circle_arrow_right'
                         svg
                     />
+                    {
+                        secondaryAllowed && <Button/>
+                    }
                 </div>
             </div>
         )
@@ -41,23 +45,27 @@ class Rewiew extends React.Component{
 }
 
 Rewiew.propTypes = {
-    img: PropTypes.string,
-    name: PropTypes.string,
-    rewText: PropTypes.string,
-    time: PropTypes.number,
-    unit: PropTypes.oneOf(['мин.', 'час', 'день', 'месяц']),
-    specialty: PropTypes.string,
-    rateValue: PropTypes.number,
-    timesRated: PropTypes.number,
+    author: PropTypes.string,
+    avatar: PropTypes.string,
+    online: PropTypes.bool,
+    text: PropTypes.string,
+    date: PropTypes.instanceOf(Date),
+    treatmentDate: PropTypes.string,
+    rate: PropTypes.number,
+
+
+    secondaryAllowed: PropTypes.bool,
+    secondary: PropTypes.bool,
 };
 
 Rewiew.defaultProps = {
-    img: '',
-    name: 'Валера',
-    size: 'small',
-    rewText: '',
-    time: '1',
-    unit: 'мин.'
+    author: '',
+    avatar: '',
+    text: '',
+    treatmentDate: '',
+    rate: 0,
+
+    secondaryAllowed: false,
 };
 
 export default Rewiew

@@ -28,7 +28,7 @@ ProfileAvatar.propTypes = {
     img: PropTypes.string,
     size: PropTypes.oneOf(['small', 'medium', 'large']),
     online: PropTypes.oneOf(['online', 'offline']),
-    owner: PropTypes.oneOf(['patient','doctor']).isRequired,
+    owner: PropTypes.oneOf(['patient','doctor']),
 };
 
 ProfileAvatar.defaultProps = {
