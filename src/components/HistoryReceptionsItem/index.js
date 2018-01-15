@@ -13,13 +13,15 @@ import '../../icon/style.css'
 class HistoryReceptionsItem extends React.Component{
 
     render(){
-        const {type, size, time, date, diagnostic, comments, price, conclusion, conclusionDownload, review, content} = this.props;
+        const {type, size, time, date, status, diagnostic, comments, price, conclusion, conclusionDownload, review, content} = this.props;
         const rootClass = cn('receptions');
+        const statusClass = cn('patient-status', 'receptions-status',`${status}`);
 
 
         return (
             <div className={rootClass}>
                 <div className="flex-col">
+                    <div className={statusClass}></div>
                     <div className="patient-date">{date}</div>
                     <div className="patient-time">{time}</div>
                     <div className="patient-icon"><Icon svg type={type} size={16} /></div>
@@ -52,6 +54,7 @@ class HistoryReceptionsItem extends React.Component{
 }
 
 HistoryReceptionsItem.propTypes = {
+    status: PropTypes.oneOf(['new', 'topical', 'completed', 'extra']),
     type: PropTypes.string.isRequired,
     diagnostic: PropTypes.string,
     comments: PropTypes.string,
@@ -65,6 +68,7 @@ HistoryReceptionsItem.propTypes = {
 
 HistoryReceptionsItem.defaultProps = {
     size: 'small',
+    status: 'new',
     diagnostic: '-',
     comment: '-',
     price: '-',
