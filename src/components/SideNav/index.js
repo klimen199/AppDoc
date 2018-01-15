@@ -60,6 +60,7 @@ class SideNav extends React.Component{
 
         return (
             <div className={rootClass}>
+                <div className="logo"><span className="logo-img"></span></div>
                 <button onClick={() => {this.setState({isShort: !isShort})}}
                         className="sidenav-root-btn">
                     {
