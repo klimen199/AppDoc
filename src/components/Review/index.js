@@ -1,51 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
-import ProfileAvatar from '../ProfileAvatar'
-import Rate from '../Rate'
-import Button from '../Button'
+import MainReview from './MainReview'
+import SecondaryReview from './SecondaryReview'
 
-import {dateToString} from '../../helpers/prepareDate'
 import './style.css'
 import '../../icon/style.css'
 
-class Rewiew extends React.Component{
+class Review extends React.Component{
 
     render(){
-        const {author, avatar, date, online, text, rate, treatmentDate, secondaryAllowed} = this.props;
-        let treatment = `Обращение от ${treatmentDate}`;
-        let time = dateToString(date);
+        const {date, text, secondary} = this.props;
 
         return (
-            <div className='review'>
-                <ProfileAvatar owner="patient" img={avatar} online={online} size='small'/>
-                <div className="patient-info">
-                    <div className="flex-row">
-                        <div className="patient-name">{author}</div>
-                        <div className="patient-time">{time}</div>
-                        <Rate defaultValue={rate}/>
-                    </div>
-                    <div className="flex-row">
-                       <div className="patient-text">{text}</div>
-                    </div>
-                    <Button
-                        btnText={treatment}
-                        size='go'
-                        iconSize={16}
-                        type='go'
-                        icon='circle_arrow_right'
-                        svg
-                    />
-                    {
-                        secondaryAllowed && <Button/>
-                    }
-                </div>
+            <div>
+                {
+                    (!secondary) ?
+                        <MainReview {...this.props}/>
+                            :
+                        <SecondaryReview date={date} text={text}/>
+                }
             </div>
         )
     }
 }
 
-Rewiew.propTypes = {
+Review.propTypes = {
     author: PropTypes.string,
     avatar: PropTypes.string,
     online: PropTypes.bool,
@@ -59,7 +39,7 @@ Rewiew.propTypes = {
     secondary: PropTypes.bool,
 };
 
-Rewiew.defaultProps = {
+Review.defaultProps = {
     author: '',
     avatar: '',
     text: '',
@@ -67,6 +47,7 @@ Rewiew.defaultProps = {
     rate: 0,
 
     secondaryAllowed: false,
+    secondary: false,
 };
 
-export default Rewiew
+export default Review

@@ -1,5 +1,11 @@
 @import url("../../styles/variables");
 
+.time(){
+  color: #999;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
 .review{
   display: flex;
   border-bottom: 1px dashed #e1e1e1;
@@ -37,9 +43,7 @@
     }
 
     &-time{
-      color: #999;
-      font-size: 12px;
-      margin-bottom: 10px;
+      .time();
     }
 
     &-text{
@@ -48,6 +52,31 @@
       padding: 0 6px;
       line-height: 20px;
       margin-bottom: 10px;
+    }
+  }
+}
+
+.reviewSec{
+  position: relative;
+
+  &-icon{
+    display: inline-block;
+    position: relative;
+    top: -15px;
+    margin-right: 30px;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
+  &-body{
+    background-color: #e6f5ff;
+    padding: 15px 20px;
+    border-radius: 6px;
+    display: inline-block;
+
+    &-time{
+      .time();
     }
   }
 }

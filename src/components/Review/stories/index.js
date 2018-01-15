@@ -18,10 +18,20 @@ const data1 = {
     treatmentDate: '13.10.2017',
     rate: 4,
 };
+const data2 = {
+    text: "Далеко-далеко. Максимально далеко и еще чуть-чуть дальше за словесными горами в стране гласных и согласных живут рыбные тексты. ",
+    date: date1,
+    secondary: true,
+};
 
 storiesOf('Review', module)
-    .add('Review', () => (
+    .add('main', () => (
         <div>
             <Review {...data1}/>
+        </div>
+    ))
+    .add('secondary', () => (
+        <div>
+            <Review {...data2}/>
         </div>
     ));
