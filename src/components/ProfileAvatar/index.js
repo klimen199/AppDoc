@@ -10,8 +10,8 @@ class ProfileAvatar extends React.Component{
         const back = 'url(' + img + ') center';
 
         const onlineClass = online ? 'profileAvatar-status-online' : 'profileAvatar-status-offline';
-        const rootClass = cn('profileAvatar',onlineClass, `profileAvatar-size-${size}`);
-        const avatarClass = cn('profileImg', `profileAvatar-owner-${owner}`);
+        const rootClass = cn('profileAvatar',onlineClass, `profileAvatar-size-${size}`, `profileAvatar-owner-${owner}`);
+        const avatarClass = cn('profileImg');
         const indicatorClass = cn(`profileAvatar-indicator`);
 
         return(
@@ -28,13 +28,13 @@ class ProfileAvatar extends React.Component{
 ProfileAvatar.propTypes = {
     img: PropTypes.string,
     size: PropTypes.oneOf(['small', 'medium', 'large']),
-    online: PropTypes.bool,
-    owner: PropTypes.oneOf(['patient','doctor']),
+    online: PropTypes.oneOf(['online', 'offline']),
+    owner: PropTypes.oneOf(['patient','doctor']).isRequired,
 };
 
 ProfileAvatar.defaultProps = {
     img: '',
-    online: false,
+    online: 'offline',
     owner: 'doctor',
     size: 'medium'
 };
