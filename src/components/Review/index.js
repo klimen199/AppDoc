@@ -28,9 +28,10 @@ Review.propTypes = {
     treatmentDate: PropTypes.string,
     rate: PropTypes.number,
 
-
     secondaryAllowed: PropTypes.bool,
+    comment: PropTypes.object,
     secondary: PropTypes.bool,
+    onSend: PropTypes.func,
 };
 
 Review.defaultProps = {
@@ -41,7 +42,9 @@ Review.defaultProps = {
     rate: 0,
 
     secondaryAllowed: false,
+    comment: null,
     secondary: false,
+    onSend: () => {},
 };
 
 export default Review
