@@ -5,6 +5,7 @@ import Review from '../Review'
 import Card from '../Card'
 import Tabs from '../Tabs'
 import DatePicker from '../DatePicker'
+import Icon from '../Icon'
 
 import './style.css'
 const TabPane = Tabs.TabPane;
@@ -58,10 +59,11 @@ class ReviewsTree extends React.Component{
             <Card title="Все отзывы"
                   className="reviewsTree"
                   extra={32}>
-                <Tabs onChange={this.tabChangeHadler}>
+                <Tabs onChange={this.tabChangeHadler} activeKey='period'>
                     <TabPane tab="Все" key="all">{this.renderAll(data)}</TabPane>
                     <TabPane tab="За сегодня" key="today">{this.renderToday(data)}</TabPane>
-                    <TabPane tab="За период" key="period"><DatePicker range/></TabPane>
+                    <TabPane tab="За период" key="period">
+                        <Icon type="calendar" svg size={20}/> <DatePicker range className="datepicker-tab" delimiter='&ndash;'/></TabPane>
                 </Tabs>
             </Card>
         )
