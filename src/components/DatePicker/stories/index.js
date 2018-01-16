@@ -12,14 +12,13 @@ const rangeSet = {
 };
 
 storiesOf('DatePicker', module)
-    .add('single', () => (
-        <div>
-            <br/>
-            <DatePicker/>
-        </div>
+    .add('default', () => (
+        <DatePicker onChange={action('Time picked')}/>
     ))
     .add('range', () => (
-        <div>
-            <DatePicker range rangeSet={rangeSet} delimiter="&mdash;"/>
-        </div>
-    ));
+        <DatePicker range rangeSet={rangeSet} onChange={action('Range picked')}/>
+    ))
+    .add('small', () => (
+        <DatePicker small rangeSet={rangeSet} onChange={action('Range picked')}/>
+    ))
+;

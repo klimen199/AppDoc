@@ -60,6 +60,7 @@ const loadStories = () => {
     require('../src/components/SideNav/stories');
     require('../src/components/HistoryReceptionsItem/stories');
     require('../src/components/HistoryReceptions/stories');
+    require('../src/components/ReviewsTree/stories');
 };
 
 configure(loadStories, module);
