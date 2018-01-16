@@ -61,6 +61,7 @@
 }
 .datepicker > div .icon:last-child:hover {
   cursor: pointer;
+  color: #898989;
 }
 .datepicker > div .datepicker-small {
   width: 133px;

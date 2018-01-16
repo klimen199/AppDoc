@@ -12,12 +12,12 @@ import './styles.css'
 const dateFormat = 'DD.MM.YYYY';
 
 const DatePicker = (props) => {
-        const {range, small} = props;
+        const {range, small, style} = props;
 
         return (<div className={small?'datepicker':'datepicker-base'}>
             {
             small ?
-                <SmallRP format={dateFormat} className='datepicker-small'/>
+                <SmallRP format={dateFormat} className='datepicker-small' {...props}/>
                 :
                 range ? (
                         <RangeDP format={dateFormat}
@@ -41,6 +41,8 @@ DatePicker.propTypes = {
         placeholderEnd: PropTypes.string,
     }),
     delimiter: PropTypes.string,
+    style: PropTypes.object,
+    onChange: PropTypes.func,
 };
 
 DatePicker.defaultProps = {
@@ -49,6 +51,8 @@ DatePicker.defaultProps = {
     small: false,
     rangeSet: {},
     delimiter: "—",
+    style: {},
+    onChange: () => {},
 };
 
 export default  DatePicker;

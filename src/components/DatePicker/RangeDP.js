@@ -36,28 +36,31 @@ class RangeDP extends React.Component{
     };
 
     onChange = (field, value) => {
-        (field === 'endValue' && value) ?
+
+        if (field === 'endValue' && value) {
             this.setState({
                 [field]: value,
                 defaultEnd: value,
                 endChosen: true,
-            })
-            :
+            });
+            this.props.onChange([this.state.startValue, value]);
+        }
+        else {
             this.setState({
                 [field]: value,
                 defaultEnd: value,
                 endChosen: false,
-            })
+            });
+            this.props.onChange([value, value]);
+        }
     };
 
     render() {
-        const {format} = this.props;
-        const {defaultValue, range, rangeSet, delimiter} = this.props;
+        const {format, rangeSet, delimiter} = this.props;
         const {placeholderStart,placeholderEnd} = rangeSet;
         const { startValue, endValue,defaultEnd, endChosen } = this.state;
 
         const classRPend = cn({'datepicker-base-range-chosen': endChosen});
-
 
         return (
             <div className="datepicker-base-range">

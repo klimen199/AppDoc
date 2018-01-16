@@ -14,11 +14,12 @@ class SmallRP extends React.Component{
 
     RPHandler = (values) => {
         this.setState({values});
+        this.props.onChange(values);
     };
 
     render() {
         return (
-            <div>
+            <div style={this.props.style}>
                 <Icon type="calendar" svg size={19}/>
                 <div className={this.props.className}>
                     <RangePicker format={this.props.format}

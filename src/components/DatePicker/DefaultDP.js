@@ -6,6 +6,7 @@ const DefaultDP = (props) => {
     return (<AntDatePicker defaultValue={props.defaultValue}
                            format={props.format}
                            placeholder={'дата'}
+                           onChange={props.onChange}
                            className={props.className}/> )
 };
 

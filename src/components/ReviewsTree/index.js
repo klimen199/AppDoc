@@ -13,10 +13,11 @@ const TabPane = Tabs.TabPane;
 class ReviewsTree extends React.Component{
     constructor(props){
         super(props);
-        // const minute = 60 * 1000;
-        // const hour = minute * 60;
-        // const day = hour * 24;
-        // const now = Date.now();
+        this.state = {
+            displayDP: false,
+            range: [],
+        }
+
     }
     // отзывы должны быть размещены в соответствии с: чем меньше id, тем раньше он был опубликован
 
@@ -26,11 +27,11 @@ class ReviewsTree extends React.Component{
         dataArr.map((item) => {
             revArr.push(<Review {...item} key={item.id}/>)
         });
-
         return revArr;
     };
+
     renderToday = (dataArr) =>{
-        const day = 86400000;   // day in msec
+        const day = 86400000;   // day to msec
         let revArr = [];
         let now = new Date();
 
@@ -39,31 +40,48 @@ class ReviewsTree extends React.Component{
                 revArr.push(<Review {...item} key={item.id}/>);
                 return true;
             }
-            else return false;
-
+            else
+                return false;
         });
-
         return revArr;
     };
 
+    renderPeriod = (dataArr) =>{
+        let revArr = [];
+        const [start, end] = this.state.range;
+
+        dataArr.map((item, i) => {
+            if (item.date > start && item.date < end)
+                revArr.push(<Review {...item} key={item.id}/>);
+        });
+        return revArr
+    };
+
     tabChangeHadler = (tab) => {
-        console.log(tab);
+        tab === 'period' ?
+            this.setState({displayDP: true}) : this.setState({displayDP: false});
+    };
+
+    dpHandler = (range) => {
+        this.setState({range})
     };
 
     render(){
-        const {data} = this.props;
+        const {data, reviewNum} = this.props;
 
-        console.log(111)
+        const DPstyle = {
+            display: this.state.displayDP ? 'block' : 'none',
+        };
 
         return (
             <Card title="Все отзывы"
                   className="reviewsTree"
-                  extra={32}>
-                <Tabs onChange={this.tabChangeHadler} activeKey='period'>
+                  extra={reviewNum}>
+                <Tabs onChange={this.tabChangeHadler}
+                      tabBarExtraContent={<DatePicker style={DPstyle} small onChange={this.dpHandler}/>}>
                     <TabPane tab="Все" key="all">{this.renderAll(data)}</TabPane>
                     <TabPane tab="За сегодня" key="today">{this.renderToday(data)}</TabPane>
-                    <TabPane tab="За период" key="period">
-                        <Icon type="calendar" svg size={20}/> <DatePicker range className="datepicker-tab" delimiter='&ndash;'/></TabPane>
+                    <TabPane tab="За период" key="period">{this.renderPeriod(data)}</TabPane>
                 </Tabs>
             </Card>
         )
@@ -72,10 +90,12 @@ class ReviewsTree extends React.Component{
 
 ReviewsTree.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
+    reviewNum: PropTypes.number,
 };
 
 ReviewsTree.defaultProps = {
     data: [],
+    reviewNum: 0,
 };
 
 export default ReviewsTree
