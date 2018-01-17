@@ -5,24 +5,23 @@ import { Rate as AntRate} from 'antd'
 import Icon from '../Icon'
 import './styles.css'
 
-class Rate extends React.Component{
-
-    render() {
-        return(
-            <AntRate {...this.props}/>
-        )
-    }
-}
+const Rate = (props) => {
+    //if (props.character)
+    return(
+        <AntRate {...props} character={props.character || <Icon type="star" size={props.starSize} svg/>}/>
+    )
+};
 
 Rate.propTypes = {
+    starSize: PropTypes.number,
     defaultValue: PropTypes.number,
     disabled: PropTypes.bool,
 };
 
 Rate.defaultProps = {
+    starSize: 10,
     defaultValue: 0,
     disabled: false,
-    character: <Icon type="star" size={10} svg/>
 };
 
 export default Rate;
