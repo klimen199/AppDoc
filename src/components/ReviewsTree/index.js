@@ -52,8 +52,13 @@ class ReviewsTree extends React.Component{
 
     componentWillUpdate(nextProps){
         if (nextProps.data !== this.props.data){
-            console.log('!!! New data receive');
-            this.setState(prev => ({todayRevs: this.sortToday(nextProps.data)}));
+            //console.log('!!! New data receive');
+            this.setState(prev => ({
+                todayRevs: this.sortToday(nextProps.data),
+                range: [],
+                periodRevs: [],
+                limitedShow: true,
+            }));
         }
     }
 
@@ -64,7 +69,6 @@ class ReviewsTree extends React.Component{
     };
 
     dpHandler = (range) => {
-        console.log('range', range);
         this.setState(prev => ({
             periodRevs: this.sortPeriod(range),
             range
@@ -101,8 +105,6 @@ class ReviewsTree extends React.Component{
 
         const DPstyle = { display: this.state.displayDP ? 'block' : 'none', };
 
-        // this.sortRev(data,'today')
-
         return (
             <Card title="Все отзывы"
                   className="reviewsTree"
@@ -117,7 +119,6 @@ class ReviewsTree extends React.Component{
                         </TabPane>
                     <TabPane tab="За период" key="period">
                         {this.renderRevs(this.state.periodRevs)}
-                        {/*{this.renderPeriod(data)}*/}
                         </TabPane>
                 </Tabs>
             </Card>
