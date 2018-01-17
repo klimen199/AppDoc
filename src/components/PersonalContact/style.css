@@ -1,1 +1,16 @@
-a{color:#204d8d}a:hover{color:#204d8d;text-decoration:underline}.personal-contact-all .ant-collapse>.ant-collapse-item:last-child>.ant-collapse-header{border-radius:4px 4px 0 0}.personal-contact-all .ant-collapse-content-active{padding:20px 90px}
+/* fonts */
+/* COLORS */
+/* VAR */
+a {
+  color: #204d8d;
+}
+a:hover {
+  color: #204d8d;
+  text-decoration: underline;
+}
+.personal-contact-all .ant-collapse > .ant-collapse-item:last-child > .ant-collapse-header {
+  border-radius: 4px 4px 0 0;
+}
+.personal-contact-all .ant-collapse-content-active {
+  padding: 20px 90px;
+}
