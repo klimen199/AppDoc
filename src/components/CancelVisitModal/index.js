@@ -43,7 +43,7 @@ class CancelVisitModal extends React.Component{
                 <div className='cancelVisitModal'>
                     <TextArea label='Причина отмены'
                               className="cancelVisitModal-txtarea"/>
-                    <Upload className="cancelVisitModal-upload"/>
+                    <Upload className="cancelVisitModal-upload" text="Прикрепить файл"/>
                     {this.renderDp()}
                     <Button onClick={this.addDp}
                             className='cancelVisitModal-dpAdd'

@@ -63,6 +63,8 @@ const loadStories = () => {
     require('../src/components/ReviewsTree/stories');
     require('../src/components/PersonalContactItem/stories');
     require('../src/components/PersonalContact/stories');
+    require('../src/components/PersonalEducationItem/stories');
+    require('../src/components/PersonalEducation/stories');
 };
 
 configure(loadStories, module);

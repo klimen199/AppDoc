@@ -32,8 +32,7 @@ class NewMessageModal extends React.Component{
                         </div>
                     </div>
                     <TextArea label='Текст сообщения' className="newMessageModal-txtarea"/>
-                    <Upload className="newMessageModal-upload"/>
-
+                    <Upload className="newMessageModal-upload" text="Прикрепить файл"/>
                     <Button size='default'
                             btnText='Отправить'
                             type='float'/>

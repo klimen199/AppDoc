@@ -14,10 +14,13 @@ class Upload extends React.Component{
 
         return (
             <AntUpload className={clName}>
-                <Button size='icon'
-                        type='float'
-                        icon='upload'/>
-                <span className="uploadContent-text">{text}</span>
+                <Button btnText={text}
+                        size='upload'
+                        type='upload'
+                        icon='upload'
+                        iconSize={36}
+                        svg
+                        />
             </AntUpload>
         )
     }
@@ -30,7 +33,7 @@ Upload.propTypes = {
 
 Upload.defaultProps = {
     className: '',
-    text: 'Прикрепить файл',
+    text: '',
 };
 
 export default Upload;
