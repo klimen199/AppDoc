@@ -6,7 +6,8 @@ import moment from 'moment'
  * @return {string}
  */
 export function dateToString(timestamp) {
-    const dist = Date.now() - timestamp;
+    let now = new Date();
+    const dist = now - timestamp;
     const minute = 60 * 1000;
     const hour = minute * 60;
     const day = hour * 24;
@@ -31,9 +32,9 @@ export function dateToString(timestamp) {
             .fromNow()
     }
 
-    if (dist < (day-1)) {
+    if (dist < (day-1) && now.getDate() === timestamp.getDate()) {
         return moment(timestamp)
-            .format('h:mm');
+            .format('HH:mm');
     }
 
     return moment(timestamp)

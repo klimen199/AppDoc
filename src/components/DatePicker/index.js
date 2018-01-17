@@ -31,7 +31,7 @@ const DatePicker = (props) => {
     };
 
 DatePicker.propTypes = {
-    defaultValue: PropTypes.object,
+    defaultValue: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     range: PropTypes.bool,
     small: PropTypes.bool,
     rangeSet: PropTypes.shape({
