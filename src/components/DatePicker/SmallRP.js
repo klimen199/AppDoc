@@ -28,7 +28,7 @@ class SmallRP extends React.Component{
                                  allowClear={false}/>
                 </div>
                 <Icon type="circle_close" svg size={15}
-                      onClick={() => this.setState({values:[]})}/>
+                      onClick={() => this.RPHandler([])}/>
             </div>
         )
     }

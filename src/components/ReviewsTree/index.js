@@ -5,7 +5,7 @@ import Review from '../Review'
 import Card from '../Card'
 import Tabs from '../Tabs'
 import DatePicker from '../DatePicker'
-import Icon from '../Icon'
+import Button from '../Button'
 
 import './style.css'
 const TabPane = Tabs.TabPane;
@@ -16,28 +16,21 @@ class ReviewsTree extends React.Component{
         this.state = {
             displayDP: false,
             range: [],
-        }
-
+            limit: this.props.limit,
+            limitedShow: true,
+            todayRevs: this.sortToday(props.data),
+            periodRevs: [],
+        };
     }
     // отзывы должны быть размещены в соответствии с: чем меньше id, тем раньше он был опубликован
 
-    renderAll = (dataArr) => {
+    sortToday = (dataArr = this.props.data) => {
+        let curDate = (new Date()).getDate();
         let revArr = [];
-
-        dataArr.map((item) => {
-            revArr.push(<Review {...item} key={item.id}/>)
-        });
-        return revArr;
-    };
-
-    renderToday = (dataArr) =>{
-        const day = 86400000;   // day to msec
-        let revArr = [];
-        let now = new Date();
 
         dataArr.every((item) => {
-            if ((now - item.date)/day < 1){
-                revArr.push(<Review {...item} key={item.id}/>);
+            if (curDate === item.date.getDate()){
+                revArr.push(item);
                 return true;
             }
             else
@@ -46,42 +39,86 @@ class ReviewsTree extends React.Component{
         return revArr;
     };
 
-    renderPeriod = (dataArr) =>{
+    sortPeriod =(period = this.state.range) => {
+        const [start, end] = period;
         let revArr = [];
-        const [start, end] = this.state.range;
 
-        dataArr.map((item, i) => {
+        this.props.data.map((item) => {
             if (item.date > start && item.date < end)
-                revArr.push(<Review {...item} key={item.id}/>);
+                revArr.push(item);
         });
-        return revArr
+        return revArr;
     };
 
+    componentWillUpdate(nextProps){
+        if (nextProps.data !== this.props.data){
+            console.log('!!! New data receive');
+            this.setState(prev => ({todayRevs: this.sortToday(nextProps.data)}));
+        }
+    }
+
     tabChangeHadler = (tab) => {
+        this.setState(prev => ({limitedShow: true}));
         tab === 'period' ?
             this.setState({displayDP: true}) : this.setState({displayDP: false});
     };
 
     dpHandler = (range) => {
-        this.setState({range})
+        console.log('range', range);
+        this.setState(prev => ({
+            periodRevs: this.sortPeriod(range),
+            range
+        }));
     };
 
-    render(){
-        const {data, reviewNum} = this.props;
+    renderShowMoreBtn = (revArr) => {
+        if (this.state.limit < revArr.length && this.state.limitedShow){
+            return (
+                <div style={{textAlign: 'center',}} key="btn">
+                    <Button btnText='Показать еще'
+                            size='link'
+                            type='link'
+                            icon='circle_arrow_down'
+                            onClick={() => this.setState(prev => ({limitedShow:false}))}/>
+                </div>)
+        }
+    };
 
-        const DPstyle = {
-            display: this.state.displayDP ? 'block' : 'none',
-        };
+    renderRevs = (dataArr) => {
+        let arr = [];
+        dataArr.map((item, i) => {
+            if (this.state.limit > i || !this.state.limitedShow){
+                arr.push(<Review {...item} key={item.id}/>)
+            }
+        });
+        arr.push(this.renderShowMoreBtn(dataArr));
+        return arr;
+    };
+
+
+    render(){
+        const {data} = this.props;
+
+        const DPstyle = { display: this.state.displayDP ? 'block' : 'none', };
+
+        // this.sortRev(data,'today')
 
         return (
             <Card title="Все отзывы"
                   className="reviewsTree"
-                  extra={reviewNum}>
+                  extra={data.length}>
                 <Tabs onChange={this.tabChangeHadler}
-                      tabBarExtraContent={<DatePicker style={DPstyle} small onChange={this.dpHandler}/>}>
-                    <TabPane tab="Все" key="all">{this.renderAll(data)}</TabPane>
-                    <TabPane tab="За сегодня" key="today">{this.renderToday(data)}</TabPane>
-                    <TabPane tab="За период" key="period">{this.renderPeriod(data)}</TabPane>
+                      tabBarExtraContent={<DatePicker style={DPstyle} small onChange={this.dpHandler} defaultValue={this.state.range}/>}>
+                    <TabPane tab="Все" key="all">
+                        {this.renderRevs(data)}
+                        </TabPane>
+                    <TabPane tab="За сегодня" key="today">
+                        {this.renderRevs(this.state.todayRevs)}
+                        </TabPane>
+                    <TabPane tab="За период" key="period">
+                        {this.renderRevs(this.state.periodRevs)}
+                        {/*{this.renderPeriod(data)}*/}
+                        </TabPane>
                 </Tabs>
             </Card>
         )
@@ -90,12 +127,12 @@ class ReviewsTree extends React.Component{
 
 ReviewsTree.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
-    reviewNum: PropTypes.number,
+    limit: PropTypes.number,
 };
 
 ReviewsTree.defaultProps = {
     data: [],
-    reviewNum: 0,
+    limit: 5,
 };
 
 export default ReviewsTree
