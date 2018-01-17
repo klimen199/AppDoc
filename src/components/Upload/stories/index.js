@@ -5,6 +5,6 @@ import Upload from '../';
 storiesOf('Upload', module)
     .add('upload', () => (
         <div>
-            <Upload/>
+            <Upload text="Прикрепить файл"/>
         </div>
     ));
