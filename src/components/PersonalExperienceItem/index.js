@@ -77,7 +77,7 @@ class PersonalExperienceItem extends React.Component{
 
     render(){
         const {placeOfWord,  post, dateStart, thisTime, expWork} = this.props;
-
+        const Option = Select.Option;
         const rootClass = cn('personal-experience');
 
         return (

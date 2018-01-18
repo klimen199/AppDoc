@@ -18,8 +18,10 @@ import '../../icon/style.css'
 class PersonalInformationItem extends React.Component{
 
     render(){
-        const {langData, lang, langItem} = this.props;
+        const {langData, priceData} = this.props;
+        const Option = Select.Option;
         const langOptions = langData.map(lang => <Option key={lang}>{lang}</Option>);
+        const priceOptions = priceData.map(price => <Option key={price}>{price}</Option>);
 
         const rootClass = cn('personal-information');
         const RadioGroup = Radio.Group;
@@ -28,7 +30,7 @@ class PersonalInformationItem extends React.Component{
             <div className={rootClass}>
                 <div className="personal-block">
                     <div className="personal-item">
-                        <Select  mode="multiple" defaultValue={langData[0]} >
+                        <Select  mode="multiple">
                           {langOptions}
                         </Select>
                     </div>
@@ -43,9 +45,7 @@ class PersonalInformationItem extends React.Component{
                     </div>
                     <div className="personal-item">
                         <Select defaultValue="Желаемая сумма оплаты за консультацию">
-                          <Option value="50 - 100 руб">50 - 100 руб</Option>
-                          <Option value="100 - 200 руб">100 - 200 руб</Option>
-                          <Option value="200 - 1000 руб">200 - 1000 руб</Option>
+                          {priceOptions}
                         </Select>
                     </div>
                     <div className="personal-item">
@@ -68,13 +68,5 @@ class PersonalInformationItem extends React.Component{
         )
     }
 }
-
-PersonalInformationItem.propTypes = {
-    langItem: PropTypes.array,
-};
-
-PersonalInformationItem.defaultProps = {
-    langItem: [],
-};
 
 export default PersonalInformationItem

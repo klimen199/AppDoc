@@ -16,7 +16,7 @@ import '../../icon/style.css'
 class PersonalInformation extends React.Component{
 
     render(){
-        const {langData, lang, langItem} = this.props;
+        const {langData, priceData} = this.props;
         const rootClass = cn('personal-information-all');
         const Panel = Accordion.Panel;
 
@@ -27,6 +27,7 @@ class PersonalInformation extends React.Component{
                     <Panel header="Опыт работы" key="1">
                         <PersonalInformationItem 
                             langData={langData}
+                            priceData={priceData}
                         />
                     </Panel>
                 </Accordion>
@@ -34,14 +35,5 @@ class PersonalInformation extends React.Component{
         )
     }
 }
-
-PersonalInformation.propTypes = {
-    langItem: PropTypes.array,
-};
-
-PersonalInformation.defaultProps = {
-    langItem: [],
-};
-
 
 export default PersonalInformation

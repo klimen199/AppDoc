@@ -4,16 +4,14 @@ import { action } from '@storybook/addon-actions';
 import PersonalInformationItem from '../';
 
 const langData = ['Английский', 'Русский', 'Немецкий', 'Японский'];
+const priceData = ['50 - 100 руб', '100 - 200 руб', '200 - 500 руб', '500 - 1000 руб'];
 
 storiesOf('PersonalInformationItem', module)
     .add('PersonalInformationItem', () => (
         <div>
             <PersonalInformationItem 
-                post="Стоматолог"
-                placeOfWord="Мед центр «Lorem ipsum dolor sit amet»"
-                dateStart="2011"
-                expWork="10"
                 langData={langData}
+                priceData={priceData}
             />
         </div>
     ))
