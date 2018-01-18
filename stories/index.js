@@ -68,6 +68,9 @@ const loadStories = () => {
     require('../src/components/PersonalEducation/stories');
     require('../src/components/PersonalExperienceItem/stories');
     require('../src/components/PersonalExperience/stories');
+    require('../src/components/PersonalInformationItem/stories');
+    require('../src/components/PersonalInformation/stories');
+    require('../src/components/RadioBox/stories');
 };
 
 configure(loadStories, module);
