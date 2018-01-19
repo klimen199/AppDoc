@@ -1,0 +1,80 @@
+@import url("../../styles/variables");
+
+.ant-card-body{
+	padding: 0 !important;
+}
+
+.login{
+	display: flex;
+	justify-content: center;
+
+	&-card{
+		max-width: 770px;
+		width: 100%;
+		padding: 75px 100px;
+		border-radius: 2px;
+		border: none;
+		box-shadow: 0 0 16px rgba(0,0,0,0.1); /* Параметры тени */
+	}
+
+	&-title{
+		font-family: @f-b;
+		font-size: 44px;
+		line-height: 1;
+		letter-spacing: -0.88px;
+		color: #333;
+		margin-bottom: 40px;
+	}
+
+	&-notification{
+		font-family: @f-l;
+		font-size: 12px;
+		line-height: 1;
+		color: #333;
+		margin-bottom: 50px;
+	}
+
+	&-item{
+		position: relative;
+		margin-bottom: 35px;
+
+		&:last-child{
+			margin-bottom: 0;
+		}
+
+		p{
+			font-size: 16px;
+			color: #333;
+			margin-bottom: 0;
+
+			a{
+				color: @blue;
+
+				&:hover{
+					color: @blue;
+				}
+			}
+		}
+	}
+
+	&-lost{
+		position: absolute;
+		right: 0;
+		top: 7px;
+		color: @blue;
+		z-index: 2;
+		font-size: 14px;
+		line-height: 1;
+
+		&:hover{
+			color: @blue;
+		}
+	}
+
+	&-center{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
