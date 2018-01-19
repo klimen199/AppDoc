@@ -20,7 +20,6 @@ class PersonalEducation extends React.Component{
         const rootClass = cn('personal-education-all');
         const Panel = Accordion.Panel;
 
-
         return (
             <div className={rootClass}>
                 <Accordion defaultActiveKey={['1']}>

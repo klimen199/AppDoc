@@ -129,7 +129,7 @@ class PersonalEducationItem extends React.Component{
 
     render(){
         const {mainInstitution,  mainSpecialty, secondInstitution, secondSpecialty, mainDateStart, mainDateEnd, dateStart, dateEnd, degree} = this.props;
-
+        const Option = Select.Option;
         const rootClass = cn('personal-education');
 
         return (
