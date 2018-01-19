@@ -10,12 +10,12 @@ import DoctorProfileCard from '../DoctorProfileCard'
 import Icon from '../Icon'
 
 class SideNav extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            isShort: false,
-        }
-    }
+    // constructor(props){
+    //     super(props);
+    //     this.state = {
+    //         isShort: false,
+    //     }
+    // }
 
     // getSelectedKeys = () => {
     //     const { location: { hash, pathname }, selectedKeys} = this.props;
@@ -50,7 +50,7 @@ class SideNav extends React.Component{
     };
 
     render(){
-        const {isShort} = this.state,
+        const {isShort} = this.props,
             {menuItems} = this.props;
 
         const rootClass = cn('sidenav-root', {'sidenav-root-short' : isShort});
@@ -61,16 +61,16 @@ class SideNav extends React.Component{
         return (
             <div className={rootClass}>
                 <div className="logo"><span className="logo-img"></span></div>
-                <button onClick={() => {this.setState({isShort: !isShort})}}
-                        className="sidenav-root-btn">
-                    {
-                        isShort ? (
-                                <Icon type="right-arrow-forward_small" size={12} svg/>
-                            ) : (
-                                <Icon type="left-arrow-forward_small" size={12} svg/>
-                            )
-                    }
-                </button>
+                {/*<button onClick={() => {this.setState({isShort: !isShort})}}*/}
+                        {/*className="sidenav-root-btn">*/}
+                    {/*{*/}
+                        {/*isShort ? (*/}
+                                {/*<Icon type="right-arrow-forward_small" size={12} svg/>*/}
+                            {/*) : (*/}
+                                {/*<Icon type="left-arrow-forward_small" size={12} svg/>*/}
+                            {/*)*/}
+                    {/*}*/}
+                {/*</button>*/}
                 <DoctorProfileCard {...this.props}
                                    short={isShort}/>
 
@@ -98,7 +98,7 @@ SideNav.propTypes = {
     online: PropTypes.bool,
     name: PropTypes.string,
     specialty: PropTypes.string,
-    short: PropTypes.bool,
+    isShort: PropTypes.bool,
     rateValue: PropTypes.number,
     timesRated: PropTypes.number,
 };
