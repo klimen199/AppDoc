@@ -6,7 +6,7 @@ import Link from '../';
 storiesOf('Link', module)
     .add('Link ico', () => (
         <div className='flexTest'>
-            <Link onClick={action('clicked')}
+            <Link
                     btnText="Прикрепленный файл с длинным предлинным названием.doc"
                     size="default" 
                     type="link"

@@ -34,7 +34,7 @@ const content = (
           iconSize={16}
     />
 
-    <Button onClick={action('clicked')}
+    <Button 
             size='file all-download'
             type='file'
             icon='download'

@@ -9,7 +9,7 @@ const RadioGroup = Radio.Group;
 storiesOf('RadioGroup', module)
     .add('RadioGroup', () => (
         <div>
-			<RadioGroup onChange={this.onChange}>
+			<RadioGroup>
 				<Radio value={1}>A</Radio>
 				<Radio value={2}>B</Radio>
 				<Radio value={3}>C</Radio>

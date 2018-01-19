@@ -6,32 +6,32 @@ import Button from '../';
 storiesOf('Button', module)
     .add('Small', () => (
         <div className='flexTest'>
-            <Button onClick={action('clicked')}
+            <Button
                     btnText="Добавить"
                     size="small" 
                     type="float"
             />
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Добавить'
                     size='small'
                     type='blue'
             />
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Добавить'
                     size='small'
                     type='dark-blue'
             />
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Добавить'
                     size='small'
                     type='yellow'
             />
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Добавить'
                     size='small'
                     type='gradient'
             />
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Добавить'
                     size='small'
                     type='gradient'
@@ -41,7 +41,7 @@ storiesOf('Button', module)
     ))
     .add('Default', () => (
         <div>
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Добавить'
                     size='default'
                     type='float'
@@ -49,7 +49,7 @@ storiesOf('Button', module)
             <span> size='default'
             type='float' </span>
             <br/>
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Добавить'
                     size='default'
                     type='blue'
@@ -57,7 +57,7 @@ storiesOf('Button', module)
             <span> size='default'
                 type='blue'</span>
             <br/>
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Добавить'
                     size='default'
                     type='dark-blue'
@@ -65,7 +65,7 @@ storiesOf('Button', module)
             <span> size='default'
                 type='dark-blue'</span>
             <br/>
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Добавить'
                     size='default'
                     type='yellow'
@@ -73,7 +73,7 @@ storiesOf('Button', module)
             <span> size='default'
                 type='yellow'</span>
             <br/>
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Добавить'
                     size='default'
                     type='gradient'
@@ -81,7 +81,7 @@ storiesOf('Button', module)
             <span> size='default'
                 type='gradient'</span>
             <br/>
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Добавить'
                     size='default'
                     type='gradient'
@@ -94,32 +94,32 @@ storiesOf('Button', module)
     ))
     .add('Large', () => (
         <div className='flexTest'>
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Добавить'
                     size='large'
                     type='float'
             />
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Добавить'
                     size='large'
                     type='blue'
             />
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Добавить'
                     size='large'
                     type='dark-blue'
             />
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Добавить'
                     size='large'
                     type='yellow'
             />
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Добавить'
                     size='large'
                     type='gradient'
             />
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Добавить'
                     size='large'
                     type='gradient'
@@ -129,14 +129,14 @@ storiesOf('Button', module)
     ))
     .add('Icon', () => (
         <div>
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Добавить'
                     size='small'
                     type='float'
                     icon='form'
             />
             <br/>
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Добавить'
                     size='default'
                     type='blue'
@@ -144,7 +144,7 @@ storiesOf('Button', module)
                     svg
             />
             <br/>
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Добавить (antIcon)'
                     size='large'
                     type='yellow'
@@ -152,7 +152,7 @@ storiesOf('Button', module)
                     iconSize={15}
             />
             <br/>
-            <Button onClick={action('clicked')}
+            <Button
                     btnText=''
                     size='icon'
                     type='icon'
@@ -160,7 +160,7 @@ storiesOf('Button', module)
                     svg
             />
             <br/>
-            <Button onClick={action('clicked')}
+            <Button
                     btnText=''
                     size='icon'
                     type='light-blue'
@@ -172,27 +172,27 @@ storiesOf('Button', module)
     ))
     .add('Link', () => (
         <div className='flexTest'>
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Показать еще'
                     size='link'
                     type='link'
                     icon='play-circle'
             />
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Отменить приемы'
                     size='link'
                     type='link'
                     icon='circle_close'
                     svg
             />
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Добавить интервал'
                     size='file'
                     type='file'
                     icon='add-button'
                     svg
             />
-            <Button onClick={action('clicked')}
+            <Button
                     btnText='Обращение от 13.09.2017'
                     size='go'
                     type='go'
