@@ -24,53 +24,49 @@ class SideNav extends React.Component{
     //     return [pathname + hash];
     // };
 
-    renderMenuItems = (selectedKey, menuItems) =>{
+    renderMenuItems = (menuItems) =>{
         let items = [];
 
-        menuItems.map(({name, title, iconType, svg, onClick},i) => {
-            const path = `/${name}/`;
-            //const isActive = () => path === selectedKey;
-            const isActive = () => path === '/'+selectedKey+'/';
+        menuItems.map(({name, title, iconType, svg, onClick}) => {
+            const path = `/${name}`;
 
             items.push(<Menu.Item key={path}>
-                <NavLink isActive={isActive} to={path} onClick={onClick} activeClassName="selectedNavLink">
+                <NavLink exact to={path} activeClassName="selectedNavLink">
                     <div className='sidenav-root-menu-item'>
-
-                            {iconType && <Icon type={iconType} size={26} svg={svg}/>}
-
+                        {iconType && <Icon type={iconType} size={26} svg={svg}/>}
                         <span className="item-title">
                             {title}
                         </span>
                     </div>
                 </NavLink>
             </Menu.Item>);
-        })
+        });
         return items;
-
     };
+
 
     render(){
         const {isShort} = this.props,
-            {menuItems} = this.props;
+            {menuItems, onClick} = this.props;
 
         const rootClass = cn('sidenav-root', {'sidenav-root-short' : isShort});
         const menuClass = 'sidenav-root-menu' + (isShort ? '-short':'');
 
-        //const selectedKeys = this.getSelectedKeys()
+        //const selectedKeys = this.getSelectedKeys();
 
         return (
             <div className={rootClass}>
                 <div className="logo"><span className="logo-img"></span></div>
-                {/*<button onClick={() => {this.setState({isShort: !isShort})}}*/}
-                        {/*className="sidenav-root-btn">*/}
-                    {/*{*/}
-                        {/*isShort ? (*/}
-                                {/*<Icon type="right-arrow-forward_small" size={12} svg/>*/}
-                            {/*) : (*/}
-                                {/*<Icon type="left-arrow-forward_small" size={12} svg/>*/}
-                            {/*)*/}
-                    {/*}*/}
-                {/*</button>*/}
+                <button onClick={onClick}
+                        className="sidenav-root-btn">
+                    {
+                        isShort ? (
+                                <Icon type="right-arrow-forward_small" size={12} svg/>
+                            ) : (
+                                <Icon type="left-arrow-forward_small" size={12} svg/>
+                            )
+                    }
+                </button>
                 <DoctorProfileCard {...this.props}
                                    short={isShort}/>
 
@@ -78,8 +74,7 @@ class SideNav extends React.Component{
                     mode="inline"
                     className={menuClass}
                 >
-                    {/*{this.renderMenuItems(selectedKeys[0], menuItems)}*/}
-                    {this.renderMenuItems('asks', menuItems)}
+                    {this.renderMenuItems(menuItems)}
                 </Menu>
             </div>
         )
@@ -101,10 +96,13 @@ SideNav.propTypes = {
     isShort: PropTypes.bool,
     rateValue: PropTypes.number,
     timesRated: PropTypes.number,
+    onClick: PropTypes.func,
 };
 
 SideNav.defaultProps = {
     menuItems: [],
+    isShort: false,
+    onClick: () => {},
 };
 
 export default SideNav;
