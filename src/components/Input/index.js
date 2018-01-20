@@ -1,5 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Input as AntInput} from 'antd'
+
 import './style.css'
 
 
@@ -16,7 +18,8 @@ class Input extends AntInput{
     };
 
     render() {
-        const rootCl = this.state.onFocus ? 'input-root-focus' : 'input-root';
+        const {className} = this.props;
+        const rootCl = this.state.onFocus ? 'input-root-focus '+className : 'input-root '+className;
 
         return (
             <div onFocus={() => this.focusHandler(true)}
@@ -27,5 +30,13 @@ class Input extends AntInput{
         )
     }
 }
+
+Input.propTypes = {
+    className: PropTypes.string,
+};
+
+Input.defaultProps = {
+    className: '',
+};
 
 export default Input

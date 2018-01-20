@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import cn from 'classnames'
 
 import { Form } from 'antd';
-import Card from '../Card'
+import { NavLink } from 'react-router-dom'
 import Button from '../Button'
 import Checkbox from '../Checkbox'
 import Input from '../Input'
@@ -20,76 +19,75 @@ class LoginForm extends React.Component{
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                this.props.onSubmit(values);
             }
         });
     };
 
     render(){
-        const rootClass = cn('login');
-
+        const {urlForgot, urlRegistration} = this.props;
 
         const { getFieldDecorator } = this.props.form;
+        const {userName, password} = this.props.form.getFieldsValue();
 
         return (
             <Form onSubmit={this.handleSubmit} className="login-form">
+                <div className="login-title">Авторизация</div>
+                <div className="login-notification">* Поля, обязательные для заполнения</div>
                 <FormItem>
                     {getFieldDecorator('userName', {
                         rules: [{ required: true, message: 'Введите имя пользователя!' }],
                     })(
-                        <Input placeholder="Username" />
+                        <Input addonBefore='* E-mail или логин'
+                               className='login-form-item'/>
                     )}
                 </FormItem>
                 <FormItem>
                     {getFieldDecorator('password', {
                         rules: [{ required: true, message: 'Введите пароль!' }],
                     })(
-                        <Input type="password"
-                               placeholder="Password"
-                               addonAfter={<a className="login-form-forgot" href="">Forgot password</a>}/>
+                        <Input addonBefore='* Пароль'
+                               addonAfter={<NavLink className="login-form-navlink"
+                                                    to={urlForgot}>Забыли пароль?</NavLink>}
+                               type="password"
+                               className='login-form-item'/>
                     )}
                 </FormItem>
                 <FormItem>
                     {getFieldDecorator('remember', {
                         valuePropName: 'checked',
-                        initialValue: true,
+                        initialValue: false,
                     })(
                         <Checkbox>Запомнить меня</Checkbox>
                     )}
-                    <Button htmlType="submit" btnText='Войти'/>
-                    <div>У вас еще нет аккаунта? <a href="#">Зарегистрироваться</a></div>
                 </FormItem>
+                <div className="login-form-control">
+                    <Button disable={!(userName && password)}
+                            htmlType="submit"
+                            btnText='Войти'
+                            size='large'
+                            type='gradient'/>
+                    <div>У вас еще нет аккаунта? <NavLink to={urlRegistration}
+                                                          className="login-form-navlink">Зарегистрироваться</NavLink>
+                    </div>
+                </div>
             </Form>
-            // <div className={rootClass}>
-            //     <Card className="login-card">
-            //         <div className="login-title">Авторизация</div>
-            //         <div className="login-notification">* Поля, обязательные для заполнения</div>
-            //             <div className="login-item">
-            //                 <Input addonBefore="* E-mail или логин" />
-            //             </div>
-            //             <div className="login-item">
-            //                 <Input addonBefore="* Пароль" addonAfter={<a href="#">Забыли пароль?</a>}/>
-            //             </div>
-            //             <div className="login-item">
-            //                 <Checkbox>Запомнить меня</Checkbox>
-            //             </div>
-            //             <div className="login-item login-center">
-            //                 <Button disable
-            //                         htmlType="submit"
-            //                         btnText='Войти'
-            //                         size='large'
-            //                         type='gradient'
-            //                 />
-            //             </div>
-            //         <div className="login-item login-center">
-            //             <p>У вас еще нет аккаунта? <a href="#">Зарегистрироваться</a></p>
-            //         </div>
-            //       </Card>
-            // </div>
         )
     }
 }
 
 const Login = Form.create()(LoginForm);
+
+Login.propTypes = {
+    urlForgot: PropTypes.string,
+    urlRegistration: PropTypes.string,
+    onSubmit: PropTypes.func,
+};
+
+Login.defaultProps = {
+    urlForgot: '*',
+    urlRegistration: '*',
+    onSubmit: () => {},
+};
 
 export default Login
