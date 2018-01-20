@@ -8,7 +8,7 @@ import {data1, data2, data3} from './mock-data'
 storiesOf('Review', module)
     .add('main', () => (
         <div>
-            <Review {...data1} onSend={action('Send message')}/>
+            <Review {...data1}/>
         </div>
     ))
     .add('secondary', () => (
