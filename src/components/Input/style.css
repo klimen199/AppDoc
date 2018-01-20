@@ -28,3 +28,13 @@
   color: #777777;
   padding-left: 0;
 }
+.ant-input-search .ant-input {
+  font-size: 0.75rem;
+  border-radius: 2rem;
+  height: 2.5rem;
+  padding-left: 2rem;
+  border: 1px solid #ebebeb;
+}
+.ant-input-search:not(.ant-input-search-small) > .ant-input-suffix {
+  right: 1.5rem;
+}
