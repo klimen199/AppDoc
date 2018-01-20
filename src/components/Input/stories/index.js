@@ -15,7 +15,7 @@ storiesOf('Inputs', module)
     ))
     .add('Input', () => (
 		<div>
-			<Input addonAfter="Email" />
+			<Input addonAfter="After" addonBefore='Before'/>
 			<Input placeholder="Enter smth" />
 		</div>
     ));
