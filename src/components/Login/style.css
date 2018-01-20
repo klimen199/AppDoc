@@ -1,1 +1,64 @@
-.ant-card-body{padding:0!important}.login{display:flex;justify-content:center}.login-card{max-width:770px;width:100%;padding:75px 100px;border-radius:2px;border:none;box-shadow:0 0 16px rgba(0,0,0,.1)}.login-title{font-family:GothamPro-Bold;font-size:44px;line-height:1;letter-spacing:-.88px;color:#333;margin-bottom:40px}.login-notification{font-family:GothamPro-Light;font-size:12px;line-height:1;color:#333;margin-bottom:50px}.login-item{position:relative;margin-bottom:35px}.login-item:last-child{margin-bottom:0}.login-item p{font-size:16px;color:#333;margin-bottom:0}.login-item p a{color:#0495ff}.login-item p a:hover{color:#0495ff}.login-lost{position:absolute;right:0;top:7px;color:#0495ff;z-index:2;font-size:14px;line-height:1}.login-lost:hover{color:#0495ff}.login-center{display:flex;justify-content:center;align-items:center}
+/* fonts */
+/* COLORS */
+/* VAR */
+.login-form {
+  max-width: 770px;
+  width: 100%;
+  padding: 75px 100px;
+  border-radius: 2px;
+  border: none;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+  /* Параметры тени */
+}
+.login-form .ant-form-item {
+  position: relative;
+  margin-bottom: 35px;
+}
+.login-form .ant-form-item .has-error .input-root-focus {
+  border-bottom: #ff4242 1px solid;
+}
+.login-form .ant-form-item .has-error .input-root {
+  border-bottom: #ff4242 1px solid;
+}
+.login-form .ant-form-item .has-error .ant-input:focus {
+  box-shadow: none;
+}
+.login-form .ant-form-item .has-error .ant-input-group-addon {
+  color: #777777;
+}
+.login-form .ant-form-item .ant-form-explain {
+  position: absolute;
+}
+.login-form-item .ant-input-group-addon:first-child {
+  width: 130px;
+  text-align: left;
+}
+.login-form-navlink {
+  color: #0495ff;
+  font-size: 14px;
+  line-height: 1;
+}
+.login-form-navlink:hover {
+  color: #0495ff;
+}
+.login-form-control {
+  text-align: center;
+}
+.login-form-control button {
+  margin-bottom: 50px;
+}
+.login-title {
+  font-family: 'GothamPro-Bold';
+  font-size: 44px;
+  line-height: 1;
+  letter-spacing: -0.88px;
+  color: #333;
+  margin-bottom: 40px;
+}
+.login-notification {
+  font-family: 'GothamPro-Light';
+  font-size: 12px;
+  line-height: 1;
+  color: #333;
+  margin-bottom: 50px;
+}
