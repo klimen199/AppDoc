@@ -1,5 +1,7 @@
 @import url('../../styles/variables');
 
+
+
 .input-root{
 	border-bottom: 1px solid #e1e1e1;
 	&-focus{
@@ -29,6 +31,21 @@
 			background-color: transparent;
 			color: #777777;
 			padding-left: 0;
+		}
+
+		&-search{
+
+			.ant-input{
+				font-size: 0.75rem;
+				border-radius: 2rem;
+				height: 2.5rem;
+				padding-left: 2rem;
+				border: 1px solid #ebebeb;
+			}
+
+			&:not(.ant-input-search-small) > .ant-input-suffix{
+				right: 1.5rem;
+			}
 		}
 	}
 }
