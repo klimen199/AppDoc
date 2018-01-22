@@ -25,7 +25,7 @@ class LoginForm extends React.Component{
     };
 
     render(){
-        const {urlForgot, urlRegistration} = this.props;
+        const {urlForget, urlRegistration} = this.props;
 
         const { getFieldDecorator } = this.props.form;
         const {userName, password} = this.props.form.getFieldsValue();
@@ -48,7 +48,7 @@ class LoginForm extends React.Component{
                     })(
                         <Input addonBefore='* Пароль'
                                addonAfter={<NavLink className="login-form-navlink"
-                                                    to={urlForgot}>Забыли пароль?</NavLink>}
+                                                    to={urlForget}>Забыли пароль?</NavLink>}
                                type="password"
                                className='login-form-item'/>
                     )}
@@ -79,13 +79,13 @@ class LoginForm extends React.Component{
 const Login = Form.create()(LoginForm);
 
 Login.propTypes = {
-    urlForgot: PropTypes.string,
+    urlForget: PropTypes.string,
     urlRegistration: PropTypes.string,
     onSubmit: PropTypes.func,
 };
 
 Login.defaultProps = {
-    urlForgot: '*',
+    urlForget: '*',
     urlRegistration: '*',
     onSubmit: () => {},
 };
