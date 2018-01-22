@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { withRouter } from 'react-router-dom'
 import { Form } from 'antd';
-//import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import Button from '../Button'
 import Input from '../Input'
 
@@ -38,12 +38,18 @@ class LoginForgetForm extends React.Component{
 
     goBackHandler = (e) => {
         e.preventDefault();
-        this.props.history.replace(this.props.urlLogin)
+        this.props.onUrlChange()
     };
 
     render(){
         const { getFieldDecorator } = this.props.form;
         const {phone} = this.props.form.getFieldsValue();
+        const link = this.props.onUrlChange ?
+            (<span onClick={this.goBackHandler}
+                   className="loginforget-backlink">Авторизации</span>)
+            :
+            (<NavLink to={this.props.urlLogin}
+                      className="login-form-navlink">Авторизации</NavLink>);
 
         return (
             <Form onSubmit={this.handleSubmit} className="login-form">
@@ -63,9 +69,7 @@ class LoginForgetForm extends React.Component{
                             btnText='Отправить ссылку'
                             size='large'
                             type='gradient'/>
-                    <div>Вернуться на страницу <span onClick={this.goBackHandler}
-                                                     className="loginforget-backlink">Авторизации</span>
-                    </div>
+                    <div>Вернуться на страницу {link}</div>
                 </div>
             </Form>
         )
@@ -77,12 +81,14 @@ const LoginForget = Form.create()(LoginForgetForm);
 LoginForget.propTypes = {
     text: PropTypes.string,
     urlLogin: PropTypes.string,
+    onUrlChange: PropTypes.func,
     onSubmit: PropTypes.func,
 };
 
 LoginForget.defaultProps = {
     text: '',
-    urlLogin: '*',
+    urlLogin: '',
+    onUrlChange: null,
     onSubmit: () => {},
 };
 
