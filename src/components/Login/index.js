@@ -36,7 +36,7 @@ class LoginForm extends React.Component{
                 <div className="login-notification">* Поля, обязательные для заполнения</div>
                 <FormItem>
                     {getFieldDecorator('userName', {
-                        rules: [{ required: true, message: 'Введите имя пользователя!' }],
+                        rules: [{ required: true, message: 'Введите ваш логин или e-mail, пожалуйста' }],
                     })(
                         <Input addonBefore='* E-mail или логин'
                                className='login-form-item'/>
@@ -44,7 +44,7 @@ class LoginForm extends React.Component{
                 </FormItem>
                 <FormItem>
                     {getFieldDecorator('password', {
-                        rules: [{ required: true, message: 'Введите пароль!' }],
+                        rules: [{ required: true, message: 'Введите ваш пароль, пожалуйста' }],
                     })(
                         <Input addonBefore='* Пароль'
                                addonAfter={<NavLink className="login-form-navlink"
