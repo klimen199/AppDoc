@@ -73,6 +73,7 @@ const loadStories = () => {
     require('../src/components/RadioBox/stories');
     require('../src/components/Login/stories');
     require('../src/components/Step/stories');
+    require('../src/components/LoginForget/stories');
 };
 
 configure(loadStories, module);

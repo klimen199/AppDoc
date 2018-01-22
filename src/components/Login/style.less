@@ -1,20 +1,62 @@
 @import url("../../styles/variables");
 
-.ant-card-body{
-	padding: 0 !important;
-}
-
 .login{
-	display: flex;
-	justify-content: center;
-
-	&-card{
+	&-form{
 		max-width: 770px;
 		width: 100%;
 		padding: 75px 100px;
 		border-radius: 2px;
 		border: none;
 		box-shadow: 0 0 16px rgba(0,0,0,0.1); /* Параметры тени */
+
+		.ant-form-item{
+			position: relative;
+			margin-bottom: 35px;
+
+			.has-error{
+				.input-root-focus{
+					border-bottom: #ff4242 1px solid;
+				}
+				.input-root{
+					border-bottom: #ff4242 1px solid;
+				}
+				.ant-input:focus{
+					box-shadow: none;
+				}
+				.ant-input-group-addon{
+					color: #777777;
+				}
+			}
+			.ant-form-explain{
+				position: absolute;
+				top: 45px;
+			}
+		}
+
+		&-item{
+			.ant-input-group-addon:first-child{
+				text-align: left;
+			}
+		}
+
+		&-navlink{
+			color: @blue;
+			font-size: 14px;
+			line-height: 1;
+
+			&:hover{
+				color: @blue;
+				//text-decoration: none;
+			}
+		}
+
+		&-control{
+			text-align: center;
+
+			button{
+				margin-bottom: 50px;
+			}
+		}
 	}
 
 	&-title{
@@ -32,49 +74,6 @@
 		line-height: 1;
 		color: #333;
 		margin-bottom: 50px;
-	}
-
-	&-item{
-		position: relative;
-		margin-bottom: 35px;
-
-		&:last-child{
-			margin-bottom: 0;
-		}
-
-		p{
-			font-size: 16px;
-			color: #333;
-			margin-bottom: 0;
-
-			a{
-				color: @blue;
-
-				&:hover{
-					color: @blue;
-				}
-			}
-		}
-	}
-
-	&-lost{
-		position: absolute;
-		right: 0;
-		top: 7px;
-		color: @blue;
-		z-index: 2;
-		font-size: 14px;
-		line-height: 1;
-
-		&:hover{
-			color: @blue;
-		}
-	}
-
-	&-center{
-		display: flex;
-		justify-content: center;
-		align-items: center;
 	}
 }
 

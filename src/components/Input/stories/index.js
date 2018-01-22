@@ -9,13 +9,12 @@ storiesOf('Inputs', module)
         <div>
            <Input.Search
 		      placeholder="Поиск..."
-		      onSearch={action('onSearch')}
 		    />
         </div>
     ))
     .add('Input', () => (
 		<div>
-			<Input addonAfter="Email" />
+			<Input addonAfter="After" addonBefore='Before'/>
 			<Input placeholder="Enter smth" />
 		</div>
     ));

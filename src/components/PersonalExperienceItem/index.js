@@ -36,7 +36,7 @@ class PersonalExperienceItem extends React.Component{
                 <div className="personal-item" key={i}>
                     <Input addonAfter="Наименование места работы" />
                     <Input addonAfter="Должность"/>
-                    <DatePicker placeholder="Дата начала работы" onChange={action('Time picked')}/>
+                    <DatePicker placeholder="Дата начала работы"/>
                     <Checkbox>Продолжаю работать</Checkbox>
                     <Upload text="Прикрепить копию контракта"/>
                 </div>
@@ -62,7 +62,7 @@ class PersonalExperienceItem extends React.Component{
                 <div className="personal-item" key={i}>
                     <Input addonAfter="Наименование места работы" />
                     <Input addonAfter="Должность"/>
-                    <DatePicker placeholder="Дата начала работы" onChange={action('Time picked')}/>
+                    <DatePicker placeholder="Дата начала работы"/>
                     <Checkbox>Продолжаю работать</Checkbox>
                     <Upload text="Прикрепить копию контракта"/>
                 </div>
@@ -88,7 +88,7 @@ class PersonalExperienceItem extends React.Component{
                     </div>
                     <div className="personal-item">
                         <div className="personal-title">Текущее место работы</div>
-                        <Button onClick={action('clicked')}
+                        <Button
                                 className="personal-delete"
                                 btnText='Удалить'
                                 size='link'

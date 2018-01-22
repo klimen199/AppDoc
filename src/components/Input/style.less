@@ -1,50 +1,40 @@
 @import url('../../styles/variables');
 
-.ant{
 
-	&-input{
+
+.input-root{
+	border-bottom: 1px solid #e1e1e1;
+	&-focus{
+		border-bottom: 1px solid @blue;
+	}
+}
+
+
+.ant {
+	&-input {
 		border: none;
-		border-bottom: 1px solid #e1e1e1;
 		border-radius: 0;
 		outline: 0;
 		color: #191919;
 		font-size: 0.875rem;
 		order: 2;
 		padding: 0;
-		height: 36px;
+		//height: 36px;
 		font-family: @f-r;
 
-		&:focus,&:hover{
-			border-color: @blue;
-			box-shadow: none;
-
-			& + .ant-input-group-addon{
-				border-color: @blue;
-			}
+		&:focus, &:hover {
+			box-shadow: none ;
 		}
 
-		&-group{
-			display: flex;
-			font-family: @f-r;
-			height: 36px;
-
-			&-addon{
-				background-color: transparent;
-				border: none;
-				border-radius: 0;
-				color: #777777;
-				font-size: 0.875rem;
-				border-bottom: 1px solid #e1e1e1;
-				display: flex;
-				order: 1;
-				width: auto;
-				align-items: center;
-				padding-left: 0;
-			}
+		&-group-addon{
+			border: none;
+			background-color: transparent;
+			color: #777777;
+			padding-left: 0;
 		}
 
 		&-search{
-			
+
 			.ant-input{
 				font-size: 0.75rem;
 				border-radius: 2rem;
@@ -55,15 +45,6 @@
 
 			&:not(.ant-input-search-small) > .ant-input-suffix{
 				right: 1.5rem;
-			}
-		}
-
-		&-suffix{
-			cursor: pointer;
-			&:hover{
-				.ant-input-search-icon{
-					color: @blue;
-				}
 			}
 		}
 	}
