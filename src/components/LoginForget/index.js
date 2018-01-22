@@ -82,7 +82,7 @@ LoginForget.propTypes = {
 
 LoginForget.defaultProps = {
     text: '',
-    urlLogin: '*',
+    urlLogin: '',
     onSubmit: () => {},
 };
 
