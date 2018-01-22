@@ -85,8 +85,8 @@ Login.propTypes = {
 };
 
 Login.defaultProps = {
-    urlForget: '*',
-    urlRegistration: '*',
+    urlForget: '',
+    urlRegistration: '',
     onSubmit: () => {},
 };
 
