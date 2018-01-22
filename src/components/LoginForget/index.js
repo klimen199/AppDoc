@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
+import { withRouter } from 'react-router-dom'
 import { Form } from 'antd';
-import { NavLink } from 'react-router-dom'
+//import { NavLink } from 'react-router-dom'
 import Button from '../Button'
-import Checkbox from '../Checkbox'
 import Input from '../Input'
 
 
@@ -86,4 +86,4 @@ LoginForget.defaultProps = {
     onSubmit: () => {},
 };
 
-export default LoginForget
+export default withRouter(LoginForget)
