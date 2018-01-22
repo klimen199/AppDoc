@@ -1,15 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import { action } from '@storybook/addon-actions';
 import cn from 'classnames'
 
 import Button from '../Button'
-import Upload from '../Upload'
 import Checkbox from '../Checkbox'
 import Select from '../Select'
-import DatePicker from '../DatePicker'
-import Input from '../Input'
-import Icon from '../Icon'
 import Radio from '../RadioBox'
 
 import './style.css'
