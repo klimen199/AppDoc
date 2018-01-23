@@ -73,7 +73,6 @@ export default {
 
   renderSpan(props, len, key, content = ' ') {
     let { slots } = props
-
     return (
       <div
         key={key}

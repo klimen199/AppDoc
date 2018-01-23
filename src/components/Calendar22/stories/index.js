@@ -10,7 +10,7 @@ const events = [
         id: 0,
         title: 'All Day Event very long title',
         allDay: true,
-        start: new Date(2018, 0, 0),
+        start: new Date(2018, 0, 1),
         end: new Date(2018, 0, 1),
     },
     {
@@ -23,8 +23,8 @@ const events = [
     {
         id: 7,
         title: 'Lunch',
-        start: new Date(2018, 0, 12, 12, 0, 0, 0),
-        end: new Date(2018, 0, 12, 13, 0, 0, 0),
+        start: new Date(2018, 0, 11, 12, 0, 0, 0),
+        end: new Date(2018, 0, 11, 13, 0, 0, 0),
         desc: 'Power lunch',
     },
     {
@@ -51,12 +51,6 @@ const events = [
         title: 'Birthday Party',
         start: new Date(2018, 0, 13, 7, 0, 0),
         end: new Date(2018, 0, 13, 10, 30, 0),
-    },
-    {
-        id: 12,
-        title: 'Late Night Event',
-        start: new Date(2018, 0, 18, 19, 30, 0),
-        end: new Date(2018, 0, 18, 19, 0, 0),
     },
 ];
 

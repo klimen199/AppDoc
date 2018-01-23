@@ -4,6 +4,7 @@ import EventRowMixin from './EventRowMixin'
 import { eventLevels } from './utils/eventLevels'
 import message from './utils/messages'
 import range from 'lodash/range'
+import Icon from '../../Icon'
 
 let isSegmentInSlot = (seg, slot) => seg.left <= slot && seg.right >= slot
 let eventsInSlot = (segments, slot) =>
@@ -24,6 +25,7 @@ class EventEndingRow extends React.Component {
   render() {
     let { segments, slots: slotCount } = this.props
     let rowSegments = eventLevels(segments).levels[0]
+      if (!rowSegments) rowSegments = [];
 
     let current = 1,
       lastEnd = 1,
@@ -42,17 +44,6 @@ class EventEndingRow extends React.Component {
 
       let gap = Math.max(0, left - lastEnd)
 
-      if (this.canRenderSlotEvent(left, span)) {
-        let content = EventRowMixin.renderEvent(this.props, event)
-
-        if (gap) {
-          row.push(EventRowMixin.renderSpan(this.props, gap, key + '_gap'))
-        }
-
-        row.push(EventRowMixin.renderSpan(this.props, span, key, content))
-
-        lastEnd = current = right + 1
-      } else {
         if (gap) {
           row.push(EventRowMixin.renderSpan(this.props, gap, key + '_gap'))
         }
@@ -66,7 +57,6 @@ class EventEndingRow extends React.Component {
           )
         )
         lastEnd = current = current + 1
-      }
     }
 
     return <div className="rbc-row">{row}</div>
@@ -86,17 +76,14 @@ class EventEndingRow extends React.Component {
     let messages = message(this.props.messages)
     let count = eventsInSlot(segments, slot)
 
-    return count ? (
-      <a
+    return count && (
+      <div
         key={'sm_' + slot}
-        href="#"
-        className={'rbc-show-more'}
+        className='rbc-month-receptionNum'
         onClick={e => this.showMore(slot, e)}
       >
-        {messages.showMore(count)}
-      </a>
-    ) : (
-      false
+        <Icon type="user"/> {count}
+      </div>
     )
   }
 

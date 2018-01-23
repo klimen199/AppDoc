@@ -178,8 +178,9 @@ class DateContentRow extends React.Component {
       )
     ))
 
+
     let { levels, extra } = eventLevels(segments, Math.max(maxRows - 1, 1))
-    while (levels.length < minRows) levels.push([])
+      while (levels.length < minRows) levels.push([])
 
     return (
       <div className={className}>
@@ -203,36 +204,35 @@ class DateContentRow extends React.Component {
               {range.map(this.renderHeadingCell)}
             </div>
           )}
-          {/*{levels.map((segs, idx) => (
-            <EventRow
-              {...props}
-              key={idx}
-              start={first}
-              end={last}
-              segments={segs}
-              slots={range.length}
-              eventComponent={eventComponent}
-              eventWrapperComponent={eventWrapperComponent}
-              startAccessor={startAccessor}
-              endAccessor={endAccessor}
-            />
-          ))}*/}
-          {/*{!!extra.length && (
+          {/*{levels.map((segs, idx) => (*/}
+            {/*<EventRow*/}
+              {/*{...props}*/}
+              {/*key={idx}*/}
+              {/*start={first}*/}
+              {/*end={last}*/}
+              {/*segments={segs}*/}
+              {/*slots={range.length}*/}
+              {/*eventComponent={eventComponent}*/}
+              {/*eventWrapperComponent={eventWrapperComponent}*/}
+              {/*startAccessor={startAccessor}*/}
+              {/*endAccessor={endAccessor}*/}
+              {/*extraSeg={extra}*/}
+            {/*/>*/}
+          {/*))}*/}
+
+          {(
             <EventEndingRow
               {...props}
               start={first}
               end={last}
-              segments={extra}
+              segments={segments}
               onShowMore={this.handleShowMore}
               eventComponent={eventComponent}
               eventWrapperComponent={eventWrapperComponent}
               startAccessor={startAccessor}
               endAccessor={endAccessor}
             />
-          )}*/}
-
-
-          
+          )}
 
         </div>
       </div>

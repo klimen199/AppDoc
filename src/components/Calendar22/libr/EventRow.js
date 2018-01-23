@@ -11,9 +11,10 @@ class EventRow extends React.Component {
     ...EventRowMixin.defaultProps,
   }
   render() {
-    let { segments } = this.props
+    let { segments, extraSeg  } = this.props
 
     let lastEnd = 1
+
 
     return (
       <div className="rbc-row">
@@ -22,7 +23,6 @@ class EventRow extends React.Component {
           let gap = left - lastEnd
 
           let content = EventRowMixin.renderEvent(this.props, event)
-
           if (gap)
             row.push(EventRowMixin.renderSpan(this.props, gap, key + '_gap'))
 
