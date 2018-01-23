@@ -1,0 +1,44 @@
+@import url("../../styles/variables");
+
+
+.rbc-toolbar {
+  display: flex;
+  position: relative;
+  margin-bottom: 20px;
+  font-size: 20px;
+
+  .arrowsGroup{
+    margin-left: 20px;
+  }
+  &-label {
+    margin-left: 20px;
+    text-transform: capitalize;
+  }
+  &-receptionCount{
+    margin: auto auto auto 10px;
+    height: 20px;
+    width: auto;
+    font-size: 12px;
+    color: white;
+    background-color: @blue;
+    border-radius: 10px;
+    padding: 0 10px;
+  }
+
+}
+
+.rbc-header{
+  font-size: 12px;
+  color: @dark-blue;
+  display: flex;
+  min-height: 60px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  & > span {
+    margin: auto;
+    text-transform: capitalize;
+  }
+}
