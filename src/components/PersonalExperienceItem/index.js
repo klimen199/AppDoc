@@ -32,8 +32,8 @@ class PersonalExperienceItem extends React.Component{
         for(let i =0; i<this.state.dpNum;i++){
             dpArr.push(
                 <div className="personal-item" key={i}>
-                    <Input addonAfter="Наименование места работы" />
-                    <Input addonAfter="Должность"/>
+                    <Input addonBefore="Наименование места работы" />
+                    <Input addonBefore="Должность"/>
                     <DatePicker placeholder="Дата начала работы"/>
                     <Checkbox>Продолжаю работать</Checkbox>
                     <Upload text="Прикрепить копию контракта"/>
@@ -58,8 +58,8 @@ class PersonalExperienceItem extends React.Component{
         for(let i =0; i<this.state.dpNum2;i++){
             dpArr2.push(
                 <div className="personal-item" key={i}>
-                    <Input addonAfter="Наименование места работы" />
-                    <Input addonAfter="Должность"/>
+                    <Input addonBefore="Наименование места работы" />
+                    <Input addonBefore="Должность"/>
                     <DatePicker placeholder="Дата начала работы"/>
                     <Checkbox>Продолжаю работать</Checkbox>
                     <Upload text="Прикрепить копию контракта"/>
