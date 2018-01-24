@@ -79,7 +79,7 @@ storiesOf('Calendar22', module)
                         selectable
 
 
-                        onSelectEvent={event => alert(event.title)}
+                        onSelectEvent={action('Receive 1 obj')}
                         onSelectSlot={slotInfo =>
                             alert(
                                 `selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +
@@ -88,7 +88,7 @@ storiesOf('Calendar22', module)
                             )
                         }
 
-                        defaultView="month"
+                        defaultView="week"
 
                         step = {5}
                         events={events}

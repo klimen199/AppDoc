@@ -81,13 +81,47 @@
     }
   }
 }
-//.day-header{
-//  &:hover{
-//    cursor: pointer;
-//    text-decoration: underline;
-//  }
-//}
+
 
 .rbc-month-row{
   cursor: pointer;
+}
+
+.rbc-label.rbc-header-gutter.rbc-clock-icon{
+  width: 10%;
+  max-width: 90px;
+  display: flex;
+  color: @blue;
+  .icon{
+    margin: auto;
+  }
+}
+
+.rbc-time-gutter.rbc-time-column{
+  width: 10%;
+  max-width: 90px;
+}
+
+.rbc-header{
+  cursor: pointer;
+  .header-week{
+    &-weekday{
+      font-size: 12px;
+      //text-align: center;
+    }
+    &-day{
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+}
+.rbc-header.rbc-today{
+  background-color: #fefcf4;
+  .header-week > div{
+    font-family: @f-b;
+  }
+}
+
+.rbc-day-slot.rbc-today.rbc-time-column{
+  background-color: #fefcf4;
 }

@@ -52,11 +52,11 @@ export default class TimeSlotGroup extends Component {
   renderSlices() {
     const ret = []
     const sliceLength = this.props.step
-    let sliceValue = this.props.value
+    let sliceValue = this.props.value;
     for (let i = 0; i < this.props.timeslots; i++) {
       const content = localizer.format(
         sliceValue,
-        this.props.timeGutterFormat,
+        'HH:mm',
         this.props.culture
       )
       ret.push(this.renderSlice(i, content, sliceValue))

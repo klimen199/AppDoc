@@ -7,8 +7,8 @@ import dates from './utils/dates'
 import localizer from './localizer'
 import DayColumn from './DayColumn'
 import TimeColumn from './TimeColumn'
-import DateContentRow from './DateContentRow'
 import Header from './Header'
+import Icon from '../../Icon'
 
 import getWidth from 'dom-helpers/query/width'
 import scrollbarSize from 'dom-helpers/util/scrollbarSize'
@@ -117,7 +117,6 @@ export default class TimeGrid extends Component {
 
     this.applyScroll()
     this.positionTimeIndicator()
-    //this.checkOverflow()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -131,15 +130,7 @@ export default class TimeGrid extends Component {
     }
   }
 
-  handleSelectAllDaySlot = (slots, slotInfo) => {
-    const { onSelectSlot } = this.props
-    notify(onSelectSlot, {
-      slots,
-      start: slots[0],
-      end: slots[slots.length - 1],
-      action: slotInfo.action,
-    })
-  }
+
 
   render() {
     let {
@@ -279,8 +270,10 @@ export default class TimeGrid extends Component {
         style={style}
       >
         <div className="rbc-row">
-          <div className="rbc-label rbc-header-gutter" style={{ width }} />
-          {this.renderHeaderCells(range)}
+          <div className="rbc-label rbc-header-gutter rbc-clock-icon">
+            <Icon type="clock" svg size={28}/>
+          </div>
+            {this.renderHeaderCells(range)}
         </div>
         {resources && (
           <div className="rbc-row rbc-row-resource">
@@ -288,39 +281,6 @@ export default class TimeGrid extends Component {
             {headerRendered}
           </div>
         )}
-        <div className="rbc-row">
-          <div
-            ref={ref => (this._gutters[0] = ref)}
-            className="rbc-label rbc-header-gutter"
-            style={{ width }}
-          >
-            {message(messages).allDay}
-          </div>
-          <DateContentRow
-            now={now}
-            minRows={2}
-            range={range}
-            rtl={this.props.rtl}
-            events={events}
-            className="rbc-allday-cell"
-            selectable={selectable}
-            onSelectSlot={this.handleSelectAllDaySlot}
-            dateCellWrapper={components.dateCellWrapper}
-            dayPropGetter={this.props.dayPropGetter}
-            eventComponent={this.props.components.event}
-            eventWrapperComponent={this.props.components.eventWrapper}
-            titleAccessor={this.props.titleAccessor}
-            startAccessor={this.props.startAccessor}
-            endAccessor={this.props.endAccessor}
-            allDayAccessor={this.props.allDayAccessor}
-            eventPropGetter={this.props.eventPropGetter}
-            selected={this.props.selected}
-            isAllDay={true}
-            onSelect={this.handleSelectEvent}
-            onDoubleClick={this.handleDoubleClickEvent}
-            longPressThreshold={this.props.longPressThreshold}
-          />
-        </div>
       </div>
     )
   }
@@ -346,23 +306,23 @@ export default class TimeGrid extends Component {
     let {
       dayFormat,
       culture,
-      components,
       dayPropGetter,
       getDrilldownView,
     } = this.props
-    let HeaderComponent = components.header || Header
-
+    let HeaderComponent = Header
+      
     return range.map((date, i) => {
       let drilldownView = getDrilldownView(date)
-      let label = localizer.format(date, dayFormat, culture)
+        let labels = [localizer.format(date, 'dddd', culture),
+            localizer.format(date, 'DD', culture)];
 
-      const { className, style: dayStyles } =
+        const { className, style: dayStyles } =
         (dayPropGetter && dayPropGetter(date)) || {}
 
       let header = (
         <HeaderComponent
           date={date}
-          label={label}
+          labels={labels}
           localizer={localizer}
           format={dayFormat}
           culture={culture}
@@ -377,18 +337,18 @@ export default class TimeGrid extends Component {
             className,
             dates.isToday(date) && 'rbc-today'
           )}
-          style={Object.assign({}, dayStyles, segStyle(1, this.slots))}
+          style={Object.assign({}, dayStyles, segStyle(1, this.slots ))}
         >
-          {drilldownView ? (
-            <a
-              href="#"
-              onClick={e => this.handleHeaderClick(date, drilldownView, e)}
-            >
-              {header}
-            </a>
-          ) : (
-            <span>{header}</span>
-          )}
+            {
+                drilldownView ? (
+                    <span onClick={e => this.handleHeaderClick(date, drilldownView, e)}>
+                        {header}
+                    </span>
+                    ) : (
+                        <span>{header}</span>
+                    )
+            }
+          
         </div>
       )
     })
@@ -405,17 +365,6 @@ export default class TimeGrid extends Component {
 
   handleDoubleClickEvent(...args) {
     notify(this.props.onDoubleClickEvent, args)
-  }
-
-  handleSelectAlldayEvent(...args) {
-    //cancel any pending selections so only the event click goes through.
-    this.clearSelection()
-    notify(this.props.onSelectEvent, args)
-  }
-
-  clearSelection() {
-    clearTimeout(this._selectTimer)
-    this._pendingSelection = []
   }
 
   measureGutter() {

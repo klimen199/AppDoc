@@ -13,10 +13,12 @@ momentLocalizer(moment);
 
 const Calendar22 = (props) => {
 
+
     return (<div>
         <Calendar
             events={props.events}
             views={['day','week','month']}
+
             {...props}
         />
     </div>);

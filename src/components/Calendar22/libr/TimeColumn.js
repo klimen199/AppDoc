@@ -73,11 +73,16 @@ export default class TimeColumn extends Component {
       min,
       max,
       step,
-      timeslots,
+      // timeslots,
       resource,
     } = this.props
-    const totalMin = dates.diff(min, max, 'minutes')
+
+      let timeslots = 1;
+
+    const totalMin = dates.diff(min.setHours(8,0,0,0), max, 'minutes')
+
     const numGroups = Math.ceil(totalMin / (step * timeslots))
+      console.log('numGroups', numGroups)
     const renderedSlots = []
     const groupLengthInMinutes = step * timeslots
 
