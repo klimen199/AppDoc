@@ -9,44 +9,55 @@ import { Row, Col } from 'antd';
 storiesOf('TopPanel', module)
     .add('TopPanel', () => (
           <div>
-              <Row> 
-                <div className='topPanel'>
-                 <Col span={6} className='flexCol'>
+            <Row className='section'>
+              <div className='topPanel'>
+                <Col span={6}>
+                  <div className='flexCol'>
                     <TopPanelItem
-                    className='first-col'
-                    PanelTitle="10 сентября 2017"
-                    PanelText="Вторник  13:25"
-                    svg
-                    icon='calendar'
-                    ></TopPanelItem>
-                  </Col>
+                      className='first-col'
+                      panelTitle="10 сентября 2017"
+                      panelText="Вторник  13:25"
+                      svg
+                      icon='calendar'
+                    >
+                    </TopPanelItem>
+                  </div>
+                </Col>
 
-                  <Col span={6} className='flexCol'>
+                <Col span={6}>
+                  <div className='flexCol'>
                     <TopPanelItem
-                    PanelTitle="Приемы сегодня"
-                    PanelText="12"
-                    icon='info'
-                    ></TopPanelItem>
-                  </Col>
+                      panelTitle="Приемы сегодня"
+                      panelText="12"
+                      icon='info'
+                    >
+                    </TopPanelItem>
+                  </div>
+                </Col>
 
-                  <Col span={6} className='flexCol'>
+                <Col span={6}>
+                  <div className='flexCol'>
                     <TopPanelItem
-                    PanelTitle="Актуальные обращения"
-                    PanelText="2"
-                    svg
-                    icon='clock'
-                    ></TopPanelItem>
-                  </Col>
+                        panelTitle="Актуальные обращения"
+                        panelText="2"
+                        svg
+                        icon='clock'
+                    >
+                    </TopPanelItem>
+                  </div>
+                </Col>
 
-                  <Col span={6} className='flexCol'>
+                <Col span={6}>
+                  <div className='flexCol'>
                     <TopPanelItem
-                    PanelTitle="Мои пациенты"
-                    PanelText="37"
-                    icon='user'
-                    ></TopPanelItem>
-                  </Col>
-                </div>
-              </Row>
-             
+                      panelTitle="Мои пациенты"
+                      panelText="37"
+                      icon='user'
+                    >
+                    </TopPanelItem>
+                  </div>
+                </Col>
+              </div>
+            </Row>
           </div>
     ))

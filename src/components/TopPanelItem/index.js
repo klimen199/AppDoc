@@ -11,22 +11,22 @@ class TopPanelItem extends React.Component{
 
     render(){
 
-        const {className, PanelText, type, firstItem, PanelTitle, icon, iconSize, svg} = this.props;
+        const {className, panelText, type, firstItem, panelTitle, icon, iconSize, svg} = this.props;
 
-        const rootClass = cn( `${className}`, 'PanelItem')
-        let PanelTextStyle = {}
-        let PanelTitleStyle = {}
+        const rootClass = cn( `${className}`, 'panelItem')
+        let panelTextStyle = {}
+        let panelTitleStyle = {}
 
         return (
             <div className={rootClass}>
-                <div className='PanelItem-header'>
+                <div className='panelItem-header'>
                      {icon && (
                         <Icon svg={svg} type={icon} size={iconSize}/>
                     )}
                     {!svg && <span></span>}
-                    {type !== 'icon' && <span className={'panel-title'} style={PanelTitleStyle}>{PanelTitle}</span>}
+                    {type !== 'icon' && <span className={'panel-title'} style={panelTitleStyle}>{panelTitle}</span>}
                 </div>
-                {<span className={'PanelItem-num'} style={PanelTextStyle}>{PanelText}</span>}
+                {<span className={'panelItem-num'} style={panelTextStyle}>{panelText}</span>}
             </div>
         )
     }
@@ -35,8 +35,8 @@ class TopPanelItem extends React.Component{
 
 TopPanelItem.propTypes ={
     className: PropTypes.string,
-    PanelTitle: PropTypes.string,
-    PanelText: PropTypes.string,
+    panelTitle: PropTypes.string,
+    panelText: PropTypes.string,
     icon: PropTypes.string,
     iconSize: PropTypes.number,
     svg: PropTypes.bool,
@@ -45,8 +45,8 @@ TopPanelItem.propTypes ={
 
 TopPanelItem.defaultProps = {
     className: '',
-    PanelTitle: '',
-    PanelText: '',
+    panelTitle: '',
+    panelText: '',
     icon: '',
     iconSize: 30,
     firstItem: false,
