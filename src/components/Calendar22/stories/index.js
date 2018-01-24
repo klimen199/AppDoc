@@ -52,6 +52,24 @@ const events = [
         start: new Date(2018, 0, 13, 7, 0, 0),
         end: new Date(2018, 0, 13, 10, 30, 0),
     },
+    {
+        id: 12,
+        title: 'Birthday Party',
+        start: new Date(2018, 0, 24, 7, 0, 0),
+        end: new Date(2018, 0, 24, 10, 30, 0),
+    },
+    {
+        id: 13,
+        title: 'Birthday Party',
+        start: new Date(2018, 0, 23, 7, 0, 0),
+        end: new Date(2018, 0, 23, 10, 30, 0),
+    },
+    {
+        id: 14,
+        title: 'Birthday Party',
+        start: new Date(2018, 0, 25, 7, 0, 0),
+        end: new Date(2018, 0, 25, 10, 30, 0),
+    },
 ];
 
 storiesOf('Calendar22', module)

@@ -55,8 +55,29 @@
   display: flex;
 
   .rbc-month-receptionNum{
-    margin: 0 auto 30px auto;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 30px;
     font-size: 32px;
+    cursor: pointer;
+    color: #dddddd;
 
+    .icon-count{
+      display: inline-block;
+      text-align: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      color: white;
+      background-color: #dddddd;
+    }
+
+    &-coming{
+      color: @blue;
+
+      .icon-count{
+        background-color: @blue;
+      }
+    }
   }
 }

@@ -2,19 +2,23 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import EventRowMixin from './EventRowMixin'
 import { eventLevels } from './utils/eventLevels'
-import message from './utils/messages'
-import range from 'lodash/range'
+import cn from 'classnames'
 import Icon from '../../Icon'
 
 let isSegmentInSlot = (seg, slot) => seg.left <= slot && seg.right >= slot
-let eventsInSlot = (segments, slot) =>
-  segments.filter(seg => isSegmentInSlot(seg, slot)).length
+let eventsFilter = (segments, slot) =>{
+    let filtered = segments.filter(seg => isSegmentInSlot(seg, slot))
+
+    let count = filtered.length;
+    let date = filtered ? filtered[0].event.start : null;
+
+    return {count,date};
+}
 
 class EventEndingRow extends React.Component {
   static propTypes = {
     segments: PropTypes.array,
     slots: PropTypes.number,
-    messages: PropTypes.object,
     onShowMore: PropTypes.func,
     ...EventRowMixin.propTypes,
   }
@@ -62,27 +66,21 @@ class EventEndingRow extends React.Component {
     return <div className="rbc-row">{row}</div>
   }
 
-  canRenderSlotEvent(slot, span) {
-    let { segments } = this.props
-
-    return range(slot, slot + span).every(s => {
-      let count = eventsInSlot(segments, s)
-
-      return count === 1
-    })
-  }
-
   renderShowMore(segments, slot) {
-    let messages = message(this.props.messages)
-    let count = eventsInSlot(segments, slot)
+
+      let {count,date} = eventsFilter(segments,slot);
+      let cellClass = cn('rbc-month-receptionNum',
+          {'rbc-month-receptionNum-coming': this.props.now.setHours(0,0,0,0) <= date.setHours(0,0,0,0)})
 
     return count && (
       <div
         key={'sm_' + slot}
-        className='rbc-month-receptionNum'
+        className={cellClass}
         onClick={e => this.showMore(slot, e)}
       >
-        <Icon type="user"/> {count}
+        <div className="icon-count">
+          <Icon type="user" size={28}/>
+        </div> {count}
       </div>
     )
   }
