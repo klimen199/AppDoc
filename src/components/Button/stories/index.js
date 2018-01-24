@@ -37,6 +37,17 @@ storiesOf('Button', module)
                     type='gradient'
                     disable
             />
+            <Button
+                    btnText='Добавить'
+                    size='small'
+                    type='no-brd'
+            />
+
+            <Button
+                    btnText='Добавить'
+                    size='small'
+                    type='transparent'
+            />
         </div>
     ))
     .add('Default', () => (
