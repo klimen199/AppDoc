@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const DateHeader = ({ label, drilldownView, onDrillDown }) => {
+const DateHeader = ({ label, drilldownView }) => {
   if (!drilldownView) {
     return <span>{label}</span>
   }
 
   return (
-    <a href="#" onClick={onDrillDown}>
+    <span className="day-header">
       {label}
-    </a>
+    </span>
   )
 }
 

@@ -197,8 +197,9 @@ class MonthView extends React.Component {
         renderHeader={this.readerDateHeading}
         renderForMeasure={needLimitMeasure}
         onShowMore={this.handleShowMore}
+
+
         onSelect={this.handleSelectEvent}
-        onDoubleClick={this.handleDoubleClickEvent}
         onSelectSlot={this.handleSelectSlot}
         eventComponent={components.event}
         eventWrapperComponent={components.eventWrapper}
@@ -230,13 +231,13 @@ class MonthView extends React.Component {
           isOffRange && 'rbc-off-range',
           isCurrent && 'rbc-current'
         )}
+        onClick={(e) => this.handleHeadingClick(date, drilldownView, e)}
       >
         <DateHeaderComponent
           label={label}
           date={date}
           drilldownView={drilldownView}
           isOffRange={isOffRange}
-          onDrillDown={e => this.handleHeadingClick(date, drilldownView, e)}
         />
       </div>
     )
@@ -292,15 +293,26 @@ class MonthView extends React.Component {
     })
   }
 
+    handleClick = (range, slotInfo) => {
+        //this._pendingSelection = this._pendingSelection.concat(range)
+
+        this.clearSelection()
+        //console.log(range,slotInfo)
+
+        //this.handleShowMore(null,range);
+        //this._selectTimer = setTimeout(() => this.selectDates(slotInfo))
+    }
   handleSelectSlot = (range, slotInfo) => {
     this._pendingSelection = this._pendingSelection.concat(range)
 
     clearTimeout(this._selectTimer)
+
+      //this.handleShowMore(null,range);
     this._selectTimer = setTimeout(() => this.selectDates(slotInfo))
   }
 
   handleHeadingClick = (date, view, e) => {
-    e.preventDefault()
+      e.preventDefault()
     this.clearSelection()
     notify(this.props.onDrillDown, [date, view])
   }
@@ -310,12 +322,8 @@ class MonthView extends React.Component {
     notify(this.props.onSelectEvent, args)
   }
 
-  handleDoubleClickEvent = (...args) => {
-    this.clearSelection()
-    notify(this.props.onDoubleClickEvent, args)
-  }
-
   handleShowMore = (events, date, cell, slot) => {
+
     const { popup, onDrillDown, onShowMore, getDrilldownView } = this.props
     //cancel any pending selections so only the event click goes through.
     this.clearSelection()
@@ -340,12 +348,14 @@ class MonthView extends React.Component {
 
     slots.sort((a, b) => +a - +b)
 
-    notify(this.props.onSelectSlot, {
-      slots,
-      start: slots[0],
-      end: slots[slots.length - 1],
-      action: slotInfo.action,
-    })
+      notify(this.props.onDrillDown, [slots[0], this.props.getDrilldownView(slots[0])])
+
+    // notify(this.props.onSelectSlot, {
+    //   slots,
+    //   start: slots[0],
+    //   end: slots[slots.length - 1],
+    //   action: slotInfo.action,
+    // })
   }
 
   clearSelection() {

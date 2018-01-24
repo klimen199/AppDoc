@@ -87,6 +87,7 @@ class BackgroundCells extends React.Component {
                     dates.month(currentDate) !== dates.month(date) &&
                     'rbc-off-range-bg'
                 )}
+
               />
             </Wrapper>
           )
@@ -183,13 +184,21 @@ class BackgroundCells extends React.Component {
   }
 
   _selectSlot({ endIdx, startIdx, action }) {
-    if (endIdx !== -1 && startIdx !== -1)
-      this.props.onSelectSlot &&
+    if (endIdx !== -1 && startIdx !== -1){
+        this.props.onSelectSlot &&
         this.props.onSelectSlot({
-          start: startIdx,
-          end: endIdx,
-          action,
+            start: startIdx,
+            end: endIdx,
+            action,
+        });
+        this.props.onClick &&
+        this.props.onClick({
+            start: startIdx,
+            end: endIdx,
+            action,
         })
+    }
+
   }
 }
 

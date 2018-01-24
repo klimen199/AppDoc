@@ -194,6 +194,9 @@ class DateContentRow extends React.Component {
           onSelectStart={onSelectStart}
           onSelectEnd={onSelectEnd}
           onSelectSlot={this.handleSelectSlot}
+
+
+
           cellWrapperComponent={dateCellWrapper}
           longPressThreshold={longPressThreshold}
         />

@@ -18,14 +18,14 @@ class ArrowGroup extends React.Component{
         return (
             <div className='arrowsGroup'>
                 <button className={rootClass}
-                    onClick={onClickNext}
+                    onClick={onClickPrev}
                     {...(disable ? { disabled: true } : {})}
                 >
                     <Icon type='left' />
                     {type !== 'icon'}
                 </button>
                 <button className={rootClass}
-                    onClick={onClickPrev}
+                    onClick={onClickNext}
                     {...(disable ? { disabled: true } : {})}
                 >
                     <Icon type='right' />
