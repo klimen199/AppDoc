@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Header = ({ labels }) => {
   return <div className="header-week">
@@ -9,6 +10,13 @@ const Header = ({ labels }) => {
         {labels[1]}
     </div>
       </div>
+}
+
+Header.propTypes = {
+    labels: PropTypes.array,
+}
+Header.defaultProps = {
+    labels: [],
 }
 
 export default Header

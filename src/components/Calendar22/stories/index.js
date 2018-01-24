@@ -80,13 +80,7 @@ storiesOf('Calendar22', module)
 
 
                         onSelectEvent={action('Receive 1 obj')}
-                        onSelectSlot={slotInfo =>
-                            alert(
-                                `selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +
-                                `\nend: ${slotInfo.end.toLocaleString()}` +
-                                `\naction: ${slotInfo.action}`
-                            )
-                        }
+                        onSelectSlot={slotInfo => console.log(slotInfo)}
 
                         defaultView="week"
 

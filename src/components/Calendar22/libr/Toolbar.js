@@ -18,8 +18,6 @@ class Toolbar extends React.Component {
   render() {
     let { messages, label, receptionNum } = this.props
 
-      //console.log(messages)
-
     return (
       <div className="rbc-toolbar">
         <Button

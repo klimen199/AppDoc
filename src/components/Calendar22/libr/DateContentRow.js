@@ -14,7 +14,6 @@ import {
   eventLevels,
 } from './utils/eventLevels'
 import BackgroundCells from './BackgroundCells'
-import EventRow from './EventRow'
 import EventEndingRow from './EventEndingRow'
 
 let isSegmentInSlot = (seg, slot) => seg.left <= slot && seg.right >= slot
@@ -207,21 +206,6 @@ class DateContentRow extends React.Component {
               {range.map(this.renderHeadingCell)}
             </div>
           )}
-          {/*{levels.map((segs, idx) => (*/}
-            {/*<EventRow*/}
-              {/*{...props}*/}
-              {/*key={idx}*/}
-              {/*start={first}*/}
-              {/*end={last}*/}
-              {/*segments={segs}*/}
-              {/*slots={range.length}*/}
-              {/*eventComponent={eventComponent}*/}
-              {/*eventWrapperComponent={eventWrapperComponent}*/}
-              {/*startAccessor={startAccessor}*/}
-              {/*endAccessor={endAccessor}*/}
-              {/*extraSeg={extra}*/}
-            {/*/>*/}
-          {/*))}*/}
 
           {(
             <EventEndingRow
