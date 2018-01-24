@@ -11,6 +11,7 @@
     }
 
     &-all {
+        width: 100%;
         
         .tableheader {
             display: flex;
@@ -21,6 +22,11 @@
             border-top: 1px solid #ebebeb;
             border-bottom: 1px solid #ebebeb;
             margin-top: 25px;
+            width: 100%;
+            left: 0;
+            right: 0;
+            top: 0;
+            position: sticky;
 
             &-name {
                 color: #777777;
@@ -75,6 +81,11 @@
                     margin-right: 0;
                 }
             }
+        }
+
+        .ant-card-body{
+            max-height: 715px;
+            overflow-y: auto;
         }
     }
 }

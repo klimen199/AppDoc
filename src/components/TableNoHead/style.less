@@ -11,6 +11,7 @@
 	}
 
 	&-all{
+		width: 100%;
 
 		.tableheader{
 			display: flex;
@@ -19,10 +20,19 @@
 		    padding: 22.5px 32.5px;
 		    background-color: #fff;
 		    border: none;
+			position: sticky;
+			top: 0;
+			width: 100%;
+			z-index: 2;
 
 		    .ico-btn{
 		    	display: flex;
 		    }
+		}
+
+		.ant-card-body{
+			max-height: 485px;
+			overflow-y: auto;
 		}
 	}
 }

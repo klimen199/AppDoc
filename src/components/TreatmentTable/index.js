@@ -12,6 +12,16 @@ import '../../icon/style.css'
 
 class TreatmentTable extends React.Component{
 
+    treatmentRender = (dataArr) => {
+        let treatmentArr = [];
+
+        dataArr.map((item) => {
+            treatmentArr.push(<TreatmentTableItem {...item} key={item.id}/>)
+        });
+
+        return treatmentArr;
+    };
+
     render(){
         const rootClass = cn('treatment-all');
 
@@ -28,48 +38,19 @@ class TreatmentTable extends React.Component{
                         <div className="flex-col"><div className="tableheader-name">отзыв</div></div>
                         <div className="flex-col"><div className="tableheader-name"></div></div>
                     </div>
-                    <TreatmentTableItem 
-                        name="Иванова А. К." 
-                        date="15.09.2017"
-                        time="15:00-16:00"
-                        type='chat1'
-                        diagnostic='Сахарный диабет'
-                        comments='Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
-                        price='112 руб.'
-                        conclusion='Lorem ipsum dolor sit amet, consectetuer adipiscing elit'
-                        conclusionDownload='Заключение 252525.pdf'
-                        review='Lorem ipsum dolor sit amet, consectetuer...'
-                    />
-
-                    <TreatmentTableItem 
-                        name="Иванова А. К." 
-                        date="15.09.2017"
-                        time="15:00-16:00"
-                        type='chat1'
-                        diagnostic='Сахарный диабет'
-                        comments='Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
-                        price='112 руб.'
-                        conclusion='Lorem ipsum dolor sit amet, consectetuer adipiscing elit'
-                        conclusionDownload='Заключение 252525.pdf'
-                        review='Lorem ipsum dolor sit amet, consectetuer...'
-                    />
-
-                    <TreatmentTableItem 
-                        name="Иванова А. К." 
-                        date="15.09.2017"
-                        time="15:00-16:00"
-                        type='chat1'
-                        diagnostic='Сахарный диабет'
-                        comments='Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
-                        price='112 руб.'
-                        conclusion='Lorem ipsum dolor sit amet, consectetuer adipiscing elit'
-                        conclusionDownload='Заключение 252525.pdf'
-                        review='Lorem ipsum dolor sit amet, consectetuer...'
-                    />
+                    {this.treatmentRender(this.props.data)}
                   </Card>
             </div>
         )
     }
 }
+
+TreatmentTable.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.object),
+};
+
+TreatmentTable.defaultProps = {
+    data: [],
+};
 
 export default TreatmentTable
