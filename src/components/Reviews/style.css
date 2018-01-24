@@ -1,6 +1,1 @@
-/* fonts */
-/* COLORS */
-/* VAR */
-.reviews.ant-card .ant-card-body > div {
-  padding: 20px 30px;
-}
+.reviews.ant-card .ant-card-body>div{padding:20px 30px}.reviews{width:100%}.reviews .ant-card-body{max-height:485px;overflow-y:auto}

@@ -12,6 +12,16 @@ import '../../icon/style.css'
 
 class TableNoHead extends React.Component{
 
+    scheduleRender = (dataArr) => {
+        let scheduleArr = [];
+
+        dataArr.map((item) => {
+            scheduleArr.push(<TableNoHeadItem {...item} key={item.id}/>)
+        });
+
+        return scheduleArr;
+    };
+
     render(){
         const rootClass = cn('schedule-all');
 
@@ -48,38 +58,20 @@ class TableNoHead extends React.Component{
                             />
                         </div>
                     </div>
-                    <TableNoHeadItem 
-                        name="Иванова А. К." 
-                        infoText="Консультация по результатам анализа крови. Консультация по результатам анализа крови. Консультация по результатам анализа крови." 
-                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
-                        time="08:15"
-                        type='chat1'
-                    />
-                    <TableNoHeadItem 
-                        name="Иванова А. К." 
-                        infoText="Консультация по результатам анализа крови." 
-                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
-                        time="08:15"
-                        type='chat1'
-                    />
-                    <TableNoHeadItem 
-                        name="Иванова А. К." 
-                        infoText="Консультация по результатам анализа крови." 
-                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
-                        time="08:15"
-                        type='chat1'
-                    />
-                    <TableNoHeadItem 
-                        name="Иванова А. К." 
-                        infoText="Консультация по результатам анализа крови." 
-                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
-                        time="08:15"
-                        type='chat1'
-                    />
+                    {this.scheduleRender(this.props.data)}
                   </Card>
             </div>
         )
     }
 }
+
+TableNoHead.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.object),
+};
+
+TableNoHead.defaultProps = {
+    data: [],
+};
+
 
 export default TableNoHead

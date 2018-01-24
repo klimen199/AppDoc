@@ -11,8 +11,7 @@ class TopPanel extends React.Component{
 
     render(){
         return (
-            <div className='TabPanel'
-            >
+            <div className='TabPanel'>
             </div>
         )
     }
