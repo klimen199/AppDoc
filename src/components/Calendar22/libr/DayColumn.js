@@ -80,6 +80,7 @@ class DayColumn extends React.Component {
   state = { selecting: false }
 
   componentDidMount() {
+    console.log('DID Mount')
     this.props.selectable && this._selectable()
   }
 

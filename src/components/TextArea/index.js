@@ -5,6 +5,16 @@ import cn from 'classnames'
 import './styles.css'
 
 class TextArea extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            value: this.props.value,
+        }
+    }
+
+    changeHandler = (e) => {
+        this.setState({value: e.target.value})
+    }
 
     render(){
         const {label, className, placeholder} = this.props;
@@ -15,8 +25,8 @@ class TextArea extends React.Component{
                 {label && <div className="textarea-label">{label}</div>}
                 <textarea className="textarea-field"
                           placeholder={placeholder}
-                          value={this.props.value}
-                          onChange={e => this.props.onChange(e.target.value)}/>
+                          value={this.state.value}
+                          onChange={this.changeHandler}/>
             </div>
         )
     }

@@ -14,7 +14,7 @@ import {
   eventLevels,
 } from './utils/eventLevels'
 import BackgroundCells from './BackgroundCells'
-import EventEndingRow from './EventEndingRow'
+import EventRowMonth from './EventRowMonth'
 
 let isSegmentInSlot = (seg, slot) => seg.left <= slot && seg.right >= slot
 
@@ -193,9 +193,6 @@ class DateContentRow extends React.Component {
           onSelectStart={onSelectStart}
           onSelectEnd={onSelectEnd}
           onSelectSlot={this.handleSelectSlot}
-
-
-
           cellWrapperComponent={dateCellWrapper}
           longPressThreshold={longPressThreshold}
         />
@@ -208,7 +205,7 @@ class DateContentRow extends React.Component {
           )}
 
           {(
-            <EventEndingRow
+            <EventRowMonth
               {...props}
               start={first}
               end={last}
