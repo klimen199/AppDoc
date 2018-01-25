@@ -5,10 +5,9 @@ import Button from '../Button'
 import './style.css'
 
 
-class PopoverBody extends React.Component {
+const PopoverBody = (props) => {
 
-  render() {
-  	const {name, text, time, date, onEmail} = this.props;
+  	const {name, text, time, date, onEmail} = props;
 
     return (
       <div className='calendar-body'>
@@ -20,7 +19,7 @@ class PopoverBody extends React.Component {
 					icon='telephone'
 					svg
 					iconSize={21}
-					onClick={this.props.onPhone}
+					onClick={props.onPhone}
 				/>
 			</div>
 
@@ -37,7 +36,7 @@ class PopoverBody extends React.Component {
 					onClick={onEmail}
 				/>
 				<Button
-					onClick={this.props.onClose}
+					onClick={props.onClose}
 					size='file'
 					type='file'
 					icon='circle_close'
@@ -47,7 +46,6 @@ class PopoverBody extends React.Component {
 			</div>
 		</div>
     );
-  }
 }
 
 PopoverBody.propTypes ={
