@@ -1,34 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import cn from 'classnames'
 import PopoverBody from '../PopoverBody'
-import Card from '../Card'
-import Button from '../Button'
-import Icon from '../Icon'
 
 import { Popover } from 'antd';
 
 import './style.css'
 
 class PopoverApp extends React.Component {
-	popoverRender = (dataArr) => {
-        let popoverArr = [];
-
-        dataArr.map((item) => {
-            popoverArr.push(<PopoverBody {...item}/>)
-        });
-
-        return popoverArr;
-    };
 
 	state = {
 		visible: false,
-	}
-
-	hide = () => {
-		this.setState({
-			visible: false,
-		});
 	}
 
 	handleVisibleChange = (visible) => {
@@ -38,13 +19,14 @@ class PopoverApp extends React.Component {
   render() {
     return (
       <Popover
-        content={this.popoverRender(this.props.data)}
+        content={<PopoverBody {...this.props.data}
+                              onClose={() => this.setState({visible: false})}/>}
         trigger="click"
         visible={this.state.visible}
         onVisibleChange={this.handleVisibleChange}
         placement="rightTop"
       >
-        <Button type="primary">Click me</Button>
+          {this.props.children}
       </Popover>
     );
   }
@@ -52,11 +34,11 @@ class PopoverApp extends React.Component {
 
 
 PopoverApp.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.object),
+    data: PropTypes.object,
 };
 
 PopoverApp.defaultProps = {
-    data: [],
+    data: {},
 };
 
 export default PopoverApp

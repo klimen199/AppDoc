@@ -3,15 +3,17 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import PopoverApp from '../';
-import Icon from '../../Icon';
-import Link from '../../Links'
-import Button from '../../Button'
 
 import {dataArr} from './mock-data'
 
-storiesOf('Popover', module)
+storiesOf('PopoverApp', module)
     .add('Popover', () => (
         <div style={{ padding: '30px' }}>
-            <PopoverApp  data={dataArr}/>
+            <PopoverApp  data={dataArr}>
+                <div style={{width:100, height: 100, backgroundColor: 'yellow'}}
+                     onClick={() => dataArr}>
+                    smth
+                </div>
+            </PopoverApp>
         </div>
     ))
