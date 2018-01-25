@@ -3,6 +3,7 @@ import React from 'react'
 import { findDOMNode } from 'react-dom'
 import cn from 'classnames'
 
+import PopoverApp from '../../Popover'
 import Selection, { getBoundsForNode, isEvent } from './Selection'
 import dates from './utils/dates'
 import { isSelected } from './utils/selection'
@@ -77,10 +78,12 @@ class DayColumn extends React.Component {
     timeslots: 2,
   }
 
-  state = { selecting: false }
+  state = {
+    selecting: false,
+      event: null
+  };
 
   componentDidMount() {
-    console.log('DID Mount')
     this.props.selectable && this._selectable()
   }
 
@@ -143,6 +146,11 @@ class DayColumn extends React.Component {
         )}
       </TimeColumn>
     )
+  }
+
+  onEventClickHandler = (event, e) => {
+      this.setState({event})
+      this._select(event, e)
   }
 
   renderEvents = () => {
@@ -223,6 +231,7 @@ class DayColumn extends React.Component {
 
       return (
         <EventWrapper event={event} key={'evt_' + idx}>
+          <PopoverApp data={this.state.event}>
           <div
             style={{
               ...xStyle,
@@ -231,7 +240,7 @@ class DayColumn extends React.Component {
               [isRtl ? 'right' : 'left']: `${Math.max(0, xOffset)}%`,
             }}
             title={(typeof label === 'string' ? label + ': ' : '') + title}
-            onClick={e => this._select(event, e)}
+            onClick={e => this.onEventClickHandler(event, e)}
             onDoubleClick={e => this._doubleClick(event, e)}
             className={cn('rbc-event', className, {
               /*'rbc-selected': _isSelected,*/
@@ -252,6 +261,7 @@ class DayColumn extends React.Component {
               )}
             </div>
           </div>
+          </PopoverApp>
         </EventWrapper>
       )
     })

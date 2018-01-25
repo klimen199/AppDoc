@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+import moment from 'moment'
 import Button from '../Button'
 
 import './style.css'
@@ -7,13 +8,14 @@ import './style.css'
 
 const PopoverBody = (props) => {
 
-  	const {name, text, time, date, onEmail} = props;
+  	const {title, desc, start, end, onEmail} = props;
 
     return (
       <div className='calendar-body'>
-			<a className='calendar-name'>{name}</a>
-			<div className='calendar-date'>{date} 
-				<Button 
+			<a className='calendar-name'>{title}</a>
+			<div className='calendar-date'>
+				{moment(start).format('DD MMMM')}
+				<Button
 					size='file'
 					type='file'
 					icon='telephone'
@@ -23,11 +25,13 @@ const PopoverBody = (props) => {
 				/>
 			</div>
 
-			<div className='calendar-time'>{time}</div>
-			<div className='calendar-text'>{text}</div>
+			<div className='calendar-time'>
+				{moment(start).format('HH mm')} - {moment(end).format('HH mm')}
+				</div>
+			<div className='calendar-text'>{desc}</div>
 
 			<div className='calendar-block'>
-				<Button 
+				<Button
 					size='file'
 					type='file'
 					icon='mail'
@@ -49,19 +53,19 @@ const PopoverBody = (props) => {
 }
 
 PopoverBody.propTypes ={
-    name: PropTypes.string,
-    text: PropTypes.string,
-    time: PropTypes.string,
-    date: PropTypes.string,
+    title: PropTypes.string,
+    desc: PropTypes.string,
+    start: PropTypes.instanceOf(Date),
+    end: PropTypes.instanceOf(Date),
     onPhone: PropTypes.func,
     onEmail: PropTypes.func,
 }
 
 PopoverBody.defaultProps = {
-    name: '',
-    text: '',
-    time: '',
-    date: '',
+    title: '',
+    desc: '',
+    start: null,
+    end: null,
     onPhone: () => {},
     onEmail: () => {},}
 

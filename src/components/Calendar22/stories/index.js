@@ -25,6 +25,7 @@ const events = [
         title: 'Иванова Александра',
         start: new Date(2018, 0, 12, 9, 0, 0, 0),
         end: new Date(2018, 0, 12, 9, 10, 0, 0),
+        desc: 'Most important meal of the day',
     },
     {
         id: 9,
@@ -38,30 +39,35 @@ const events = [
         title: 'Иванова Александра',
         start: new Date(2018, 0, 12, 10, 0, 0, 0),
         end: new Date(2018, 0, 12, 10, 5, 0, 0),
+        desc: 'Most important meal of the day',
     },
     {
         id: 11,
         title: 'Иванова-Петрова Александра',
         start: new Date(2018, 0, 13, 9, 0, 0),
         end: new Date(2018, 0, 13, 9, 5, 0),
+        desc: 'Most important meal of the day',
     },
     {
         id: 12,
         title: 'Иванова Александра',
         start: new Date(2018, 0, 24, 8, 0, 0),
         end: new Date(2018, 0, 24, 8, 10, 0),
+        desc: 'Most important meal of the day',
     },
     {
         id: 13,
         title: 'Иванова Александра',
         start: new Date(2018, 0, 23, 8, 10, 0),
         end: new Date(2018, 0, 23, 8, 15, 0),
+        desc: 'Most important meal of the day',
     },
     {
         id: 14,
         title: 'Петров Виталий',
         start: new Date(2018, 0, 25, 8, 40, 0),
         end: new Date(2018, 0, 25, 8, 50, 0),
+        desc: 'Most important meal of the day',
     },
 ];
 
