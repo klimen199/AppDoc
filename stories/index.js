@@ -77,6 +77,7 @@ const loadStories = () => {
     require('../src/components/Registration/stories');
     require('../src/components/UploadBig/stories');
     require('../src/components/RegistrationForget/stories');
+    require('../src/components/PopoverBody/stories');
 };
 
 configure(loadStories, module);
