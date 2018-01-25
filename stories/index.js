@@ -80,6 +80,7 @@ const loadStories = () => {
     require('../src/components/PopoverBody/stories');
     require('../src/components/PatientTableItem/stories');
     require('../src/components/PatientTable/stories');
+    require('../src/components/Calendar22/stories');
 };
 
 configure(loadStories, module);

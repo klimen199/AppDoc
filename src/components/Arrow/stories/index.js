@@ -4,8 +4,8 @@ import { action } from '@storybook/addon-actions';
 
 import ArrowGroup from '../';
 
-storiesOf('ArrowGroup', module)
-    .add('ArrowGroup', () => (
+storiesOf('Arrow', module)
+    .add('Arrow', () => (
             <div className="flexTest">
                 <ArrowGroup
                         type='dark-blue'

@@ -10,7 +10,7 @@ class ArrowGroup extends React.Component{
 
     render(){
 
-        const {type, disable, onClick} = this.props;
+        const {type, disable, onClickNext, onClickPrev} = this.props;
 
         const rootClass = cn( 'arrow', `arrow-type-${type}`,)
         let btnTextStyle = {}
@@ -18,14 +18,14 @@ class ArrowGroup extends React.Component{
         return (
             <div className='arrowsGroup'>
                 <button className={rootClass}
-                    onClick={onClick}
+                    onClick={onClickPrev}
                     {...(disable ? { disabled: true } : {})}
                 >
                     <Icon type='left' />
                     {type !== 'icon'}
                 </button>
                 <button className={rootClass}
-                    onClick={onClick}
+                    onClick={onClickNext}
                     {...(disable ? { disabled: true } : {})}
                 >
                     <Icon type='right' />
@@ -39,13 +39,15 @@ class ArrowGroup extends React.Component{
 ArrowGroup.propTypes ={
     type: PropTypes.oneOf(['blue','dark-blue','float','yellow','gradient']),
     disable: PropTypes.bool,
-    onClick: PropTypes.func,
+    onClickNext: PropTypes.func,
+    onClickPrev: PropTypes.func,
 }
 
 ArrowGroup.defaultProps = {
     type: 'float',
     disable: false,
-    onClick: () => {},
+    onClickNext: () => {},
+    onClickPrev: () => {},
 }
 
 export default ArrowGroup
