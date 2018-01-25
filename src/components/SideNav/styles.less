@@ -16,6 +16,16 @@
     background-color: transparent !important;
 }
 
+.ant-menu-inline .ant-menu-item{
+
+    &:last-child{
+
+        .selectedNavLink{
+            padding: 0 25px;
+        }
+    }
+}
+
 .ant-menu-inline .ant-menu-item:after {
     border: none;
 }
@@ -37,11 +47,11 @@
         transition: 0.2s linear;
     }
 
-    .doctorProfileCard-specialty{
-    	margin-bottom: 	25px;
+    .doctorProfileCard-specialty {
+        margin-bottom: 25px;
     }
 
-    .logo{
+    .logo {
         position: relative;
         width: 100%;
         height: 100px;
@@ -51,7 +61,7 @@
         justify-content: center;
         align-items: center;
 
-        &-img{
+        &-img {
             display: block;
             background-image: url('../../img/logo.svg');
             background-position: 50%;
@@ -65,9 +75,9 @@
     &-short {
         width: 170px;
 
-        .logo{
+        .logo {
 
-            &-img{
+            &-img {
                 background-image: url('../../img/logo-small.svg');
                 height: 51px;
                 width: 66px;
@@ -90,11 +100,11 @@
                 display: none;
             }
 
-            &:active{
+            &:active {
 
-            	&:before{
-            		display: none;
-            	}
+                &:before {
+                    display: none;
+                }
             }
         }
     }
@@ -110,12 +120,13 @@
             &:hover {
                 text-decoration: none;
 
-                .item-title{
-					color: @blue;
+                .item-title {
+                    color: @blue;
                 }
 
-                .icon,.anticon{
-                	color: @blue;
+                .icon,
+                .anticon {
+                    color: @blue;
                 }
             }
 
@@ -123,11 +134,11 @@
                 display: none;
             }
 
-            &:active{
+            &:active {
 
-            	&:before{
-            		display: none;
-            	}
+                &:before {
+                    display: none;
+                }
             }
         }
 
@@ -142,22 +153,23 @@
             &:hover {
                 text-decoration: none;
 
-                .item-title{
-					color: #fff;
+                .item-title {
+                    color: #fff;
                 }
 
-                .icon{
-                	color: #fff;
+                .icon {
+                    color: #fff;
                 }
 
-                .anticon{
-                	margin: auto 20px auto 0
+                .anticon {
+                    margin: auto 20px auto 0
                 }
             }
 
             &>.sidenav-root-menu-item {}
 
-            .icon,.anticon {
+            .icon,
+            .anticon {
                 color: #fff;
             }
 
@@ -173,8 +185,8 @@
             justify-content: center;
             align-items: center;
 
-            &>.anticon{
-            	margin: auto 20px auto 0;
+            &>.anticon {
+                margin: auto 20px auto 0;
             }
 
             &>.icon {
@@ -197,7 +209,8 @@
                 margin: auto !important;
             }
 
-            .icon,.anticon{
+            .icon,
+            .anticon {
                 color: #fff;
             }
 
@@ -218,8 +231,8 @@
                 margin: auto;
             }
 
-            &>.anticon{
-            	margin: auto;
+            &>.anticon {
+                margin: auto;
             }
         }
     }

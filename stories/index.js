@@ -77,6 +77,9 @@ const loadStories = () => {
     require('../src/components/Registration/stories');
     require('../src/components/UploadBig/stories');
     require('../src/components/RegistrationForget/stories');
+    require('../src/components/PopoverBody/stories');
+    require('../src/components/PatientTableItem/stories');
+    require('../src/components/PatientTable/stories');
     require('../src/components/Calendar22/stories');
 };
 
