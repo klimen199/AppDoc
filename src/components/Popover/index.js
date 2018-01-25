@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import cn from 'classnames'
-import { action } from '@storybook/addon-actions';
 import PopoverBody from '../PopoverBody'
 import Card from '../Card'
 import Button from '../Button'
