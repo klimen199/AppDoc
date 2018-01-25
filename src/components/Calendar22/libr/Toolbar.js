@@ -6,6 +6,9 @@ import Button from '../../Button'
 import Arrow from '../../Arrow'
 
 class Toolbar extends React.Component {
+  state = {
+    active: null
+  }
   static propTypes = {
     view: PropTypes.string.isRequired,
     views: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -54,7 +57,9 @@ class Toolbar extends React.Component {
         <Button
           key={name}
           size="small"
+          type='transparent'
           btnText={messages[name]}
+          className={cn({ 'rbc-active': view === name })}
           onClick={this.view.bind(null, name)}
         />
       ))

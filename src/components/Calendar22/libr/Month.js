@@ -12,8 +12,6 @@ import { notify } from './utils/helpers'
 import getPosition from 'dom-helpers/query/position'
 import raf from 'dom-helpers/util/requestAnimationFrame'
 
-import Popup from './Popup'
-import Overlay from 'react-overlays/lib/Overlay'
 import DateContentRow from './DateContentRow'
 import Header from './Header'
 import DateHeader from './DateHeader'
@@ -146,7 +144,6 @@ class MonthView extends React.Component {
           {this.renderHeaders(weeks[0], weekdayFormat, culture)}
         </div>
         {weeks.map(this.renderWeek)}
-        {this.props.popup && this.renderOverlay()}
       </div>
     )
   }
@@ -259,33 +256,6 @@ class MonthView extends React.Component {
   }
 
 
-
-  renderOverlay() {
-    let overlay = (this.state && this.state.overlay) || {}
-    let { components } = this.props
-
-    return (
-      <Overlay
-        rootClose
-        placement="bottom"
-        container={this}
-        show={!!overlay.position}
-        onHide={() => this.setState({ overlay: null })}
-      >
-        <Popup
-          {...this.props}
-          eventComponent={components.event}
-          eventWrapperComponent={components.eventWrapper}
-          position={overlay.position}
-          events={overlay.events}
-          slotStart={overlay.date}
-          slotEnd={overlay.end}
-          onSelect={this.handleSelectEvent}
-        />
-      </Overlay>
-    )
-  }
-
   measureRowLimit() {
     this.setState({
       needLimitMeasure: false,
@@ -293,15 +263,6 @@ class MonthView extends React.Component {
     })
   }
 
-    handleClick = (range, slotInfo) => {
-        //this._pendingSelection = this._pendingSelection.concat(range)
-
-        this.clearSelection()
-        //console.log(range,slotInfo)
-
-        //this.handleShowMore(null,range);
-        //this._selectTimer = setTimeout(() => this.selectDates(slotInfo))
-    }
   handleSelectSlot = (range, slotInfo) => {
     this._pendingSelection = this._pendingSelection.concat(range)
 

@@ -26,19 +26,27 @@ export default class TimeSlot extends Component {
     const Wrapper = this.props.dayWrapperComponent
     const { className, style } = (slotPropGetter && slotPropGetter(value)) || {}
 
+    let cont = this.props.showLabel ?
+        (<div style={style}
+                className={cn(
+                    'rbc-time-slot',
+                    className,
+                    this.props.showLabel && 'rbc-label',
+                    this.props.isNow && 'rbc-now'
+                )}
+        >
+            {this.props.showLabel && <span>{this.props.content}</span>}
+        </div>)
+  :
+      null
+
+
     return (
       <Wrapper value={value} resource={resource}>
-        <div
-          style={style}
-          className={cn(
-            'rbc-time-slot',
-            className,
-            this.props.showLabel && 'rbc-label',
-            this.props.isNow && 'rbc-now'
-          )}
-        >
-          {this.props.showLabel && <span>{this.props.content}</span>}
-        </div>
+          {
+              cont
+          }
+
       </Wrapper>
     )
   }
