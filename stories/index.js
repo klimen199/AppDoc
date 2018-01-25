@@ -78,6 +78,8 @@ const loadStories = () => {
     require('../src/components/UploadBig/stories');
     require('../src/components/RegistrationForget/stories');
     require('../src/components/PopoverBody/stories');
+    require('../src/components/PatientTableItem/stories');
+    require('../src/components/PatientTable/stories');
 };
 
 configure(loadStories, module);
