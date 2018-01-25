@@ -74,6 +74,9 @@ const loadStories = () => {
     require('../src/components/Login/stories');
     require('../src/components/Step/stories');
     require('../src/components/LoginForget/stories');
+    require('../src/components/Registration/stories');
+    require('../src/components/UploadBig/stories');
+    require('../src/components/RegistrationForget/stories');
     require('../src/components/Calendar22/stories');
 };
 

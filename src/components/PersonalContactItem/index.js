@@ -25,13 +25,13 @@ class PersonalContactItem extends React.Component{
                         <div className="personal-title">контактные данные</div>
                     </div>
                     <div className="personal-item">
-                        <Input addonAfter="ФИО" defaultValue={fio} />
+                        <Input addonBefore="ФИО" defaultValue={fio} />
                     </div>
                     <div className="personal-item">
-                        <Input addonAfter="Телефона" defaultValue={phone}/>
+                        <Input addonBefore="Телефона" defaultValue={phone}/>
                     </div>
                     <div className="personal-item">
-                        <Input addonAfter="Email" defaultValue={email}/>
+                        <Input addonBefore="Email" defaultValue={email}/>
                     </div>
                 </div>
 
@@ -40,10 +40,10 @@ class PersonalContactItem extends React.Component{
                         <div className="personal-title">изменить пароль</div>
                     </div>
                     <div className="personal-item">
-                        <Input addonAfter="Текущий пароль" defaultValue={oldPassword} type="password"/>
+                        <Input addonBefore="Текущий пароль" defaultValue={oldPassword} type="password"/>
                     </div>
                     <div className="personal-item">
-                        <Input addonAfter="Новый пароль" defaultValue={newPassword} />
+                        <Input addonBefore="Новый пароль" defaultValue={newPassword} />
                     </div>
                 </div>
 

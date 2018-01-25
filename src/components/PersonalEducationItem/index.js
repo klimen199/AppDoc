@@ -34,8 +34,8 @@ class PersonalEducationItem extends React.Component{
         for(let i =0; i<this.state.dpNum;i++){
             dpArr.push(
                 <div className="personal-item" key={i}>
-                    <Input addonAfter="Учебное заведение" />
-                    <Input addonAfter="Специальность"/>
+                    <Input addonBefore="Учебное заведение" />
+                    <Input addonBefore="Специальность"/>
                     <DatePicker range placeholderStart="Начало обучения" placeholderEnd="Окончание обучения"/>
                     <Upload text="Прикрепить документ, подтверждающий ученую степень"/>
                 </div>
@@ -59,8 +59,8 @@ class PersonalEducationItem extends React.Component{
         for(let i =0; i<this.state.dpNum2;i++){
             dpArr2.push(
                 <div className="personal-item" key={i}>
-                    <Input addonAfter="Учебное заведение" />
-                    <Input addonAfter="Название цикла обучения"/>
+                    <Input addonBefore="Учебное заведение" />
+                    <Input addonBefore="Название цикла обучения"/>
                     <DatePicker range placeholderStart="Начало обучения" placeholderEnd="Окончание обучения"/>
                     <Upload text="Прикрепить документ, подтверждающий ученую степень"/>
                 </div>
