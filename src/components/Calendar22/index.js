@@ -11,7 +11,7 @@ import './styles.css'
 
 momentLocalizer(moment);
 
-const Calendar22 = (props) => {
+const BigCalendar = (props) => {
 
 
     return (<div>
@@ -24,7 +24,7 @@ const Calendar22 = (props) => {
     </div>);
 };
 
-Calendar22.propTypes = {
+BigCalendar.propTypes = {
     events: PropTypes.array,
     receptionNum: PropTypes.oneOfType([
         PropTypes.string,
@@ -33,9 +33,9 @@ Calendar22.propTypes = {
 
 };
 
-Calendar22.defaultProps = {
+BigCalendar.defaultProps = {
     events: [],
     receptionNum: 0,
 };
 
-export default Calendar22;
+export default BigCalendar;

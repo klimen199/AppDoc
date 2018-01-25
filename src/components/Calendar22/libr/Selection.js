@@ -64,6 +64,7 @@ class Selection {
   }
 
   on(type, handler) {
+
     let handlers = this._listeners[type] || (this._listeners[type] = [])
 
     handlers.push(handler)
@@ -77,6 +78,7 @@ class Selection {
   }
 
   emit(type, ...args) {
+        //console.log('CHECK Point', type)
     let result
     let handlers = this._listeners[type] || []
     handlers.forEach(fn => {
@@ -96,7 +98,7 @@ class Selection {
   }
 
   isSelected(node) {
-    let box = this._selectRect
+      let box = this._selectRect
 
     if (!box || !this.selecting) return false
 
@@ -183,7 +185,7 @@ class Selection {
   }
 
   _handleInitialEvent(e) {
-    const { clientX, clientY, pageX, pageY } = getEventCoordinates(e)
+      const { clientX, clientY, pageX, pageY } = getEventCoordinates(e)
     let node = this.container(),
       collides,
       offsetData
@@ -197,7 +199,7 @@ class Selection {
       return
 
     if (!this.globalMouse && node && !contains(node, e.target)) {
-      let { top, left, bottom, right } = normalizeDistance(0)
+        let { top, left, bottom, right } = normalizeDistance(0)
 
       offsetData = getBoundsForNode(node)
 
@@ -214,7 +216,7 @@ class Selection {
       if (!collides) return
     }
 
-    let result = this.emit(
+      let result = this.emit(
       'beforeSelect',
       (this._initialEventData = {
         isTouch: /^touch/.test(e.type),

@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import Calendar22 from '../';
+import BigCalendar from '../';
 
 
 const events = [
@@ -30,57 +30,57 @@ const events = [
     {
         id: 8,
         title: 'Meeting',
-        start: new Date(2018, 0, 12, 14, 0, 0, 0),
-        end: new Date(2018, 0, 12, 15, 0, 0, 0),
+        start: new Date(2018, 0, 12, 9, 0, 0, 0),
+        end: new Date(2018, 0, 12, 9, 10, 0, 0),
     },
     {
         id: 9,
         title: 'Happy Hour',
-        start: new Date(2018, 0, 12, 17, 0, 0, 0),
-        end: new Date(2018, 0, 12, 17, 30, 0, 0),
+        start: new Date(2018, 0, 12, 9, 30, 0, 0),
+        end: new Date(2018, 0, 12, 9, 35, 0, 0),
         desc: 'Most important meal of the day',
     },
     {
         id: 10,
         title: 'Dinner',
-        start: new Date(2018, 0, 12, 20, 0, 0, 0),
-        end: new Date(2018, 0, 12, 21, 0, 0, 0),
+        start: new Date(2018, 0, 12, 10, 0, 0, 0),
+        end: new Date(2018, 0, 12, 10, 5, 0, 0),
     },
     {
         id: 11,
         title: 'Birthday Party',
-        start: new Date(2018, 0, 13, 7, 0, 0),
-        end: new Date(2018, 0, 13, 10, 30, 0),
+        start: new Date(2018, 0, 13, 9, 0, 0),
+        end: new Date(2018, 0, 13, 9, 5, 0),
     },
     {
         id: 12,
         title: 'Birthday Party',
-        start: new Date(2018, 0, 24, 7, 0, 0),
-        end: new Date(2018, 0, 24, 10, 30, 0),
+        start: new Date(2018, 0, 24, 8, 0, 0),
+        end: new Date(2018, 0, 24, 8, 10, 0),
     },
     {
         id: 13,
         title: 'Birthday Party',
-        start: new Date(2018, 0, 23, 7, 0, 0),
-        end: new Date(2018, 0, 23, 10, 30, 0),
+        start: new Date(2018, 0, 23, 8, 10, 0),
+        end: new Date(2018, 0, 23, 8, 15, 0),
     },
     {
         id: 14,
         title: 'Birthday Party',
-        start: new Date(2018, 0, 25, 7, 0, 0),
-        end: new Date(2018, 0, 25, 10, 30, 0),
+        start: new Date(2018, 0, 25, 8, 45, 0),
+        end: new Date(2018, 0, 25, 8, 50, 0),
     },
 ];
 
 storiesOf('Calendar22', module)
     .add('default', () => (
         <div>
-            <Calendar22 receptionNum={23}
+            <BigCalendar receptionNum={23}
                         selectable
 
 
                         onSelectEvent={action('Receive 1 obj')}
-                        onSelectSlot={slotInfo => console.log(slotInfo)}
+                        onSelectSlot={action('Slot info')}
 
                         defaultView="week"
 

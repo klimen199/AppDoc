@@ -228,20 +228,21 @@ class DayColumn extends React.Component {
               top: `${top}%`,
               height: `${height}%`,
               [isRtl ? 'right' : 'left']: `${Math.max(0, xOffset)}%`,
-              width: `${width}%`,
             }}
             title={(typeof label === 'string' ? label + ': ' : '') + title}
             onClick={e => this._select(event, e)}
             onDoubleClick={e => this._doubleClick(event, e)}
             className={cn('rbc-event', className, {
-              'rbc-selected': _isSelected,
+              /*'rbc-selected': _isSelected,*/
               'rbc-event-continues-earlier': continuesPrior,
               'rbc-event-continues-later': continuesAfter,
               'rbc-event-continues-day-prior': _continuesPrior,
               'rbc-event-continues-day-after': _continuesAfter,
             })}
           >
+{/*
             <div className="rbc-event-label">{label}</div>
+*/}
             <div className="rbc-event-content">
               {EventComponent ? (
                 <EventComponent event={event} title={title} />
@@ -262,6 +263,7 @@ class DayColumn extends React.Component {
     return {
       top: top + '%',
       height: bottom - top + '%',
+        width: '100%'
     }
   }
 
@@ -271,7 +273,7 @@ class DayColumn extends React.Component {
       longPressThreshold: this.props.longPressThreshold,
     }))
 
-    let maybeSelect = box => {
+    let maybeSelect = (box, type) => {
       let onSelecting = this.props.onSelecting
       let current = this.state || {}
       let state = selectionState(box)
@@ -321,31 +323,31 @@ class DayColumn extends React.Component {
     }
 
     let selectorClicksHandler = (box, actionType) => {
-      if (!isEvent(findDOMNode(this), box))
+        if (!isEvent(findDOMNode(this), box))
         this._selectSlot({ ...selectionState(box), action: actionType })
 
       this.setState({ selecting: false })
     }
 
-    selector.on('selecting', maybeSelect)
-    selector.on('selectStart', maybeSelect)
-
-    selector.on('beforeSelect', box => {
-      if (this.props.selectable !== 'ignoreEvents') return
-
-      return !isEvent(findDOMNode(this), box)
-    })
+    // selector.on('selecting', maybeSelect)
+    // selector.on('selectStart', maybeSelect)
+    //
+    // selector.on('beforeSelect', box => {
+    //     if (this.props.selectable !== 'ignoreEvents') return
+    //
+    //   return !isEvent(findDOMNode(this), box)
+    // })
 
     selector.on('click', box => selectorClicksHandler(box, 'click'))
 
     selector.on('doubleClick', box => selectorClicksHandler(box, 'doubleClick'))
 
-    selector.on('select', () => {
-      if (this.state.selecting) {
-        this._selectSlot({ ...this.state, action: 'select' })
-        this.setState({ selecting: false })
-      }
-    })
+    // selector.on('select', () => {
+    //     if (this.state.selecting) {
+    //     this._selectSlot({ ...this.state, action: 'select' })
+    //     this.setState({ selecting: false })
+    //   }
+    // })
   }
 
   _teardownSelectable = () => {

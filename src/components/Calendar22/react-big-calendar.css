@@ -299,6 +299,7 @@ button.rbc-input::-moz-focus-inner {
           flex: 1;
 }
 .rbc-timeslot-group {
+    height: 52px;
   border-bottom: 1px solid #DDD;
   min-height: 40px;
   display: -webkit-flex;
@@ -341,16 +342,6 @@ button.rbc-input::-moz-focus-inner {
   padding-right: 5px;
   width: auto;
 }
-.rbc-day-slot .rbc-event-content {
-  width: 100%;
-  -webkit-flex: 1 1 0;
-      -ms-flex: 1 1 0px;
-          flex: 1 1 0;
-  word-wrap: break-word;
-  line-height: 1;
-  height: 100%;
-  min-height: 1em;
-}
 
 .rbc-time-slot {
   -webkit-flex: 1 0 0;
@@ -363,10 +354,7 @@ button.rbc-input::-moz-focus-inner {
 .rbc-day-header {
   text-align: center;
 }
-.rbc-day-slot .rbc-event {
-  position: absolute;
-  z-index: 2;
-}
+
 .rbc-slot-selection {
   z-index: 10;
   position: absolute;

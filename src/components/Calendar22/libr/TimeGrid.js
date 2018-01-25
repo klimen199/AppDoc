@@ -130,10 +130,8 @@ export default class TimeGrid extends Component {
     }
   }
 
-
-
   render() {
-    let {
+      let {
       events,
       range,
       width,
@@ -201,6 +199,7 @@ export default class TimeGrid extends Component {
       </div>
     )
   }
+
   renderEvents(range, events, today, resources) {
     let {
       min,
