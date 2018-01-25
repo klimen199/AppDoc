@@ -8,7 +8,87 @@
 			max-width: 345px;
 
 			&-content{
-				padding: 30px 32px;
+				padding: 0;
+
+				.default-popover{
+					padding: 30px 32px;
+				}
+
+				.calendar{
+
+					&-body{
+						padding: 23px;
+						background-color: #f6fbff;
+						max-width: 188px;
+					}
+
+					&-name{
+						color: #204d8d;
+						font-size: 14px;
+						line-height: 18px;
+						margin-bottom: 15px;
+						display: block;
+					}
+
+					&-date{
+						position: relative;
+						font-size: 12px;
+						line-height: 18px;
+						color: #344051;
+
+						.btn{
+							position: absolute;
+							right: 0;
+							top: 0;
+
+							.icon{
+								color: #285391;
+								margin-right: auto;
+							}
+						}
+					}
+
+					&-time{
+						font-size: 12px;
+						line-height: 18px;
+						color: #344051;
+						margin-bottom: 15px;
+					}
+
+					&-text{
+						font-size: 12px;
+						line-height: 18px;
+						color: #344051;
+						margin-bottom: 25px;
+					}
+
+					&-block{
+						display: flex;
+						justify-content: flex-end;
+						align-items: flex-end;
+
+						.btn{
+							
+							.icon{
+								color: #285391;
+							}
+
+							&:last-child{
+
+								.icon{
+									margin-right: auto;
+								}
+							}
+
+							&:hover{
+
+								.icon{
+									color: @blue;
+								}
+							}
+						}
+					}
+				}
 
 				.link{
 					margin-bottom: 1rem;
@@ -26,6 +106,10 @@
 			}
 		}
 	}
+}
+
+.ant-popover-placement-rightTop > .ant-popover-content > .ant-popover-arrow{
+	display: none;
 }
 
 .popover-nun{
