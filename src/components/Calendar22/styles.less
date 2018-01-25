@@ -52,40 +52,46 @@
   padding: 15px 0 0 15px;
 }
 
-//.rbc-row{
-//  display: flex;
-//
-//  .rbc-month-receptionNum{
-//    width: 100%;
-//    text-align: center;
-//    padding-bottom: 30px;
-//    font-size: 32px;
-//    cursor: pointer;
-//    color: #dddddd;
-//
-//    .icon-count{
-//      display: inline-block;
-//      text-align: center;
-//      width: 50px;
-//      height: 50px;
-//      border-radius: 50%;
-//      color: white;
-//      background-color: #dddddd;
-//    }
-//
-//    &-coming{
-//      color: @blue;
-//
-//      .icon-count{
-//        background-color: @blue;
-//      }
-//    }
-//  }
-//}
+.month-row {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
 
 
 .rbc-month-row{
   cursor: pointer;
+
+  .month-row-segment{
+    display: flex;
+    font-size: 32px;
+
+    &-content{
+      margin: 0 auto;
+
+          .icon-count{
+            display: inline-block;
+            text-align: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            color: white;
+            background-color: #dddddd;
+          }
+    }
+
+    &-coming{
+      .month-row-segment-content{
+        color: @blue;
+      }
+      .icon-count{
+        background-color: @blue;
+      }
+    }
+  }
 }
 
 .rbc-label.rbc-header-gutter.rbc-clock-icon{
@@ -143,7 +149,6 @@
   .header-week{
     &-weekday{
       font-size: 12px;
-      //text-align: center;
     }
     &-day{
       font-size: 14px;
@@ -164,14 +169,7 @@
 
 .rbc-day-slot {
   .rbc-event-content {
-    /*width: 100%;*/
-    /*-webkit-flex: 1 1 0;*/
-    /*-ms-flex: 1 1 0px;*/
-    /*flex: 1 1 0;*/
-    /*word-wrap: break-word;*/
     line-height: 1.3;
-    /*height: 100%;*/
-    /*min-height: 1em;*/
 
     background-color: @blue;
     border-radius: 6px;
