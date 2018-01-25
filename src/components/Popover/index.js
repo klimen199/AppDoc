@@ -17,6 +17,7 @@ class PopoverApp extends React.Component {
 	}
 
   render() {
+
     return (
       <Popover
         content={<PopoverBody {...this.props.data}
