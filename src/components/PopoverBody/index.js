@@ -1,22 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import cn from 'classnames'
-import Icon from '../Icon'
 import Button from '../Button'
 
 import './style.css'
 
 
-class PopoverBody extends React.Component {
+const PopoverBody = (props) => {
 
-	hide = () => {
-		this.setState({
-			visible: false,
-		});
-	}
-
-  render() {
-  	const {name, text, time, date} = this.props;
+  	const {name, text, time, date, onEmail} = props;
 
     return (
       <div className='calendar-body'>
@@ -28,6 +19,7 @@ class PopoverBody extends React.Component {
 					icon='telephone'
 					svg
 					iconSize={21}
+					onClick={props.onPhone}
 				/>
 			</div>
 
@@ -41,8 +33,10 @@ class PopoverBody extends React.Component {
 					icon='mail'
 					svg
 					iconSize={16}
+					onClick={onEmail}
 				/>
-				<Button onClick={this.hide}
+				<Button
+					onClick={props.onClose}
 					size='file'
 					type='file'
 					icon='circle_close'
@@ -52,14 +46,15 @@ class PopoverBody extends React.Component {
 			</div>
 		</div>
     );
-  }
 }
 
 PopoverBody.propTypes ={
     name: PropTypes.string,
     text: PropTypes.string,
     time: PropTypes.string,
-    name: PropTypes.string,
+    date: PropTypes.string,
+    onPhone: PropTypes.func,
+    onEmail: PropTypes.func,
 }
 
 PopoverBody.defaultProps = {
@@ -67,6 +62,7 @@ PopoverBody.defaultProps = {
     text: '',
     time: '',
     date: '',
-}
+    onPhone: () => {},
+    onEmail: () => {},}
 
 export default PopoverBody
