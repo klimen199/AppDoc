@@ -7,7 +7,7 @@ import Calendar from './libr/Calendar'
 import momentLocalizer from './libr/localizers/moment.js'
 
 import './react-big-calendar.css'
-import './styles.css'
+import './style.css'
 
 moment.locale('ru');
 momentLocalizer(moment);
