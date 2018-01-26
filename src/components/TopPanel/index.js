@@ -1,21 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import cn from 'classnames'
-import { Row, Col } from 'antd';
-import Icon from '../Icon'
 
+import Icon from '../Icon'
+import TopPanelItem from '../TopPanelItem';
 import './style.css'
 import '../../icon/style.css'
 
 class TopPanel extends React.Component{
 
+	panelRender = (dataArr) => {
+        let panelArr = [];
+
+        dataArr.map((item) => {
+            panelArr.push(<TopPanelItem {...item} key={item.id}/>)
+        });
+
+        return panelArr;
+    };
+
     render(){
         return (
-            <div className='TabPanel'>
+            <div className='top-panel'>
+                {this.panelRender(this.props.data)}
             </div>
         )
     }
 }
+
+TopPanel.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.object),
+};
+
+TopPanel.defaultProps = {
+    data: [],
+};
 
 
 export default TopPanel
