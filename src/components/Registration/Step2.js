@@ -230,6 +230,18 @@ class Step2 extends React.Component{
                         </RadioGroup>
                     </div>
                 </div>
+                <div className="steps-action">
+                    <Button onClick={this.props.onPrev}
+                            btnText='Назад'
+                            size='large'
+                            type='float'
+                    />
+                    <Button onClick={this.props.onNext}
+                            btnText='Далее'
+                            size='large'
+                            type='gradient'
+                    />
+                </div>
             </Form>
         )
     }
