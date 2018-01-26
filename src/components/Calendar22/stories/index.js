@@ -73,7 +73,7 @@ const events = [
 
 storiesOf('Calendar22', module)
     .add('default', () => (
-        <div>
+        <div style={{backgroundColor: '#cccbcb', padding: 20}}>
             <BigCalendar receptionNum={23}
                         selectable
 
