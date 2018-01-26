@@ -9,6 +9,7 @@ import momentLocalizer from './libr/localizers/moment.js'
 import './react-big-calendar.css'
 import './styles.css'
 
+moment.locale('ru');
 momentLocalizer(moment);
 
 const BigCalendar = (props) => {
