@@ -7,7 +7,9 @@ const DefaultDP = (props) => {
                            format={props.format}
                            onChange={props.onChange}
                            placeholder={props.placeholder}
-                           className={props.className}/> )
+                           className={props.className}
+                           {...props}
+    /> )
 };
 
 export default DefaultDP;

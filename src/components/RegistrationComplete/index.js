@@ -7,13 +7,13 @@ import './style.css'
 import '../../icon/style.css'
 
 
-class RegistrationForget extends React.Component{
+class RegistrationComplete extends React.Component{
 
     render(){
         const {text,phone} = this.props;
         return (
-            <div className="login-form">
-                <div className="login-title">Спасибо!</div>
+            <div className="registration-form">
+                <div className="registration-title">Спасибо!</div>
                 <div className="loginforget-body">
                     Ваша заявка отправлена.<br />
                     {text}
@@ -32,16 +32,16 @@ class RegistrationForget extends React.Component{
     }
 }
 
-RegistrationForget.propTypes = {
+RegistrationComplete.propTypes = {
     text: PropTypes.string,
     phone: PropTypes.string,
     onSubmit: PropTypes.func,
 };
 
-RegistrationForget.defaultProps = {
+RegistrationComplete.defaultProps = {
     text: '',
     phone: '',
     onSubmit: () => {},
 };
 
-export default RegistrationForget
+export default RegistrationComplete

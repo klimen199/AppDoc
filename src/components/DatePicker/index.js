@@ -11,24 +11,29 @@ import './styles.css'
 
 const dateFormat = 'DD.MM.YYYY';
 
-const DatePicker = (props) => {
-        const {range, small, style} = props;
+class DatePicker extends React.Component {
 
-        return (<div className={small?'datepicker':'datepicker-base'}>
+    render() {
+        const {range, small, style} = this.props;
+
+        return (<div className={small ? 'datepicker' : 'datepicker-base'}>
             {
-            small ?
-                <SmallRP format={dateFormat} className='datepicker-small' {...props}/>
-                :
-                range ? (
-                        <RangeDP format={dateFormat}
-                                 {...props}/>
-                    ) : (
-                        <DefaulDP format={dateFormat}
-                                  {...props} />
-                    )
+                small ?
+                    <SmallRP format={dateFormat}
+                             className='datepicker-small'
+                             {...this.props}/>
+                    :
+                    range ? (
+                            <RangeDP format={dateFormat}
+                                     {...this.props}/>
+                        ) : (
+                            <DefaulDP format={dateFormat}
+                                      {...this.props} />
+                        )
             }
-        </div>);
-    };
+        </div>)
+    }
+}
 
 DatePicker.propTypes = {
     // defaultValue: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),

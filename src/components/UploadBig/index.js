@@ -1,13 +1,11 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Upload } from 'antd';
-import cn from 'classnames'
 
 import Icon from '../Icon'
 
 import './styles.css'
 
-class PicturesWall extends React.Component {
+class UploadBig extends React.Component {
   state = {
     previewVisible: false,
     previewImage: '',
@@ -50,4 +48,4 @@ class PicturesWall extends React.Component {
 }
 
 
-export default PicturesWall;
+export default UploadBig;

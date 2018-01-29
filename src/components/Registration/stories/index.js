@@ -5,12 +5,19 @@ import { MemoryRouter } from 'react-router';
 
 import RegistrationForm from '../';
 
+import {langs, payments} from './mock-data'
+
 storiesOf('Registration', module)
     .addDecorator(story => (
         <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>
     ))
     .add('Registration', () => (
         <div>
-            <RegistrationForm onSubmit={action('Submit values:')}/>
+            <RegistrationForm onFinish={action('Submit values:')}
+                              langs={langs}
+                              payments={payments}
+                              academicTitle = {[]}
+                              finalText='Финальный текст для Checkbox'
+            />
         </div>
     ))

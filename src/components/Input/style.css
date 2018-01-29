@@ -7,6 +7,18 @@
 .input-root-focus {
   border-bottom: 1px solid #0495ff;
 }
+.has-error .input-root-focus {
+  border-bottom: #ff4242 1px solid;
+}
+.has-error .input-root {
+  border-bottom: #ff4242 1px solid;
+}
+.has-error .ant-input:focus {
+  box-shadow: none;
+}
+.has-error .ant-input-group-addon {
+  color: #777777;
+}
 .ant-input {
   border: none;
   border-radius: 0;

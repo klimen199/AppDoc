@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+import moment from 'moment'
 
 import { Form } from 'antd';
 import Input from '../Input'
@@ -72,8 +73,8 @@ class Step1Form extends React.Component{
                                 message: 'Выберите пол, пожалуйста' }],
                         })(
                             <RadioGroup>
-                                <Radio value='man'>Жен.</Radio>
-                                <Radio value='woman'>Муж.</Radio>
+                                <Radio value='woman'>Жен.</Radio>
+                                <Radio value='man'>Муж.</Radio>
                             </RadioGroup>
                        )}
                         </div>
@@ -105,7 +106,19 @@ class Step1Form extends React.Component{
     }
 }
 
-const Step1 = Form.create()(Step1Form);
+const Step1 = Form.create({
+    mapPropsToFields(props) {
+        let fields ={};
+        for (let key in props.data){
+            if (key !== 'current'){
+                fields[key] = Form.createFormField({
+                    value: props.data[key],
+                })
+            }
+        }
+        return fields;
+    },
+})(Step1Form);
 
 
 Step1.propTypes = {
