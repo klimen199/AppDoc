@@ -50,8 +50,8 @@ class PatientTable extends React.Component{
     patinetRender = (dataArr) => {
         let patientArr = [];
 
-        dataArr.map((item) => {
-            patientArr.push(<PatientTableItem {...item}/>)
+        dataArr.map((item,index) => {
+            patientArr.push(<PatientTableItem key={index} {...item}/>)
         });
 
         return patientArr;
