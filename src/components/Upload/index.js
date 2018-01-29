@@ -20,6 +20,7 @@ class Upload extends React.Component{
                         icon='upload'
                         iconSize={36}
                         svg
+                        onClick={e => e.preventDefault()}
                         />
             </AntUpload>
         )

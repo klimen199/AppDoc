@@ -1,36 +1,72 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
-import { Form } from 'antd';
-import { NavLink } from 'react-router-dom'
-import Button from '../Button'
-import Checkbox from '../Checkbox'
-import Input from '../Input'
-import Radio from '../RadioBox'
-import DatePicker from '../DatePicker'
-import PicturesWall from '../UploadBig'
+
 import Step1 from './Step1'
 import Step2 from './Step2'
 import Step3 from './Step3'
-import App from '../Step'
+import Steps from '../Step'
 
 
 import './style.css'
 import '../../icon/style.css'
 
-const FormItem = Form.Item;
-const RadioGroup = Radio.Group;
 
 class RegistrationForm extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            current: 0,
+        }
+        this.steps = [{
+            title: 'Контактная информация',
+            content:
+                (state) => <Step1 data={state}
+                                  onSubmit={(data) => this.setState({...data})}
+                                  onNext={this.next}/>,
+        },{
+            title: 'Образование, опыт работы',
+            content: (state) => <Step2 data={state}
+                                       onSubmit={(data) => this.setState({...data})}
+                                       onPrev = {this.prev}
+                                       onNext={this.next}
+                                       academicDegree={this.props.academicDegree}
+                                       academicTitle = {this.props.academicTitle}
+                                       langs = {this.props.langs}
+                                       payments = {this.props.payments}
+            /> ,
+        }, {
+            title: 'Проверка данных',
+            content: (state) => <Step3 data={state}
+                                       onPrev = {this.prev}
+                                       onNext = {this.next}
+                                       finalText={this.props.finalText}
+                                       onFinish={this.props.onFinish}
+            />,
+        }];
+    }
+
+    next = () => {
+        const current = this.state.current + 1;
+        this.setState({ current });
+    };
+    prev = () => {
+        const current = this.state.current - 1;
+        this.setState({ current });
+    };
+
 
     render(){
+
         return (
             <div className="registration-form">
                 <div className="registration-title">Регистрация</div>
-                <App />
-                {/*<Step1 />
-                <Step2 />*/}
-                <Step3 />
+                <Steps steps={this.steps}
+                       curState={this.state}
+                       current={this.state.current}
+                       onNext = {this.next}
+                       onPrev={this.prev}
+                />
             </div>
         )
     }
@@ -40,13 +76,13 @@ class RegistrationForm extends React.Component{
 RegistrationForm.propTypes = {
     urlForget: PropTypes.string,
     urlRegistration: PropTypes.string,
-    onSubmit: PropTypes.func,
+    onFinish: PropTypes.func,
 };
 
 RegistrationForm.defaultProps = {
     urlForget: '',
     urlRegistration: '',
-    onSubmit: () => {},
+    onFinish: () => {},
 };
 
 export default RegistrationForm

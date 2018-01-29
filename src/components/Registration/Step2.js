@@ -2,248 +2,200 @@ import React from 'react';
 import PropTypes from 'prop-types'
 
 import { Form } from 'antd';
-import { NavLink } from 'react-router-dom'
+
+import Step2_educ from './Step2_educ'
+import Step2_graduate_educ from './Step2_graduate_educ'
+import Step2_work from './Step2_work'
+import Step2_additional from './Step2_additional'
+
 import Button from '../Button'
-import Checkbox from '../Checkbox'
-import Input from '../Input'
-import Radio from '../RadioBox'
-import DatePicker from '../DatePicker'
-import PicturesWall from '../UploadBig'
-import Upload from '../Upload'
+import Hr from '../Hr'
 import Select from '../Select'
+
+import Upload from '../Upload'
 
 
 import './style.css'
 import '../../icon/style.css'
 
 const FormItem = Form.Item;
-const RadioGroup = Radio.Group;
 
-class Step2 extends React.Component{
+class Step2_From extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            dpNum: 0,
-            dpNum2: 0,
+            educNum: 1,
+            gradEducNum: 1,
         }
     }
-
-    addDp = () => {
-        const {dpNum} = this.state;
-        if(dpNum<1)
-            this.setState({dpNum:(dpNum+1)})
-    };
-
-    renderDp = () =>{
-        let dpArr = [];
-        for(let i =0; i<this.state.dpNum;i++){
-            dpArr.push(
-                <div className="step-item" key={i}>
-                    <FormItem>
-                         <Input addonBefore='* Учебное заведение'
-                                className='step-form-item'/>
-                    </FormItem>
-                    <FormItem>
-                         <Input addonBefore='* Специальность'
-                                className='step-form-item'/>
-                    </FormItem>
-                    <div className="step-row">
-                        <FormItem>
-                             <Input addonBefore='* Год окончания'
-                                    className='step-form-item'/>
-                        </FormItem>
-                        <FormItem>
-                             <Upload text="Прикрепить диплом, свидетельство"/>
-                        </FormItem>
-                    </div>
-                </div>
-            )
-        }
-        return (
-            <div className="new-d">
-                {dpArr}
-            </div>
-            );
-    };
-
-    addDp2 = () => {
-        const {dpNum2} = this.state;
-        if(dpNum2<2)
-            this.setState({dpNum2:(dpNum2+1)})
-    };
-
-    renderDp2 = () =>{
-        let dpArr2 = [];
-        for(let i =0; i<this.state.dpNum2;i++){
-            dpArr2.push(
-                <div className="step-block-item" key={i}>
-                    <FormItem>
-                         <Input addonBefore='Ученая степень'
-                                className='step-form-item'/>
-                    </FormItem>
-                    <FormItem>
-                        <Upload text="Прикрепить документ, подтверждающий ученую степень"/>
-                    </FormItem>
-                </div>
-            )
-        }
-        return (
-            <div className="new-d">
-                {dpArr2}
-            </div>
-            );
-    };
 
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                this.props.onSubmit(values);
+                let toSubmit = {
+                    ...values,
+                    ...this.state,
+                }
+                this.props.onSubmit(toSubmit);
+                this.props.onNext();
             }
         });
     };
 
+    addFormElem = (Component,num,fieldDecorator) => {
+        let i = 1,
+            name = Component.getName,
+            formArr = [<Component getFieldDecorator={fieldDecorator}
+                                  key={name + 0}
+                                  number={0}/>,];
+        while (i < num){
+            formArr.push(<Hr key={'hr_' + name + i}/>);
+            formArr.push(<Component getFieldDecorator={fieldDecorator}
+                                     key={name + i}
+                                     number={i}/>);
+            i++;
+        }
+        return formArr;
+    }
+
+    increaseStateNum = (e, type) => {
+        e.preventDefault();
+        this.setState(prev =>
+            ({[type]: prev[type] +1}))
+    }
+
     render(){
-        const {urlForget, urlRegistration} = this.props;
+        const {getFieldDecorator} = this.props.form;
+        const {academicDegree, academicTitle, langs, payments} = this.props;
+
         return (
             <Form onSubmit={this.handleSubmit} className="step-form">
                 <div className="step-posttitle">Заполните сведения об образовании и работе</div>
                 <div className="step-notification">Просим образование по основным специальностям указывать в блоке Образование (с дипломом и свидетельством), а по дополнительным квалификационным программам  (в том числе присвоение ученой степени) - в блоке Последипломное образование.</div>
                 <div className="step-notification">* Поля, обязательные для заполнения</div>
 
-                <div className="step-block">
-                    <div className="step-block-title">сведения об образовании</div>
-                    <FormItem>
-                         <Input addonBefore='* Учебное заведение'
-                                   className='step-form-item'/>
-                    </FormItem>
-                    <FormItem>
-                         <Input addonBefore='* Специальность'
-                                   className='step-form-item'/>
-                    </FormItem>
-                    <div className="step-row">
-                        <FormItem>
-                             <Input addonBefore='* Год окончания'
-                                       className='step-form-item'/>
-                        </FormItem>
-                        <FormItem>
-                             <Upload text="Прикрепить диплом, свидетельство"/>
-                        </FormItem>
-                    </div>
-                    <Button onClick={this.addDp}
-                            className="personal-btn"
-                            btnText='Добавить'
-                            size='small'
-                            type='no-brd'
-                            icon='plus'
-                            iconSize={11}
-                            svg
-                    />
-                    {this.renderDp()}
-                </div>
+                <div className="step-block-title">Сведения об образовании</div>
+                {this.addFormElem(Step2_educ, this.state.educNum, getFieldDecorator)}
+                <Button onClick={e => this.increaseStateNum(e, 'educNum')}
+                        className="personal-btn"
+                        btnText='Добавить'
+                        size='small'
+                        type='no-brd'
+                        icon='plus'
+                        iconSize={11}
+                        svg
+                />
 
-                <div className="step-block">
-                    <div className="step-block-title-post">Последипломное образование</div>
-                    <FormItem>
-                         <Input addonBefore='Учебное заведение'
-                                   className='step-form-item'/>
-                    </FormItem>
-                    <FormItem>
-                         <Input addonBefore='Название цикла обучения'
-                                   className='step-form-item'/>
-                    </FormItem>
-                    <FormItem>
-                          <DatePicker range placeholderStart="Начало обучения" placeholderEnd="Окончание обучения"/>
-                    </FormItem>
-                    <FormItem>
-                         <Upload text="Прикрепить диплом (сертификат, свидетельство)"/>
-                    </FormItem>
-                    <Button onClick={this.addDp2}
-                            className="personal-btn"
-                            btnText='Добавить'
-                            size='small'
-                            type='no-brd'
-                            icon='plus'
-                            iconSize={11}
-                            svg
-                    />
-                    {this.renderDp2()}
-                </div>
+                <div className="step-block-title-post">Последипломное образование</div>
+                {this.addFormElem(Step2_graduate_educ, this.state.gradEducNum, getFieldDecorator)}
+                <Button onClick={e => this.increaseStateNum(e, 'gradEducNum')}
+                        className="personal-btn"
+                        btnText='Добавить'
+                        size='small'
+                        type='no-brd'
+                        icon='plus'
+                        iconSize={11}
+                        svg
+                />
 
-                <div className="step-block">
-                    <div className="step-block-title">сведения о работе</div>
-                    <FormItem>
-                         <Input addonBefore='* Текущее место работы'
-                                   className='step-form-item'/>
-                    </FormItem>
-                    
-                    <div className="step-row">
-                        <FormItem>
-                             <Input addonBefore='* Должность'
-                                       className='step-form-item'/>
-                        </FormItem>
-                        <FormItem>
-                             <DatePicker placeholder='* Дата начала работы'/>
-                        </FormItem>
-                    </div>
-                    <FormItem>
-                        <Upload text="Прикрепить копию контракта"/>
-                    </FormItem>
-
-                    <div className='new-d'>
-                        <div className="step-block-item">
-                            <FormItem>
-                                <Input  addonBefore='* Категория'
-                                        className='step-form-item'/>
-                            </FormItem>
-                        </div>
-                        <PicturesWall />
-                    </div>
-                </div>
-
-                <div className="step-block">
-                    <div className="step-block-title">Дополнительная информация</div>
-                    <FormItem>
-                        <Select mode="multiple" placeholder="Какими языками владеете">
-                            <Option value="5 мин">Русский</Option>
-                            <Option value="10 мин">Английсктй</Option>
-                            <Option value="15 мин">Немецкий</Option>
+                <Hr/>
+                <FormItem>
+                    {getFieldDecorator('academicDegree')(
+                        <Select placeholder="Ученая степень">
+                            {academicDegree.map(elem => <Select.Option key={elem.value}
+                                                              value={elem.value}>
+                                {elem.title}</Select.Option>)}
                         </Select>
-                    </FormItem>
-                    <div className='radio-label'>Консультация детей:
-                        <RadioGroup>
-                            <Radio value={1}>Да</Radio>
-                            <Radio value={2}>Нет</Radio>
-                        </RadioGroup>
-                    </div>
-                    <FormItem>
-                        <Select placeholder="Желаемая сумма оплаты за консультацию">
-                            <Option value="5 мин">100</Option>
-                            <Option value="10 мин">300</Option>
-                            <Option value="15 мин">500</Option>
+                    )}
+                </FormItem>
+                <FormItem>
+                    {getFieldDecorator('academicDegreePhoto')(
+                        <Upload text="Прикрепить документ, подтверждающий ученую степень"/>
+                    )}
+                </FormItem>
+
+                <FormItem>
+                    {getFieldDecorator('academicTitle')(
+                        <Select placeholder="Ученое звание">
+                            {academicTitle.map(elem => <Select.Option key={elem.value}
+                                                              value={elem.value}>
+                                {elem.title}</Select.Option>)}
                         </Select>
-                    </FormItem>
-                    <div className='radio-label'>Готовы проводить консультации бесплатно?
-                        <RadioGroup>
-                            <Radio value={1}>Да</Radio>
-                            <Radio value={2}>Нет</Radio>
-                        </RadioGroup>
-                    </div>
+                    )}
+                </FormItem>
+                <FormItem>
+                    {getFieldDecorator('academicTitlePhoto')(
+                        <Upload text="Прикрепить документ, подтверждающий ученое звание"/>
+                    )}
+                </FormItem>
+
+
+                <div className="step-block-title">Сведения о работе</div>
+                <Step2_work getFieldDecorator={getFieldDecorator}/>
+
+                <div className="step-block-title">Дополнительная информация</div>
+                <Step2_additional getFieldDecorator={getFieldDecorator}
+                                  langs={langs}
+                                  payments={payments}/>
+
+                <div className="steps-action">
+                    <Button onClick={this.props.onPrev}
+                            btnText='Назад'
+                            size='large'
+                            type='float'
+                    />
+                    <Button htmlType="submit"
+                            btnText='Далее'
+                            size='large'
+                            type='gradient'
+                    />
                 </div>
             </Form>
         )
     }
 }
 
+const Step2 = Form.create({
+    mapPropsToFields(props) {
+        let fields ={};
+        for (let key in props.data){
+            if (key !== 'current'){
+                fields[key] = Form.createFormField({
+                    value: props.data[key],
+                })
+            }
+        }
+        return fields;
+    },
+})(Step2_From);
+
 Step2.propTypes = {
     urlForget: PropTypes.string,
     urlRegistration: PropTypes.string,
+    academicDegree: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string,
+        value: PropTypes.string,
+    })),
+    academicTitle: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string,
+        value: PropTypes.string,
+    })),
+    langs: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string,
+        value: PropTypes.string,
+    })),
+    payments: PropTypes.array,
     onSubmit: PropTypes.func,
 };
 
 Step2.defaultProps = {
     urlForget: '',
     urlRegistration: '',
+    academicDegree: [],
+    academicTitle: [],
+    langs: [],
+    payments: [],
     onSubmit: () => {},
 };
 
