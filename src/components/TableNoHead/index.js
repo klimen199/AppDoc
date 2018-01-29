@@ -15,8 +15,8 @@ class TableNoHead extends React.Component{
     scheduleRender = (dataArr) => {
         let scheduleArr = [];
 
-        dataArr.map((item) => {
-            scheduleArr.push(<TableNoHeadItem {...item} key={item.id}/>)
+        dataArr.map((item,index) => {
+            scheduleArr.push(<TableNoHeadItem {...item} key={'nogead-item'+index}/>)
         });
 
         return scheduleArr;

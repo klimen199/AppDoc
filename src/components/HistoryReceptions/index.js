@@ -15,8 +15,8 @@ class HistoryReceptions extends React.Component{
     historyRender = (dataArr) => {
         let historyArr = [];
 
-        dataArr.map((item) => {
-            historyArr.push(<HistoryReceptionsItem {...item} key={item.id}/>)
+        dataArr.map((item,i) => {
+            historyArr.push(<HistoryReceptionsItem {...item} key={'histRecept'+i}/>)
         });
 
         return historyArr;

@@ -15,8 +15,8 @@ class TreatmentTable extends React.Component{
     treatmentRender = (dataArr) => {
         let treatmentArr = [];
 
-        dataArr.map((item) => {
-            treatmentArr.push(<TreatmentTableItem {...item} key={item.id}/>)
+        dataArr.map((item, index) => {
+            treatmentArr.push(<TreatmentTableItem {...item} key={item.id + ''+index}/>)
         });
 
         return treatmentArr;
