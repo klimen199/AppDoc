@@ -41,6 +41,7 @@ class BigCalendar extends React.Component{
             {
                 this.props.editor ?
                     <Calendar
+                        className='calendar-editor'
                         events={this.props.events}
                         view={'month'}
                         onView={() => {

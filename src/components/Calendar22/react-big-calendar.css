@@ -131,10 +131,6 @@ button.rbc-input::-moz-focus-inner {
           flex-direction: row;
 }
 
-.rbc-selected-cell {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
 .rbc-month-view {
   position: relative;
   border: 1px solid #DDD;
