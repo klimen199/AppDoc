@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import cn from 'classnames'
 
 import TreatmentTableItem from '../TreatmentTableItem'
 import Card from '../Card'
-import Button from '../Button'
 import Icon from '../Icon'
 
 import './style.css'
@@ -23,10 +21,8 @@ class TreatmentTable extends React.Component{
     };
 
     render(){
-        const rootClass = cn('treatment-all');
-
         return (
-            <div className={rootClass}>
+            <div className='treatment-all'>
                 <Card title="Актуальные обращения" extra={<a href="#"><Icon svg size={16} type="order-form" /> Все обращения</a>}>
                     <div className="tableheader">
                         <div className="flex-col"><div className="tableheader-name">Имя пациента</div></div>

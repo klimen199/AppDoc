@@ -5,7 +5,6 @@ import { Radio as AntRadio } from 'antd';
 const RadioButton = AntRadio.Button;
 const RadioGroup = AntRadio.Group;
 import Icon from '../Icon'
-import Button from '../Button';
 
 import './styles.css'
 

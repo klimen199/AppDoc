@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import cn from 'classnames'
 
 import PatientTableItem from '../PatientTableItem'
 import Card from '../Card'
 import Button from '../Button'
 import Input from '../Input'
-import Icon from '../Icon'
 
 import './style.css'
 import '../../icon/style.css'
@@ -58,11 +56,10 @@ class PatientTable extends React.Component{
     }
 
     render(){
-        const rootClass = cn('patient-all');
         const { countPatient } = this.props;
 
         return (
-            <div className={rootClass}>
+            <div className='patient-all'>
                 <Card title="Список пациентов" extra={<div className='patient-count'>{countPatient}</div>}>
                     <div className="tableheader">
                         <div className="flex-col">

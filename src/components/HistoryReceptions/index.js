@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import cn from 'classnames'
 
 import HistoryReceptionsItem from '../HistoryReceptionsItem'
 import Card from '../Card'
 import Button from '../Button'
-import Icon from '../Icon'
 
 import './style.css'
 import '../../icon/style.css'
@@ -23,10 +21,8 @@ class HistoryReceptions extends React.Component{
     };
 
     render(){
-        const rootClass = cn('receptions-all');
-
         return (
-            <div className={rootClass}>
+            <div className='receptions-all'>
                 <Card title="Актуальные обращения">
                     <div className="tableheader">
                         <div className="flex-col"><div className="receptions-status new">Новые</div></div>

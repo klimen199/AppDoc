@@ -5,7 +5,6 @@ import cn from 'classnames'
 import TableNoHeadItem from '../TableNoHeadItem'
 import Card from '../Card'
 import Button from '../Button'
-import Icon from '../Icon'
 
 import './style.css'
 import '../../icon/style.css'
