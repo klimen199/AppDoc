@@ -81,11 +81,24 @@ storiesOf('Calendar22', module)
                         onSelectEvent={action('Receive 1 obj')}
                         onSelectSlot={action('Slot info')}
 
-                        defaultView="week"
-
                         step = {5}
                         events={events}
                         defaultDate={new Date(2018, 0, 22)}
+            />
+        </div>
+    ))
+    .add('editor', () => (
+        <div style={{backgroundColor: '#cccbcb', padding: 20}}>
+            <BigCalendar receptionNum={23}
+                         selectable
+                         editor
+
+                         onMonthSelect={(date) => {
+                             if(date.length !== 0) console.log(date)
+                         }}
+
+
+                         events={events}
             />
         </div>
     ));

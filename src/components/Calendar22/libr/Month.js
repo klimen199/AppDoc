@@ -86,8 +86,6 @@ class MonthView extends React.Component {
   constructor(...args) {
     super(...args)
 
-    this._bgRows = []
-    this._pendingSelection = []
     this.state = {
       rowLimit: 5,
       needLimitMeasure: true,
@@ -136,7 +134,7 @@ class MonthView extends React.Component {
       month = dates.visibleDays(date, culture),
       weeks = chunk(month, 7)
 
-    this._weekCount = weeks.length
+    // this._weekCount = weeks.length
 
     return (
       <div className={cn('rbc-month-view', className)}>
@@ -263,31 +261,24 @@ class MonthView extends React.Component {
     })
   }
 
-  handleSelectSlot = (range, slotInfo) => {
-    this._pendingSelection = this._pendingSelection.concat(range)
-
-    clearTimeout(this._selectTimer)
-
-      //this.handleShowMore(null,range);
-    this._selectTimer = setTimeout(() => this.selectDates(slotInfo))
+  handleSelectSlot = (range, slotInfo,selecting) => {
+      if(this.props.editor){
+        this.props.onSelecting(range, slotInfo,selecting)
+    }
   }
 
   handleHeadingClick = (date, view, e) => {
       e.preventDefault()
-    this.clearSelection()
     notify(this.props.onDrillDown, [date, view])
   }
 
   handleSelectEvent = (...args) => {
-    this.clearSelection()
     notify(this.props.onSelectEvent, args)
   }
 
   handleShowMore = (events, date, cell, slot) => {
 
     const { popup, onDrillDown, onShowMore, getDrilldownView } = this.props
-    //cancel any pending selections so only the event click goes through.
-    this.clearSelection()
 
     if (popup) {
       let position = getPosition(cell, findDOMNode(this))
@@ -302,27 +293,6 @@ class MonthView extends React.Component {
     notify(onShowMore, [events, date, slot])
   }
 
-  selectDates(slotInfo) {
-    let slots = this._pendingSelection.slice()
-
-    this._pendingSelection = []
-
-    slots.sort((a, b) => +a - +b)
-
-      notify(this.props.onDrillDown, [slots[0], this.props.getDrilldownView(slots[0])])
-
-    // notify(this.props.onSelectSlot, {
-    //   slots,
-    //   start: slots[0],
-    //   end: slots[slots.length - 1],
-    //   action: slotInfo.action,
-    // })
-  }
-
-  clearSelection() {
-    clearTimeout(this._selectTimer)
-    this._pendingSelection = []
-  }
 }
 
 MonthView.navigate = (date, action) => {
