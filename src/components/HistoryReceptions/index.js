@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import cn from 'classnames'
 
 import HistoryReceptionsItem from '../HistoryReceptionsItem'
 import Card from '../Card'
 import Button from '../Button'
-import Icon from '../Icon'
 
 import './style.css'
 import '../../icon/style.css'
@@ -15,18 +13,16 @@ class HistoryReceptions extends React.Component{
     historyRender = (dataArr) => {
         let historyArr = [];
 
-        dataArr.map((item) => {
-            historyArr.push(<HistoryReceptionsItem {...item} key={item.id}/>)
+        dataArr.map((item,i) => {
+            historyArr.push(<HistoryReceptionsItem {...item} key={'histRecept'+i}/>)
         });
 
         return historyArr;
     };
 
     render(){
-        const rootClass = cn('receptions-all');
-
         return (
-            <div className={rootClass}>
+            <div className='receptions-all'>
                 <Card title="Актуальные обращения">
                     <div className="tableheader">
                         <div className="flex-col"><div className="receptions-status new">Новые</div></div>

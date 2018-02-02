@@ -17,10 +17,13 @@ import Header from './Header'
 import DateHeader from './DateHeader'
 
 import { accessor, dateFormat } from './utils/propTypes'
-import { segStyle, inRange, sortEvents } from './utils/eventLevels'
+import { segStyle, inRange, sortEvents, sortScheds } from './utils/eventLevels'
 
 let eventsForWeek = (evts, start, end, props) =>
   evts.filter(e => inRange(e, start, end, props))
+
+let schedsForWeek = (evts, start, end, props,editor) =>
+    evts.filter(e => inRange(e, start, end, props,editor))
 
 let propTypes = {
   events: PropTypes.array.isRequired,
@@ -86,8 +89,6 @@ class MonthView extends React.Component {
   constructor(...args) {
     super(...args)
 
-    this._bgRows = []
-    this._pendingSelection = []
     this.state = {
       rowLimit: 5,
       needLimitMeasure: true,
@@ -136,7 +137,7 @@ class MonthView extends React.Component {
       month = dates.visibleDays(date, culture),
       weeks = chunk(month, 7)
 
-    this._weekCount = weeks.length
+    // this._weekCount = weeks.length
 
     return (
       <div className={cn('rbc-month-view', className)}>
@@ -151,6 +152,7 @@ class MonthView extends React.Component {
   renderWeek = (week, weekIdx) => {
     let {
       events,
+        schedules,
       components,
       selectable,
       titleAccessor,
@@ -164,12 +166,19 @@ class MonthView extends React.Component {
       now,
       date,
       longPressThreshold,
-    } = this.props
+        editor
+    } = this.props;
 
-    const { needLimitMeasure, rowLimit } = this.state
+    const { needLimitMeasure, rowLimit } = this.state;
+    if(editor) {
+      schedules =  schedsForWeek(schedules, week[0], week[week.length - 1], this.props,true);
+      schedules.sort((a, b) => sortScheds(a, b, this.props))
+    }
+    else{
+        events = eventsForWeek(events, week[0], week[week.length - 1], this.props);
+        events.sort((a, b) => sortEvents(a, b, this.props))
+    }
 
-    events = eventsForWeek(events, week[0], week[week.length - 1], this.props)
-    events.sort((a, b) => sortEvents(a, b, this.props))
 
     return (
       <DateContentRow
@@ -195,7 +204,8 @@ class MonthView extends React.Component {
         renderForMeasure={needLimitMeasure}
         onShowMore={this.handleShowMore}
 
-
+        schedules={schedules}
+        editor={editor}
         onSelect={this.handleSelectEvent}
         onSelectSlot={this.handleSelectSlot}
         eventComponent={components.event}
@@ -263,31 +273,57 @@ class MonthView extends React.Component {
     })
   }
 
-  handleSelectSlot = (range, slotInfo) => {
-    this._pendingSelection = this._pendingSelection.concat(range)
+  handleSelectSlot = (range, slotInfo,selecting) => {
 
-    clearTimeout(this._selectTimer)
+      if(this.props.editor){
+        let allowed = true,
+            time = null,
+            schedule = {};
 
-      //this.handleShowMore(null,range);
-    this._selectTimer = setTimeout(() => this.selectDates(slotInfo))
+          if(range && slotInfo.action === 'click'){
+            let selectedTime = range[0],
+                notNext = false;
+            this.props.schedules.every(sched => {
+                if(sched.time.length !==0){
+                  time = sched.time[0].start;
+                  notNext = time.getDate() === selectedTime.getDate() &&
+                      time.getMonth() === selectedTime.getMonth() &&
+                      time.getFullYear() === selectedTime.getFullYear();
+                  if(notNext){
+                    allowed = sched.isEditable;
+                    schedule = sched;
+                  }
+                }
+                else if(sched.emergencyTime.length !==0){
+                    time = sched.emergencyTime[0].start;
+                    notNext = time.getDate() === selectedTime.getDate() &&
+                        time.getMonth() === selectedTime.getMonth() &&
+                        time.getFullYear() === selectedTime.getFullYear();
+                    if(notNext){
+                        allowed = sched.isEditable;
+                        schedule = sched;
+                    }
+                }
+                return !notNext;
+            });
+          }
+          if (allowed)
+            this.props.onSelecting(range, slotInfo,selecting, schedule)
+    }
   }
 
   handleHeadingClick = (date, view, e) => {
       e.preventDefault()
-    this.clearSelection()
     notify(this.props.onDrillDown, [date, view])
   }
 
   handleSelectEvent = (...args) => {
-    this.clearSelection()
     notify(this.props.onSelectEvent, args)
   }
 
   handleShowMore = (events, date, cell, slot) => {
 
     const { popup, onDrillDown, onShowMore, getDrilldownView } = this.props
-    //cancel any pending selections so only the event click goes through.
-    this.clearSelection()
 
     if (popup) {
       let position = getPosition(cell, findDOMNode(this))
@@ -302,27 +338,6 @@ class MonthView extends React.Component {
     notify(onShowMore, [events, date, slot])
   }
 
-  selectDates(slotInfo) {
-    let slots = this._pendingSelection.slice()
-
-    this._pendingSelection = []
-
-    slots.sort((a, b) => +a - +b)
-
-      notify(this.props.onDrillDown, [slots[0], this.props.getDrilldownView(slots[0])])
-
-    // notify(this.props.onSelectSlot, {
-    //   slots,
-    //   start: slots[0],
-    //   end: slots[slots.length - 1],
-    //   action: slotInfo.action,
-    // })
-  }
-
-  clearSelection() {
-    clearTimeout(this._selectTimer)
-    this._pendingSelection = []
-  }
 }
 
 MonthView.navigate = (date, action) => {

@@ -82,6 +82,7 @@ const loadStories = () => {
     require('../src/components/PatientTable/stories');
     require('../src/components/Calendar22/stories');
     require('../src/components/Hr/stories');
+    require('../src/components/SmallCalendar/stories');
 };
 
 configure(loadStories, module);
