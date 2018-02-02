@@ -85,6 +85,7 @@ const loadStories = () => {
     require('../src/components/Notification/stories');
     require('../src/components/NotificationCard/stories');
     require('../src/components/NotificationApp/stories');
+    require('../src/components/SmallCalendar/stories');
 };
 
 configure(loadStories, module);
