@@ -8,7 +8,6 @@ class SmallCalendar extends React.Component{
 
     render(){
         const  {date} = this.props;
-
         return ( <Calendar onChange={this.props.onChange}
                            value={date}
                            nextLabel={<Icon type="arrow_right" size={20} svg/>}
