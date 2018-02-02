@@ -43,11 +43,12 @@
   text-transform: capitalize;
 }
 .rbc-month-row {
-  min-height: 130px;
+  min-height: 135px;
 }
 .rbc-date-cell {
   text-align: left;
   padding: 15px 0 0 15px;
+  z-index: 7;
 }
 .month-row {
   display: -webkit-flex;
@@ -63,6 +64,7 @@
 .rbc-month-row .month-row-segment {
   display: flex;
   font-size: 32px;
+  height: 100px;
 }
 .rbc-month-row .month-row-segment-content {
   margin: 0 auto;
@@ -75,6 +77,65 @@
   border-radius: 50%;
   color: white;
   background-color: #dddddd;
+}
+.rbc-month-row .month-row-segment .root_schedule {
+  width: 100%;
+  height: 134px;
+  box-sizing: border-box;
+  position: relative;
+  top: -35px;
+  padding-top: 40px;
+}
+.rbc-month-row .month-row-segment .root_schedule:hover {
+  border: #85cafd 1px solid;
+}
+.rbc-month-row .month-row-segment .root_schedule.no-edit:hover {
+  border: #f25328 1px solid;
+}
+.rbc-month-row .month-row-segment .root_schedule > .icon-no {
+  color: #f25328;
+}
+.rbc-month-row .month-row-segment .root_schedule > .icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 10;
+}
+.rbc-month-row .month-row-segment-schedule {
+  display: table;
+  position: relative;
+  width: 100%;
+  border-left: 1px solid #DDD;
+  background-color: white;
+  z-index: 2;
+}
+.rbc-month-row .month-row-segment-schedule .schedule-time {
+  display: table-row;
+}
+.rbc-month-row .month-row-segment-schedule .schedule-time-item {
+  display: table-cell;
+  font-size: 14px;
+  color: #344051;
+}
+.rbc-month-row .month-row-segment-schedule .schedule-time-item.empty {
+  width: 35%;
+}
+.rbc-month-row .month-row-segment-schedule .schedule-emrgtime {
+  display: table-row;
+}
+.rbc-month-row .month-row-segment-schedule .schedule-emrgtime-item {
+  display: table-cell;
+  font-size: 14px;
+  color: #f25328;
+}
+.rbc-month-row .month-row-segment-schedule .schedule-emrgtime-item.with-sign {
+  width: 35%;
+  display: flex;
+  height: 100%;
+}
+.rbc-month-row .month-row-segment-schedule .schedule-emrgtime-item.with-sign div {
+  display: inline-block;
+  margin-left: auto;
 }
 .rbc-month-row .month-row-segment-coming .month-row-segment-content {
   color: #0495ff;
@@ -159,4 +220,20 @@
   width: 100%;
   position: absolute;
   z-index: 6;
+}
+.calendar-editor .rbc-selected-cell {
+  font-family: 'icon' !important;
+  color: #b6e0ff;
+  font-size: 25px;
+  text-align: center;
+  height: 135px;
+  line-height: 130px;
+  position: relative;
+  z-index: 1;
+  background-color: #f1f9ff;
+  border: 1px #85cafd dashed;
+  cursor: pointer;
+}
+.calendar-editor .rbc-selected-cell:before {
+  content: "\E900";
 }
