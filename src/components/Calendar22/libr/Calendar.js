@@ -232,15 +232,6 @@ class Calendar extends React.Component {
      */
     onDoubleClickEvent: PropTypes.func,
 
-    /**
-     * Callback fired when dragging a selection in the Time views.
-     *
-     * Returning `false` from the handler will prevent a selection.
-     *
-     * ```js
-     * (range: { start: Date, end: Date }) => ?boolean
-     * ```
-     */
     onSelecting: PropTypes.func,
 
     /**
@@ -692,7 +683,6 @@ class Calendar extends React.Component {
       }
     )
 
-    let CalToolbar = components.toolbar || Toolbar
     const label = View.title(current, { formats, culture, length })
 
     return (
@@ -704,7 +694,7 @@ class Calendar extends React.Component {
         style={style}
       >
         {toolbar && (
-          <CalToolbar
+          <Toolbar
             date={current}
             view={view}
             views={names}
@@ -713,6 +703,7 @@ class Calendar extends React.Component {
             onNavigate={this.handleNavigate}
             messages={messages}
             receptionNum={receptionNum}
+            editor={this.props.editor}
           />
         )}
         <View
@@ -770,7 +761,8 @@ class Calendar extends React.Component {
   }
 
   handleDrillDown = (date, view) => {
-    const { onDrillDown } = this.props
+
+      const { onDrillDown } = this.props
     if (onDrillDown) {
       onDrillDown(date, view, this.drilldownView)
       return

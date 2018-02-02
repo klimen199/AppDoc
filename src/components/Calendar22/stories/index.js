@@ -4,7 +4,6 @@ import { action } from '@storybook/addon-actions';
 
 import BigCalendar from '../';
 
-
 const events = [
     {
         id: 6,
@@ -71,6 +70,72 @@ const events = [
     },
 ];
 
+const schedules = [
+    {
+        id: 12,
+        isEditable: false,
+        time: [{
+            start: new Date(2018, 0, 15, 8, 30, 0),
+            end: new Date(2018, 0, 15, 10, 0, 0),
+        },{
+            start: new Date(2018, 0, 15, 12, 0, 0),
+            end: new Date(2018, 0, 15, 13, 30, 0),
+        },{
+            start: new Date(2018, 0, 15, 18, 0, 0),
+            end: new Date(2018, 0, 15, 19, 0, 0),
+        }],
+        emergencyTime: [],
+    },
+    {
+        id: 12,
+        isEditable: false,
+        time: [{
+            start: new Date(2018, 0, 25, 8, 30, 0),
+            end: new Date(2018, 0, 25, 10, 0, 0),
+        },{
+            start: new Date(2018, 0, 25, 12, 0, 0),
+            end: new Date(2018, 0, 25, 13, 30, 0),
+        },{
+            start: new Date(2018, 0, 25, 18, 0, 0),
+            end: new Date(2018, 0, 25, 19, 0, 0),
+        }],
+        emergencyTime: [],
+    },
+    {
+        id: 13,
+        isEditable: true,
+        time: [{
+            start: new Date(2018, 1, 8, 8, 30, 0),
+            end: new Date(2018, 1, 8, 9, 30, 0),
+        },{
+            start: new Date(2018, 1, 8, 13, 0, 0),
+            end: new Date(2018, 1, 8, 18, 30, 0),
+        }],
+        emergencyTime: [{
+            start: new Date(2018, 1, 8, 14, 30, 0),
+            end: new Date(2018, 1, 8, 15, 0, 0),
+        },{
+            start: new Date(2018, 1, 8, 17, 0, 0),
+            end: new Date(2018, 1, 8, 17, 30, 0),
+        }],
+    },
+    {
+        id: 15,
+        isEditable: false,
+        time: [{
+            start: new Date(2018, 1, 7, 8, 30, 0),
+            end: new Date(2018, 1, 7, 9, 30, 0),
+        },{
+            start: new Date(2018, 1, 7, 13, 0, 0),
+            end: new Date(2018, 1, 7, 18, 30, 0),
+        }],
+        emergencyTime: [{
+            start: new Date(2018, 1, 7, 17, 0, 0),
+            end: new Date(2018, 1, 7, 17, 30, 0),
+        }],
+    },
+];
+
 storiesOf('Calendar22', module)
     .add('default', () => (
         <div style={{backgroundColor: '#cccbcb', padding: 20}}>
@@ -81,11 +146,22 @@ storiesOf('Calendar22', module)
                         onSelectEvent={action('Receive 1 obj')}
                         onSelectSlot={action('Slot info')}
 
-                        defaultView="week"
-
                         step = {5}
                         events={events}
                         defaultDate={new Date(2018, 0, 22)}
+            />
+        </div>
+    ))
+    .add('editor', () => (
+        <div style={{backgroundColor: '#cccbcb', padding: 20}}>
+            <BigCalendar receptionNum={23}
+                         selectable
+                         editor
+
+                         onMonthSelect={(date,schedule) => {
+                             if(date.length !== 0) console.log(date, schedule)
+                         }}
+                         schedules={schedules}
             />
         </div>
     ));
