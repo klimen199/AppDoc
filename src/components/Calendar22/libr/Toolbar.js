@@ -19,7 +19,7 @@ class Toolbar extends React.Component {
   }
 
   render() {
-    let { messages, label, receptionNum } = this.props
+    let { messages, label, receptionNum, editor } = this.props
 
     return (
       <div className="rbc-toolbar">
@@ -35,7 +35,11 @@ class Toolbar extends React.Component {
         <span className="rbc-toolbar-label">{label}</span>
         <span className="rbc-toolbar-receptionCount">{receptionNum}</span>
 
-        <span className="rbc-btn-group">{this.viewNamesGroup(messages)}</span>
+          {
+              !editor &&
+              <span className="rbc-btn-group">{this.viewNamesGroup(messages)}</span>
+          }
+
       </div>
     )
   }

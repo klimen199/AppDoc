@@ -56,7 +56,16 @@ class BackgroundCells extends React.Component {
       this._teardownSelectable()
   }
 
-  render() {
+  componentWillUpdate(nextProps,nextState){
+    if(this.state.selecting === false && nextState.selecting === true){
+        this.props.onSelectSlot({},true)
+    }
+      // if(selecting == true){
+      //     this.props.onSelectSlot({},null,selecting)
+      // }
+  }
+
+    render() {
     let {
       range,
       cellWrapperComponent: Wrapper,
@@ -64,6 +73,8 @@ class BackgroundCells extends React.Component {
       date: currentDate,
     } = this.props
     let { selecting, startIdx, endIdx } = this.state
+
+
 
     return (
       <div className="rbc-row-bg">
@@ -184,6 +195,7 @@ class BackgroundCells extends React.Component {
   }
 
   _selectSlot({ endIdx, startIdx, action }) {
+
     if (endIdx !== -1 && startIdx !== -1){
         this.props.onSelectSlot &&
         this.props.onSelectSlot({
