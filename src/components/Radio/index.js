@@ -5,7 +5,6 @@ import { Radio as AntRadio } from 'antd';
 const RadioButton = AntRadio.Button;
 const RadioGroup = AntRadio.Group;
 import Icon from '../Icon'
-import Button from '../Button';
 
 import './styles.css'
 
@@ -15,8 +14,8 @@ class Radio extends React.Component{
     renderRadio = (icons) => {
         let radios = [];
 
-        icons.map((icon) => {
-            radios.push(<RadioButton value={icon}>
+        icons.map((icon,index) => {
+            radios.push(<RadioButton value={icon} key={'radio'+icon+index}>
                 <Icon svg size={16} type={icon}/>
             </RadioButton>)
         })

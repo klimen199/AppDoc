@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import cn from 'classnames'
 
 import ProfileAvatar from '../ProfileAvatar'
 import Button from '../Button'
@@ -13,10 +12,9 @@ class TableNoHeadItem extends React.Component{
 
     render(){
         const {img, type, name, infoText, size, online, time} = this.props;
-        const rootClass = cn('schedule');
 
         return (
-            <div className={rootClass}>
+            <div className='schedule'>
                 <ProfileAvatar owner="patient" online={online} img={img} size={size}/>
                 <div className="flex-col">
                     <div className="patient-name"><a href="#">{name}</a></div>

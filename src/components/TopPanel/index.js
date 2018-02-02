@@ -12,8 +12,8 @@ class TopPanel extends React.Component{
 	panelRender = (dataArr) => {
         let panelArr = [];
 
-        dataArr.map((item) => {
-            panelArr.push(<TopPanelItem {...item} key={item.id}/>)
+        dataArr.map((item, index) => {
+            panelArr.push(<TopPanelItem {...item} key={'top-panel-'+index}/>)
         });
 
         return panelArr;

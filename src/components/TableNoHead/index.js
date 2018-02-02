@@ -5,7 +5,6 @@ import cn from 'classnames'
 import TableNoHeadItem from '../TableNoHeadItem'
 import Card from '../Card'
 import Button from '../Button'
-import Icon from '../Icon'
 
 import './style.css'
 import '../../icon/style.css'
@@ -15,8 +14,8 @@ class TableNoHead extends React.Component{
     scheduleRender = (dataArr) => {
         let scheduleArr = [];
 
-        dataArr.map((item) => {
-            scheduleArr.push(<TableNoHeadItem {...item} key={item.id}/>)
+        dataArr.map((item,index) => {
+            scheduleArr.push(<TableNoHeadItem {...item} key={'nogead-item'+index}/>)
         });
 
         return scheduleArr;
