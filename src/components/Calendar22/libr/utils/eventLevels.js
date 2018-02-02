@@ -14,11 +14,12 @@ export function eventSegments(
   first,
   last,
   { startAccessor, endAccessor },
-  range
+  range,
+  editor
 ) {
   let slots = dates.diff(first, last, 'day')
-  let start = dates.max(dates.startOf(get(event, startAccessor), 'day'), first)
-  let end = dates.min(dates.ceil(get(event, endAccessor), 'day'), last)
+  let start = dates.max(dates.startOf(get(event, startAccessor,editor), 'day'), first)
+  let end = dates.min(dates.ceil(get(event, endAccessor,editor), 'day'), last)
 
   let padding = findIndex(range, x => dates.eq(x, start, 'day'))
   let span = dates.diff(start, end, 'day')
@@ -67,15 +68,31 @@ export function eventLevels(rowSegments, limit = Infinity) {
   return { levels, extra }
 }
 
-export function inRange(e, start, end, { startAccessor, endAccessor }) {
-  let eStart = dates.startOf(get(e, startAccessor), 'day')
-  let eEnd = get(e, endAccessor)
+export function inRange(e, start, end, { startAccessor, endAccessor }, editor) {
+  let eStart = dates.startOf(get(e, startAccessor,editor), 'day')
+  let eEnd = get(e, endAccessor,editor)
 
-  let startsBeforeEnd = dates.lte(eStart, end, 'day')
-  // when the event is zero duration we need to handle a bit differently
-  let endsAfterStart = !dates.eq(eStart, eEnd, 'minutes')
-    ? dates.gt(eEnd, start, 'minutes')
-    : dates.gte(eEnd, start, 'minutes')
+  let startsBeforeEnd;
+  let endsAfterStart;
+
+    if (editor) {
+
+        startsBeforeEnd =
+            eStart.getDate() >= start.getDate()
+            && eStart.getMonth() === start.getMonth()
+            && eStart.getFullYear() === start.getFullYear();
+        endsAfterStart =
+            eEnd.getDate() <= end.getDate()
+            && eEnd.getMonth() === end.getMonth()
+            && eEnd.getFullYear() === end.getFullYear();
+    }
+    else{
+        startsBeforeEnd = dates.lte(eStart, end, 'day')
+        // when the event is zero duration we need to handle a bit differently
+        endsAfterStart = !dates.eq(eStart, eEnd, 'minutes')
+            ? dates.gt(eEnd, start, 'minutes')
+            : dates.gte(eEnd, start, 'minutes')
+    }
 
   return startsBeforeEnd && endsAfterStart
 }
@@ -113,4 +130,33 @@ export function sortEvents(
     !!get(evtB, allDayAccessor) - !!get(evtA, allDayAccessor) || // then allDay single day events
     +get(evtA, startAccessor) - +get(evtB, startAccessor)
   ) // then sort by start time
+}
+
+export function sortScheds(
+    evtA,
+    evtB,
+    { startAccessor, endAccessor, allDayAccessor }
+) {
+    let startSort =
+        +dates.startOf(get(evtA, startAccessor, true), 'day') -
+        +dates.startOf(get(evtB, startAccessor, true), 'day')
+
+    let durA = dates.diff(
+        get(evtA, startAccessor,true),
+        dates.ceil(get(evtA, endAccessor,true), 'day'),
+        'day'
+    )
+
+    let durB = dates.diff(
+        get(evtB, startAccessor,true),
+        dates.ceil(get(evtB, endAccessor,true), 'day'),
+        'day'
+    )
+
+    return (
+        startSort || // sort by start Day first
+        Math.max(durB, 1) - Math.max(durA, 1) || // events spanning multiple days go first
+        !!get(evtB, allDayAccessor,true) - !!get(evtA, allDayAccessor,true) || // then allDay single day events
+        +get(evtA, startAccessor,true) - +get(evtB, startAccessor,true)
+    ) // then sort by start time
 }

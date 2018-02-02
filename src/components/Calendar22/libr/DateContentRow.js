@@ -157,12 +157,27 @@ class DateContentRow extends React.Component {
       onSelectStart,
       onSelectEnd,
       longPressThreshold,
+        schedules,
       ...props
-    } = this.props
+    } = this.props;
 
     if (renderForMeasure) return this.renderDummy()
 
-    let { first, last } = endOfRange(range)
+    let { first, last } = endOfRange(range);
+
+      let scheds = (this.scheds = schedules.map(evt =>
+          eventSegments(
+              evt,
+              first,
+              last,
+              {
+                  startAccessor,
+                  endAccessor,
+              },
+              range,
+              true
+          )
+      ));
 
     let segments = (this.segments = events.map(evt =>
       eventSegments(
@@ -175,11 +190,10 @@ class DateContentRow extends React.Component {
         },
         range
       )
-    ))
+    ));
 
-
-    let { levels, extra } = eventLevels(segments, Math.max(maxRows - 1, 1))
-      while (levels.length < minRows) levels.push([])
+    let { levels, extra } = eventLevels(segments, Math.max(maxRows - 1, 1));
+    while (levels.length < minRows) levels.push([]);
 
     return (
       <div className={className}>
@@ -210,6 +224,7 @@ class DateContentRow extends React.Component {
               start={first}
               end={last}
               segments={segments}
+              scheds={scheds}
               onShowMore={this.handleShowMore}
               eventComponent={eventComponent}
               eventWrapperComponent={eventWrapperComponent}

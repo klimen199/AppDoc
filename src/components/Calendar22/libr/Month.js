@@ -17,10 +17,13 @@ import Header from './Header'
 import DateHeader from './DateHeader'
 
 import { accessor, dateFormat } from './utils/propTypes'
-import { segStyle, inRange, sortEvents } from './utils/eventLevels'
+import { segStyle, inRange, sortEvents, sortScheds } from './utils/eventLevels'
 
 let eventsForWeek = (evts, start, end, props) =>
   evts.filter(e => inRange(e, start, end, props))
+
+let schedsForWeek = (evts, start, end, props,editor) =>
+    evts.filter(e => inRange(e, start, end, props,editor))
 
 let propTypes = {
   events: PropTypes.array.isRequired,
@@ -149,6 +152,7 @@ class MonthView extends React.Component {
   renderWeek = (week, weekIdx) => {
     let {
       events,
+        schedules,
       components,
       selectable,
       titleAccessor,
@@ -162,12 +166,19 @@ class MonthView extends React.Component {
       now,
       date,
       longPressThreshold,
-    } = this.props
+        editor
+    } = this.props;
 
-    const { needLimitMeasure, rowLimit } = this.state
+    const { needLimitMeasure, rowLimit } = this.state;
+    if(editor) {
+      schedules =  schedsForWeek(schedules, week[0], week[week.length - 1], this.props,true);
+      schedules.sort((a, b) => sortScheds(a, b, this.props))
+    }
+    else{
+        events = eventsForWeek(events, week[0], week[week.length - 1], this.props);
+        events.sort((a, b) => sortEvents(a, b, this.props))
+    }
 
-    events = eventsForWeek(events, week[0], week[week.length - 1], this.props)
-    events.sort((a, b) => sortEvents(a, b, this.props))
 
     return (
       <DateContentRow
@@ -193,7 +204,8 @@ class MonthView extends React.Component {
         renderForMeasure={needLimitMeasure}
         onShowMore={this.handleShowMore}
 
-
+        schedules={schedules}
+        editor={editor}
         onSelect={this.handleSelectEvent}
         onSelectSlot={this.handleSelectSlot}
         eventComponent={components.event}
@@ -262,8 +274,41 @@ class MonthView extends React.Component {
   }
 
   handleSelectSlot = (range, slotInfo,selecting) => {
+
       if(this.props.editor){
-        this.props.onSelecting(range, slotInfo,selecting)
+        let allowed = true,
+            time = null,
+            schedule = {};
+
+          if(range && slotInfo.action === 'click'){
+            let selectedTime = range[0],
+                notNext = false;
+            this.props.schedules.every(sched => {
+                if(sched.time.length !==0){
+                  time = sched.time[0].start;
+                  notNext = time.getDate() === selectedTime.getDate() &&
+                      time.getMonth() === selectedTime.getMonth() &&
+                      time.getFullYear() === selectedTime.getFullYear();
+                  if(notNext){
+                    allowed = sched.isEditable;
+                    schedule = sched;
+                  }
+                }
+                else if(sched.emergencyTime.length !==0){
+                    time = sched.emergencyTime[0].start;
+                    notNext = time.getDate() === selectedTime.getDate() &&
+                        time.getMonth() === selectedTime.getMonth() &&
+                        time.getFullYear() === selectedTime.getFullYear();
+                    if(notNext){
+                        allowed = sched.isEditable;
+                        schedule = sched;
+                    }
+                }
+                return !notNext;
+            });
+          }
+          if (allowed)
+            this.props.onSelecting(range, slotInfo,selecting, schedule)
     }
   }
 

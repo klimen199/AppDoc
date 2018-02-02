@@ -17,9 +17,9 @@ class BigCalendar extends React.Component{
         dayRange: [],
     };
 
-    selectHandler = (range, slotInfo,selecting) => {
+    selectHandler = (range, slotInfo,selecting, schedule) => {
         if (slotInfo.action === 'click'){
-            this.props.onMonthSelect(range)
+            this.props.onMonthSelect(range, schedule)
             // console.log('RETURN', range)
             return
         }
@@ -30,7 +30,6 @@ class BigCalendar extends React.Component{
             if (range.length !== 0) {
                 this.setState({dayRange: this.state.dayRange.concat(range)})
                 this.props.onMonthSelect(this.state.dayRange)
-
                     // console.log('RETURN', this.state.dayRange)
             }
         }
@@ -42,12 +41,12 @@ class BigCalendar extends React.Component{
                 this.props.editor ?
                     <Calendar
                         className='calendar-editor'
-                        events={this.props.events}
+                        schedules={this.props.schedules}
                         view={'month'}
                         onView={() => {
                         }}
-                        onSelecting={(r,slot,selecting) => this.selectHandler(r, slot,selecting)}
-
+                        onSelecting={(r,slot,selecting, schedule) =>
+                            this.selectHandler(r, slot,selecting, schedule)}
                         {...this.props}
                     />
                     :
@@ -61,10 +60,18 @@ class BigCalendar extends React.Component{
             }
         </div>);
     }
-};
+}
 
 BigCalendar.propTypes = {
     events: PropTypes.array,
+    schedules: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number,
+            isEditable: PropTypes.bool,
+            time: PropTypes.array,
+            emergencyTime: PropTypes.array,
+        })
+    ),
     receptionNum: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number,
@@ -72,10 +79,13 @@ BigCalendar.propTypes = {
     editor: PropTypes.bool,
 };
 
+
 BigCalendar.defaultProps = {
     events: [],
+    schedules: [],
     receptionNum: 0,
     editor: false,
 };
+
 
 export default BigCalendar;
