@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types'
-import moment from 'moment'
 
 import { Form } from 'antd';
 import TextArea from '../TextArea'
@@ -36,8 +34,6 @@ class ContentForm extends React.Component{
             ...this.props.form.getFieldsValue(),
             reason: this.ta.state.value,
         };
-        // console.log(this.props.form.getFieldsValue());
-        // console.log(this.ta.state.value);
 
         console.log(response);
         this.props.onSave();
@@ -116,18 +112,5 @@ class ContentForm extends React.Component{
 }
 
 const Content = Form.create()(ContentForm);
-
-
-Content.propTypes = {
-    // urlForget: PropTypes.string,
-    // urlRegistration: PropTypes.string,
-    // onSubmit: PropTypes.func,
-};
-
-Content.defaultProps = {
-    // urlForget: '',
-    // urlRegistration: '',
-    // onSubmit: () => {},
-};
 
 export default Content
