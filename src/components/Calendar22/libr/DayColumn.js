@@ -231,7 +231,7 @@ class DayColumn extends React.Component {
 
       return (
         <EventWrapper event={event} key={'evt_' + idx}>
-          <PopoverApp data={this.state.event}>
+          <PopoverApp data={this.state.event} onClose={this.props.onPopoverClose}>
           <div
             style={{
               ...xStyle,

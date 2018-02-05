@@ -82,6 +82,9 @@ const loadStories = () => {
     require('../src/components/PatientTable/stories');
     require('../src/components/Calendar22/stories');
     require('../src/components/Hr/stories');
+    require('../src/components/Notification/stories');
+    require('../src/components/NotificationCard/stories');
+    require('../src/components/NotificationApp/stories');
     require('../src/components/SmallCalendar/stories');
 };
 

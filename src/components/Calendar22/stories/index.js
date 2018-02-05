@@ -140,15 +140,15 @@ storiesOf('Calendar22', module)
     .add('default', () => (
         <div style={{backgroundColor: '#cccbcb', padding: 20}}>
             <BigCalendar receptionNum={23}
-                        selectable
+                         selectable
 
+                         onSelectEvent={action('Receive 1 obj')}
+                         onSelectSlot={action('Slot info')}
 
-                        onSelectEvent={action('Receive 1 obj')}
-                        onSelectSlot={action('Slot info')}
-
-                        step = {5}
-                        events={events}
-                        defaultDate={new Date(2018, 0, 22)}
+                         step = {5}
+                         events={events}
+                         defaultDate={new Date(2018, 0, 22)}
+                         onPopoverClose={action('onPopoverClose')}
             />
         </div>
     ))
