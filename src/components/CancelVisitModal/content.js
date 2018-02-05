@@ -22,7 +22,6 @@ class ContentForm extends React.Component{
 
     componentDidMount(){
         const {rangeSet} = this.props;
-        console.log(rangeSet)
         for(let i = 0; i < this.state.dpNum; i++){
             let {defaultStartValue, defaultEndValue} = rangeSet[i];
             this.props.form.setFieldsValue({
@@ -33,9 +32,15 @@ class ContentForm extends React.Component{
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.props.form.getFieldsValue());
-        console.log(this.ta.state.value);
+        let response = {
+            ...this.props.form.getFieldsValue(),
+            reason: this.ta.state.value,
+        };
+        // console.log(this.props.form.getFieldsValue());
+        // console.log(this.ta.state.value);
 
+        console.log(response);
+        this.props.onSave();
         // this.props.form.validateFields((err, values) => {
         //     if (!err) {
         //         this.props.onSubmit(values);
@@ -44,7 +49,8 @@ class ContentForm extends React.Component{
         // });
     };
 
-    addDp = () => {
+    addDp = (e) => {
+        e.preventDefault();
         const {dpNum} = this.state;
         if(dpNum< this.props.limit)
             this.setState({dpNum:(dpNum+1)})
@@ -86,9 +92,13 @@ class ContentForm extends React.Component{
                           ref = {ta => this.ta = ta}
                           className="cancelVisitModal-txtarea"/>
 
-                    <Upload className="cancelVisitModal-upload" text="Прикрепить файл"/>
+                <FormItem>
+                    {getFieldDecorator('file')(
+                        <Upload className="cancelVisitModal-upload" text="Прикрепить файл"/>
+                    )}
+                </FormItem>
                     {this.renderDp(getFieldDecorator)}
-                    <Button onClick={this.addDp}
+                    <Button onClick={(e) => this.addDp(e)}
                             className='cancelVisitModal-dpAdd'
                             btnText='Добавить интервал'
                             size='file'
@@ -100,22 +110,6 @@ class ContentForm extends React.Component{
                             size='default'
                             btnText='Сохранить'
                             type='float'/>
-
-                
-                
-                
-                {/*
-                <div className="steps-action">
-                    <Button htmlType="submit"
-                            disable={!(userFio&&
-                            userEmail &&
-                            userPhone &&
-                            userSex &&
-                            userBirthday)}
-                            btnText='Далее'
-                            size='large'
-                            type='gradient'/>
-                </div>*/}
             </Form>
         )
     }
