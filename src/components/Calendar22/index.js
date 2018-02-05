@@ -77,6 +77,7 @@ BigCalendar.propTypes = {
         PropTypes.number,
     ]),
     editor: PropTypes.bool,
+    onPopoverClose: PropTypes.func,
 };
 
 
@@ -85,6 +86,7 @@ BigCalendar.defaultProps = {
     schedules: [],
     receptionNum: 0,
     editor: false,
+    onPopoverClose: () => {},
 };
 
 
