@@ -86,6 +86,8 @@ const loadStories = () => {
     require('../src/components/NotificationCard/stories');
     require('../src/components/NotificationApp/stories');
     require('../src/components/SmallCalendar/stories');
+    require('../src/components/ChatDialog/stories');
+    require('../src/components/ChatDialogs/stories');
 };
 
 configure(loadStories, module);
