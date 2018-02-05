@@ -23,7 +23,6 @@ class Link extends React.Component{
                 {icon && (
                     <Icon svg={svg} type={icon} size={iconSize}/>
                 )}
-                {!svg && <span>&nbsp;</span>}
                 {type !== 'icon' && <span style={btnTextStyle}>{btnText}</span>}
             </a>
         )
