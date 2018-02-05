@@ -12,28 +12,35 @@ import '../../icon/style.css'
 
 class DiseasesTable extends React.Component{
 
+    diseasesRender = (dataArr) => {
+        let diseasesArr = [];
+
+        dataArr.map((item, index) => {
+            diseasesArr.push(<DiseasesTableItem {...item} key={item.id + ''+index}/>)
+        });
+
+        return diseasesArr;
+    };d
+
     render(){
         const rootClass = cn('diseases-all');
 
         return (
             <div className={rootClass}>
                 <Card title="Хронические болезни/аллергии" extra={<div className="right-icon"><Icon svg iconSize="24" type="caution" /></div>}>
-                    <DiseasesTableItem 
-                        date="15.09.2017"
-                        diseases='Хроническое заболевание длинное название длинное название.'
-                    />
-                    <DiseasesTableItem 
-                        date="15.09.2017"
-                        diseases='Хроническое заболевание длинное название длинное название.'
-                    />
-                    <DiseasesTableItem 
-                        date="15.09.2017"
-                        diseases='Хроническое заболевание длинное название длинное название.'
-                    />
+                    {this.diseasesRender(this.props.data)}
                   </Card>
             </div>
         )
     }
 }
+
+DiseasesTable.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.object),
+};
+
+DiseasesTable.defaultProps = {
+    data: [],
+};
 
 export default DiseasesTable
