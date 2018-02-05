@@ -12,9 +12,12 @@ import './styles.css'
 const dateFormat = 'DD.MM.YYYY';
 
 class DatePicker extends React.Component {
+    state = {
+        lol: 1
+    };
 
     render() {
-        const {range, small, style} = this.props;
+        const {range, small} = this.props;
 
         return (<div className={small ? 'datepicker' : 'datepicker-base'}>
             {
