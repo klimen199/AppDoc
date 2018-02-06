@@ -34,15 +34,7 @@ class ContentForm extends React.Component{
             ...this.props.form.getFieldsValue(),
             reason: this.ta.state.value,
         };
-
-        console.log(response);
-        this.props.onSave();
-        // this.props.form.validateFields((err, values) => {
-        //     if (!err) {
-        //         this.props.onSubmit(values);
-        //         this.props.onNext();
-        //     }
-        // });
+        this.props.onSave(response);
     };
 
     addDp = (e) => {
@@ -52,13 +44,6 @@ class ContentForm extends React.Component{
             this.setState({dpNum:(dpNum+1)})
     };
 
-    filterRangeSet = (order) => {
-        const {rangeSet} = this.props;
-        if (Array.isArray(rangeSet)){
-            return rangeSet[order];
-        }
-    };
-
     renderDp = (fieldDecorator) =>{
         let dpArr = [];
         for(let i =0; i<this.state.dpNum;i++){
@@ -66,7 +51,7 @@ class ContentForm extends React.Component{
                 <FormItem key={'dp'+i}>
                     {fieldDecorator(`dp${i}`)(
                         <DatePicker range
-                                    rangeSet={this.filterRangeSet(i)}
+                                    rangeSet={this.props.rangeSet[i]}
                                     delimiter='&mdash;'/>
                     )}
                 </FormItem>)
@@ -82,7 +67,8 @@ class ContentForm extends React.Component{
         const { getFieldDecorator } = this.props.form;
 
         return (
-            <Form onSubmit={this.handleSubmit} className="cancelVisitModal">
+            <Form onSubmit={this.handleSubmit}
+                  className="cancelVisitModal">
 
                 <TextArea label='Причина отмены'
                           ref = {ta => this.ta = ta}

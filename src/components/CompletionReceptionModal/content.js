@@ -18,9 +18,9 @@ class ContentForm extends React.Component {
         const rootClass = 'completionReceptionModal';
 
         return (
-            <Form onSubmit={this.handleSubmit} className="cancelVisitModal">
+            <Form onSubmit={this.handleSubmit}
+                  className={rootClass}>
 
-                <div className={rootClass}>
                     <FormItem>
                         {getFieldDecorator('diagnosis')(
                             <Input className={rootClass + '-input'}
@@ -39,7 +39,6 @@ class ContentForm extends React.Component {
                             size="default"
                             type="float"
                     />
-                </div>
 
             </Form>
         )

@@ -11,7 +11,7 @@ storiesOf('Modal - CancelVisitModal', module)
                               rangeSet = {[{
                                   placeholderStart: 'Начало',
                                   defaultEndValue: moment('12.12.2017', 'DD.MM.YYYY'),
-                                  defaultStartValue: moment('11.11.2017', 'DD.MM.YYYY'),
+                                  defaultStartValue: moment(new Date(2017,11,11)),
                               },{
                                   placeholderStart: 'Начало',
                                   defaultEndValue: moment('11.11.2017', 'DD.MM.YYYY'),
