@@ -91,6 +91,7 @@ const loadStories = () => {
     require('../src/components/ChatInMessage/stories');
     require('../src/components/ChatOutMessage/stories');
     require('../src/components/ChatComments/stories');
+    require('../src/components/ChatFiles/stories');
 };
 
 configure(loadStories, module);
