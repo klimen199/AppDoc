@@ -5,6 +5,9 @@ import NewMessageModal from '../';
 storiesOf('Modal - NewMessageModal', module)
     .add('modal', () => (
         <div>
-            <NewMessageModal visible={true} userName='Петров-Иванов Александр Константинович'/>
+            <NewMessageModal visible={true}
+                             userName='Петров-Иванов Александр Константинович'
+                             onSend={(e) => console.log(e)}
+            />
         </div>
     ));

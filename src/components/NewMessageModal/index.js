@@ -2,54 +2,33 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Modal from '../Modal'
-import Icon from '../Icon'
-import TextArea from '../TextArea'
-import Upload from '../Upload'
-import Button from '../Button'
+import Content from './content'
 import './styles.css'
 
-class NewMessageModal extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            dpNum: 1,
-        }
-    }
-
-    render(){
-        const {visible, userName} = this.props;
-
-        return (
-            <Modal title='Новое сообщение'
-                   visible={visible}>
-                <div className='newMessageModal'>
-                    <div className="newMessageModal-user">
-                        <div className="newMessageModal-user-icon">
-                            <Icon type="user" size={24}/>
-                        </div>
-                        <div className="newMessageModal-user-name">
-                            {userName}
-                        </div>
-                    </div>
-                    <TextArea label='Текст сообщения' className="newMessageModal-txtarea"/>
-                    <Upload className="newMessageModal-upload" text="Прикрепить файл"/>
-                    <Button size='default'
-                            btnText='Отправить'
-                            type='float'/>
-                </div>
-            </Modal>
-        )
-    }
-}
+const NewMessageModal = (props) => {
+    const {visible, onCancel} = props;
+    return (
+        <Modal title='Новое сообщение'
+               visible={visible}
+               onCancel={onCancel}
+        >
+            <Content {...props}/>
+        </Modal>
+    )
+};
 
 NewMessageModal.propTypes = {
     visible: PropTypes.bool,
     userName: PropTypes.string,
+    onCancel: PropTypes.func,
+    onSend: PropTypes.func,
 };
 
 NewMessageModal.defaultProps = {
     visible: false,
     userName: '',
+    onCancel: () => {},
+    onSend: () => {},
 };
 
 export default NewMessageModal;
