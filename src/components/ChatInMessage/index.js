@@ -37,6 +37,15 @@ class ChatInMessage extends React.Component{
                                 icon="file"
                                 iconSize={16}
                             />
+                            <Link
+                                btnText="Прикрепленный файл с длинным предлинным названием.doc"
+                                size="default" 
+                                type="link"
+                                download
+                                svg
+                                icon="file"
+                                iconSize={16}
+                            />
                         </div>
                     </div>
                 </div>
