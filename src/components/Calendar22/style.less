@@ -5,30 +5,29 @@
 }
 
 .rbc-toolbar {
-  display: flex;
-  position: relative;
-  margin-bottom: 20px;
-  font-size: 20px;
+    display: flex;
+    position: relative;
+    margin-bottom: 20px;
+    font-size: 20px;
 
-  .arrowsGroup{
-    margin-left: 20px;
-    background-color: transparent;
-  }
-  &-label {
-    margin-left: 20px;
-    text-transform: capitalize;
-  }
-  &-receptionCount{
-    margin: auto auto auto 10px;
-    height: 20px;
-    width: auto;
-    font-size: 12px;
-    color: white;
-    background-color: @blue;
-    border-radius: 10px;
-    padding: 0 10px;
-  }
-
+    .arrowsGroup {
+        margin-left: 20px;
+        background-color: transparent;
+    }
+    &-label {
+        margin-left: 20px;
+        text-transform: capitalize;
+    }
+    &-receptionCount {
+        margin: auto auto auto 10px;
+        height: 20px;
+        width: auto;
+        font-size: 12px;
+        color: white;
+        background-color: @blue;
+        border-radius: 10px;
+        padding: 0 10px;
+    }
 }
 
 .rbc-time-content{
@@ -42,57 +41,81 @@ border-top: 1px solid #DDD;
   color: @dark-blue;
   display: flex;
   min-height: 60px;
+}
 
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.rbc-header {
+    font-size: 12px;
+    color: @dark-blue;
+    display: flex;
+    min-height: 60px;
 
-  & > span {
-    margin: auto;
-    text-transform: capitalize;
-  }
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &>span {
+        margin: auto;
+        text-transform: capitalize;
+    }
 }
 
 
-.rbc-month-row{
-  min-height: 135px;
-}
+
+.rbc-month-row {
+    min-height: 130px;
+
 .rbc-date-cell{
   text-align: left;
   padding: 15px 0 0 15px;
   z-index: 7;
 }
 
+.rbc-date-cell {
+    text-align: left;
+    padding: 15px 0 0 15px;
+}
+
 .month-row {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
 }
 
 
-.rbc-month-row{
-  cursor: pointer;
 
-  .month-row-segment{
-    display: flex;
-    font-size: 32px;
-    height: 100px;
+.rbc-month-row {
+    cursor: pointer;
 
-    &-content{
-      margin: 0 auto;
+    .month-row-segment {
+        display: flex;
+        font-size: 32px;
 
-      .icon-count{
-        display: inline-block;
-        text-align: center;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        color: white;
-        background-color: #dddddd;
-      }
+        &-content {
+            margin: 0 auto;
+
+            .icon-count {
+                display: inline-block;
+                text-align: center;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                color: white;
+                background-color: #dddddd;
+            }
+        }
+
+        &-coming {
+            .month-row-segment-content {
+                color: @blue;
+            }
+            .icon-count {
+                background-color: @blue;
+            }
+        }
     }
 
     .root_schedule{
@@ -174,104 +197,103 @@ border-top: 1px solid #DDD;
       }
     }
   }
-
 }
 
-.rbc-label.rbc-header-gutter.rbc-clock-icon{
-  width: 10%;
-  max-width: 90px;
-  display: flex;
-  color: @blue;
-  .icon{
-    margin: auto;
-  }
+.rbc-label.rbc-header-gutter.rbc-clock-icon {
+    width: 10%;
+    max-width: 90px;
+    display: flex;
+    color: @blue;
+    .icon {
+        margin: auto;
+    }
 }
 
-.rbc-time-gutter.rbc-time-column{
-  width: 10%;
-  max-width: 90px;
+.rbc-time-gutter.rbc-time-column {
+    width: 10%;
+    max-width: 90px;
 }
 
 .rbc-day-slot.rbc-time-column {
-  .rbc-timeslot-group {
-    font-family: 'icon' !important;
-    color: #b6e0ff;
-    font-size: 25px;
-    text-align: center;
-    height: 52px;
-    line-height: 52px;
+    .rbc-timeslot-group {
+        font-family: 'icon' !important;
+        color: #b6e0ff;
+        font-size: 25px;
+        text-align: center;
+        height: 52px;
+        line-height: 52px;
 
-    &:hover{
-      position: relative;
-      z-index: 5;
-      background-color: #f1f9ff;
-      &:before {
-        content: "\E900";
-      }
-      border: 1px #85cafd dashed;
-      cursor: pointer;
+        &:hover {
+            position: relative;
+            z-index: 5;
+            background-color: #f1f9ff;
+            &:before {
+                content: "\E900";
+            }
+            border: 1px #85cafd dashed;
+            cursor: pointer;
+        }
     }
-  }
 }
 
-.rbc-time-slot.rbc-label{
-  color: @blue;
-  display: flex;
-  & > span {
-    margin: auto;
-  }
-}
-
-
-.rbc-header{
-  cursor: pointer;
-
-  .header-month{
-    margin: auto;
-  }
-  .header-week{
-    &-weekday{
-      font-size: 12px;
+.rbc-time-slot.rbc-label {
+    color: @blue;
+    display: flex;
+    &>span {
+        margin: auto;
     }
-    &-day{
-      font-size: 14px;
-      text-align: center;
-    }
-  }
-}
-.rbc-header.rbc-today{
-  background-color: #fefcf4;
-  .header-week > div{
-    font-family: @f-b;
-  }
 }
 
-.rbc-day-slot.rbc-today.rbc-time-column{
-  background-color: #fefcf4;
+
+.rbc-header {
+    cursor: pointer;
+
+    .header-month {
+        margin: auto;
+    }
+    .header-week {
+        &-weekday {
+            font-size: 12px;
+        }
+        &-day {
+            font-size: 14px;
+            text-align: center;
+        }
+    }
+}
+
+.rbc-header.rbc-today {
+    background-color: #fefcf4;
+    .header-week>div {
+        font-family: @f-b;
+    }
+}
+
+.rbc-day-slot.rbc-today.rbc-time-column {
+    background-color: #fefcf4;
 }
 
 .rbc-day-slot {
-  .rbc-event-content {
-    line-height: 1.3;
+    .rbc-event-content {
+        line-height: 1.3;
 
-    background-color: @blue;
-    border-radius: 6px;
-    width: 100%;
-    height: 100%;
+        background-color: @blue;
+        border-radius: 6px;
+        width: 100%;
+        height: 100%;
+        padding: 6px 20px;
+        color: #ffffff;
+        font-size: 12px;
+    }
+    .rbc-event {
+        display: flex;
 
-    padding: 6px 20px;
-    color: #ffffff;
-    font-size: 12px;
-  }
-  .rbc-event {
-    display: flex;
-
-    border: transparent 4px solid;
-    background-color: transparent;
-    width: 100%;
-    position: absolute;
-    z-index: 6;
-  }
+        border: transparent 4px solid;
+        background-color: transparent;
+        width: 100%;
+        position: absolute;
+        z-index: 6;
+    }
 }
 
 .calendar-editor{
