@@ -7,7 +7,7 @@ export const panelArr = [
     }, {
         panelTitle: "Приемы сегодня",
         panelText: '12',
-        icon: 'hint',
+        icon: 'mark',
     }, {
         panelTitle: "Актуальные обращения",
         panelText: '2',
