@@ -88,6 +88,7 @@ const loadStories = () => {
     require('../src/components/SmallCalendar/stories');
     require('../src/components/ChatDialog/stories');
     require('../src/components/ChatDialogs/stories');
+    require('../src/components/ChatInMessage/stories');
 };
 
 configure(loadStories, module);

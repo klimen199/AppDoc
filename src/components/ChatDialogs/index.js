@@ -23,12 +23,13 @@ class ChatDialogs extends React.Component{
     };
 
     render(){
-        const { name, consultation, size, time, online, img, status} = this.props;
+        const { name, consultation, size, time, online, img, status, data} = this.props;
         const rootClass = cn('dialog');
 
 
         return (
             <div className={rootClass}>
+                <div className='dialog-title'>Ожидают приема<span className='dialog-num_item'>{data.length}</span></div>
                 {this.dialogRender(this.props.data)}
             </div>
         )
