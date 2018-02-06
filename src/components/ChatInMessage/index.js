@@ -23,7 +23,9 @@ class ChatInMessage extends React.Component{
                 <div className='message__in-area'>
                     <div className='message__in-time'>{time}</div>
                     <div className='message__in-box'>
-                        {message}
+                        <div className='message__in-attached'>
+                            {message}
+                        </div>
                         <div className='message__in-attached'>
                             {attached}
                             <Link
