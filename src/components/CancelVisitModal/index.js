@@ -17,8 +17,7 @@ const CancelVisitModal = (props) => {
             <Content {...props}/>
         </Modal>
     )
-
-}
+};
 
 CancelVisitModal.propTypes = {
     visible: PropTypes.bool,

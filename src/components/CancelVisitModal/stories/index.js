@@ -16,6 +16,6 @@ storiesOf('Modal - CancelVisitModal', module)
                                   placeholderStart: 'Начало',
                                   defaultEndValue: moment('11.11.2017', 'DD.MM.YYYY'),
                               }]}
-                              />
+                              onSave={e => console.log(e)}/>
         </div>
     ));
