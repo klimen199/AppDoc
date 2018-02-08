@@ -20,12 +20,13 @@ class ContentForm extends React.Component{
 
     componentDidMount(){
         const {rangeSet} = this.props;
-        for(let i = 0; i < this.state.dpNum; i++){
-            let {defaultStartValue, defaultEndValue} = rangeSet[i];
-            this.props.form.setFieldsValue({
-                ['dp'+i]: [defaultStartValue, defaultEndValue],
-            });
-        }
+        if (rangeSet.length)
+            for(let i = 0; i < this.state.dpNum; i++){
+                let {defaultStartValue, defaultEndValue} = rangeSet[i];
+                this.props.form.setFieldsValue({
+                    ['dp'+i]: [defaultStartValue, defaultEndValue],
+                });
+            }
     }
 
     handleSubmit = (e) => {
