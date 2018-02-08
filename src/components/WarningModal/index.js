@@ -13,7 +13,8 @@ class WarningModal extends React.Component{
         return (
             <Modal title='Внимание'
                    warning = {true}
-                   visible={visible}>
+                   visible={visible}
+            >
                 <div className="root">
                     {message}
                     <div className="root-btn">

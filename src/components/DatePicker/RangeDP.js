@@ -10,12 +10,11 @@ class RangeDP extends React.Component{
        super(props);
        const {rangeSet} = props;
        const {defaultStartValue,defaultEndValue} = rangeSet;
-
        this.state = {
            startValue: defaultStartValue,
            endValue: defaultEndValue,
            endChosen: !!defaultStartValue && !!defaultEndValue,
-           defaultEnd: null,
+           defaultEnd: defaultEndValue,
        };
    }
 

@@ -8,7 +8,7 @@ import DatePicker from '../';
 const dateFormat = 'DD.MM.YYYY';
 const rangeSet = {
     placeholderStart: 'Начало',
-    //defaultEndValue: moment('12.12.2017', dateFormat),
+    defaultEndValue: moment('12.12.2017', dateFormat),
 };
 
 storiesOf('DatePicker', module)

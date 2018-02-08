@@ -18,7 +18,9 @@ class Modal extends React.Component{
                       width={395}
                       footer={null}
                       className = {warning ? 'warning' : ''}
-                      closable = {!warning}>
+                      closable = {!warning}
+                      onCancel={this.props.onCancel}
+            >
                 {warning && <Icon type="caution" svg size={24}/>}
                 {this.props.children}
             </AntModal>
@@ -30,12 +32,14 @@ Modal.propTypes = {
     visible: PropTypes.bool,
     title: PropTypes.string,
     warning: PropTypes.bool,
+    onCancel: PropTypes.func,
 };
 
 Modal.defaultProps = {
     visible: false,
     title: '',
     warning: false,
+    onCancel: () => {},
 };
 
 export default Modal

@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import cn from 'classnames'
 
-import {DatePicker as AntDatePicker} from 'antd'
 import DefaulDP from './DefaultDP'
 import RangeDP from './RangeDP'
 import SmallRP from './SmallRP'
@@ -14,7 +12,7 @@ const dateFormat = 'DD.MM.YYYY';
 class DatePicker extends React.Component {
 
     render() {
-        const {range, small, style} = this.props;
+        const {range, small} = this.props;
 
         return (<div className={small ? 'datepicker' : 'datepicker-base'}>
             {

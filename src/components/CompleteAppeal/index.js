@@ -5,30 +5,43 @@ import Modal from '../Modal'
 import Button from '../Button'
 import './styles.css'
 
-class CompleteAppealModal extends React.Component{
+const CompleteAppealModal = (props) => {
 
-    render(){
-        const {visible} = this.props;
+    const {visible, onCancel, onAdd, onComplete} = props;
 
-        return (
-            <Modal title='Завершение обращения'
-                   visible={visible}>
-                <div className='completeAppealModal'>
-                    <Button btnText="Добавить" size='default' type='float' icon='form'/>
-                    <br/>
-                    <Button btnText="Завершить обращение" size='default' type='yellow'/>
-                </div>
-            </Modal>
-        )
-    }
+    return (
+        <Modal title='Завершение обращения'
+               visible={visible}
+               onCancel={onCancel}
+        >
+            <div className='completeAppealModal'>
+                <Button btnText="Добавить"
+                        onClick={onAdd}
+                        size='default'
+                        type='float'
+                        icon='form'/>
+                <br/>
+                <Button btnText="Завершить обращение"
+                        onClick={onComplete}
+                        size='default'
+                        type='yellow'/>
+            </div>
+        </Modal>
+    )
 }
 
 CompleteAppealModal.propTypes = {
     visible: PropTypes.bool,
+    onCancel: PropTypes.func,
+    onAdd: PropTypes.func,
+    onComplete: PropTypes.func,
 };
 
 CompleteAppealModal.defaultProps = {
     visible: false,
+    onCancel: () => {},
+    onAdd: () => {},
+    onComplete: () => {},
 };
 
 export default CompleteAppealModal;
