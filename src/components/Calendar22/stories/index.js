@@ -149,6 +149,7 @@ storiesOf('Calendar22', module)
                          events={events}
                          defaultDate={new Date(2018, 0, 22)}
                          onPopoverClose={action('onPopoverClose')}
+                         onPopoverEmail={action('onPopoverEmail')}
             />
         </div>
     ))
