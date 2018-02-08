@@ -10,7 +10,7 @@ class PopoverApp extends React.Component {
 
 	state = {
 		visible: false,
-	}
+	};
 
 	handleVisibleChange = (visible) => {
 		this.setState({ visible });
@@ -26,7 +26,9 @@ class PopoverApp extends React.Component {
     return (
       <Popover
         content={<PopoverBody {...this.props.data}
-                              onClose={this.handleClose}/>}
+                              onClose={this.handleClose}
+                              onEmail={this.props.onEmail}
+        />}
         trigger="click"
         visible={this.state.visible}
         onVisibleChange={this.handleVisibleChange}
@@ -42,11 +44,13 @@ class PopoverApp extends React.Component {
 PopoverApp.propTypes = {
     data: PropTypes.object,
     onClose: PropTypes.func,
+    onEmail: PropTypes.func,
 };
 
 PopoverApp.defaultProps = {
     data: {},
     onClose: () => {},
+    onEmail: () => {},
 };
 
 export default PopoverApp
