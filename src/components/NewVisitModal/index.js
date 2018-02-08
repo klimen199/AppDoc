@@ -3,11 +3,6 @@ import PropTypes from 'prop-types'
 
 import Modal from '../Modal'
 import Content from './content'
-import TextArea from '../TextArea'
-import Button from '../Button'
-import Radio from '../Radio'
-import Select from '../Select'
-import Icon from '../Icon'
 import './styles.css'
 
 class NewVisitModal extends React.Component{
