@@ -18,17 +18,6 @@ class ContentForm extends React.Component{
         };
     }
 
-    componentDidMount(){
-        const {rangeSet} = this.props;
-        if (rangeSet.length)
-            for(let i = 0; i < this.state.dpNum; i++){
-                let {defaultStartValue, defaultEndValue} = rangeSet[i];
-                this.props.form.setFieldsValue({
-                    ['dp'+i]: [defaultStartValue, defaultEndValue],
-                });
-            }
-    }
-
     handleSubmit = (e) => {
         e.preventDefault();
         let response = {
@@ -63,6 +52,41 @@ class ContentForm extends React.Component{
             </div>
         );
     };
+
+    changeFieldsVal = (props, dpNum = this.state.dpNum) => {
+        const {rangeSet} = props;
+        if (rangeSet.length){
+            for(let i = 0; i < dpNum; i++){
+                let {defaultStartValue, defaultEndValue} = rangeSet[i];
+                props.form.setFieldsValue({
+                    ['dp'+i]: [defaultStartValue, defaultEndValue],
+                });
+            }
+        }
+        else {
+            props.form.setFieldsValue({
+                ['dp0']: [null, null],
+            });
+        }
+    };
+
+    componentDidMount(){
+        this.changeFieldsVal(this.props)
+    }
+
+    componentWillReceiveProps(nextProps){
+        if (nextProps.rangeSet.length !== this.props.rangeSet.length){
+            this.setState({
+                dpNum: nextProps.rangeSet.length || 1,
+            })
+        }
+    }
+
+    componentDidUpdate(prevProps){
+        if (this.props.rangeSet.length !== prevProps.rangeSet.length){
+            this.changeFieldsVal(this.props, (this.props.rangeSet.length || 1))
+        }
+    }
 
     render(){
         const { getFieldDecorator } = this.props.form;

@@ -22,17 +22,7 @@ class ContentForm extends React.Component {
         }
     }
 
-    initializeTP = (set, flag) => {
-        if (set.length)
-            for(let i = 0; i < this.state.tpNum[flag]; i++){
-                let {defaultStartValue, defaultEndValue} = set[i];
-                this.props.form.setFieldsValue({
-                    [flag+'Tp'+i]: [defaultStartValue, defaultEndValue],
-                });
-            }
-    };
-
-    componentDidMount(){
+    changeFieldsVal = () => {
         const {dateSet, timeSetCall, timeSetReception} = this.props;
         let {defaultStartValue, defaultEndValue} = dateSet;
         this.props.form.setFieldsValue({
@@ -41,6 +31,47 @@ class ContentForm extends React.Component {
 
         this.initializeTP(timeSetReception,'reception');
         this.initializeTP(timeSetCall,'call');
+    };
+
+    initializeTP = (set, flag) => {
+        if (set.length){
+            for(let i = 0; i < this.state.tpNum[flag]; i++){
+                let {defaultStartValue, defaultEndValue} = set[i];
+                this.props.form.setFieldsValue({
+                    [flag+'Tp'+i]: [defaultStartValue, defaultEndValue],
+                });
+            }
+        }
+        else{
+            this.props.form.setFieldsValue({
+                [flag+'Tp0']: [null, null],
+            });
+        }
+
+    };
+
+    componentDidMount(){
+        this.changeFieldsVal()
+    }
+
+    componentWillReceiveProps(nextProps){
+        if (nextProps.timeSetReception.length !== this.props.timeSetReception.length
+            || nextProps.timeSetCall.length !== this.props.timeSetCall.length){
+            this.setState({
+                tpNum: {
+                    'call': nextProps.timeSetCall.length || 1,
+                    'reception': nextProps.timeSetReception.length || 1,
+                }
+            })
+        }
+    }
+
+    componentDidUpdate(prevProps){
+        if (prevProps.timeSetReception.length !== this.props.timeSetReception.length
+            || prevProps.timeSetCall.length !== this.props.timeSetCall.length){
+
+            this.changeFieldsVal()
+        }
     }
 
     handleSubmit = (e) => {

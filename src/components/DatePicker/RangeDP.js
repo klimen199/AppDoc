@@ -54,6 +54,19 @@ class RangeDP extends React.Component{
         }
     };
 
+    componentWillReceiveProps (nextProps){
+        if(!this.state.startValue !== !nextProps.rangeSet.defaultStartValue
+            || !this.state.endValue !== !nextProps.rangeSet.defaultEndValue){
+            const {defaultStartValue,defaultEndValue} = nextProps.rangeSet;
+            this.setState({
+                startValue: defaultStartValue,
+                endValue: defaultEndValue,
+                endChosen: !!defaultStartValue && !!defaultEndValue,
+                defaultEnd: defaultEndValue,
+            })
+        }
+    }
+
     render() {
         const {format, rangeSet, delimiter} = this.props;
         const {placeholderStart,placeholderEnd} = rangeSet;
