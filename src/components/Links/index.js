@@ -9,9 +9,10 @@ import '../../icon/style.css'
 
 class Link extends React.Component{
     render(){
-        const {type, size, btnText, icon, iconSize, svg, download, disable, onClick, conclusion} = this.props;
 
-        const rootClass = cn( 'link',`link-size-${size}`, `link-type-${type}`, `${conclusion}`)
+        const {type, size, btnText, icon, iconSize, svg,download, disable, onClick, conclusion} = this.props;
+        const rootClass = cn( 'link',`link-size-${size}`, `link-type-${type}` , `${conclusion}`)
+
         let btnTextStyle = {}
 
         return (
@@ -33,6 +34,7 @@ Link.propTypes ={
     type: PropTypes.oneOf(['link']),
     size: PropTypes.oneOf(['small', 'default', 'large']),
     btnText: PropTypes.string,
+    conclusion: PropTypes.string,
     icon: PropTypes.string,
     iconSize: PropTypes.number,
     svg: PropTypes.bool,
@@ -45,6 +47,7 @@ Link.propTypes ={
 Link.defaultProps = {
     type: 'link',
     size: 'default',
+    conclusion: 'link-default',
     btnText: '',
     icon: '',
     iconSize: 20,
