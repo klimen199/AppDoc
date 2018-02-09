@@ -8,6 +8,9 @@ storiesOf('Modal - CancelVisitModal', module)
     .add('modal', () => (
         <div>
             <CancelVisitModal visible={true}
+                              rangeSet={[
+
+                              ]}
                               onSave={e => console.log(e)}/>
         </div>
     ));
