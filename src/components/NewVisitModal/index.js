@@ -7,11 +7,13 @@ import './styles.css'
 
 class NewVisitModal extends React.Component{
     render(){
-        const {visible} = this.props;
+        const {visible, onCancel} = this.props;
 
         return (
             <Modal title='Запись на прием'
-                   visible={visible}>
+                   visible={visible}
+                   onCancel={onCancel}
+            >
                 <Content {...this.props}/>
             </Modal>
         )
@@ -23,13 +25,15 @@ NewVisitModal.propTypes = {
     date: PropTypes.instanceOf(Date),
     patients: PropTypes.array,
     onSave: PropTypes.func,
+    onCancel: PropTypes.func,
 };
 
 NewVisitModal.defaultProps = {
     visible: false,
-    date: '',
+    date: null,
     patients: [],
     onSave: () => {},
+    onCancel: () => {},
 };
 
 export default NewVisitModal;
