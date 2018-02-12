@@ -57,8 +57,6 @@ PopoverBody.propTypes ={
     desc: PropTypes.string,
     start: PropTypes.instanceOf(Date),
     end: PropTypes.instanceOf(Date),
-    onPhone: PropTypes.func,
-    onEmail: PropTypes.func,
 };
 
 PopoverBody.defaultProps = {
@@ -66,8 +64,6 @@ PopoverBody.defaultProps = {
     desc: '',
     start: null,
     end: null,
-    onPhone: () => {},
-    onEmail: () => {},
 };
 
 export default PopoverBody

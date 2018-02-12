@@ -21,13 +21,24 @@ class PopoverApp extends React.Component {
         this.setState({visible: false})
     };
 
+	handleEmail = () => {
+        this.props.onClose();
+        this.setState({visible: false})
+    };
+
+	handlePhone = () => {
+        this.props.onPhone();
+        this.setState({visible: false})
+    };
+
   render() {
 
     return (
       <Popover
         content={<PopoverBody {...this.props.data}
                               onClose={this.handleClose}
-                              onEmail={this.props.onEmail}
+                              onEmail={this.handleEmail}
+                              onPhone={this.handlePhone}
         />}
         trigger="click"
         visible={this.state.visible}
@@ -45,12 +56,14 @@ PopoverApp.propTypes = {
     data: PropTypes.object,
     onClose: PropTypes.func,
     onEmail: PropTypes.func,
+    onPhone: PropTypes.func,
 };
 
 PopoverApp.defaultProps = {
     data: {},
     onClose: () => {},
     onEmail: () => {},
+    onPhone: () => {},
 };
 
 export default PopoverApp
