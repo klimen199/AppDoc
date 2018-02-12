@@ -22,7 +22,7 @@ class PopoverApp extends React.Component {
     };
 
 	handleEmail = () => {
-        this.props.onClose();
+        this.props.onEmail();
         this.setState({visible: false})
     };
 
