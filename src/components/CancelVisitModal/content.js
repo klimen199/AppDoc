@@ -15,6 +15,7 @@ class ContentForm extends React.Component{
 
         this.state = {
             dpNum: rangeSet.length || 1,
+            rangeSet: rangeSet
         };
     }
 
@@ -34,6 +35,18 @@ class ContentForm extends React.Component{
             this.setState({dpNum:(dpNum+1)})
     };
 
+    dpChangeHandler = (arr, i) => {
+        let newArr = this.state.rangeSet.concat();
+        newArr[i] = {
+            defaultStartValue: arr[0],
+            defaultEndValue: arr[1],
+        };
+
+        this.setState({
+            rangeSet: newArr,
+        })
+    };
+
     renderDp = (fieldDecorator) =>{
         let dpArr = [];
         for(let i =0; i<this.state.dpNum;i++){
@@ -41,7 +54,8 @@ class ContentForm extends React.Component{
                 <FormItem key={'dp'+i}>
                     {fieldDecorator(`dp${i}`)(
                         <DatePicker range
-                                    rangeSet={this.props.rangeSet[i]}
+                                    rangeSet={this.state.rangeSet[i]}
+                                    onChange={(dateArr) => this.dpChangeHandler(dateArr,i)}
                                     delimiter='&mdash;'/>
                     )}
                 </FormItem>)
@@ -53,38 +67,39 @@ class ContentForm extends React.Component{
         );
     };
 
-    changeFieldsVal = (props, dpNum = this.state.dpNum) => {
-        const {rangeSet} = props;
+    changeFieldsVal = (dpNum = this.state.dpNum) => {
+        const {rangeSet} = this.state;
         if (rangeSet.length){
             for(let i = 0; i < dpNum; i++){
                 let {defaultStartValue, defaultEndValue} = rangeSet[i];
-                props.form.setFieldsValue({
+                this.props.form.setFieldsValue({
                     ['dp'+i]: [defaultStartValue, defaultEndValue],
                 });
             }
         }
         else {
-            props.form.setFieldsValue({
+            this.props.form.setFieldsValue({
                 ['dp0']: [null, null],
             });
         }
     };
 
     componentDidMount(){
-        this.changeFieldsVal(this.props)
+        this.changeFieldsVal()
     }
 
     componentWillReceiveProps(nextProps){
         if (nextProps.rangeSet.length !== this.props.rangeSet.length){
             this.setState({
                 dpNum: nextProps.rangeSet.length || 1,
+                rangeSet: nextProps.rangeSet || [],
             })
         }
     }
 
     componentDidUpdate(prevProps){
         if (this.props.rangeSet.length !== prevProps.rangeSet.length){
-            this.changeFieldsVal(this.props, (this.props.rangeSet.length || 1))
+            this.changeFieldsVal((this.props.rangeSet.length || 1))
         }
     }
 
@@ -104,19 +119,19 @@ class ContentForm extends React.Component{
                         <Upload className="cancelVisitModal-upload" text="Прикрепить файл"/>
                     )}
                 </FormItem>
-                    {this.renderDp(getFieldDecorator)}
-                    <Button onClick={(e) => this.addDp(e)}
-                            className='cancelVisitModal-dpAdd'
-                            btnText='Добавить интервал'
-                            size='file'
-                            type='file'
-                            icon='add-button'
-                            svg
-                    />
-                    <Button htmlType="submit"
-                            size='default'
-                            btnText='Сохранить'
-                            type='float'/>
+                {this.renderDp(getFieldDecorator)}
+                <Button onClick={(e) => this.addDp(e)}
+                        className='cancelVisitModal-dpAdd'
+                        btnText='Добавить интервал'
+                        size='file'
+                        type='file'
+                        icon='add-button'
+                        svg
+                />
+                <Button htmlType="submit"
+                        size='default'
+                        btnText='Сохранить'
+                        type='float'/>
             </Form>
         )
     }
