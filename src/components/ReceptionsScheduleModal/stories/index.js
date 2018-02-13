@@ -13,7 +13,7 @@ storiesOf('Modal - ReceptionsScheduleModal', module)
             <ReceptionsScheduleModal
                 visible={true}
                 dateSet={{
-                    defaultEndValue: moment(new Date(2017, 11, 17)),
+                    defaultEndValue: moment(new Date(2017, 11, 15)),
                     defaultStartValue: moment(new Date(2017, 11, 10))
                 }}
                 timeSetCall={[
@@ -31,6 +31,8 @@ storiesOf('Modal - ReceptionsScheduleModal', module)
                         defaultEndValue: moment(new Date(2017, 11, 11, 14, 50), "YYYY-MM-DD HH:mm"),
                     }
                 ]}
-                selOptions={options}/>
+                selOptions={options}
+                onSave={(obj) => console.log(obj)}
+            />
         </div>
     ));
