@@ -55,10 +55,10 @@ Step2_graduate_educ.propTypes = {
         PropTypes.number,
         PropTypes.string
     ]),
-}
+};
 
 Step2_graduate_educ.defaultProps = {
     number: 0,
-}
+};
 
 export default Step2_graduate_educ

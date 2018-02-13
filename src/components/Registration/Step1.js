@@ -28,18 +28,18 @@ class Step1Form extends React.Component{
 
     render(){
         const { getFieldDecorator } = this.props.form;
-        const {userFio,
-            userEmail,
-            userPhone,
-            userSex,
-            userBirthday} = this.props.form.getFieldsValue();
+        const {fio,
+            email,
+            phone,
+            sex,
+            datebirth} = this.props.form.getFieldsValue();
 
         return (
             <Form onSubmit={this.handleSubmit} className="step-form">
                 <div className="step-posttitle">Заполните основные контактные данные</div>
                 <div className="step-notification">* Поля, обязательные для заполнения</div>
                 <FormItem>
-                    {getFieldDecorator('userFio', {
+                    {getFieldDecorator('fio', {
                         rules: [{ required: true,
                             message: 'Введите ФИО, пожалуйста' }],
                     })(
@@ -48,7 +48,7 @@ class Step1Form extends React.Component{
                     )}
                 </FormItem>
                 <FormItem>
-                    {getFieldDecorator('userEmail', {
+                    {getFieldDecorator('email', {
                         rules: [{ required: true,
                             message: 'Введите ваш e-mail, пожалуйста' }],
                     })(
@@ -57,7 +57,7 @@ class Step1Form extends React.Component{
                     )}
                 </FormItem>
                 <FormItem>
-                    {getFieldDecorator('userPhone', {
+                    {getFieldDecorator('phone', {
                         rules: [{ required: true,
                             message: 'Введите ваш телефон, пожалуйста' }],
                     })(
@@ -68,20 +68,20 @@ class Step1Form extends React.Component{
                 <div className="step-row">
                     <FormItem>
                         <div className='radio-label'>* Пол
-                        {getFieldDecorator('userSex', {
+                        {getFieldDecorator('sex', {
                             rules: [{ required: true,
                                 message: 'Выберите пол, пожалуйста' }],
                         })(
                             <RadioGroup>
-                                <Radio value='woman'>Жен.</Radio>
-                                <Radio value='man'>Муж.</Radio>
+                                <Radio value='w'>Жен.</Radio>
+                                <Radio value='m'>Муж.</Radio>
                             </RadioGroup>
                        )}
                         </div>
                     </FormItem>
                     <FormItem>
                         <div className='radio-label'>* Дата рождения
-                        {getFieldDecorator('userBirthday', {
+                        {getFieldDecorator('datebirth', {
                             rules: [{ required: true,
                                 message: 'Введите дату вашего рождения, пожалуйста' }],
                         })(
@@ -92,11 +92,11 @@ class Step1Form extends React.Component{
                 </div>
                 <div className="steps-action">
                     <Button htmlType="submit"
-                            disable={!(userFio&&
-                                userEmail &&
-                                userPhone &&
-                                userSex &&
-                                userBirthday)}
+                            disable={!(fio&&
+                                email &&
+                                phone &&
+                                sex &&
+                                datebirth)}
                             btnText='Далее'
                             size='large'
                             type='gradient'/>
