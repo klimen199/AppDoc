@@ -67,9 +67,12 @@ class ContentForm extends React.Component {
     }
 
     componentDidUpdate(prevProps){
+        const  dateSet_pr = prevProps.dateSet,
+            dateSet_cur = this.props.dateSet;
         if (prevProps.timeSetReception.length !== this.props.timeSetReception.length
-            || prevProps.timeSetCall.length !== this.props.timeSetCall.length){
-
+            || prevProps.timeSetCall.length !== this.props.timeSetCall.length
+            || dateSet_pr.defaultEndValue !== dateSet_cur.defaultEndValue
+            || dateSet_pr.defaultStartValue !== dateSet_cur.defaultStartValue){
             this.changeFieldsVal()
         }
     }
@@ -179,6 +182,7 @@ class ContentForm extends React.Component {
                                 svg/>
                         <FormItem>
                             {getFieldDecorator('dayOff', {
+                                valuePropName: 'checked',
                                 initialValue: false,
                             })(
                                 <Checkbox>Выходной</Checkbox>
