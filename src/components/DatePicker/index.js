@@ -45,6 +45,7 @@ DatePicker.propTypes = {
     }),
     delimiter: PropTypes.string,
     style: PropTypes.object,
+    shouldUpdate: PropTypes.bool,
     onChange: PropTypes.func,
 };
 
@@ -55,6 +56,7 @@ DatePicker.defaultProps = {
     rangeSet: {},
     delimiter: "—",
     style: {},
+    shouldUpdate: false,
     onChange: () => {},
 };
 

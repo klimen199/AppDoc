@@ -18,7 +18,8 @@ class ContentForm extends React.Component {
             tpNum: {
                 'reception': props.timeSetReception.length || 1,
                 'call': props.timeSetCall.length || 1,
-            }
+            },
+            shouldDPUpdate: false,
         }
     }
 
@@ -29,34 +30,45 @@ class ContentForm extends React.Component {
             ['day']: [defaultStartValue, defaultEndValue],
         });
 
-        this.initializeTP(timeSetReception,'reception');
-        this.initializeTP(timeSetCall,'call');
+        this.initializeTP(timeSetReception, 'reception');
+        this.initializeTP(timeSetCall, 'call');
     };
 
     initializeTP = (set, flag) => {
-        if (set.length){
-            for(let i = 0; i < this.state.tpNum[flag]; i++){
+        if (set.length) {
+            for (let i = 0; i < this.state.tpNum[flag]; i++) {
                 let {defaultStartValue, defaultEndValue} = set[i];
                 this.props.form.setFieldsValue({
-                    [flag+'Tp'+i]: [defaultStartValue, defaultEndValue],
+                    [flag + 'Tp' + i]: [defaultStartValue, defaultEndValue],
                 });
             }
         }
-        else{
+        else {
             this.props.form.setFieldsValue({
-                [flag+'Tp0']: [null, null],
+                [flag + 'Tp0']: [null, null],
             });
         }
 
     };
 
-    componentDidMount(){
+    componentDidMount() {
         this.changeFieldsVal()
     }
 
-    componentWillReceiveProps(nextProps){
+    componentWillReceiveProps(nextProps) {
+        const dateSet_pr = this.props.dateSet,
+            dateSet_cur = nextProps.dateSet;
+        if(!(dateSet_pr.defaultEndValue.date() === dateSet_cur.defaultEndValue.date()
+            && dateSet_pr.defaultEndValue.month() === dateSet_cur.defaultEndValue.month()
+            && dateSet_pr.defaultEndValue.year() === dateSet_cur.defaultEndValue.year())
+            || !(dateSet_pr.defaultStartValue.date() === dateSet_cur.defaultStartValue.date()
+            && dateSet_pr.defaultStartValue.month() === dateSet_cur.defaultStartValue.month()
+            && dateSet_pr.defaultStartValue.year() === dateSet_cur.defaultStartValue.year())){
+            this.setState({shouldDPUpdate:true})
+        }
+
         if (nextProps.timeSetReception.length !== this.props.timeSetReception.length
-            || nextProps.timeSetCall.length !== this.props.timeSetCall.length){
+            || nextProps.timeSetCall.length !== this.props.timeSetCall.length) {
             this.setState({
                 tpNum: {
                     'call': nextProps.timeSetCall.length || 1,
@@ -66,30 +78,19 @@ class ContentForm extends React.Component {
         }
     }
 
-    componentDidUpdate(prevProps){
-        const  dateSet_pr = prevProps.dateSet,
-            dateSet_cur = this.props.dateSet;
-
-        console.log(dateSet_pr.defaultEndValue.date(), dateSet_cur.defaultEndValue.date())
-        console.log(dateSet_pr.defaultEndValue.date() !== dateSet_cur.defaultEndValue.date())
-
+    componentDidUpdate(prevProps) {
+        if(this.state.shouldDPUpdate)
+            this.setState({shouldDPUpdate:false});
 
         if (prevProps.timeSetReception.length !== this.props.timeSetReception.length
             || prevProps.timeSetCall.length !== this.props.timeSetCall.length
-            || dateSet_pr.defaultEndValue.date() !== dateSet_cur.defaultEndValue.date()
-            || dateSet_pr.defaultEndValue.month() !== dateSet_cur.defaultEndValue.month()
-            || dateSet_pr.defaultEndValue.year() !== dateSet_cur.defaultEndValue.year()
-            || dateSet_pr.defaultStartValue.date() !== dateSet_cur.defaultStartValue.date()
-            || dateSet_pr.defaultStartValue.month() !== dateSet_cur.defaultStartValue.month()
-            || dateSet_pr.defaultStartValue.year() !== dateSet_cur.defaultStartValue.year()
-        ){
+        ) {
             this.changeFieldsVal()
         }
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.props.form.getFieldsValue());
         this.props.onSave(this.props.form.getFieldsValue());
     };
 
@@ -149,7 +150,7 @@ class ContentForm extends React.Component {
     render() {
         const {getFieldDecorator} = this.props.form;
         const {dateSet, selOptions} = this.props;
-
+        
         return (
             <Form onSubmit={this.handleSubmit}
                   className="receptionsScheduleModal">
@@ -157,6 +158,7 @@ class ContentForm extends React.Component {
                 <FormItem>
                     {getFieldDecorator('day')(
                         <DatePicker range
+                                    shouldUpdate={this.state.shouldDPUpdate}
                                     rangeSet={dateSet}
                                     delimiter='&mdash;'/>
                     )}

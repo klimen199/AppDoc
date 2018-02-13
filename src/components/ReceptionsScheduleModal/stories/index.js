@@ -13,8 +13,8 @@ storiesOf('Modal - ReceptionsScheduleModal', module)
             <ReceptionsScheduleModal
                 visible={true}
                 dateSet={{
-                    defaultEndValue: moment(new Date(2017, 11, 11)),
-                    defaultStartValue: moment(new Date(2017, 11, 11))
+                    defaultEndValue: moment(new Date(2017, 11, 17)),
+                    defaultStartValue: moment(new Date(2017, 11, 10))
                 }}
                 timeSetCall={[
                     {
