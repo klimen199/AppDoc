@@ -69,10 +69,20 @@ class ContentForm extends React.Component {
     componentDidUpdate(prevProps){
         const  dateSet_pr = prevProps.dateSet,
             dateSet_cur = this.props.dateSet;
+
+        console.log(dateSet_pr.defaultEndValue.date(), dateSet_cur.defaultEndValue.date())
+        console.log(dateSet_pr.defaultEndValue.date() !== dateSet_cur.defaultEndValue.date())
+
+
         if (prevProps.timeSetReception.length !== this.props.timeSetReception.length
             || prevProps.timeSetCall.length !== this.props.timeSetCall.length
-            || dateSet_pr.defaultEndValue !== dateSet_cur.defaultEndValue
-            || dateSet_pr.defaultStartValue !== dateSet_cur.defaultStartValue){
+            || dateSet_pr.defaultEndValue.date() !== dateSet_cur.defaultEndValue.date()
+            || dateSet_pr.defaultEndValue.month() !== dateSet_cur.defaultEndValue.month()
+            || dateSet_pr.defaultEndValue.year() !== dateSet_cur.defaultEndValue.year()
+            || dateSet_pr.defaultStartValue.date() !== dateSet_cur.defaultStartValue.date()
+            || dateSet_pr.defaultStartValue.month() !== dateSet_cur.defaultStartValue.month()
+            || dateSet_pr.defaultStartValue.year() !== dateSet_cur.defaultStartValue.year()
+        ){
             this.changeFieldsVal()
         }
     }
