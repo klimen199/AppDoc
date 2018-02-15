@@ -37,10 +37,12 @@ class ContentForm extends React.Component {
     initializeTP = (set, flag) => {
         if (set.length) {
             for (let i = 0; i < this.state.tpNum[flag]; i++) {
-                let {defaultStartValue, defaultEndValue} = set[i];
-                this.props.form.setFieldsValue({
-                    [flag + 'Tp' + i]: [defaultStartValue, defaultEndValue],
-                });
+                if(set[i]){
+                    let {defaultStartValue, defaultEndValue} = set[i];
+                    this.props.form.setFieldsValue({
+                        [flag + 'Tp' + i]: [defaultStartValue, defaultEndValue],
+                    });
+                }
             }
         }
         else {
