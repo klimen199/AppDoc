@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Form } from 'antd';
+import {Form} from 'antd';
 
 import Input from '../Input'
 import DatePicker from '../DatePicker'
@@ -15,18 +15,20 @@ const FormItem = Form.Item;
 
 /* styles in style.css (importing in Step2.js)*/
 
-class Step2_work extends React.Component{
+class Step2_work extends React.Component {
 
-    render(){
-        const { getFieldDecorator } = this.props;
+    render() {
+        const {getFieldDecorator} = this.props;
         const {langs, payments} = this.props;
 
         return (
             <div className="step-block">
                 <FormItem>
-                    {getFieldDecorator('curWork', {
-                        rules: [{ required: true,
-                            message: 'Введите текущее место работы' }],
+                    {getFieldDecorator('worknow', {
+                        rules: [{
+                            required: true,
+                            message: 'Введите текущее место работы'
+                        }],
                     })(
                         <Input addonBefore='* Текущее место работы'
                                className='step-form-item'/>
@@ -35,25 +37,29 @@ class Step2_work extends React.Component{
 
                 <div className="step-row">
                     <FormItem>
-                        {getFieldDecorator('position', {
-                            rules: [{ required: true,
-                                message: 'Введите текущую должность' }],
+                        {getFieldDecorator('post', {
+                            rules: [{
+                                required: true,
+                                message: 'Введите текущую должность'
+                            }],
                         })(
                             <Input addonBefore='* Должность'
                                    className='step-form-item'/>
                         )}
                     </FormItem>
                     <FormItem>
-                        {getFieldDecorator('startDate', {
-                            rules: [{ required: true,
-                                message: 'Введите дату начала работы' }],
+                        {getFieldDecorator('workdate', {
+                            rules: [{
+                                required: true,
+                                message: 'Введите дату начала работы'
+                            }],
                         })(
                             <DatePicker placeholder='* Дата начала работы'/>
                         )}
                     </FormItem>
                 </div>
                 <FormItem>
-                    {getFieldDecorator('contractPhoto')(
+                    {getFieldDecorator('copycontract')(
                         <Upload text="Прикрепить копию контракта"/>
                     )}
                 </FormItem>
@@ -62,18 +68,22 @@ class Step2_work extends React.Component{
 
                 <div className="step-block-item">
                     <FormItem>
-                        {getFieldDecorator('category', {
-                            rules: [{ required: true,
-                                message: 'Введите категорию' }],
+                        {getFieldDecorator('catigory', {
+                            rules: [{
+                                required: true,
+                                message: 'Введите категорию'
+                            }],
                         })(
-                            <Input  addonBefore='* Категория'
-                                    className='step-form-item'/>
+                            <Input addonBefore='* Категория'
+                                   className='step-form-item'/>
                         )}
                     </FormItem>
                 </div>
-                {getFieldDecorator('photos')(
-                    <UploadBig />
-                )}
+                <FormItem>
+                    {getFieldDecorator('photos')(
+                        <UploadBig />
+                    )}
+                </FormItem>
             </div>
         )
     }

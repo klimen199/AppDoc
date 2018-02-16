@@ -7,6 +7,8 @@ import RegistrationForm from '../';
 
 import {langs, payments} from './mock-data'
 
+
+
 storiesOf('Registration', module)
     .addDecorator(story => (
         <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>

@@ -41,12 +41,12 @@ class Step3 extends React.Component{
         let i = 0,
             elArr = [];
         while (true){
-            if(data['university'+i]){
+            if(data['educationsgroup1-education-'+i]){
                 let numPreffics = i > 0 ? ' '+(i+1) : '';
                 elArr.push(<Hoc key={'educInfo'+i}>
-                    {this.renderItem(`Учебное заведение${numPreffics}`,'university'+i)}
-                    {this.renderItem(`Специальность${numPreffics}`,'speciality'+i)}
-                    {this.renderItem('Год окончания','graduateYear'+i)}
+                    {this.renderItem(`Учебное заведение${numPreffics}`,'educationsgroup1-education-'+i)}
+                    {this.renderItem(`Специальность${numPreffics}`,'educationsgroup1-speciality-'+i)}
+                    {this.renderItem('Год окончания','educationsgroup1-finishucationyear-'+i)}
                 </Hoc>)
             }
             else {
@@ -60,14 +60,14 @@ class Step3 extends React.Component{
         let i = 0,
             elArr = [];
         while (true){
-            if(data['institution'+i]
-                || data['educCycle'+i]
-                || data['educPeriod'+i]){
+            if(data['educationsgroup2-education-'+i]
+                || data['educationsgroup2-ciklname-'+i]
+                || data['educationsgroup2-ucationyears-'+i]){
 
                 let numPreffics = i > 0 ? ' '+(i+1) : '',
-                    institution = data['institution'+i],
-                    educCycle = data['educCycle'+i],
-                    educPeriod = data['educPeriod'+i];
+                    institution = data['educationsgroup2-education-'+i],
+                    educCycle = data['educationsgroup2-ciklname-'+i],
+                    educPeriod = data['educationsgroup2-ucationyears-'+i];
                 elArr.push(<Hoc key={'graduateEducInfo'+i}>
                     {institution &&
                     <div className='check-row'>
@@ -128,6 +128,49 @@ class Step3 extends React.Component{
         </Hoc>)
     };
 
+    fillNewField = (res, name) => {
+        const data = this.props.data;
+        const info = name.split('-');
+        let array = [];
+        if (res[info[0]])
+            array = [...res[info[0]]];
+        array[+info[2]] = (info[1] === 'ucationyears')
+            ? {
+                ...array[+info[2]],
+                [info[1]]: [
+                    data[name][0] instanceof moment ? (data[name][0]).unix() : data[name][0],
+                    data[name][1] instanceof moment ? (data[name][1]).unix() : data[name][1],
+                ],
+            }
+            : {
+                ...array[+info[2]],
+                [info[1]]: data[name],
+            };
+        return {
+            ...res,
+            [info[0]]: array,
+        }
+    };
+
+    onFinishHandler = () => {
+        const data = this.props.data;
+        let result = {};
+        for (let key in data){
+            result = (key.indexOf('educationsgroup')+1)
+                ? this.fillNewField(result,key)
+                : (key === 'workdate' || key === 'datebirth')
+                    ? {
+                        ...result,
+                        [key]: (data[key] instanceof moment) ? (data[key]).unix() : data[key],
+                    }
+                    : {
+                        ...result,
+                        [key]: data[key],
+                    };
+        }
+        this.props.onFinish(result)
+    };
+
     render(){
         const {data} = this.props;
 
@@ -136,25 +179,25 @@ class Step3 extends React.Component{
                 <div className="step-posttitle">Проверьте введенные данные</div>
 
 
-                {this.renderItem('ФИО','userFio')}
-                {this.renderItem('E-mail','userEmail')}
-                {this.renderItem('Телефон','userPhone')}
+                {this.renderItem('ФИО','fio')}
+                {this.renderItem('E-mail','email')}
+                {this.renderItem('Телефон','phone')}
                 <div className='check-row'>
                     <div className='check-title'>Пол:</div>
                     <div className='check-text'>
-                        {data.userSex === 'man' ? "Мужской" : "Женский"}
+                        {data.sex === 'm' ? "Мужской" : "Женский"}
                     </div>
                 </div>
-                {this.renderTimeItem('Дата рождения','userBirthday')}
+                {this.renderTimeItem('Дата рождения','datebirth')}
 
                 {this.renderEducInfo(data)}
 
                 {this.renderGraduateEducInfo(data)}
 
-                {this.renderItem('Место работы','curWork')}
-                {this.renderItem('Должность','position')}
-                {this.renderTimeItem('Дата начала работы','startDate')}
-                {this.renderItem('Категория','category')}
+                {this.renderItem('Место работы','worknow')}
+                {this.renderItem('Должность','post')}
+                {this.renderTimeItem('Дата начала работы','workdate')}
+                {this.renderItem('Категория','catigory')}
 
                 {this.renderAdditionalInfo(data)}
 
@@ -171,7 +214,7 @@ class Step3 extends React.Component{
                     />
                     <Button btnText='Завершить'
                             disable={!this.state.checked}
-                            onClick={() => this.props.onFinish(this.props.data)}
+                            onClick={this.onFinishHandler}
                             size='large'
                             type='gradient'
                     />
