@@ -83,7 +83,6 @@ class ContentForm extends React.Component {
         }
 
         if(nextProps.visible === false && this.props.visible === true){
-            console.log('[visible false]');
             this.props.form.setFieldsValue({
                 ['day']: [null, null],
             });
@@ -94,7 +93,6 @@ class ContentForm extends React.Component {
                 'call': 1,
                 'reception': 1,
             });
-            console.log(this.state)
         }
     }
 
@@ -114,7 +112,6 @@ class ContentForm extends React.Component {
 
 
         if(this.props.visible === false && prevProps.visible === true){
-            console.log('[visible true]');
             this.setState({isReset: false,})
         }
     }
