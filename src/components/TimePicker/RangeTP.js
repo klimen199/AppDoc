@@ -59,6 +59,15 @@ class RangeTp extends React.Component {
         return [];
     };
 
+    componentWillReceiveProps(nextProps){
+        if(nextProps.isReset !== this.props.isReset && nextProps.isReset === true){
+            this.setState({
+                startValue: null,
+                endValue: null,
+            })
+        }
+    }
+
     render() {
         const {delimiter, minuteStep} = this.props;
         const {rangeSet} = this.props;

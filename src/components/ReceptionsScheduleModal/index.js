@@ -13,7 +13,8 @@ const ReceptionsScheduleModal = (props) => {
                visible={visible}
                onCancel={onCancel}
         >
-            <Content {...props}/>
+            <Content {...props}
+            />
         </Modal>
     )
 };
