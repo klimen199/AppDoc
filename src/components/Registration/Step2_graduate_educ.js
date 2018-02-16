@@ -23,24 +23,24 @@ class Step2_graduate_educ extends React.Component{
         return (
             <div className="step-block">
                 <FormItem>
-                    {getFieldDecorator('institution'+number)(
+                    {getFieldDecorator('educationsgroup2-education-'+number)(
                         <Input addonBefore='Учебное заведение'
                                className='step-form-item'/>
                     )}
                 </FormItem>
                 <FormItem>
-                    {getFieldDecorator('educCycle'+number)(
+                    {getFieldDecorator('educationsgroup2-ciklname-'+number)(
                         <Input addonBefore='Название цикла обучения'
                                className='step-form-item'/>
                     )}
                 </FormItem>
                 <FormItem>
-                    {getFieldDecorator('educPeriod'+number)(
+                    {getFieldDecorator('educationsgroup2-ucationyears-'+number)(
                         <DatePicker range placeholderStart="Начало обучения" placeholderEnd="Окончание обучения"/>
                     )}
                 </FormItem>
                 <FormItem>
-                    {getFieldDecorator('institutionDiploma'+number)(
+                    {getFieldDecorator('educationsgroup2-diplomphoto-'+number)(
                         <Upload text="Прикрепить диплом (сертификат, свидетельство)"/>
                     )}
                 </FormItem>

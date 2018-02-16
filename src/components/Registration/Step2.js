@@ -36,7 +36,7 @@ class Step2_From extends React.Component{
                 let toSubmit = {
                     ...values,
                     ...this.state,
-                }
+                };
                 this.props.onSubmit(toSubmit);
                 this.props.onNext();
             }
@@ -52,18 +52,18 @@ class Step2_From extends React.Component{
         while (i < num){
             formArr.push(<Hr key={'hr_' + name + i}/>);
             formArr.push(<Component getFieldDecorator={fieldDecorator}
-                                     key={name + i}
-                                     number={i}/>);
+                                    key={name + i}
+                                    number={i}/>);
             i++;
         }
         return formArr;
-    }
+    };
 
     increaseStateNum = (e, type) => {
         e.preventDefault();
         this.setState(prev =>
             ({[type]: prev[type] +1}))
-    }
+    };
 
     render(){
         const {getFieldDecorator} = this.props.form;
@@ -101,7 +101,7 @@ class Step2_From extends React.Component{
 
                 <Hr/>
                 <FormItem>
-                    {getFieldDecorator('academicDegree')(
+                    {getFieldDecorator('academicdegree')(
                         <Select placeholder="Ученая степень">
                             {academicDegree.map(elem => <Select.Option key={elem.value}
                                                               value={elem.value}>
@@ -110,13 +110,13 @@ class Step2_From extends React.Component{
                     )}
                 </FormItem>
                 <FormItem>
-                    {getFieldDecorator('academicDegreePhoto')(
+                    {getFieldDecorator('academicdegreedoc')(
                         <Upload text="Прикрепить документ, подтверждающий ученую степень"/>
                     )}
                 </FormItem>
 
                 <FormItem>
-                    {getFieldDecorator('academicTitle')(
+                    {getFieldDecorator('academicstatus')(
                         <Select placeholder="Ученое звание">
                             {academicTitle.map(elem => <Select.Option key={elem.value}
                                                               value={elem.value}>
@@ -125,7 +125,7 @@ class Step2_From extends React.Component{
                     )}
                 </FormItem>
                 <FormItem>
-                    {getFieldDecorator('academicTitlePhoto')(
+                    {getFieldDecorator('academicstatusdoc')(
                         <Upload text="Прикрепить документ, подтверждающий ученое звание"/>
                     )}
                 </FormItem>

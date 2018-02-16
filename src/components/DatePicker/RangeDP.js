@@ -56,8 +56,8 @@ class RangeDP extends React.Component{
 
     componentWillReceiveProps (nextProps){
         if(this.props.shouldUpdate
-            || !this.state.startValue !== !nextProps.rangeSet.defaultStartValue
-            || !this.state.endValue !== !nextProps.rangeSet.defaultEndValue){
+            /*|| !this.state.startValue !== !nextProps.rangeSet.defaultStartValue
+            || !this.state.endValue !== !nextProps.rangeSet.defaultEndValue*/){     //trouble in Registration
             const {defaultStartValue,defaultEndValue} = nextProps.rangeSet;
             this.setState({
                 startValue: defaultStartValue,

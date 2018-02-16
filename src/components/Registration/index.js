@@ -17,7 +17,7 @@ class RegistrationForm extends React.Component{
         super(props);
         this.state = {
             current: 0,
-        }
+        };
         this.steps = [{
             title: 'Контактная информация',
             content:
