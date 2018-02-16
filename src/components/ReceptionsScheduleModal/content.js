@@ -20,18 +20,25 @@ class ContentForm extends React.Component {
                 'call': props.timeSetCall.length || 1,
             },
             shouldDPUpdate: false,
+            isReset: false,
         }
     }
 
-    changeFieldsVal = () => {
-        const {dateSet, timeSetCall, timeSetReception} = this.props;
+    compareDates = (first, second) => {
+        return (first.date() === second.date()
+        && first.month() === second.month()
+        && first.year() === second.year())
+    };
+
+    changeFieldsVal = (props = this.props) => {
+        const {dateSet, timeSetCall, timeSetReception} = props;
         let {defaultStartValue, defaultEndValue} = dateSet;
-        this.props.form.setFieldsValue({
+        props.form.setFieldsValue({
             ['day']: [defaultStartValue, defaultEndValue],
         });
 
-        this.initializeTP(timeSetReception, 'reception');
-        this.initializeTP(timeSetCall, 'call');
+        this.initializeTP(timeSetReception, 'reception', props);
+        this.initializeTP(timeSetCall, 'call', props);
     };
 
     initializeTP = (set, flag) => {
@@ -60,23 +67,34 @@ class ContentForm extends React.Component {
     componentWillReceiveProps(nextProps) {
         const dateSet_pr = this.props.dateSet,
             dateSet_cur = nextProps.dateSet;
-        if(!(dateSet_pr.defaultEndValue.date() === dateSet_cur.defaultEndValue.date()
-            && dateSet_pr.defaultEndValue.month() === dateSet_cur.defaultEndValue.month()
-            && dateSet_pr.defaultEndValue.year() === dateSet_cur.defaultEndValue.year())
-            || !(dateSet_pr.defaultStartValue.date() === dateSet_cur.defaultStartValue.date()
-            && dateSet_pr.defaultStartValue.month() === dateSet_cur.defaultStartValue.month()
-            && dateSet_pr.defaultStartValue.year() === dateSet_cur.defaultStartValue.year())){
+        if(!(this.compareDates(dateSet_pr.defaultEndValue,dateSet_cur.defaultEndValue))
+            || !(this.compareDates(dateSet_pr.defaultStartValue,dateSet_cur.defaultStartValue))){
             this.setState({shouldDPUpdate:true})
         }
 
-        if (nextProps.timeSetReception.length !== this.props.timeSetReception.length
-            || nextProps.timeSetCall.length !== this.props.timeSetCall.length) {
+        if (nextProps.visible === true && this.props.visible === false) {
             this.setState({
                 tpNum: {
                     'call': nextProps.timeSetCall.length || 1,
                     'reception': nextProps.timeSetReception.length || 1,
                 }
-            })
+            });
+            this.changeFieldsVal(nextProps);
+        }
+
+        if(nextProps.visible === false && this.props.visible === true){
+            console.log('[visible false]');
+            this.props.form.setFieldsValue({
+                ['day']: [null, null],
+            });
+            this.initializeTP([], 'reception');
+            this.initializeTP([], 'call');
+            this.setState({
+                isReset: true,
+                'call': 1,
+                'reception': 1,
+            });
+            console.log(this.state)
         }
     }
 
@@ -88,14 +106,16 @@ class ContentForm extends React.Component {
 
         if (prevProps.timeSetReception.length !== this.props.timeSetReception.length
             || prevProps.timeSetCall.length !== this.props.timeSetCall.length
-            ||!(dateSet_pr.defaultEndValue.date() === dateSet_cur.defaultEndValue.date()
-            && dateSet_pr.defaultEndValue.month() === dateSet_cur.defaultEndValue.month()
-            && dateSet_pr.defaultEndValue.year() === dateSet_cur.defaultEndValue.year())
-            || !(dateSet_pr.defaultStartValue.date() === dateSet_cur.defaultStartValue.date()
-            && dateSet_pr.defaultStartValue.month() === dateSet_cur.defaultStartValue.month()
-            && dateSet_pr.defaultStartValue.year() === dateSet_cur.defaultStartValue.year())
+            ||!(this.compareDates(dateSet_pr.defaultEndValue, dateSet_cur.defaultEndValue))
+            || !(this.compareDates(dateSet_pr.defaultStartValue, dateSet_cur.defaultStartValue))
         ) {
             this.changeFieldsVal()
+        }
+
+
+        if(this.props.visible === false && prevProps.visible === true){
+            console.log('[visible true]');
+            this.setState({isReset: false,})
         }
     }
 
@@ -122,6 +142,7 @@ class ContentForm extends React.Component {
                 <FormItem key={tab + i}>
                     {fieldDecorator(`${tab}Tp${i}`)(
                         <TimePicker range
+                                    isReset={this.state.isReset}
                                     rangeSet={timeSet[i]}
                                     delimiter='&mdash;'
                         />
