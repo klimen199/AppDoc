@@ -37,6 +37,7 @@ const NotificationItem = (props) => {
                     icon='download'
                     iconSize={20}
                     svg
+                    title='Скачать всё'
             	/>
             </div>   
         </div>

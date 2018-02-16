@@ -26,7 +26,7 @@ class UploadBig extends React.Component {
   render() {
     const { previewVisible, previewImage, fileList, name } = this.state;
     const uploadButton = (
-      <div className='upload-btn'>
+      <div className='upload-btn' title='Загрузить файл'>
         <Icon type="add-button" size={40} svg/>
       </div>
     );

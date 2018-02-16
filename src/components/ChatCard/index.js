@@ -55,6 +55,7 @@ class ChatCard extends React.Component{
                             size='small'
                             type='no-brd'
                             icon='file-download'
+                            title='Открыть прикреплённые файлы'
                             onClick={onClick}
                         />
                         <div className='chat-card-namePatient'>{patientName}</div>
@@ -68,6 +69,7 @@ class ChatCard extends React.Component{
                                 size='small'
                                 type='no-brd'
                                 icon='archive-box'
+                                title='В архив'
                             />
                         </div>
                     </div>
@@ -177,6 +179,7 @@ class ChatCard extends React.Component{
                                 size='small'
                                 type='no-brd'
                                 icon='arrow_up'
+                                title='Закрыть'
                             />
                         </div>
                         <div className='chat-card-files__items'>

@@ -176,7 +176,7 @@ class ContentForm extends React.Component {
 
                 <Tabs defaultActiveKey="1"
                       className="receptionsScheduleModal-tabs">
-                    <Tabs.TabPane tab="Плановые приемы"
+                        <Tabs.TabPane tab="Плановые приемы"
                                   key="1">
                         {this.renderTpBlock(
                             'reception',

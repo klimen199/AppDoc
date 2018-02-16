@@ -37,17 +37,20 @@ class ChatSend extends React.Component{
                         size='small'
                         type='no-brd'
                         icon='result'
+                        title='Добавить заключение'
                     />
                     <Button
                         btnText=''
                         size='small'
                         type='no-brd'
                         icon='clip'
+                        title='Прикрепить файл'
                     />
                     <Button
                         btnText=''
                         size='small'
                         type='blue'
+                        title='Отправить сообщение'
                         icon='right-arrow-forward_small'
                     />
                     <Button

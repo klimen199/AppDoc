@@ -14,7 +14,7 @@ class TreatmentTable extends React.Component{
         let treatmentArr = [];
 
         dataArr.map((item, index) => {
-            treatmentArr.push(<TreatmentTableItem {...item} key={item.id + ''+index}/>)
+            treatmentArr.push(<TreatmentTableItem {...item} data={this.props.data} key={item.id + ''+index}/>)
         });
 
         return treatmentArr;
@@ -23,7 +23,7 @@ class TreatmentTable extends React.Component{
     render(){
         return (
             <div className='treatment-all'>
-                <Card title="Актуальные обращения" extra={<a href="#"><Icon svg size={16} type="order-form" /> Все обращения</a>}>
+                <Card title="Актуальные обращения" extra={<a href="#"><Icon svg size={16} type="order-form" /> <span>Все обращения</span></a>}>
                     <div className="tableheader">
                         <div className="flex-col"><div className="tableheader-name">Имя пациента</div></div>
                         <div className="flex-col"><div className="tableheader-name">Дата приема</div></div>

@@ -6,6 +6,7 @@ import Button from '../Button'
 import Rate from '../Rate'
 import Icon from '../Icon'
 import Popover from '../Popover'
+import PopoverFile from '../PopoverFile'
 
 import './style.css'
 import '../../icon/style.css'
@@ -13,7 +14,7 @@ import '../../icon/style.css'
 class TreatmentTableItem extends React.Component{
 
     render(){
-        const {type, name, size, time, date, diagnostic, comments, price, conclusion, conclusionDownload, review, content} = this.props;
+        const {type, name, size, time, date, diagnostic, comments, price, conclusion, conclusionDownload, title, review, content} = this.props;
         const rootClass = cn('treatment');
 
 
@@ -23,7 +24,7 @@ class TreatmentTableItem extends React.Component{
                 <div className="flex-col">
                     <div className="patient-date">{date}</div>
                     <div className="patient-time">{time}</div>
-                    <div className="patient-icon"><Icon svg type={type} size={16} /></div>
+                    <div className="patient-icon"><Icon svg type={type} size={16} title={title} /></div>
                 </div>
                 <div className="flex-col">
                     <div className="patient-diagnostic">{diagnostic}</div>
@@ -43,9 +44,7 @@ class TreatmentTableItem extends React.Component{
                     <div className="patient-review">{review}</div>
                 </div>
                 <div className="flex-col">
-                    <Popover placement="bottomRight" content={content} trigger="click">
-                         <Icon svg type={"file-download popover-nun"} size={30}  num={3}/>
-                    </Popover>
+                    <PopoverFile data={this.props.data}></PopoverFile>
                 </div>
             </div>
         )
@@ -62,7 +61,8 @@ TreatmentTableItem.propTypes = {
     conclusionDownload: PropTypes.string,
     review: PropTypes.string,
     date: PropTypes.string,
-    time: PropTypes.string
+    time: PropTypes.string,
+    title: PropTypes.string
 };
 
 TreatmentTableItem.defaultProps = {
@@ -74,6 +74,7 @@ TreatmentTableItem.defaultProps = {
     conclusion: '-',
     conclusionDownload: '',
     review: '-',
+    title: '',
     date: '01.01.2018',
     time: '00:00',
 };

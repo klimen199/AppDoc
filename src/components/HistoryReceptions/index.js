@@ -23,7 +23,7 @@ class HistoryReceptions extends React.Component{
     render(){
         return (
             <div className='receptions-all'>
-                <Card title="Актуальные обращения">
+                <Card title="История обращений">
                     <div className="tableheader">
                         <div className="flex-col"><div className="receptions-status new">Новые</div></div>
                         <div className="flex-col"><div className="receptions-status topical">Актуальные</div></div>

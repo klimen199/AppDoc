@@ -95,6 +95,10 @@ const loadStories = () => {
     require('../src/components/ChatCard/stories');
     require('../src/components/ChatFiles/stories');
     require('../src/components/ChatSend/stories');
+    require('../src/components/NewVisitModalPage/stories');
+    require('../src/components/PopoverFile/stories');
+    require('../src/components/PopoverFileBody/stories');
+    require('../src/components/HistoryReceptionsTabs/stories');
 };
 
 configure(loadStories, module);

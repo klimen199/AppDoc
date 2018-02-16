@@ -10,7 +10,7 @@ storiesOf('Card', module)
           <div style={{ background: '#ECECEC', padding: '30px' }}>
             <Row gutter={16}>
               <Col span={24}>
-                <Card title="Новые отзывы" extra={<a href="#"><Icon type="message" /> Все отзывы</a>}>
+                <Card title="Новые отзывы" extra={<a href=""><Icon type="message" /> <span>Все отзывы</span></a>}>
                     <p>Card content</p>
                     <p>Card content</p>
                     <p>Card content</p>

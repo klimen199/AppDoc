@@ -11,7 +11,7 @@ import '../../icon/style.css'
 class TableNoHeadItem extends React.Component{
 
     render(){
-        const {img, type, name, infoText, size, online, time} = this.props;
+        const {img, type, name, infoText, size, online, title, time} = this.props;
 
         return (
             <div className='schedule'>
@@ -21,7 +21,7 @@ class TableNoHeadItem extends React.Component{
                     <div className="patient-info">{infoText}</div>
                 </div>
                 <div className="flex-col ml-a"><div className="patient-time">{time}</div></div>
-                <div className="flex-col"><Icon svg type={type} size={16} /></div>
+                <div className="flex-col"><Icon svg type={type} size={16} title='title'/></div>
                 <div className="flex-col">
                     <Button
                         btnText='Начать прием'
@@ -40,6 +40,7 @@ TableNoHeadItem.propTypes = {
     name: PropTypes.string,
     type: PropTypes.string.isRequired,
     infoText: PropTypes.string,
+    title: PropTypes.string,
     time: PropTypes.string,
     specialty: PropTypes.string,
     rateValue: PropTypes.string,
@@ -49,6 +50,7 @@ TableNoHeadItem.propTypes = {
 TableNoHeadItem.defaultProps = {
     img: '',
     name: '',
+    title: '',
     size: 'small',
     infoText: '',
     time: '00:00',

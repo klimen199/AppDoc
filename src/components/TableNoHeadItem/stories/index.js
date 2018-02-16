@@ -12,6 +12,7 @@ storiesOf('TableNoHeadItem', module)
                 img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
                 time="08:15"
                 type='chat1'
+                title='Сообщения'
             />
         </div>
     ))
