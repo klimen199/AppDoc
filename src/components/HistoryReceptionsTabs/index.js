@@ -4,7 +4,9 @@ import PropTypes from 'prop-types'
 import HistoryReceptionsItem from '../HistoryReceptionsItem'
 import Card from '../Card'
 import Button from '../Button'
+import Input from '../Input'
 import Tabs from '../Tabs'
+import DatePicker from '../DatePicker'
 
 import './style.css'
 import '../../icon/style.css'
@@ -18,7 +20,7 @@ class HistoryReceptionsTabs extends React.Component{
             range: [],
             limit: this.props.limit,
             limitedShow: true,
-            periodRevs: [],
+            periodRec: [],
         };
     }
     // отзывы должны быть размещены в соответствии с: чем меньше id, тем раньше он был опубликован
@@ -28,7 +30,7 @@ class HistoryReceptionsTabs extends React.Component{
             //console.log('!!! New data receive');
             this.setState(prev => ({
                 range: [],
-                periodRevs: [],
+                periodRec: [],
                 limitedShow: true,
             }));
         }
@@ -55,6 +57,24 @@ class HistoryReceptionsTabs extends React.Component{
         }
     };
 
+    sortPeriod =(period = this.state.range) => {
+        const [start, end] = period;
+        let revArr = [];
+
+        this.props.data.map((item) => {
+            if (item.date > start && item.date < end)
+                revArr.push(item);
+        });
+        return revArr;
+    };
+
+    dpHandler = (range) => {
+        this.setState(prev => ({
+            periodRec: this.sortPeriod(range),
+            range
+        }));
+    };
+
     historyRender = (dataArr) => {
         let historyArr = [];
         dataArr.map((item, i) => {
@@ -67,10 +87,14 @@ class HistoryReceptionsTabs extends React.Component{
     };
 
     render(){
+
+
+
         return (
             <div className='receptions-all'>
                 <Card title="История обращений">
-                    <Tabs onChange={this.tabChangeHadler}>
+                    <Tabs onChange={this.tabChangeHadler}
+                      tabBarExtraContent={<div className='extra-panel'><DatePicker small onChange={this.dpHandler} defaultValue={this.state.range}/><Input.Search placeholder="Поиск..."/></div>}>
                         <TabPane tab="Все" key="all">
                             <div className="tableheader">
                                 <div className="flex-col"><div className="receptions-status new">Новые</div></div>
