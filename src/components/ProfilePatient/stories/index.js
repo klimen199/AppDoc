@@ -7,6 +7,7 @@ storiesOf('ProfilePatient', module)
     .add('ProfilePatient', () => (
         <div>
             <ProfilePatient
+                status='online'
             	secondname="Петров-Иванов"
             	firstname="Александр"
             	patronymic="Константинович"

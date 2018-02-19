@@ -27,6 +27,37 @@
 			a{
 				color: #fff;
 				padding: 1rem 1.75rem;
+				display: flex;
+				align-items: center;
+
+				span + span{
+					margin-left: 7.5px;
+				}
+				
+				i + span{
+					margin-left: 7.5px;
+				}
+
+
+				&:hover{
+					text-decoration: none;
+
+					span{
+						text-decoration: none;
+
+						& + span{
+							text-decoration: underline;
+						}
+					}
+
+					i{
+						text-decoration: none;
+
+						& + span{
+							text-decoration: underline;
+						}
+					}
+				}
 			}
 
 			.sum{

@@ -7,6 +7,7 @@ import Rate from '../Rate'
 import Icon from '../Icon'
 import Popover from '../Popover'
 import ProfileAvatar from '../ProfileAvatar'
+import NewVisitModalPage from '../NewVisitModalPage'
 import NewMessageModal from '../NewMessageModal'
 
 import './style.css'
@@ -14,24 +15,15 @@ import '../../icon/style.css'
 
 class PatientTableItem extends React.Component{
     state = {
-        visible: false,
+        modal1Visible: false,
+        modal2Visible: false,
     }
 
-    showModal = () => {
-        this.setState({
-            visible: true,
-        });
+    setModal1Visible(modal1Visible) {
+        this.setState({ modal1Visible });
     }
-
-    handleOk = (e) => {
-        this.setState({
-            visible: false,
-        });
-    }
-    handleCancel = (e) => {
-        this.setState({
-            visible: false,
-        });
+    setModal2Visible(modal2Visible) {
+        this.setState({ modal2Visible });
     }
 
     render(){
@@ -51,7 +43,7 @@ class PatientTableItem extends React.Component{
                     <div className="patient-item-time">{date} {time}</div>
                 </div>
                 <div className="flex-col">
-                    <Button onClick={this.showModal}
+                    <Button onClick={() => this.setModal1Visible(true)}
                         btnText='записать на прием'
                         size='default'
                         type='float'
@@ -60,11 +52,12 @@ class PatientTableItem extends React.Component{
                     />
                 </div>
                 <div className="flex-col">
-                    <Button onClick={this.showModal}
+                    <Button onClick={() => this.setModal2Visible(true)}
                         size='file'
                         type='file'
                         icon='mail'
                         iconSize={16}
+                        title='Новое сообщение'
                     />
                 </div>
                 <div className="flex-col">
@@ -73,13 +66,22 @@ class PatientTableItem extends React.Component{
                         type='file'
                         icon='empty'
                         iconSize={24}
+                        title='Удалить пациента'
                     />
                 </div>
                 <NewMessageModal 
-                    visible={this.state.visible}
-                    onOk={this.handleOk}
-                    onCancel={this.handleCancel}
+                    visible={this.state.modal2Visible}
+                    onOk={() => this.setModal2Visible(false)}
+                    onCancel={() => this.setModal2Visible(false)}
                     userName={name}
+                />
+                <NewVisitModalPage 
+                    visible={this.state.modal1Visible}
+                    onOk={() => this.setModal1Visible(false)}
+                    onCancel={() => this.setModal1Visible(false)}
+                    userName={name}
+                    date={new Date(2018,1,4,8,10)}
+                    onSave = {(obj) => console.log(obj)}
                 />
             </div>
         )

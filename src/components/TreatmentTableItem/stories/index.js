@@ -3,6 +3,8 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import TreatmentTableItem from '../';
 
+import {filesArr} from './mock-data'
+
 storiesOf('TreatmentTableItem', module)
     .add('TreatmentTableItem', () => (
         <div>
@@ -17,6 +19,8 @@ storiesOf('TreatmentTableItem', module)
                 conclusion='Lorem ipsum dolor sit amet, consectetuer adipiscing elit'
                 conclusionDownload='Заключение 252525.pdf'
                 review='Lorem ipsum dolor sit amet, consectetuer...'
+
+                data={filesArr}
             />
         </div>
     ))

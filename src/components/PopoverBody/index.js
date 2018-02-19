@@ -35,6 +35,7 @@ const PopoverBody = (props) => {
 					size='file'
 					type='file'
 					icon='mail'
+					title='Отправить сообщение'
 					svg
 					iconSize={16}
 					onClick={onEmail}
@@ -44,6 +45,7 @@ const PopoverBody = (props) => {
 					size='file'
 					type='file'
 					icon='circle_close'
+					title='Отменить приём'
 					svg
 					iconSize={18}
 				/>

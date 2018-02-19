@@ -74,7 +74,7 @@ class MainReview extends React.Component{
                             (secondaryAllowed && !this.state.showAnswerArea &&
                                 <Button onClick={this.showAnswArea}
                                         btnText='Ответить'
-                                        size='default'
+                                        size='mini'
                                         type='blue'
                                         className='review-answerBtn-answer'/>)
                     }

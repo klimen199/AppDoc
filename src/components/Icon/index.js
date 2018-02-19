@@ -78,17 +78,19 @@ class Icon extends React.Component{
 
 
     render(){
-        const { svg, type, size, num, onClick } = this.props;
+        const { svg, type, size, num, title, onClick } = this.props;
 
 
         if (!this.svg)
             return (<AntdIcon onClick={onClick}
+                              title={title}
                               type={type}
                               style={{fontSize:size}} />);
 
         const clName = cn('icon', `icon-${type}`)
 
         return <span onClick={onClick}
+                        title={title}
                      className={clName}
                      num={num}
                      style={{fontSize:size}}/>
@@ -99,14 +101,16 @@ Icon.propTypes = {
     svg: PropTypes.bool,
     type: PropTypes.string.isRequired,
     size: PropTypes.number,
-    num: PropTypes.number,
+    num: PropTypes.string,
+    title: PropTypes.string,
     onClick: PropTypes.func,
 };
 
 Icon.defaultProps = {
     svg: false,
     size: 36,
-    num: 0,
+    num: '',
+    title: '',
     onClick: () => {},
 };
 

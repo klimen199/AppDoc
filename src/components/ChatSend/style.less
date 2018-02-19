@@ -43,14 +43,26 @@
 			padding-top: 12px;
 
 			.ant-input{
+				position: relative;
 				background-color: transparent;
 				line-height: 22px;
 				font-size: 14px;
 				color: #ccc;
-				min-height: 22px;
+				min-height: 32px;
 				max-height: 110px;
 				overflow-y: auto !important;
 				max-height: 110px !important;
+			}
+
+			&:after{
+				content: '';
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				width: 16px;
+				height: 17px;
+				display: block;
+				background-color: #f5f6fa;
 			}
 		}
 

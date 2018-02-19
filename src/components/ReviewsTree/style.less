@@ -22,6 +22,7 @@
 
     .ant-tabs-bar {
         position: relative;
+
         .ant-tabs-extra-content {
             position: relative;
             top: 17px;
@@ -29,7 +30,7 @@
             z-index: 50;
 
             .datepicker-small {
-                height: 31px;
+                // height: 31px;
             }
         }
     }
@@ -39,5 +40,17 @@
 
     .ant-tabs-nav {
         padding: 20px;
+    }
+
+    .ant-calendar-picker{
+        display: flex;
+    }
+
+    .datepicker > div .datepicker-small{
+        width: 160px;
+
+        .ant-calendar-picker-input input{
+            width: 75px;
+        }
     }
 }

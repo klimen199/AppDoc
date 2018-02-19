@@ -6,15 +6,29 @@ import ProfileAvatar from '../ProfileAvatar'
 import Card from '../Card'
 import Button from '../Button'
 import Icon from '../Icon'
+import NewMessageModal from '../NewMessageModal'
+import NewVisitModalPage from '../NewVisitModalPage'
 
 import './style.css'
 import '../../icon/style.css'
 
 class ProfilePatient extends React.Component{
+    state = {
+        modal1Visible: false,
+        modal2Visible: false,
+    }
+
+    setModal1Visible(modal1Visible) {
+        this.setState({ modal1Visible });
+    }
+    setModal2Visible(modal2Visible) {
+        this.setState({ modal2Visible });
+    }
 
     render(){
         const {secondname, firstname, patronymic, img, status, lastDate, doctorType, doctor, birthday, age, height, weight} = this.props;
         const rootClass = cn('profile-patient');
+        const fioPatient = cn(`${secondname}`, `${firstname}`, `${patronymic}`);
 
         return (
             <div className={rootClass}>
@@ -30,7 +44,7 @@ class ProfilePatient extends React.Component{
                             <div className="patient-name">{secondname}<br/>{firstname} {patronymic}</div>
                             <div className="patient__last-active">Последнее обращение: {lastDate} / {doctorType} {doctor}</div>
                             <div className="btn-row">
-                                <Button
+                                <Button onClick={() => this.setModal1Visible(true)}
                                     btnText='записать на прием'
                                     size='default'
                                     type='float'
@@ -38,20 +52,23 @@ class ProfilePatient extends React.Component{
                                     iconSize={12}
                                 />
 
-                                <Button
+                                <Button onClick={() => this.setModal2Visible(true)}
                                         btnText=''
                                         size='icon'
                                         type='light-blue'
                                         icon='mail'
                                         svg
                                         iconSize={16}
+                                        title='Отправить сообщение'
                                 />
-                                <Button className="btn-add"
+                                <Button 
+                                        className="btn-add"
                                         btnText=''
                                         size='file'
                                         type='file'
                                         icon='add-button'
                                         svg
+                                        title='Добавть в мои пациенты'
                                         iconSize={28}
                                 />
                             </div>
@@ -75,7 +92,23 @@ class ProfilePatient extends React.Component{
                                 <span className="text">{weight} кг</span>
                             </div>
                       </div>
-                  </Card>
+                </Card>
+
+                <NewMessageModal 
+                    visible={this.state.modal2Visible}
+                    onOk={() => this.setModal2Visible(false)}
+                    onCancel={() => this.setModal2Visible(false)}
+                    userName={fioPatient}
+                />
+
+                <NewVisitModalPage 
+                    visible={this.state.modal1Visible}
+                    onOk={() => this.setModal1Visible(false)}
+                    onCancel={() => this.setModal1Visible(false)}
+                    userName={fioPatient}
+                    date={new Date(2018,1,4,8,10)}
+                    onSave = {(obj) => console.log(obj)}
+                />
             </div>
         )
     }

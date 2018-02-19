@@ -24,7 +24,7 @@ class Reviews extends React.Component{
         return (
                 <Card title="Новые отзывы"
                       className="reviews"
-                      extra={<a href="#"><Icon type="chat" svg size={20}/> Все отзывы</a>}>
+                      extra={<a href="#"><Icon type="chat" svg size={20}/> <span>Все отзывы</span></a>}>
                     {this.reviewRender(this.props.data)}
                 </Card>
         )

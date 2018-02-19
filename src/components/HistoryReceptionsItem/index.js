@@ -6,6 +6,7 @@ import Button from '../Button'
 import Rate from '../Rate'
 import Icon from '../Icon'
 import Popover from '../Popover'
+import PopoverFile from '../PopoverFile'
 
 import './style.css'
 import '../../icon/style.css'
@@ -13,7 +14,7 @@ import '../../icon/style.css'
 class HistoryReceptionsItem extends React.Component{
 
     render(){
-        const {type, size, time, date, status, diagnostic, comments, price, conclusion, conclusionDownload, review, content} = this.props;
+        const {type, size, time, date, status, diagnostic, comments, price, conclusion, conclusionDownload, title, review, content} = this.props;
         const rootClass = cn('receptions',`${status}`);
         const statusClass = cn('patient-status', 'receptions-status',`${status}`);
 
@@ -24,7 +25,7 @@ class HistoryReceptionsItem extends React.Component{
                     <div className={statusClass}></div>
                     <div className="patient-date">{date}</div>
                     <div className="patient-time">{time}</div>
-                    <div className="patient-icon"><Icon svg type={type} size={16} /></div>
+                    <div className="patient-icon"><Icon title={title} svg type={type} size={16} /></div>
                 </div>
                 <div className="flex-col">
                     <div className="patient-diagnostic">{diagnostic}</div>
@@ -44,9 +45,7 @@ class HistoryReceptionsItem extends React.Component{
                     <div className="patient-review">{review}</div>
                 </div>
                 <div className="flex-col">
-                    <Popover placement="bottomRight" content={content} trigger="click">
-                         <Icon svg type={"file-download popover-nun"} size={30}  num={3}/>
-                    </Popover>
+                    <PopoverFile data={this.props.data}></PopoverFile>
                 </div>
             </div>
         )
@@ -63,7 +62,8 @@ HistoryReceptionsItem.propTypes = {
     conclusionDownload: PropTypes.string,
     review: PropTypes.string,
     date: PropTypes.string,
-    time: PropTypes.string
+    time: PropTypes.string,
+    title: PropTypes.string
 };
 
 HistoryReceptionsItem.defaultProps = {
@@ -77,6 +77,7 @@ HistoryReceptionsItem.defaultProps = {
     review: '-',
     date: '-',
     time: '-',
+    title: '',
 };
 
 export default HistoryReceptionsItem

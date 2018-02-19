@@ -23,10 +23,11 @@ class TableNoHead extends React.Component{
 
     render(){
         const rootClass = cn('schedule-all');
-
+        const {data} = this.props;
+        
         return (
             <div className={rootClass}>
-                <Card title="График работы на сегодня" extra={<div className="sum">Приемы: 12</div>}>
+                <Card title="График работы на сегодня" extra={<div className="sum">Приемы: {data.length}</div>}>
                     <div className="tableheader">
                         <div className="flex-col">
                             <Button
@@ -36,6 +37,7 @@ class TableNoHead extends React.Component{
                                 icon='plus'
                                 iconSize={11}
                                 svg
+                                title='Добавить новый приём'
                             />
                         </div>
                         <div className="flex-col ico-btn">
@@ -44,16 +46,19 @@ class TableNoHead extends React.Component{
                                 type='link'
                                 icon='printer'
                                 svg
+                                title='Распечатать'
                             />
                             <Button 
                                 size='link'
                                 type='link'
                                 icon='pdf-file'
+                                title='Скачать pdf-файл'
                             />
                             <Button 
                                 size='link'
                                 type='link'
                                 icon='xls-file'
+                                title='Скачать xls-файл'
                             />
                         </div>
                     </div>

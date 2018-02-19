@@ -56,11 +56,11 @@ class PatientTable extends React.Component{
     }
 
     render(){
-        const { countPatient } = this.props;
+        const { data } = this.props;
 
         return (
             <div className='patient-all'>
-                <Card title="Список пациентов" extra={<div className='patient-count'>{countPatient}</div>}>
+                <Card title="Список пациентов" extra={<div className='patient-count'>{data.length}</div>}>
                     <div className="tableheader">
                         <div className="flex-col">
                             <Button
@@ -91,12 +91,10 @@ class PatientTable extends React.Component{
 
 PatientTable.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
-    countPatient: PropTypes.string,
 };
 
 PatientTable.defaultProps = {
     data: [],
-    countPatient: '',
 };
 
 export default PatientTable

@@ -10,6 +10,7 @@ storiesOf('Button', module)
                     btnText="Добавить"
                     size="small" 
                     type="float"
+                    title="Добавить отзыв"
             />
             <Button
                     btnText='Добавить'
