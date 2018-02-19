@@ -13,7 +13,7 @@
 .link .icon {
   margin-right: 1rem;
 }
-.link:visited {
+.link.downloaded {
   color: #344051;
 }
 .link:hover {

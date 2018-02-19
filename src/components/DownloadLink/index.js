@@ -8,15 +8,40 @@ import './style.css'
 import '../../icon/style.css'
 
 class DownloadLink extends React.Component {
+    state = {
+        downloaded: this.props.downloaded,
+    };
+
+    clickHandler = (e) => {
+        //e.preventDefault();
+        this.props.onClick();
+        this.setState({downloaded: true,})
+    };
+
     render() {
 
-        const {type, size, href, btnText, icon, iconSize, svg, download, disable, onClick, conclusion} = this.props;
-        const rootClass = cn('link', `link-size-${size}`, `link-type-${type}`, `${conclusion}`);
+        const {
+            type,
+            size,
+            href,
+            btnText,
+            icon,
+            iconSize,
+            svg,
+            download,
+            disable,
+            conclusion,
+        } = this.props;
+        const rootClass = cn('link', `link-size-${size}`, `link-type-${type}`,
+            `${conclusion}`,
+            this.state.downloaded && 'downloaded');
+
+        console.log(this.state.downloaded,' - downloaded')
 
         return (
             <a href={href}
                className={rootClass}
-               onClick={onClick}
+               onClick={this.clickHandler}
                {...(disable ? {disabled: true} : {})}
                download={download}
             >
