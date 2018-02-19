@@ -2,10 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import cn from 'classnames'
 
-import Button from '../Button'
-import Rate from '../Rate'
-import Link from '../Links'
-import Icon from '../Icon'
+import DownloadLink from '../DownloadLink'
 
 import './style.css'
 import '../../icon/style.css'
@@ -23,7 +20,7 @@ class ChatComments extends React.Component{
                 </div>
                 <div className='message__comments-attachment'>
                     {attachment}
-                    <Link
+                    <DownloadLink
                         btnText="Прикрепленный файл с длинным предлинным названием.doc"
                         size="default" 
                         type="link"
@@ -33,7 +30,7 @@ class ChatComments extends React.Component{
                         iconSize={11}
                     />
 
-                    <Link
+                    <DownloadLink
                         btnText="Прикрепленный файл с длинным предлинным названием.doc"
                         size="default" 
                         type="link"

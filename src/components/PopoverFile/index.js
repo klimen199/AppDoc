@@ -1,73 +1,77 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import PopoverFileBody from '../PopoverFileBody'
-import Link from '../Links'
+import DownloadLink from '../DownloadLink'
 import Button from '../Button'
 
-import { Popover } from 'antd';
+import {Popover} from 'antd';
 
 import './style.css'
 
 class PopoverFile extends React.Component {
 
-  filesRender = (dataArr) => {
-      let filesArr = [];
+    filesRender = (dataArr) => {
+        let filesArr = [];
 
-      dataArr.map((item, index) => { 
-          filesArr.push(<Link {...item} size="default" type="link" svg icon="file" iconSize={16} download  key={item.id + ''+index}/>)
-      });
+        dataArr.map((item, index) => {
+            filesArr.push(<DownloadLink {...item}
+                                        size="default"
+                                        type="link"
+                                        svg
+                                        icon="file"
+                                        iconSize={16}
+                                        download
+                                        key={item.id + '' + index}/>)
+        });
 
-      return filesArr;
-  };
+        return filesArr;
+    };
 
-	state = {
-		visible: false,
-	};
+    state = {
+        visible: false,
+    };
 
-	handleVisibleChange = (visible) => {
-		this.setState({ visible });
-	};
+    handleVisibleChange = (visible) => {
+        this.setState({visible});
+    };
 
-  render() {
+    render() {
 
-    const {num} = this.props;
+        const {num} = this.props;
 
-    return (
-      <Popover 
-        content={
-          <div className='popover-file-body'>
-          <div className='popover-file-block'>
-            {this.filesRender(this.props.data)}
-          </div>
-          <Button
-            size='file'
-            type='file'
-            icon='download'
-            title='Отменить приём'
-            title='Скачать все'
-            svg
-            iconSize={23}
-          />
-      </div>}
-        trigger="click"
-        visible={this.state.visible}
-        onVisibleChange={this.handleVisibleChange}
-        placement="bottomRight"
-      >
-          <div className='popover-btn'>
-            {this.props.children}
-            <Button onClick={() => filesArr}
-                btnText=''
-                size='icon'
-                type='icon'
-                icon='file-download'
-                svg
-                iconSize={32}
-            />
-          </div>
-      </Popover>
-    );
-  }
+        return (
+            <Popover
+                content={
+                    <div className='popover-file-body'>
+                        <div className='popover-file-block'>
+                            {this.filesRender(this.props.data)}
+                        </div>
+                        <Button
+                            size='file'
+                            type='file'
+                            icon='download'
+                            svg
+                            iconSize={23}
+                        />
+                    </div>}
+                trigger="click"
+                visible={this.state.visible}
+                onVisibleChange={this.handleVisibleChange}
+                placement="bottomRight"
+            >
+                <div className='popover-btn'>
+                    {this.props.children}
+                    <Button onClick={() => filesArr}
+                            btnText=''
+                            size='icon'
+                            type='icon'
+                            icon='file-download'
+                            svg
+                            iconSize={32}
+                    />
+                </div>
+            </Popover>
+        );
+    }
 }
 
 

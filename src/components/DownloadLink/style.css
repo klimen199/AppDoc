@@ -13,9 +13,11 @@
 .link .icon {
   margin-right: 1rem;
 }
+.link:visited {
+  color: #344051;
+}
 .link:hover {
   color: #204d8d;
-  text-decoration: none;
 }
 .link:hover span {
   text-decoration: underline;

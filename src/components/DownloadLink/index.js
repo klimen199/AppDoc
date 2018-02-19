@@ -7,47 +7,46 @@ import Icon from '../Icon'
 import './style.css'
 import '../../icon/style.css'
 
-class Link extends React.Component{
-    render(){
+class DownloadLink extends React.Component {
+    render() {
 
-        const {type, size, btnText, icon, iconSize, svg,download, disable, onClick, conclusion} = this.props;
-        const rootClass = cn( 'link',`link-size-${size}`, `link-type-${type}` , `${conclusion}`)
-
-        let btnTextStyle = {}
+        const {type, size, href, btnText, icon, iconSize, svg, download, disable, onClick, conclusion} = this.props;
+        const rootClass = cn('link', `link-size-${size}`, `link-type-${type}`, `${conclusion}`);
 
         return (
-            <a href="" className={rootClass}
-                    onClick={onClick}
-                    {...(disable ? { disabled: true } : {})}
-                    download={download}
+            <a href={href}
+               className={rootClass}
+               onClick={onClick}
+               {...(disable ? {disabled: true} : {})}
+               download={download}
             >
                 {icon && (
                     <Icon svg={svg} type={icon} size={iconSize}/>
                 )}
-                {type !== 'icon' && <span style={btnTextStyle}>{btnText}</span>}
+                {type !== 'icon' && <span>{btnText}</span>}
             </a>
         )
     }
 }
 
-Link.propTypes ={
+DownloadLink.propTypes = {
     type: PropTypes.oneOf(['link']),
     size: PropTypes.oneOf(['small', 'default', 'large']),
+    href: PropTypes.string,
     btnText: PropTypes.string,
     conclusion: PropTypes.string,
     icon: PropTypes.string,
     iconSize: PropTypes.number,
     svg: PropTypes.bool,
     download: PropTypes.bool,
-    conclusion: PropTypes.oneOf(['link-conclusion']),
     disable: PropTypes.bool,
     onClick: PropTypes.func,
-}
+};
 
-Link.defaultProps = {
+DownloadLink.defaultProps = {
     type: 'link',
     size: 'default',
-    conclusion: 'link-default',
+    href: '#',
     btnText: '',
     icon: '',
     iconSize: 20,
@@ -55,7 +54,8 @@ Link.defaultProps = {
     download: false,
     conclusion: '',
     disable: false,
-    onClick: () => {},
-}
+    onClick: () => {
+    },
+};
 
-export default Link
+export default DownloadLink

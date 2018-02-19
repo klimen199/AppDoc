@@ -4,9 +4,6 @@ import cn from 'classnames'
 
 import { Input } from 'antd';
 import Button from '../Button'
-import Rate from '../Rate'
-import Link from '../Links'
-import Icon from '../Icon'
 
 import './style.css'
 import '../../icon/style.css'

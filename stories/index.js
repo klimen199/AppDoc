@@ -35,7 +35,7 @@ const loadStories = () => {
     require('../src/components/Upload/stories');
     require('../src/components/NewMessageModal/stories');
     require('../src/components/TimePicker/stories');
-    require('../src/components/Links/stories');
+    require('../src/components/DownloadLink/stories');
     require('../src/components/Popover/stories');
     require('../src/components/TopPanel/stories');
     require('../src/components/TopPanelItem/stories');

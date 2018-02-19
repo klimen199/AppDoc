@@ -2,12 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import cn from 'classnames'
 
-import Button from '../Button'
-import Rate from '../Rate'
-import Link from '../Links'
-import Icon from '../Icon'
-import ProfileAvatar from '../ProfileAvatar'
-
 import './style.css'
 import '../../icon/style.css'
 
