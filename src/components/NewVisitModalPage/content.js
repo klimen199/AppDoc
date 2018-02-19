@@ -7,6 +7,8 @@ import Button from '../Button'
 import Radio from '../Radio'
 import Input from '../Input'
 import Icon from '../Icon'
+import DatePicker from '../DatePicker'
+import TimePicker from '../TimePicker'
 
 const FormItem = Form.Item;
 
@@ -30,19 +32,13 @@ class ContentForm extends React.Component {
             <Form onSubmit={this.handleSubmit}
                   className="NewVisitModal">
 
-                <div className='modal-row'>
-                    <div className='modal-data'>
-                        <Icon svg type='calendar' size={26}/>
-                        <div className='modal-result'>{moment(date).format('DD MMMM')}</div>
-                    </div>
-                    <div className='modal-time'>
-                        <Icon svg type='alarm' size={26}/>
-                        <div className='modal-result'>{moment(date).format('HH:mm')}</div>
-                    </div>
-                </div>
-
                 <FormItem>
                     <Input addonBefore="ФИО" defaultValue={userName}/>
+                </FormItem>
+
+                <FormItem>
+                     <DatePicker placeholder="Дата приёма" />
+                     <TimePicker placeholder='Время приёма'/>
                 </FormItem>
 
                 <TextArea label='Комментарий к приему'
