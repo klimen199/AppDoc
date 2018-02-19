@@ -64,6 +64,7 @@ class PopoverFile extends React.Component {
                 svg
                 iconSize={32}
             />
+            <div className='popover-num active'>+3</div>
           </div>
       </Popover>
     );
