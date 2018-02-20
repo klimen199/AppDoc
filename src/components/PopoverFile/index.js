@@ -1,85 +1,99 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import PopoverFileBody from '../PopoverFileBody'
-import Link from '../Links'
+import cn from 'classnames'
+import DownloadLink from '../DownloadLink'
 import Button from '../Button'
 
-import { Popover } from 'antd';
+import {Popover} from 'antd';
 
 import './style.css'
 
 class PopoverFile extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            visible: false,
+            num: props.data.reduce((res, elem) => {
+                return !elem.downloaded ? res + 1 : res
+            }, 0)
+        };
+    }
 
-  filesRender = (dataArr) => {
-      let filesArr = [];
 
-      dataArr.map((item, index) => { 
-          filesArr.push(<Link {...item} size="default" type="link" svg icon="file" iconSize={16} download  key={item.id + ''+index}/>)
-      });
+    downloadClickHandler = () => {
+        this.setState({num: this.state.num -1});
+        this.props.onDownload();
+    };
 
-      return filesArr;
-  };
+    renderLinks = (dataArr) => {
+        return dataArr.map((item, index) =>
+            (<DownloadLink {...item}
+                                       size="default"
+                                       type="link"
+                                       svg
+                                       icon="file"
+                                       iconSize={16}
+                                       download
+                                       onClick={this.downloadClickHandler}
+                                       key={item.id + '' + index}/>)
+        );
+    };
 
-	state = {
-		visible: false,
-	};
+    handleVisibleChange = (visible) => {
+        this.setState({visible});
+    };
 
-	handleVisibleChange = (visible) => {
-		this.setState({ visible });
-	};
+    render() {
+        const popoverNumCl = cn('popover-num', this.state.num && 'active');
 
-  render() {
-
-    const {num} = this.props;
-
-    return (
-      <Popover 
-        content={
-          <div className='popover-file-body'>
-          <div className='popover-file-block'>
-            {this.filesRender(this.props.data)}
-          </div>
-          <Button
-            size='file'
-            type='file'
-            icon='download'
-            title='Отменить приём'
-            title='Скачать все'
-            svg
-            iconSize={23}
-          />
-      </div>}
-        trigger="click"
-        visible={this.state.visible}
-        onVisibleChange={this.handleVisibleChange}
-        placement="bottomRight"
-      >
-          <div className='popover-btn'>
-            {this.props.children}
-            <Button onClick={() => filesArr}
-                btnText=''
-                size='icon'
-                type='icon'
-                icon='file-download'
-                svg
-                iconSize={32}
-            />
-            <div className='popover-num active'>+3</div>
-          </div>
-      </Popover>
-    );
-  }
+        return (
+            <Popover
+                content={
+                    <div className='popover-file-body'>
+                        <div className='popover-file-block'>
+                            {this.renderLinks(this.props.data)}
+                        </div>
+                        <Button
+                            size='file'
+                            type='file'
+                            icon='download'
+                            svg
+                            iconSize={23}
+                        />
+                    </div>}
+                trigger="click"
+                visible={this.state.visible}
+                onVisibleChange={this.handleVisibleChange}
+                placement="bottomRight"
+            >
+                <div className='popover-btn'>
+                    {this.props.children}
+                    <Button onClick={() => {}}
+                            btnText=''
+                            size='icon'
+                            type='icon'
+                            icon='file-download'
+                            svg
+                            iconSize={32}
+                    />
+                    <div className={popoverNumCl}>
+                        {this.state.num ? ('+' + this.state.num) : this.props.data.length}
+                    </div>
+                </div>
+            </Popover>
+        );
+    }
 }
 
 
 PopoverFile.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
-    num: PropTypes.string,
+    onDownload: PropTypes.func,
 };
 
 PopoverFile.defaultProps = {
     data: [],
-    num: '0'
+    onDownload: () => {},
 };
 
 export default PopoverFile

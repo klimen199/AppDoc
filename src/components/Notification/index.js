@@ -4,7 +4,7 @@ import cn from 'classnames'
 import moment from 'moment'
 import Button from '../Button'
 import Icon from '../Icon'
-import Link from '../Links'
+import DownloadLink from '../DownloadLink'
 
 import './style.css'
 
@@ -25,7 +25,7 @@ const NotificationItem = (props) => {
             </div>
             <div className='notification-info'>{desc} {date} {time}</div>
             <div className='notification-links'>
-				<Link
+				<DownloadLink
 	                btnText="Прикрепленный файл с длинным предлинным названием.doc"
 	                size="default" 
 	                type="link"

@@ -2,10 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import cn from 'classnames'
 
-import Button from '../Button'
-import Rate from '../Rate'
-import Link from '../Links'
-import Icon from '../Icon'
+import DownloadLink from '../DownloadLink'
 
 import './style.css'
 import '../../icon/style.css'
@@ -22,7 +19,7 @@ class ChatFiles extends React.Component{
                 </div>
                 <div className='chat__files-attachment'>
                     {attachment}
-                    <Link
+                    <DownloadLink
                         btnText="Прикрепленный файл с длинным предлинным названием.doc"
                         size="default" 
                         type="link"
@@ -31,7 +28,7 @@ class ChatFiles extends React.Component{
                         icon="file"
                         iconSize={11}
                     />
-                    <Link
+                    <DownloadLink
                         btnText="Прикрепленный файл с длинным предлинным названием.doc"
                         size="default" 
                         type="link"
@@ -41,7 +38,7 @@ class ChatFiles extends React.Component{
                         iconSize={11}
                     />
 
-                    <Link conclusion='link-conclusion'
+                    <DownloadLink conclusion='link-conclusion'
                         btnText="Заключение 141423.doc"
                         size="default" 
                         type="link"

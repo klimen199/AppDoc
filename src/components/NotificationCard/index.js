@@ -1,10 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import cn from 'classnames'
-import moment from 'moment'
-import Button from '../Button'
-import Icon from '../Icon'
-import Link from '../Links'
 import Card from '../Card'
 import NotificationItem from '../Notification'
 
