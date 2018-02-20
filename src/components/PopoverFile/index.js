@@ -38,40 +38,43 @@ class PopoverFile extends React.Component {
 
         const {num} = this.props;
 
-        return (
-            <Popover
-                content={
-                    <div className='popover-file-body'>
-                        <div className='popover-file-block'>
-                            {this.filesRender(this.props.data)}
-                        </div>
-                        <Button
-                            size='file'
-                            type='file'
-                            icon='download'
-                            svg
-                            iconSize={23}
-                        />
-                    </div>}
-                trigger="click"
-                visible={this.state.visible}
-                onVisibleChange={this.handleVisibleChange}
-                placement="bottomRight"
-            >
-                <div className='popover-btn'>
-                    {this.props.children}
-                    <Button onClick={() => filesArr}
-                            btnText=''
-                            size='icon'
-                            type='icon'
-                            icon='file-download'
-                            svg
-                            iconSize={32}
-                    />
-                </div>
-            </Popover>
-        );
-    }
+    return (
+      <Popover 
+        content={
+          <div className='popover-file-body'>
+          <div className='popover-file-block'>
+            {this.filesRender(this.props.data)}
+          </div>
+          <Button
+            size='file'
+            type='file'
+            icon='download'
+            title='Отменить приём'
+            title='Скачать все'
+            svg
+            iconSize={23}
+          />
+      </div>}
+        trigger="click"
+        visible={this.state.visible}
+        onVisibleChange={this.handleVisibleChange}
+        placement="bottomRight"
+      >
+          <div className='popover-btn'>
+            {this.props.children}
+            <Button onClick={() => filesArr}
+                btnText=''
+                size='icon'
+                type='icon'
+                icon='file-download'
+                svg
+                iconSize={32}
+            />
+            <div className='popover-num active'>+3</div>
+          </div>
+      </Popover>
+    );
+  }
 }
 
 
