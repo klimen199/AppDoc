@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import Icon from '../Icon'
 import {DatePicker} from 'antd'
@@ -8,7 +9,7 @@ class SmallRP extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            values: [],
+            values: this.props.defaultValue,
         }
     }
 
@@ -17,9 +18,16 @@ class SmallRP extends React.Component{
         this.props.onChange(values);
     };
 
+    componentWillReceiveProps(nextProps){
+        if(!nextProps.defaultValue.length && this.state.values.length){
+            this.RPHandler([]);
+        }
+    }
+
     render() {
+
         return (
-            <div style={this.props.style}>
+            <div style={{width:240}}>
                 <Icon type="calendar" svg size={19}/>
                 <div className={this.props.className}>
                     <RangePicker format={this.props.format}
@@ -33,5 +41,13 @@ class SmallRP extends React.Component{
         )
     }
 }
+
+SmallRP.propTypes={
+    defaultValue: PropTypes.array,
+};
+
+SmallRP.defaultProps={
+    defaultValue: [],
+};
 
 export default SmallRP;

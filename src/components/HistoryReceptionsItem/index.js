@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import cn from 'classnames'
+import moment from 'moment'
 
-import Button from '../Button'
 import Rate from '../Rate'
 import Icon from '../Icon'
-import Popover from '../Popover'
 import PopoverFile from '../PopoverFile'
 
 import './style.css'
@@ -14,7 +13,22 @@ import '../../icon/style.css'
 class HistoryReceptionsItem extends React.Component{
 
     render(){
-        const {type, size, time, date, status, diagnostic, comments, price, conclusion, conclusionDownload, title, review, content} = this.props;
+        const {
+            type,
+            size,
+            time,
+            startDate,
+            endDate,
+            status,
+            diagnostic,
+            comments,
+            price,
+            conclusion,
+            conclusionDownload,
+            title,
+            review,
+            content
+        } = this.props;
         const rootClass = cn('receptions',`${status}`);
         const statusClass = cn('patient-status', 'receptions-status',`${status}`);
 
@@ -23,8 +37,10 @@ class HistoryReceptionsItem extends React.Component{
             <div className={rootClass}>
                 <div className="flex-col">
                     <div className={statusClass}></div>
-                    <div className="patient-date">{date}</div>
-                    <div className="patient-time">{time}</div>
+                    <div className="patient-date">{moment(startDate).format('DD.MM.YYYY')}</div>
+                    <div className="patient-time">
+                        {moment(startDate).format('HH:mm')} - {moment(endDate).format('HH:mm')}
+                    </div>
                     <div className="patient-icon"><Icon title={title} svg type={type} size={16} /></div>
                 </div>
                 <div className="flex-col">
