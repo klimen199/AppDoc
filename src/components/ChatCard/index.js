@@ -54,7 +54,7 @@ class ChatCard extends React.Component{
                             btnText=''
                             size='small'
                             type='no-brd'
-                            icon='file-download'
+                            icon='menu'
                             title='Открыть прикреплённые файлы'
                             onClick={onClick}
                         />

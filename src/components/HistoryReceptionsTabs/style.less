@@ -49,6 +49,7 @@
 			position: sticky;
 			z-index: 99;
 			top: 0;
+			min-width: 1495px;
 
 		    &-name {
                 color: #777777;
@@ -68,49 +69,54 @@
 
 				.flex-col{
 					&:first-child{
-						padding-left: 3%;
+						padding-left: 25px;
 					}
 
 					&:last-child{
-						padding-right: 3%;
+						padding-right: 25px;
 						margin-right: 0;
 					}
-	                &:nth-child(1) {
-	                    max-width: 120px;
-	                    width: 100%;
-	                }
 
-	                &:nth-child(2) {
-	                    max-width: 160px;
-	                    width: 100%;
-	                }
+					&:nth-child(1){
+						max-width: 165px;
+						width: 100%;
+					}
 
-	                &:nth-child(3) {
-	                    max-width: 200px;
-	                    width: 100%;
-	                }
+					&:nth-child(2){
+						max-width: 120px;
+						width: 100%;
+						position: relative;
+					}
 
-	                &:nth-child(4) {
-	                    max-width: 100px;
-	                    width: 100%;
-	                }
+					&:nth-child(3){
+						max-width: 160px;
+						width: 100%;
+					}
 
-	                &:nth-child(5) {
-	                    max-width: 205px;
-	                    width: 100%;
-	                }
+					&:nth-child(4){
+						max-width: 200px;
+						width: 100%;
+					}
 
-	                &:nth-child(6) {
-	                    max-width: 200px;
-	                    width: 100%;
-	                }
+					&:nth-child(5){
+						max-width: 100px;
+						width: 100%;
+					}
 
-	                &:nth-child(7) {
-	                    width: 100%;
-	                    max-width: 100px;
-	                    padding-right: 3%;
-	                    margin-right: 0;
-	                }
+					&:nth-child(6){
+						max-width: 205px;
+						width: 100%;
+					}
+
+					&:nth-child(7){
+						max-width: 200px;
+						width: 100%;
+					}
+					&:nth-child(8){
+						width: 100%;
+						max-width: 100px;
+						margin-right: 0;
+					}
 				}
 			}
 

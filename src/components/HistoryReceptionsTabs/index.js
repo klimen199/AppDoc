@@ -150,6 +150,9 @@ class HistoryReceptionsTabs extends React.Component {
                 </div>
                 <div className="tableheader menu-header">
                     <div className="flex-col">
+                        <div className="tableheader-name">Имя пациента</div>
+                    </div>
+                    <div className="flex-col">
                         <div className="tableheader-name">Дата приема</div>
                     </div>
                     <div className="flex-col">
@@ -193,20 +196,28 @@ class HistoryReceptionsTabs extends React.Component {
                                               defaultValue={this.state.range}/>
                                   <Input.Search placeholder="Поиск..."/></div>}>
                         <TabPane tab="Все" key="all">
-                            {this.tabHeaderRender()}
-                            {this.historyRender(this.props.data)}
+                            <div className='overflow-x-a'>
+                                {this.tabHeaderRender()}
+                                {this.historyRender(this.props.data)}
+                            </div>
                         </TabPane>
                         <TabPane tab="Завершенные" key="completed">
-                            {this.tabHeaderRender()}
-                            {this.historyRender(this.state.completedReceptions)}
+                            <div className='overflow-x-a'>
+                                {this.tabHeaderRender()}
+                                {this.historyRender(this.state.completedReceptions)}
+                            </div>
                         </TabPane>
                         <TabPane tab="Актуальные" key="topical">
-                            {this.tabHeaderRender()}
-                            {this.historyRender(this.state.topicalReceptions)}
+                            <div className='overflow-x-a'>
+                                {this.tabHeaderRender()}
+                                {this.historyRender(this.state.topicalReceptions)}
+                            </div>
                         </TabPane>
                         <TabPane tab="Предстоящие" key="upcoming">
-                            {this.tabHeaderRender()}
-                            {this.historyRender(this.state.upcomingReceptions)}
+                            <div className='overflow-x-a'>
+                                {this.tabHeaderRender()}
+                                {this.historyRender(this.state.upcomingReceptions)}
+                            </div>
                         </TabPane>
                     </Tabs>
                 </Card>

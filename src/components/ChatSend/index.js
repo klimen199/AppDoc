@@ -48,7 +48,8 @@ class ChatSend extends React.Component{
                         size='small'
                         type='blue'
                         title='Отправить сообщение'
-                        icon='right-arrow-forward_small'
+                        icon='send'
+                        svg
                     />
                     <Button
                         btnText='завершить прием'

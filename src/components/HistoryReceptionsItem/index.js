@@ -16,6 +16,7 @@ class HistoryReceptionsItem extends React.Component{
         const {
             type,
             size,
+            name,
             time,
             startDate,
             endDate,
@@ -35,6 +36,7 @@ class HistoryReceptionsItem extends React.Component{
 
         return (
             <div className={rootClass}>
+                <div className="flex-col"><div className="patient-name"><a href="#">{name}</a></div></div>
                 <div className="flex-col">
                     <div className={statusClass}></div>
                     <div className="patient-date">{moment(startDate).format('DD.MM.YYYY')}</div>
@@ -72,6 +74,7 @@ HistoryReceptionsItem.propTypes = {
     status: PropTypes.oneOf(['new', 'topical', 'completed', 'extra']),
     type: PropTypes.string.isRequired,
     diagnostic: PropTypes.string,
+    name: PropTypes.string,
     comments: PropTypes.string,
     price: PropTypes.string,
     conclusion: PropTypes.string,
@@ -85,6 +88,7 @@ HistoryReceptionsItem.propTypes = {
 HistoryReceptionsItem.defaultProps = {
     size: 'small',
     status: 'new',
+    name: '',
     diagnostic: '-',
     comment: '-',
     price: '-',
