@@ -12,10 +12,11 @@ class DownloadLink extends React.Component {
         downloaded: this.props.downloaded,
     };
 
-    clickHandler = (e) => {
-        //e.preventDefault();
-        this.props.onClick();
-        this.setState({downloaded: true,})
+    clickHandler = () => {
+        if (!this.state.downloaded){
+            this.props.onClick();
+            this.setState({downloaded: true,})
+        }
     };
 
     render() {
@@ -79,8 +80,7 @@ DownloadLink.defaultProps = {
     download: false,
     conclusion: '',
     disable: false,
-    onClick: () => {
-    },
+    onClick: () => {},
 };
 
 export default DownloadLink
