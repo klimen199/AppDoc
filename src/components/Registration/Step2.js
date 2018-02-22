@@ -29,6 +29,13 @@ class Step2_From extends React.Component{
         }
     }
 
+    normFile = (e) => {
+        if (Array.isArray(e)) {
+            return e;
+        }
+        return e && e.fileList;
+    };
+
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
@@ -47,11 +54,13 @@ class Step2_From extends React.Component{
         let i = 1,
             name = Component.getName,
             formArr = [<Component getFieldDecorator={fieldDecorator}
+                                  normFile={this.normFile}
                                   key={name + 0}
                                   number={0}/>,];
         while (i < num){
             formArr.push(<Hr key={'hr_' + name + i}/>);
             formArr.push(<Component getFieldDecorator={fieldDecorator}
+                                    normFile={this.normFile}
                                     key={name + i}
                                     number={i}/>);
             i++;
@@ -125,14 +134,18 @@ class Step2_From extends React.Component{
                     )}
                 </FormItem>
                 <FormItem>
-                    {getFieldDecorator('academicstatusdoc')(
+                    {getFieldDecorator('academicstatusdoc',{
+                        valuePropName: 'fileList',
+                        getValueFromEvent: this.normFile,
+                    })(
                         <Upload text="Прикрепить документ, подтверждающий ученое звание"/>
                     )}
                 </FormItem>
 
 
                 <div className="step-block-title">Сведения о работе</div>
-                <Step2_work getFieldDecorator={getFieldDecorator}/>
+                <Step2_work getFieldDecorator={getFieldDecorator}
+                            normFile={this.normFile}/>
 
                 <div className="step-block-title">Дополнительная информация</div>
                 <Step2_additional getFieldDecorator={getFieldDecorator}

@@ -18,7 +18,10 @@ class UploadBig extends React.Component {
         });
     };
 
-    handleChange = ({fileList}) => this.setState({fileList});
+    handleChange = ({fileList}) => {
+        this.setState({fileList});
+        this.props.onChange({fileList})
+    }
 
     render() {
         const {previewImage, fileList, name} = this.state;

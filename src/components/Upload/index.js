@@ -13,7 +13,7 @@ class Upload extends React.Component{
         const clName = cn("uploadContent", className);
 
         return (
-            <AntUpload className={clName}>
+            <AntUpload className={clName} onChange={e => this.props.onChange(e)}>
                 <Button btnText={text}
                         size='upload'
                         type='upload'
