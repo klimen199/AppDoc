@@ -15,6 +15,6 @@ export const panelArr = [
     }, {
         panelTitle: "Мои пациенты",
         panelText: '37',
-        icon: 'user',
+        icon: 'people',
     }
 ];

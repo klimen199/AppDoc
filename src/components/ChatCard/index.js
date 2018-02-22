@@ -55,6 +55,7 @@ class ChatCard extends React.Component{
                             size='small'
                             type='no-brd'
                             icon='menu'
+                            svg
                             title='Открыть прикреплённые файлы'
                             onClick={onClick}
                         />
