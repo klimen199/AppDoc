@@ -34,7 +34,9 @@ class TreatmentTable extends React.Component{
                         <div className="flex-col"><div className="tableheader-name">отзыв</div></div>
                         <div className="flex-col"><div className="tableheader-name"></div></div>
                     </div>
-                    {this.treatmentRender(this.props.data)}
+                    <div className='overflow-x-a'>
+                        {this.treatmentRender(this.props.data)}
+                    </div>
                   </Card>
             </div>
         )

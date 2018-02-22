@@ -7,6 +7,7 @@ export const historyArr = [
     {
         id: 1,
         status: "new",
+        name: "Иванова А. К.",
         startDate: new Date(2017,9,14,15).getTime(),
         endDate: new Date(2017,9,14,16).getTime(),
         type: 'chat1',
@@ -20,6 +21,7 @@ export const historyArr = [
     }, {
         id: 3,
         status: "new",
+        name: "Иванова А. К.",
         startDate: new Date(2017,9,15,15).getTime(),
         endDate: new Date(2017,9,15,16).getTime(),
         type: 'chat1',
@@ -33,6 +35,7 @@ export const historyArr = [
     }, {
         id: 5,
         status: "new",
+        name: "Иванова А. К.",
         startDate: new Date(2017,9,17,15).getTime(),
         endDate: new Date(2017,9,17,16).getTime(),
         type: 'chat1',
@@ -46,6 +49,7 @@ export const historyArr = [
     }, {
         id: 8,
         status: "new",
+        name: "Иванова А. К.",
         startDate: new Date(2017,9,21,14,30).getTime(),
         endDate: new Date(2017,9,21,15).getTime(),
         type: 'chat1',
@@ -59,6 +63,7 @@ export const historyArr = [
     },{
         id: 11,
         status: "new",
+        name: "Иванова А. К.",
         startDate: new Date(2017,9,27,15,20).getTime(),
         endDate: new Date(2017,9,27,15,40).getTime(),
         type: 'chat1',
@@ -72,6 +77,7 @@ export const historyArr = [
     },{
         id: 15,
         status: "topical",
+        name: "Иванова А. К.",
         startDate: new Date(2017,10,14,15,30).getTime(),
         endDate: new Date(2017,10,14,16).getTime(),
         type: 'chat1',
@@ -85,6 +91,7 @@ export const historyArr = [
     },{
         id: 18,
         status: "extra",
+        name: "Иванова А. К.",
         startDate: new Date(2017,10,14,15).getTime(),
         endDate: new Date(2017,10,14,16).getTime(),
         type: 'chat1',
@@ -98,6 +105,7 @@ export const historyArr = [
     },{
         id: 19,
         status: "completed",
+        name: "Иванова А. К.",
         startDate: new Date(2017,10,15,15,50).getTime(),
         endDate: new Date(2017,10,15,16).getTime(),
         type: 'chat1',
@@ -112,6 +120,7 @@ export const historyArr = [
     {
         id: 199,
         status: "completed",
+        name: "Иванова А. К.",
         startDate: new Date(2018,5,15,15,50).getTime(),
         endDate: new Date(2018,5,15,16).getTime(),
         type: 'chat1',

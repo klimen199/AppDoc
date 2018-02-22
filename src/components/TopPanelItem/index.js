@@ -47,6 +47,7 @@ TopPanelItem.defaultProps = {
     className: '',
     panelTitle: '',
     panelText: '',
+    svg: true,
     icon: '',
     iconSize: 30,
     firstItem: false,

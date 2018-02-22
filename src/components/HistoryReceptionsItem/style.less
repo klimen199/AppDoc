@@ -1,11 +1,7 @@
 @import url("../../styles/variables");
-a{
-	color: #204d8d;
 
-	&:hover{
-		color: #204d8d;
-		text-decoration: underline;
-	}
+.overflow-x-a{
+	overflow-x: auto;
 }
 
 .receptions	{
@@ -13,50 +9,57 @@ a{
 	align-items: flex-start;
 	position: relative;
 	border-left: 4px solid transparent;
+	min-width: 1495px;
 
 	.flex-col{
 		padding: 25px 0;
 		margin-right: 30px;
 
 		&:first-child{
-			padding-left: 3%;
+			padding-left: 25px;
 		}
 
 		&:last-child{
-			padding-right: 3%;
+			padding-right: 25px;
 			margin-right: 0;
 		}
 
 		&:nth-child(1){
-			max-width: 120px;
+			max-width: 165px;
 			width: 100%;
 		}
 
 		&:nth-child(2){
+			max-width: 120px;
+			width: 100%;
+			position: relative;
+		}
+
+		&:nth-child(3){
 			max-width: 160px;
 			width: 100%;
 		}
 
-		&:nth-child(3){
-			max-width: 200px;
-			width: 100%;
-		}
-
 		&:nth-child(4){
-			max-width: 100px;
+			max-width: 200px;
 			width: 100%;
 		}
 
 		&:nth-child(5){
-			max-width: 205px;
+			max-width: 100px;
 			width: 100%;
 		}
 
 		&:nth-child(6){
+			max-width: 205px;
+			width: 100%;
+		}
+
+		&:nth-child(7){
 			max-width: 200px;
 			width: 100%;
 		}
-		&:nth-child(7){
+		&:nth-child(8){
 			width: 100%;
 			max-width: 100px;
 			margin-right: 0;
@@ -125,7 +128,7 @@ a{
 		color: #344051;
 		display: inline-block;
 		position: absolute;
-		left: 21px;
+		left: -20px;
 		top: 22.5px;
 
 		&:before{

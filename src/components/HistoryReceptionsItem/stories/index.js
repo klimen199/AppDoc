@@ -9,6 +9,7 @@ storiesOf('HistoryReceptionsItem', module)
     .add('HistoryReceptionsItem', () => (
         <div>
             <HistoryReceptionsItem 
+                name="Иванова А. К."
                 date="15.09.2017"
                 time="15:00-16:00"
                 type='chat1'
