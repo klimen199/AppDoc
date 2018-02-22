@@ -154,7 +154,6 @@ class Step3 extends React.Component{
 
     onFinishHandler = () => {
         const data = this.props.data;
-        console.log(this.props.data);
         let result = {};
         for (let key in data){
             result = (key.indexOf('educationsgroup')+1)
@@ -169,7 +168,6 @@ class Step3 extends React.Component{
                         [key]: data[key],
                     };
         }
-        console.log(result);
         this.props.onFinish(result)
     };
 
