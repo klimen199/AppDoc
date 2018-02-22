@@ -1,51 +1,57 @@
 import React from 'react'
-import { Upload } from 'antd';
+import {Upload} from 'antd';
+import PropTypes from 'prop-types'
 
 import Icon from '../Icon'
 
 import './styles.css'
 
 class UploadBig extends React.Component {
-  state = {
-    previewVisible: false,
-    previewImage: '',
-    fileList: [],
-  };
+    state = {
+        previewImage: '',
+        fileList: [],
+    };
 
-  handleCancel = () => this.setState({ previewVisible: false })
+    handlePreview = (file) => {
+        this.setState({
+            previewImage: file.url || file.thumbUrl,
+        });
+    };
 
-  handlePreview = (file) => {
-    this.setState({
-      previewImage: file.url || file.thumbUrl,
-      previewVisible: true,
-    });
-  }
+    handleChange = ({fileList}) => this.setState({fileList});
 
-  handleChange = ({ fileList }) => this.setState({ fileList })
+    render() {
+        const {previewImage, fileList, name} = this.state;
 
-  render() {
-    const { previewVisible, previewImage, fileList, name } = this.state;
-    const uploadButton = (
-      <div className='upload-btn' title='Загрузить файл'>
-        <Icon type="add-button" size={40} svg/>
-      </div>
-    );
-    return (
-      <div className="upload">
-        <Upload className="upload-block"
-          action=""
-          listType="picture-card"
-          fileList={fileList}
-          onPreview={this.handlePreview}
-          onChange={this.handleChange}
-          name={name}
-        >
-          {fileList.length >= 100 ? null : uploadButton}
-        </Upload>
-      </div>
-    );
-  }
+
+        const uploadButton = (
+            <div className='upload-btn' title='Загрузить файл'>
+                <Icon type="add-button" size={40} svg/>
+            </div>
+        );
+        return (
+            <div className="upload">
+                <Upload className="upload-block"
+                        action=""
+                        listType="picture-card"
+                        fileList={fileList}
+                        onPreview={this.handlePreview}
+                        onChange={this.handleChange}
+                        name={name}
+                >
+                    {fileList.length >= this.props.limit ? null : uploadButton}
+                </Upload>
+            </div>
+        );
+    }
 }
 
+UploadBig.propTypes = {
+    limit: PropTypes.number,
+};
+
+UploadBig.defaultProps = {
+    limit: 5,
+};
 
 export default UploadBig;
