@@ -59,7 +59,10 @@ class Step2_work extends React.Component {
                     </FormItem>
                 </div>
                 <FormItem>
-                    {getFieldDecorator('copycontract')(
+                    {getFieldDecorator('copycontract',{
+                        valuePropName: 'fileList',
+                        getValueFromEvent: this.normFile,
+                    })(
                         <Upload text="Прикрепить копию контракта"/>
                     )}
                 </FormItem>
@@ -80,7 +83,10 @@ class Step2_work extends React.Component {
                     </FormItem>
                 </div>
                 <FormItem>
-                    {getFieldDecorator('photos')(
+                    {getFieldDecorator('photos',{
+                        valuePropName: 'fileList',
+                        getValueFromEvent: this.props.normFile,
+                    })(
                         <UploadBig />
                     )}
                 </FormItem>
