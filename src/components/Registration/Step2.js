@@ -119,7 +119,10 @@ class Step2_From extends React.Component{
                     )}
                 </FormItem>
                 <FormItem>
-                    {getFieldDecorator('academicdegreedoc')(
+                    {getFieldDecorator('academicdegreedoc',{
+                        valuePropName: 'fileList',
+                        getValueFromEvent: this.normFile,
+                    })(
                         <Upload text="Прикрепить документ, подтверждающий ученую степень"/>
                     )}
                 </FormItem>
