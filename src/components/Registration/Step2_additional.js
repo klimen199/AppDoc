@@ -20,7 +20,7 @@ class Step2_additional extends React.Component{
                 <FormItem>
                     {getFieldDecorator('langs')(
                         <Select mode="multiple" placeholder="Какими языками владеете">
-                            {langs.map(elem => <Select.Option key={elem.value}
+                            {langs.map((elem,i) => <Select.Option key={elem.value+''+i}
                                                               value={elem.value}>
                                 {elem.title}</Select.Option>)}
                         </Select>
@@ -41,7 +41,7 @@ class Step2_additional extends React.Component{
                 <FormItem>
                     {getFieldDecorator('consultPayment')(
                         <Select placeholder="Желаемая сумма оплаты за консультацию">
-                            {payments.map(elem => <Select.Option key={elem}
+                            {payments.map((elem,i) => <Select.Option key={elem+''+i}
                                                               value={elem}>
                                 {elem}</Select.Option>)}
                         </Select>
