@@ -5,6 +5,6 @@ import UploadBig from '../';
 storiesOf('UploadBig', module)
     .add('upload', () => (
         <div>
-            <UploadBig />
+            <UploadBig onChange={e => console.log(e)}/>
         </div>
     ));
