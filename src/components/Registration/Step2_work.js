@@ -63,7 +63,8 @@ class Step2_work extends React.Component {
                         valuePropName: 'fileList',
                         getValueFromEvent: this.props.normFile,
                     })(
-                        <Upload text="Прикрепить копию контракта"/>
+                        <Upload 
+                            text="Прикрепить копию контракта"/>
                     )}
                 </FormItem>
 

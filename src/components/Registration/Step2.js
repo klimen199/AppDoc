@@ -123,7 +123,8 @@ class Step2_From extends React.Component{
                         valuePropName: 'fileList',
                         getValueFromEvent: this.normFile,
                     })(
-                        <Upload text="Прикрепить документ, подтверждающий ученую степень"/>
+                        <Upload 
+                            text="Прикрепить документ, подтверждающий ученую степень"/>
                     )}
                 </FormItem>
 
