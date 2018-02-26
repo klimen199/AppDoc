@@ -11,7 +11,7 @@ import '../../icon/style.css'
 class ChatSend extends React.Component{
     render(){
         const { TextArea } = Input;
-        const {message, attachment} = this.props;
+        const {message, attachment, disable} = this.props;
         const rootClass = cn('message__send');
 
 
@@ -58,6 +58,8 @@ class ChatSend extends React.Component{
                         btnText='завершить прием'
                         size='default'
                         type='yellow'
+                        {...(disable ? { disabled: true } : {})}
+                        disable
                     />
                 </div>
             </div>
@@ -66,13 +68,13 @@ class ChatSend extends React.Component{
 }
 
 ChatSend.propTypes = {
-
     attachment: PropTypes.string,
+    disable: PropTypes.bool,
 };
 
 ChatSend.defaultProps = {
-
     attachment: '',
+    disable: true,
 };
 
 export default ChatSend
