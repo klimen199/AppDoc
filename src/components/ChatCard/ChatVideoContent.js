@@ -7,6 +7,7 @@ import Radio from '../Radio'
 import ChatFiles from '../ChatFiles'
 import ChatSend from '../ChatSend'
 import ChatMessage from '../ChatMessage'
+import ChatVideoPanel from '../ChatVideoPanel'
 
 import './style.css'
 import '../../icon/style.css'
@@ -22,6 +23,10 @@ class ChatVideoContent extends React.Component {
                 <div className='chat-card-message__area'>
                     <div className='chat-card-video__box'></div>
                     <div className='chat-card-video__mini'></div>
+                    <div className='chat-card-video__panel'>
+                        <ChatVideoPanel  duration='00:00:34'/>
+                    </div>
+
                 </div>
             </div>
 
