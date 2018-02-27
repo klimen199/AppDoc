@@ -37,7 +37,7 @@ class DownloadLink extends React.Component {
             `${conclusion}`,
             this.state.downloaded && 'downloaded');
 
-        console.log(this.state.downloaded,' - downloaded')
+        // console.log(this.state.downloaded,' - downloaded')
 
         return (
             <a href={href}
