@@ -7,6 +7,7 @@ import Radio from '../Radio'
 import ChatFiles from '../ChatFiles'
 import ChatSend from '../ChatSend'
 import ChatContent from './ChatContent'
+import ChatVideoContent from './ChatVideoContent'
 import ChatMessage from '../ChatMessage'
 
 import './style.css'
@@ -51,6 +52,7 @@ class ChatCard extends React.Component {
             case 'telephone':
                 break;
             case "video-camera":
+                content = <ChatVideoContent isActive={this.state.isActive}/>;
                 break;
         }
 
@@ -88,118 +90,7 @@ class ChatCard extends React.Component {
                 </div>
                 <div className='chat-card-body'>
                     <div className={dialogsClass}>
-                        <div className='chat-card-message__area'>
-
-
                             {content}
-
-                            {/*<div className='chat-card-message__comments'>
-                             <ChatComments
-                             comments="Жалоба пациента или комментарий к приему. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных домах."
-                             />
-                             </div>*/}
-
-
-                            {/*<div className='chat-card-message__box'>
-                             <div className='chat-card-message__overlay'>
-                             <ChatMessage
-                             img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
-                             message="Здарова!"
-                             time={Date.now()}
-                             />
-                             <ChatMessage
-                             isMy
-                             message="Здоровей видали!!"
-                             time={Date.now()}
-                             />
-                             <ChatMessage
-                             img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
-                             message="Здарова!"
-                             time={Date.now()}
-                             />
-                             <ChatMessage
-                             isMy
-                             message="Здоровей видали!!"
-                             time="15:00"
-                             />
-                             <ChatMessage
-                             img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
-                             message="Здарова!"
-                             time="15:00"
-                             />
-                             <ChatMessage
-                             isMy
-                             message="Здоровей видали!!"
-                             time="15:00"
-                             />
-                             <ChatMessage
-                             img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
-                             message="Здарова!"
-                             time="15:00"
-                             />
-                             <ChatMessage
-                             isMy
-                             message="Здоровей видали!!"
-                             time="15:00"
-                             />
-                             <ChatMessage
-                             img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
-                             message="Здарова!"
-                             time="15:00"
-                             />
-                             <ChatMessage
-                             isMy
-                             message="Здоровей видали!!"
-                             time="15:00"
-                             />
-                             <ChatMessage
-                             img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
-                             message="Здарова!"
-                             time="15:00"
-                             />
-                             <ChatMessage
-                             isMy
-                             message="Здоровей видали!!"
-                             time="15:00"
-                             />
-                             <ChatMessage
-                             img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
-                             message="Здарова!"
-                             time="15:00"
-                             />
-                             <ChatMessage
-                             isMy
-                             message="Здоровей видали!!"
-                             time="15:00"
-                             />
-                             <ChatMessage
-                             img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
-                             message="Здарова!"
-                             time="15:00"
-                             />
-                             <ChatMessage
-                             isMy
-                             message="Здоровей видали!!"
-                             time="15:00"
-                             />
-                             <ChatMessage
-                             img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
-                             message="Здарова!"
-                             time="15:00"
-                             />
-                             <ChatMessage
-                             isMy
-                             message="Здоровей видали!!"
-                             time="15:00"
-                             />
-                             </div>
-                             </div>*/}
-
-
-                        </div>
-                        <div className='chat-card-message__send'>
-                            <ChatSend />
-                        </div>
                     </div>
                     <div className={filesClass}>
                         <div className='chat-card-files__close'>

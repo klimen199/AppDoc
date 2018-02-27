@@ -155,7 +155,7 @@
 			height: 100%;
 			position: relative;
 			background-color: #fff;
-			transition: @ease;
+			transition: 0.2s linear;
 			display: flex;
 			flex-direction: column;
 
@@ -167,7 +167,7 @@
 		&-files{
 			background-color: #fff;
 			width: 0;
-			transition: @ease;
+			transition: 0.2s linear;
 			position: relative;
 			display: flex;
 			flex-direction: column;
@@ -213,8 +213,7 @@
 			}
 
 			&-active{
-				width: 100%;
-				max-width: 332px;
+				width: 332px;
 				margin-right: -30px;
 				box-shadow: 0px 0 55px 0 rgba(0,0,0,.1);
 			}
@@ -224,13 +223,15 @@
 
 			&__area{
 				position: relative;
-				height: 100%;
-				max-height: 678px;
+				flex: 6 1 960px;
+    			display: flex;
 			}
 
 			&__send{
 				margin-top: auto;
 				z-index: 3;
+				display: flex;
+				flex: 1 1 100px;
 			}
 
 			&__box{
@@ -239,10 +240,33 @@
 				background-color: #fff;
 				overflow-y: auto;
 				height: 100%;
+				width: 100%;
 			}
 
 			&__overlay{
 				position: relative;
+			}
+		}
+
+		&-video{
+
+			&__box{
+				position: relative;
+				width: 100%;
+				height: 100%;
+				display: block;
+				background-color: #a1a1a1;
+			}
+
+			&__mini{
+				position: absolute;
+				right: 40px;
+				top: 20px;
+				width: 165px;
+				height: 165px;
+				display: block;
+				background-color: green;
+				border-radius: 8px;
 			}
 		}
 	}
