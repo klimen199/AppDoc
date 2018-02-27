@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import cn from 'classnames'
 
-import { Input } from 'antd';
+import { Input, Upload } from 'antd';
 import Button from '../Button'
 
 import './style.css'
@@ -11,7 +11,7 @@ import '../../icon/style.css'
 class ChatSend extends React.Component{
     render(){
         const { TextArea } = Input;
-        const {message, attachment} = this.props;
+        const {message, attachment, disable} = this.props;
         const rootClass = cn('message__send');
 
 
@@ -29,32 +29,37 @@ class ChatSend extends React.Component{
                     <TextArea placeholder="Ваше сообщение..." autosize />
                 </div>
                 <div className='message__send-btns'>
+                    <Upload>
+                        <Button
+                                btnText=''
+                                size='small'
+                                type='no-brd'
+                                icon='result'
+                                title='Добавить заключение'
+                                onClick={e => e.preventDefault()}
+                            />
+                    </Upload>
+                    <Upload>
+                        <Button
+                            btnText=''
+                            size='small'
+                            type='no-brd'
+                            icon='clip'
+                            title='Прикрепить файл'
+                            onClick={e => e.preventDefault()}
+                        />
+                    </Upload>
                     <Button
+                        className='message__send-send'
                         btnText=''
-                        size='small'
-                        type='no-brd'
-                        icon='result'
-                        title='Добавить заключение'
-                    />
-                    <Button
-                        btnText=''
-                        size='small'
-                        type='no-brd'
-                        icon='clip'
-                        title='Прикрепить файл'
-                    />
-                    <Button
-                        btnText=''
-                        size='small'
-                        type='blue'
                         title='Отправить сообщение'
-                        icon='send'
-                        svg
                     />
                     <Button
                         btnText='завершить прием'
                         size='default'
                         type='yellow'
+                        {...(disable ? { disabled: true } : {})}
+                        disable
                     />
                 </div>
             </div>
@@ -63,13 +68,13 @@ class ChatSend extends React.Component{
 }
 
 ChatSend.propTypes = {
-
     attachment: PropTypes.string,
+    disable: PropTypes.bool,
 };
 
 ChatSend.defaultProps = {
-
     attachment: '',
+    disable: true,
 };
 
 export default ChatSend

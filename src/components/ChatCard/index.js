@@ -6,6 +6,8 @@ import Button from '../Button'
 import Radio from '../Radio'
 import ChatFiles from '../ChatFiles'
 import ChatSend from '../ChatSend'
+import ChatComments from '../ChatComments'
+import ChatMessage from '../ChatMessage'
 import ChatInMessage from '../ChatInMessage'
 import ChatOutMessage from '../ChatOutMessage'
 
@@ -87,91 +89,98 @@ class ChatCard extends React.Component {
                             <div>{this.state.mode}</div>
                             <div className='chat-card-message__box'>
                                 <div className='chat-card-message__overlay'>
-                                    <ChatInMessage
-                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
-                                        message="Здарова!"
+                                    <ChatMessage
+                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
+                                        message="Здарова!" 
                                         time="15:00"
                                     />
-                                    <ChatOutMessage
-                                        message="Здоровей видали!!"
+                                    <ChatMessage
+                                        isMy
+                                        message="Здоровей видали!!" 
                                         time="15:00"
                                     />
-                                    <ChatInMessage
-                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
-                                        message="Здарова!"
+                                    <ChatMessage
+                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
+                                        message="Здарова!" 
                                         time="15:00"
                                     />
-                                    <ChatOutMessage
-                                        message="Здоровей видали!!"
+                                    <ChatMessage
+                                        isMy
+                                        message="Здоровей видали!!" 
                                         time="15:00"
                                     />
-                                    <ChatInMessage
-                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
-                                        message="Здарова!"
+                                    <ChatMessage
+                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
+                                        message="Здарова!" 
                                         time="15:00"
                                     />
-                                    <ChatOutMessage
-                                        message="Здоровей видали!!"
+                                    <ChatMessage
+                                        isMy
+                                        message="Здоровей видали!!" 
                                         time="15:00"
                                     />
-                                    <ChatInMessage
-                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
-                                        message="Здарова!"
+                                    <ChatMessage
+                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
+                                        message="Здарова!" 
                                         time="15:00"
                                     />
-                                    <ChatOutMessage
-                                        message="Здоровей видали!!"
+                                    <ChatMessage
+                                        isMy
+                                        message="Здоровей видали!!" 
                                         time="15:00"
                                     />
-                                    <ChatInMessage
-                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
-                                        message="Здарова!"
+                                    <ChatMessage
+                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
+                                        message="Здарова!" 
                                         time="15:00"
                                     />
-                                    <ChatOutMessage
-                                        message="Здоровей видали!!"
+                                    <ChatMessage
+                                        isMy
+                                        message="Здоровей видали!!" 
                                         time="15:00"
                                     />
-                                    <ChatInMessage
-                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
-                                        message="Здарова!"
+                                    <ChatMessage
+                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
+                                        message="Здарова!" 
                                         time="15:00"
                                     />
-                                    <ChatOutMessage
-                                        message="Здоровей видали!!"
+                                    <ChatMessage
+                                        isMy
+                                        message="Здоровей видали!!" 
                                         time="15:00"
                                     />
-                                    <ChatInMessage
-                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
-                                        message="Здарова!"
+                                    <ChatMessage
+                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
+                                        message="Здарова!" 
                                         time="15:00"
                                     />
-                                    <ChatOutMessage
-                                        message="Здоровей видали!!"
+                                    <ChatMessage
+                                        isMy
+                                        message="Здоровей видали!!" 
                                         time="15:00"
                                     />
-                                    <ChatInMessage
-                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
-                                        message="Здарова!"
+                                    <ChatMessage
+                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
+                                        message="Здарова!" 
                                         time="15:00"
                                     />
-                                    <ChatOutMessage
-                                        message="Здоровей видали!!"
+                                    <ChatMessage
+                                        isMy
+                                        message="Здоровей видали!!" 
                                         time="15:00"
                                     />
-                                    <ChatInMessage
-                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
-                                        message="Здарова!"
+                                    <ChatMessage
+                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
+                                        message="Здарова!" 
                                         time="15:00"
                                     />
-                                    <ChatOutMessage
-                                        message="Здоровей видали!!"
+                                    <ChatMessage
+                                        isMy
+                                        message="Здоровей видали!!" 
                                         time="15:00"
                                     />
                                 </div>
-                            </div>
-
-
+                             </div>
                         </div>
                         <div className='chat-card-message__send'>
                             <ChatSend />
@@ -206,7 +215,7 @@ ChatCard.propTypes = {
     isActive: PropTypes.bool,
     mode: PropTypes.oneOf(['chat1', 'telephone', "video-camera"]),
     onClick: PropTypes.func,
-
+    
 };
 
 ChatCard.defaultProps = {
