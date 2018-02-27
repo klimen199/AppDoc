@@ -8,7 +8,8 @@ import {filesArr} from './mock-data.js'
 storiesOf('ChatCard', module)
     .add('ChatCard', () => (
         <div>
-            <ChatCard 
+            <ChatCard
+                data={filesArr}
             	patientName='Иванова Александра Константиновна'
             	online='online'
             />

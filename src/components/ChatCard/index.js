@@ -6,10 +6,8 @@ import Button from '../Button'
 import Radio from '../Radio'
 import ChatFiles from '../ChatFiles'
 import ChatSend from '../ChatSend'
-import ChatComments from '../ChatComments'
+import ChatContent from './ChatContent'
 import ChatMessage from '../ChatMessage'
-import ChatInMessage from '../ChatInMessage'
-import ChatOutMessage from '../ChatOutMessage'
 
 import './style.css'
 import '../../icon/style.css'
@@ -35,7 +33,7 @@ class ChatCard extends React.Component {
 
 
     render() {
-        const {patientName, online, onClick} = this.props;
+        const {patientName, online} = this.props;
 
         const rootClass = cn('chat-card');
         const statusClass = cn('chat-card-status', `chat-card-${online}`);
@@ -44,6 +42,17 @@ class ChatCard extends React.Component {
         const dialogsClass = cn('chat-card-dialogs', {'chat-card-dialogs-active': this.state.isActive});
 
         const icons = ['chat1', 'telephone', "video-camera"];
+
+        let content;
+        switch (this.state.mode) {
+            case 'chat1':
+                content = <ChatContent isActive={this.state.isActive}/>;
+                break;
+            case 'telephone':
+                break;
+            case "video-camera":
+                break;
+        }
 
         return (
             <div className={rootClass}>
@@ -80,107 +89,113 @@ class ChatCard extends React.Component {
                 <div className='chat-card-body'>
                     <div className={dialogsClass}>
                         <div className='chat-card-message__area'>
+
+
+                            {content}
+
                             {/*<div className='chat-card-message__comments'>
                              <ChatComments
                              comments="Жалоба пациента или комментарий к приему. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных домах."
                              />
                              </div>*/}
 
-                            <div>{this.state.mode}</div>
-                            <div className='chat-card-message__box'>
-                                <div className='chat-card-message__overlay'>
-                                    <ChatMessage
-                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
-                                        message="Здарова!" 
-                                        time="15:00"
-                                    />
-                                    <ChatMessage
-                                        isMy
-                                        message="Здоровей видали!!" 
-                                        time="15:00"
-                                    />
-                                    <ChatMessage
-                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
-                                        message="Здарова!" 
-                                        time="15:00"
-                                    />
-                                    <ChatMessage
-                                        isMy
-                                        message="Здоровей видали!!" 
-                                        time="15:00"
-                                    />
-                                    <ChatMessage
-                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
-                                        message="Здарова!" 
-                                        time="15:00"
-                                    />
-                                    <ChatMessage
-                                        isMy
-                                        message="Здоровей видали!!" 
-                                        time="15:00"
-                                    />
-                                    <ChatMessage
-                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
-                                        message="Здарова!" 
-                                        time="15:00"
-                                    />
-                                    <ChatMessage
-                                        isMy
-                                        message="Здоровей видали!!" 
-                                        time="15:00"
-                                    />
-                                    <ChatMessage
-                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
-                                        message="Здарова!" 
-                                        time="15:00"
-                                    />
-                                    <ChatMessage
-                                        isMy
-                                        message="Здоровей видали!!" 
-                                        time="15:00"
-                                    />
-                                    <ChatMessage
-                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
-                                        message="Здарова!" 
-                                        time="15:00"
-                                    />
-                                    <ChatMessage
-                                        isMy
-                                        message="Здоровей видали!!" 
-                                        time="15:00"
-                                    />
-                                    <ChatMessage
-                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
-                                        message="Здарова!" 
-                                        time="15:00"
-                                    />
-                                    <ChatMessage
-                                        isMy
-                                        message="Здоровей видали!!" 
-                                        time="15:00"
-                                    />
-                                    <ChatMessage
-                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
-                                        message="Здарова!" 
-                                        time="15:00"
-                                    />
-                                    <ChatMessage
-                                        isMy
-                                        message="Здоровей видали!!" 
-                                        time="15:00"
-                                    />
-                                    <ChatMessage
-                                        img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
-                                        message="Здарова!" 
-                                        time="15:00"
-                                    />
-                                    <ChatMessage
-                                        isMy
-                                        message="Здоровей видали!!" 
-                                        time="15:00"
-                                    />
-                                </div>
+
+                            {/*<div className='chat-card-message__box'>
+                             <div className='chat-card-message__overlay'>
+                             <ChatMessage
+                             img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
+                             message="Здарова!"
+                             time={Date.now()}
+                             />
+                             <ChatMessage
+                             isMy
+                             message="Здоровей видали!!"
+                             time={Date.now()}
+                             />
+                             <ChatMessage
+                             img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
+                             message="Здарова!"
+                             time={Date.now()}
+                             />
+                             <ChatMessage
+                             isMy
+                             message="Здоровей видали!!"
+                             time="15:00"
+                             />
+                             <ChatMessage
+                             img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
+                             message="Здарова!"
+                             time="15:00"
+                             />
+                             <ChatMessage
+                             isMy
+                             message="Здоровей видали!!"
+                             time="15:00"
+                             />
+                             <ChatMessage
+                             img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
+                             message="Здарова!"
+                             time="15:00"
+                             />
+                             <ChatMessage
+                             isMy
+                             message="Здоровей видали!!"
+                             time="15:00"
+                             />
+                             <ChatMessage
+                             img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
+                             message="Здарова!"
+                             time="15:00"
+                             />
+                             <ChatMessage
+                             isMy
+                             message="Здоровей видали!!"
+                             time="15:00"
+                             />
+                             <ChatMessage
+                             img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
+                             message="Здарова!"
+                             time="15:00"
+                             />
+                             <ChatMessage
+                             isMy
+                             message="Здоровей видали!!"
+                             time="15:00"
+                             />
+                             <ChatMessage
+                             img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
+                             message="Здарова!"
+                             time="15:00"
+                             />
+                             <ChatMessage
+                             isMy
+                             message="Здоровей видали!!"
+                             time="15:00"
+                             />
+                             <ChatMessage
+                             img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
+                             message="Здарова!"
+                             time="15:00"
+                             />
+                             <ChatMessage
+                             isMy
+                             message="Здоровей видали!!"
+                             time="15:00"
+                             />
+                             <ChatMessage
+                             img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
+                             message="Здарова!"
+                             time="15:00"
+                             />
+                             <ChatMessage
+                             isMy
+                             message="Здоровей видали!!"
+                             time="15:00"
+                             />
                              </div>
+                             </div>*/}
+
+
                         </div>
                         <div className='chat-card-message__send'>
                             <ChatSend />
@@ -197,9 +212,11 @@ class ChatCard extends React.Component {
                                 onClick={() => this.setState(prev => ({isActive: !prev.isActive}))}
                             />
                         </div>
-                        {this.state.isActive && <div className='chat-card-files__items'>
-                            {this.filesRender(this.props.data)}
-                        </div>}
+                        {
+                            this.state.isActive && <div className='chat-card-files__items'>
+                                {this.filesRender(this.props.data)}
+                            </div>
+                        }
                     </div>
 
                 </div>
@@ -214,8 +231,6 @@ ChatCard.propTypes = {
     online: PropTypes.oneOf(['offline', 'online']),
     isActive: PropTypes.bool,
     mode: PropTypes.oneOf(['chat1', 'telephone', "video-camera"]),
-    onClick: PropTypes.func,
-    
 };
 
 ChatCard.defaultProps = {
@@ -224,9 +239,6 @@ ChatCard.defaultProps = {
     online: 'offline',
     isActive: false,
     mode: 'chat1',
-    onClick: () => {
-    },
-
 };
 
 export default ChatCard
