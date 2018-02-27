@@ -10,8 +10,7 @@ import ChatDialog from '../ChatDialog'
 import ChatFiles from '../ChatFiles'
 import ChatSend from '../ChatSend'
 import ChatComments from '../ChatComments'
-import ChatInMessage from '../ChatInMessage'
-import ChatOutMessage from '../ChatOutMessage'
+import ChatMessage from '../ChatMessage'
 
 import './style.css'
 import '../../icon/style.css'
@@ -85,84 +84,93 @@ class ChatCard extends React.Component{
                             </div>*/}
                              <div className='chat-card-message__box'>
                                 <div className='chat-card-message__overlay'>
-                                    <ChatInMessage 
+                                    <ChatMessage 
                                         img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
                                         message="Здарова!" 
                                         time="15:00"
                                     />
-                                    <ChatOutMessage 
+                                    <ChatMessage
+                                        isMy 
                                         message="Здоровей видали!!" 
                                         time="15:00"
                                     />
-                                    <ChatInMessage 
+                                    <ChatMessage 
                                         img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
                                         message="Здарова!" 
                                         time="15:00"
                                     />
-                                    <ChatOutMessage 
+                                    <ChatMessage
+                                        isMy 
                                         message="Здоровей видали!!" 
                                         time="15:00"
                                     />
-                                    <ChatInMessage 
+                                    <ChatMessage 
                                         img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
                                         message="Здарова!" 
                                         time="15:00"
                                     />
-                                    <ChatOutMessage 
+                                    <ChatMessage
+                                        isMy 
                                         message="Здоровей видали!!" 
                                         time="15:00"
                                     />
-                                    <ChatInMessage 
+                                    <ChatMessage 
                                         img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
                                         message="Здарова!" 
                                         time="15:00"
                                     />
-                                    <ChatOutMessage 
+                                    <ChatMessage
+                                        isMy 
                                         message="Здоровей видали!!" 
                                         time="15:00"
                                     />
-                                    <ChatInMessage 
+                                    <ChatMessage 
                                         img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
                                         message="Здарова!" 
                                         time="15:00"
                                     />
-                                    <ChatOutMessage 
+                                    <ChatMessage
+                                        isMy 
                                         message="Здоровей видали!!" 
                                         time="15:00"
                                     />
-                                    <ChatInMessage 
+                                    <ChatMessage 
                                         img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
                                         message="Здарова!" 
                                         time="15:00"
                                     />
-                                    <ChatOutMessage 
+                                    <ChatMessage
+                                        isMy 
                                         message="Здоровей видали!!" 
                                         time="15:00"
                                     />
-                                    <ChatInMessage 
+                                    <ChatMessage 
                                         img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
                                         message="Здарова!" 
                                         time="15:00"
                                     />
-                                    <ChatOutMessage 
+                                    <ChatMessage
+                                        isMy 
                                         message="Здоровей видали!!" 
                                         time="15:00"
                                     />
-                                    <ChatInMessage 
+                                    <ChatMessage 
                                         img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
                                         message="Здарова!" 
                                         time="15:00"
                                     />
-                                    <ChatOutMessage 
+                                    <ChatMessage
+                                        isMy 
                                         message="Здоровей видали!!" 
                                         time="15:00"
                                     />
-                                    <ChatInMessage 
+                                    <ChatMessage 
                                         img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
                                         message="Здарова!" 
                                         time="15:00"
                                     />
-                                    <ChatOutMessage 
+                                    <ChatMessage
+                                        isMy 
                                         message="Здоровей видали!!" 
                                         time="15:00"
                                     />
