@@ -21,6 +21,7 @@ class Button extends React.Component{
                     title={title}
                     onClick={onClick}
                     {...(disable ? { disabled: true } : {})}
+                    style={this.props.style}
             >
                 {icon && (
                     <Icon svg={svg} type={icon} size={iconSize}/>

@@ -8,6 +8,8 @@ const icons = ['telephone', "video-camera", 'chat1'];
 storiesOf('Radio', module)
     .add('btn', () => (
         <div>
-            <Radio icons={icons} />
+            <Radio icons={icons}
+                   onChange={e => console.log(e)}
+                   defaultValue="video-camera"/>
         </div>
     ))

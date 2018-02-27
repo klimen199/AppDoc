@@ -10,6 +10,7 @@ import './styles.css'
 
 
 class Radio extends React.Component{
+
     onChangeHandler = (e) => {
         this.props.onChange(e.target.value);
     };
@@ -29,7 +30,7 @@ class Radio extends React.Component{
     render(){
 
         return (
-            <RadioGroup onChange={this.onChangeHandler}>
+            <RadioGroup onChange={this.onChangeHandler} defaultValue={this.props.defaultValue}>
                 {this.renderRadio(this.props.icons)}
             </RadioGroup>
         )
@@ -40,11 +41,13 @@ class Radio extends React.Component{
 Radio.propTypes ={
     icons: PropTypes.arrayOf(PropTypes.string),
     onChange: PropTypes.func,
+    defaultValue: PropTypes.string,
 };
 
 Radio.defaultProps = {
     icons: [],
     onChange: () => {},
+    defaultValue: null,
 };
 
 export default Radio;
