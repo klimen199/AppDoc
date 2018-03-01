@@ -98,6 +98,7 @@ const loadStories = () => {
     require('../src/components/PopoverFile/stories');
     require('../src/components/PopoverFileBody/stories');
     require('../src/components/HistoryReceptionsTabs/stories');
+    require('../src/components/ChatVideoPanel/stories');
 };
 
 configure(loadStories, module);
