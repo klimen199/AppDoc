@@ -104,6 +104,8 @@ const loadStories = () => {
     require('../src/components/TopPanelPatient/stories');
     require('../src/components/PatientNearRecordItem/stories');
     require('../src/components/PatientNearRecord/stories');
+    require('../src/components/PatientDoctorItem/stories');
+    require('../src/components/PatientDoctor/stories');
 };
 
 configure(loadStories, module);
