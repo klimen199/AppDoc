@@ -99,6 +99,11 @@ const loadStories = () => {
     require('../src/components/PopoverFileBody/stories');
     require('../src/components/HistoryReceptionsTabs/stories');
     require('../src/components/ChatVideoPanel/stories');
+    require('../src/components/TopPanelPatientItem/stories');
+    require('../src/components/TopPanelPatientPopover/stories');
+    require('../src/components/TopPanelPatient/stories');
+    require('../src/components/PatientNearRecordItem/stories');
+    require('../src/components/PatientNearRecord/stories');
 };
 
 configure(loadStories, module);

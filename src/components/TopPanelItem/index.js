@@ -23,7 +23,7 @@ class TopPanelItem extends React.Component{
                      {icon && (
                         <Icon svg={svg} type={icon} size={iconSize}/>
                     )}
-                    {!svg && <span></span>}
+                    {!svg && <span></span>} 
                     {type !== 'icon' && <span className={'panel-title'} style={panelTitleStyle}>{panelTitle}</span>}
                 </div>
                 {<span className={'panelItem-num'} style={panelTextStyle}>{panelText}</span>}

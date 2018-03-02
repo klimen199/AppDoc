@@ -12,7 +12,7 @@ storiesOf('PopoverBody', module)
             <PopoverBody
             	name={dataArr.name}
             	date={dataArr.date}
-            	time={dataArr.time}
+            	time={dataArr.time} 
             	text={dataArr.text}
                 onPhone = {action('onPhone')}
                 onEmail = {action('onPhone')}

@@ -26,7 +26,6 @@ class ChatVideoContent extends React.Component {
                     <div className='chat-card-video__panel'>
                         <ChatVideoPanel  duration='00:00:34'/>
                     </div>
-
                 </div>
             </div>
 
