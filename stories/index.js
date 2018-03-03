@@ -106,6 +106,9 @@ const loadStories = () => {
     require('../src/components/PatientNearRecord/stories');
     require('../src/components/PatientDoctorItem/stories');
     require('../src/components/PatientDoctor/stories');
+    require('../src/components/PatientAnalyzesItem/stories');
+    require('../src/components/PatientAnalyzesPopover/stories');
+    require('../src/components/PatientAnalyzes/stories');
 };
 
 configure(loadStories, module);
