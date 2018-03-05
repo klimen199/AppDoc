@@ -109,6 +109,8 @@ const loadStories = () => {
     require('../src/components/PatientAnalyzesItem/stories');
     require('../src/components/PatientAnalyzesPopover/stories');
     require('../src/components/PatientAnalyzes/stories');
+    require('../src/components/PatientNotificationsItem/stories');
+    require('../src/components/PatientNotifications/stories');
 };
 
 configure(loadStories, module);
