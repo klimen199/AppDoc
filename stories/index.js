@@ -111,6 +111,10 @@ const loadStories = () => {
     require('../src/components/PatientAnalyzes/stories');
     require('../src/components/PatientNotificationsItem/stories');
     require('../src/components/PatientNotifications/stories');
+    require('../src/components/PatientAccardionDiseaseItem/stories');
+    require('../src/components/PatientAccardionDisease/stories');
+    require('../src/components/PatientAccardionContactItem/stories');
+    require('../src/components/PatientAccardionContact/stories');
 };
 
 configure(loadStories, module);
