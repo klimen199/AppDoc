@@ -1,0 +1,65 @@
+@import url("../../styles/variables");
+
+
+.calendar{
+
+	&-carousel{
+		position: relative;
+		width: 100%;
+		max-width: 555px;
+
+		.ant-carousel{
+
+			.slick-initialized{
+
+				.slick-slide{
+					display: flex;
+				}
+			}
+
+			.slick-dots{
+				display: none !important;
+			}
+		}
+
+		&-slide{
+			display: flex;
+			justify-content: space-around;
+		}
+
+		&-col{
+			width: 100%;
+		}
+
+		&-days{
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		&-day{
+			text-align: center;
+			color: #344051;
+			font-size: 14px;
+			line-height: 1;
+			padding: 20px 0;
+			border-bottom: 1px solid #ebebeb;
+		}
+
+		&-time{
+			color: #344051;
+			background-color: #edf4f9;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 90px;
+			height: 40px;
+			font-size: 16px;
+			border-radius: 5px;
+			margin: 10px auto;
+
+			&:nth-child(2){
+				margin-top: 20px;
+			}
+		}
+	}
+}

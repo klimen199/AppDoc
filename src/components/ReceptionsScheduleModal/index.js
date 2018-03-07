@@ -15,7 +15,7 @@ const ReceptionsScheduleModal = (props) => {
         >
             <Content {...props}
             />
-        </Modal>
+        </Modal> 
     )
 };
 
