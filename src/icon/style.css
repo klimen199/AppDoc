@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'icon';
   src:
-    url('fonts/icon.ttf?1s4xvb') format('truetype'),
-    url('fonts/icon.woff?1s4xvb') format('woff'),
-    url('fonts/icon.svg?1s4xvb#icon') format('svg');
+    url('fonts/icon.ttf?y55alj') format('truetype'),
+    url('fonts/icon.woff?y55alj') format('woff'),
+    url('fonts/icon.svg?y55alj#icon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -23,6 +23,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-heart_filled:before {
+  content: "\e93a";
+}
+.icon-heart_outline:before {
+  content: "\e93b";
+}
+.icon-toy_kids:before {
+  content: "\e93c";
+}
 .icon-menu:before {
   content: "\e939";
   color: #fff;

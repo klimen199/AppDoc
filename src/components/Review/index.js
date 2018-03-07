@@ -17,7 +17,7 @@ class Review extends React.Component{
             :
             <SecondaryReview date={date} text={text}/>;
     }
-}
+} 
 
 Review.propTypes = {
     author: PropTypes.string,

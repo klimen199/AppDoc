@@ -16,7 +16,7 @@ class RatePanel extends React.Component{
                 <Rate style={{fontSize:12}}
                       defaultValue={Math.ceil(rateValue)}
                       {...this.props}/>
-                <span className="times">({timesRated})</span>
+                <span className="times">({timesRated} отзывов)</span>
             </div>
         )
     }

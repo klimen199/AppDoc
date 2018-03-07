@@ -116,6 +116,8 @@ const loadStories = () => {
     require('../src/components/PatientAccardionContactItem/stories');
     require('../src/components/PatientAccardionContact/stories');
     require('../src/components/PatientCalendarPopover/stories');
+    require('../src/components/PatientPageDoctorItem/stories');
+    require('../src/components/PatientCalendarCarousel/stories');
 };
 
 configure(loadStories, module);
