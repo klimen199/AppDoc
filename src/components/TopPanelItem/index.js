@@ -36,7 +36,7 @@ class TopPanelItem extends React.Component{
 TopPanelItem.propTypes ={
     className: PropTypes.string,
     panelTitle: PropTypes.string,
-    panelText: PropTypes.string,
+    panelText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     icon: PropTypes.string,
     iconSize: PropTypes.number,
     svg: PropTypes.bool,
