@@ -8,6 +8,6 @@ import {panelArr} from './mock-data'
 storiesOf('TopPanel', module)
     .add('TopPanel', () => (
           <div>
-              <TopPanel  data={panelArr}/>
+              <TopPanel {...panelArr}/>
           </div>
     ))

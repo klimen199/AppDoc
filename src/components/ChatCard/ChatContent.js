@@ -65,8 +65,14 @@ class ChatContent extends React.Component {
     }
 }
 
-ChatContent.propTypes = {};
+ChatContent.propTypes = {
+    onCall: PropTypes.func,
+    onStopCall: PropTypes.func,
+};
 
-ChatContent.defaultProps = {};
+ChatContent.defaultProps = {
+    onCall: () => {},
+    onStopCall: () => {},
+};
 
 export default ChatContent

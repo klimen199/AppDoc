@@ -9,10 +9,10 @@ import './style.css'
 import '../../icon/style.css'
 
 class ChatVideoPanel extends React.Component{
+    
     render(){
-        const {message, duration, disable} = this.props;
+        const {message, duration, disable, onStop} = this.props;
         const rootClass = cn('message__panel');
-
 
         return (
             <div className={rootClass}>
@@ -28,14 +28,16 @@ class ChatVideoPanel extends React.Component{
                         iconSize={20}
                         title='Отключить микрофон'
                     />
-                    <Button
-                        btnText=''
-                        size='small'
-                        type='no-brd'
-                        icon='end-call-button'
-                        iconSize={9}
-                        title='Завершить звонок'
-                    />
+                    
+                        <Button
+                            onClick={onStop}
+                            btnText=''
+                            size='small'
+                            type='no-brd'
+                            icon='end-call-button'
+                            iconSize={9}
+                            title='Завершить звонок'
+                        /> 
                 </div>
                 <div className="message__panel-full">
                     <Button
@@ -44,7 +46,7 @@ class ChatVideoPanel extends React.Component{
                         type='no-brd'
                         icon='plus'
                         iconSize={16}
-                        title='Завершить звонок'
+                        title='Загрузить файл'
                     />
                     <Button
                         btnText=''
@@ -52,7 +54,6 @@ class ChatVideoPanel extends React.Component{
                         type='no-brd'
                         icon='chat1'
                         iconSize={16}
-                        title='Завершить звонок'
                     />
                 </div>
             </div>

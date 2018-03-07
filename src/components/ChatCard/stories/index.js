@@ -11,7 +11,7 @@ storiesOf('ChatCard', module)
             <ChatCard
                 data={filesArr}
             	patientName='Иванова Александра Константиновна'
-            	online='online'
+                online='online'
             />
         </div>
     ))

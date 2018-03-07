@@ -52,7 +52,7 @@ class ChatCard extends React.Component {
             case 'telephone':
                 break;
             case "video-camera":
-                content = <ChatVideoContent isActive={this.state.isActive}/>;
+                content = <ChatVideoContent isActive={this.state.isActive} {...this.props}/>;
                 break;
         }
 
