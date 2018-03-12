@@ -50,7 +50,8 @@ class Step2_educ extends React.Component {
                         {getFieldDecorator('educationsgroup1-finishucationyear-' + number, {
                             rules: [{
                                 required: true,
-                                message: 'Введите год окончания'
+                                message: 'Введите год окончания',
+                                pattern: /^[ ]*[0-9]{4}[ ]*$/
                             }],
                         })(
                             <Input addonBefore='* Год окончания'
@@ -58,10 +59,7 @@ class Step2_educ extends React.Component {
                         )}
                     </FormItem>
                     <FormItem>
-                        {getFieldDecorator('educationsgroup1-diplomphoto-' + number,{
-                            valuePropName: 'fileList',
-                            getValueFromEvent: this.props.normFile,
-                        })(
+                        {getFieldDecorator('educationsgroup1-diplomphoto-' + number)(
                             <Upload
                                 text="Прикрепить диплом, свидетельство"/>
                         )}
