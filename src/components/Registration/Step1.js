@@ -49,7 +49,9 @@ class Step1Form extends React.Component{
                 </FormItem>
                 <FormItem>
                     {getFieldDecorator('email', {
-                        rules: [{ required: true,
+                        rules: [{
+                            type: 'email', message: 'Неправильный формат e-mail адреса',
+                        },{ required: true,
                             message: 'Введите ваш e-mail, пожалуйста' }],
                     })(
                         <Input addonBefore='* E-mail'
@@ -58,9 +60,12 @@ class Step1Form extends React.Component{
                 </FormItem>
                 <FormItem>
                     {getFieldDecorator('phone', {
-                        rules: [{ required: true,
-                            message: 'Введите ваш телефон, пожалуйста' }],
-                    })(
+                        rules: [{
+                            required: true,
+                            message: 'Неправильный формат номера телефона',
+                            pattern: /^[+]?[0-9()\- ]+$/ }]
+
+                        })(
                         <Input addonBefore='* Телефон'
                                className='step-form-item'/>
                     )}
@@ -68,25 +73,25 @@ class Step1Form extends React.Component{
                 <div className="step-row">
                     <FormItem>
                         <div className='radio-label'>* Пол
-                        {getFieldDecorator('sex', {
-                            rules: [{ required: true,
-                                message: 'Выберите пол, пожалуйста' }],
-                        })(
-                            <RadioGroup>
-                                <Radio value='w'>Жен.</Radio>
-                                <Radio value='m'>Муж.</Radio>
-                            </RadioGroup>
-                       )}
+                            {getFieldDecorator('sex', {
+                                rules: [{ required: true,
+                                    message: 'Выберите пол, пожалуйста' }],
+                            })(
+                                <RadioGroup>
+                                    <Radio value='w'>Жен.</Radio>
+                                    <Radio value='m'>Муж.</Radio>
+                                </RadioGroup>
+                            )}
                         </div>
                     </FormItem>
                     <FormItem>
                         <div className='radio-label'>* Дата рождения
-                        {getFieldDecorator('datebirth', {
-                            rules: [{ required: true,
-                                message: 'Введите дату вашего рождения, пожалуйста' }],
-                        })(
-                            <DatePicker placeholder="дд/мм/гггг"/>
-                        )}
+                            {getFieldDecorator('datebirth', {
+                                rules: [{ required: true,
+                                    message: 'Введите дату вашего рождения, пожалуйста' }],
+                            })(
+                                <DatePicker placeholder="дд/мм/гггг"/>
+                            )}
                         </div>
                     </FormItem>
                 </div>
