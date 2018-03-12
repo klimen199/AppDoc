@@ -11,17 +11,13 @@ storiesOf('ChatCard', module)
             <ChatCard
                 data={filesArr}
             	patientName='Иванова Александра Константиновна'
-            	online='online'
-            />
-        </div>
-    ))
+                online='online'
+                isActive={false}
 
-    .add('ChatCard Files', () => (
-        <div>
-            <ChatCard data={filesArr}
-            	patientName='Иванова Александра Константиновна'
-            	online='offline'
-            	isActive
+                videoCalling={false}
+
+                onVideoCallBegin={()=> console.log('Begin video calling')}
+                onVideoCallStop={action('Close video calling')}
             />
         </div>
     ))

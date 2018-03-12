@@ -35,6 +35,7 @@ class ChatVideoPanel extends React.Component{
                         icon='end-call-button'
                         iconSize={9}
                         title='Завершить звонок'
+                        onClick={this.props.onStop}
                     />
                 </div>
                 <div className="message__panel-full">
@@ -63,11 +64,13 @@ class ChatVideoPanel extends React.Component{
 ChatVideoPanel.propTypes = {
     duration: PropTypes.string,
     disable: PropTypes.bool,
+    onStop: PropTypes.func,
 };
 
 ChatVideoPanel.defaultProps = {
     duration: '',
     disable: true,
+    onStop: () => {},
 };
 
 export default ChatVideoPanel
