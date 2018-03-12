@@ -4,8 +4,8 @@
 
 	&-item{
 		position: relative;
-		padding: 20px 30px;
-		border-radius: 2px;
+		padding: 20px 30px 50px;
+		border-radius: 2px 2px 0 0;
 		width: 100%;
 		border-bottom: 1px solid #ebebeb;
 		// box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
@@ -29,7 +29,7 @@
     			flex-wrap: wrap;
 				margin-left: auto;
 				margin-top: 10px;
-				max-width: 238px;
+				max-width: 239px;
 			}
 		}
 
@@ -103,7 +103,7 @@
 			display: flex;
 			align-items: center;
 			width: 100%;
-			max-width: 238px;
+			max-width: 239px;
 			margin-bottom: 25px;
 
 			&-title{
@@ -145,6 +145,58 @@
 				color: #fdc401;
 				border: 1px solid #fdc401;
 				border-radius: 50%;
+			}
+		}
+	}
+
+	&-information{
+		padding: 40px 30px;
+		position: relative;
+
+		&-block{
+			margin-bottom: 35px;
+			position: relative;
+		}
+
+		&-title{
+			position: relative;
+			width: 100%;
+			display: block;
+			font-family: @f-b;
+			font-size: 14px;
+			line-height: 1;
+			color: #344051;
+			text-transform: uppercase;
+			margin-bottom: 35px;
+		}
+
+		&-postitle{
+			position: relative;
+			width: 100%;
+			color: #344051;
+			font-size: 14px;
+			line-height: 24px;
+		}
+
+		&-text{
+			position: relative;
+			width: 100%;
+			display: block;
+			font-size: 14px;
+			line-height: 24px;
+		}
+
+		&-list{
+			padding-left: 0;
+			list-style: none;
+
+			.profile__doctor-information-text{
+				padding-left: 0px;
+
+				&:before{
+					content: '-';
+					margin-right: 5px;
+				}
 			}
 		}
 	}
