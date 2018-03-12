@@ -3,48 +3,46 @@ import PropTypes from 'prop-types'
 import cn from 'classnames'
 import moment from 'moment'
 
-import { Carousel } from 'antd';
-
+import NewVisitModalPage from '../NewVisitModalPage'
 import './style.css'
 import '../../icon/style.css'
 
 class PatientCalendarCarousel extends React.Component{
+
+    state = {
+        modalVisible: false,
+    }
+
+    setModalVisible(modalVisible) {
+        this.setState({ modalVisible });
+    }
     
     render(){
-        const {} = this.props;
+        const { carouselTimes, carouselDays} = this.props;
         const rootClass = cn('calendar-carousel');
 
         return (
             <div className={rootClass}>
-                <Carousel>
                     <div className='calendar-carousel-slide'>
-                        <div className='calendar-carousel-col'>
-                            <div className='calendar-carousel-day'>Пн 25 мая</div>
-                            <div className='calendar-carousel-time'>10:30</div>
-                            <div className='calendar-carousel-time'>10:30</div>
-                            <div className='calendar-carousel-time'>10:30</div>
-                            <div className='calendar-carousel-time'>10:30</div>
-                        </div>
 
-                        <div className='calendar-carousel-col'>
-                            <div className='calendar-carousel-day'>Вт 26 мая</div>
-                            <div className='calendar-carousel-time'>10:30</div>
-                            <div className='calendar-carousel-time'>10:30</div>
-                            <div className='calendar-carousel-time'>10:30</div>
-                            <div className='calendar-carousel-time'>10:30</div>
-                        </div>
-
-                        <div className='calendar-carousel-col'>
-                            <div className='calendar-carousel-day'>Ср 27 мая</div>
-                            <div className='calendar-carousel-time'>10:30</div>
-                            <div className='calendar-carousel-time'>10:30</div>
-                            <div className='calendar-carousel-time'>10:30</div>
-                            <div className='calendar-carousel-time'>10:30</div>
-                        </div>
+                        {
+                            carouselDays.map((item, index)=> 
+                                <div className='calendar-carousel-col'>
+                                    <div className='calendar-carousel-day'>{item.day}</div>
+                                    {
+                                        carouselTimes.map((item, index)=> 
+                                            <div className='calendar-carousel-time' onClick={() => this.setModalVisible(true)} key={index+1}>{item.time}</div>
+                                        )
+                                    }
+                                </div>
+                            )
+                        }
                     </div>
-                </Carousel>
-                <button>Prev</button>
-                <button>Next</button>
+                <NewVisitModalPage 
+                    visible={this.state.modalVisible}
+                    onOk={() => this.setModalVisible(false)}
+                    onCancel={() => this.setModalVisible(false)}
+                />
             </div>
         )
     }
@@ -52,10 +50,14 @@ class PatientCalendarCarousel extends React.Component{
 
 PatientCalendarCarousel.propTypes = {
     doctorRate: PropTypes.number,
+    carouselTimes: PropTypes.array,
+    carouselDays: PropTypes.array,
 };
 
 PatientCalendarCarousel.defaultProps = {
     doctorRate: 0,
+    carouselTimes: [],
+    carouselDays: [],
 };
 
 export default PatientCalendarCarousel
