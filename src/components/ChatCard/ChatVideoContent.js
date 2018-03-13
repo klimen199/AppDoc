@@ -45,7 +45,7 @@ window.onbeforeunload = function() {
 	ws.close();
 }
 
-ws.onmessage = function(message) {
+/*ws.onmessage = function(message) {
 	var parsedMessage = JSON.parse(message.data);
 	console.info('Received message: ' + message.data);
 
@@ -72,7 +72,7 @@ ws.onmessage = function(message) {
 	default:
 		console.error('Unrecognized message', parsedMessage);
 	}
-}
+}*/
 /*
 function resgisterResponse(message) {
 	if (message.response == 'accepted') {
@@ -121,6 +121,35 @@ class ChatVideoContent extends React.Component {
         this.ws = this.props.ws;
         this.webRtcPeer = null;
         this.kurentoUtils = this.props.kurentoUtils;
+
+        this.ws.onmessage = function(message) {
+            var parsedMessage = JSON.parse(message.data);
+            console.info('Received message: ' + message.data);
+        
+            switch (parsedMessage.id) {
+            /*case 'registerResponse':
+                resgisterResponse(parsedMessage);
+                break;*/
+            case 'callResponse':
+                this.callResponse(parsedMessage);
+                break;
+            case 'incomingCall':
+                this.incomingCall(parsedMessage);
+                break;
+            case 'startCommunication':
+                this.startCommunication(parsedMessage);
+                break;
+            case 'stopCommunication':
+                console.info("Communication ended by remote peer");
+                this.stop(true);
+                break;
+            case 'iceCandidate':
+                this.webRtcPeer.addIceCandidate(parsedMessage.candidate)
+                break;
+            default:
+                console.error('Unrecognized message', parsedMessage);
+            }
+        }
     }
 
     register = () => {
