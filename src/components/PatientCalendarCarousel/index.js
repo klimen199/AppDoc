@@ -4,6 +4,7 @@ import cn from 'classnames'
 import moment from 'moment'
 
 import NewVisitModalPage from '../NewVisitModalPage'
+import Button from '../Button'
 import './style.css'
 import '../../icon/style.css'
 
@@ -24,7 +25,20 @@ class PatientCalendarCarousel extends React.Component{
         return (
             <div className={rootClass}>
                     <div className='calendar-carousel-slide'>
-
+                        <Button className='btn-prev'
+                            btnText=''
+                            size='icon'
+                            type='icon'
+                            icon='arrow_left'
+                            svg
+                        />
+                        <Button className='btn-next'
+                            btnText=''
+                            size='icon'
+                            type='icon'
+                            icon='arrow_right'
+                            svg
+                        />
                         {
                             carouselDays.map((item, index)=> 
                                 <div className='calendar-carousel-col'>
