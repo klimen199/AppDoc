@@ -20,56 +20,97 @@ class ChatVideoPanel extends React.Component{
 
                 {isCalling ? 
                 <Hoc>
-                <div className="message__panel-duration">
-                    {duration}
-                </div>
-                <div className="message__panel-btns">
-                    <Button
-                        btnText=''
-                        size='small'
-                        type='no-brd'
-                        icon='clip'
-                        iconSize={20}
-                        title='Отключить микрофон'
-                    />
-                    <Button
-                        btnText=''
-                        size='small'
-                        type='no-brd'
-                        icon='end-call-button'
-                        iconSize={9}
-                        title='Завершить звонок'
-                        onClick={this.props.onStop}
-                    />
-                </div>
-                <div className="message__panel-full">
-                    <Button
-                        btnText=''
-                        size='small'
-                        type='no-brd'
-                        icon='plus'
-                        iconSize={16}
-                    />
-                    <Button
-                        btnText=''
-                        size='small'
-                        type='no-brd'
-                        icon='chat1'
-                        iconSize={16}
-                    />
-                </div>
+                    <div className="message__panel-duration">
+                        {duration}
+                    </div>
+                    <div className="message__panel-btns">
+                        <Button
+                            btnText=''
+                            size='small'
+                            type='no-brd'
+                            icon='clip'
+                            iconSize={20}
+                            title='Отключить микрофон'
+                        />
+                        <Button
+                            btnText=''
+                            size='small'
+                            type='no-brd'
+                            icon='end-call-button'
+                            iconSize={9}
+                            title='Завершить звонок'
+                            onClick={this.props.onStop}
+                        />
+                    </div>
+                    <div className="message__panel-full">
+                        <Button
+                            btnText=''
+                            size='small'
+                            type='no-brd'
+                            icon='plus'
+                            iconSize={16}
+                        />
+                        <Button
+                            btnText=''
+                            size='small'
+                            type='no-brd'
+                            icon='chat1'
+                            iconSize={16}
+                        />
+                    </div>
                 </Hoc>
-                : <div className="message__panel-btns">
-                <Button
-                        btnText=''
-                        size='small'
-                        type='no-brd'
-                        icon='phone-call-outcoming'
-                        iconSize={15}
-                        title='Начать разговор'
-                        onClick={this.props.onCall}
-            />
-            </div>
+                : 
+                <Hoc>
+                    <div className="message__panel-duration">
+                        {duration}
+                    </div>
+                    <div className="message__panel-btns">
+                        <Button
+                            className='btn-call'
+                            btnText=''
+                            size='small'
+                            type='no-brd'
+                            icon='phone-call-outcoming'
+                            iconSize={15}
+                            title='Начать разговор'
+                            onClick={this.props.onCall}
+                        />
+                        <Button
+                            btnText=''
+                            size='small'
+                            type='no-brd'
+                            icon='clip'
+                            iconSize={20}
+                            title='Отключить микрофон'
+                        />
+                        <Button
+                            className='btn-recall'
+                            btnText=''
+                            size='small'
+                            type='no-brd'
+                            icon='end-call-button'
+                            iconSize={9}
+                            title='Завершить звонок'
+                            onClick={this.props.onStop}
+                        />
+                    </div>
+                    <div className="message__panel-full">
+                        <Button
+                            btnText=''
+                            size='small'
+                            type='no-brd'
+                            icon='plus'
+                            iconSize={16}
+                        />
+                        <Button
+                            btnText=''
+                            size='small'
+                            type='no-brd'
+                            icon='chat1'
+                            iconSize={16}
+                        />
+                    </div>
+                </Hoc>
                 }
             </div>
         )
