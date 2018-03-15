@@ -23,7 +23,10 @@ class TreatmentTable extends React.Component{
     render(){
         return (
             <div className='treatment-all'>
-                <Card title="Актуальные обращения" extra={<a href="#"><Icon svg size={16} type="order-form" /> <span>Все обращения</span></a>}>
+                <Card title="Актуальные обращения" 
+                        extra={<a onClick={this.props.redirect}>
+                            <Icon svg size={16} type="order-form" /> <span>Все обращения</span>
+                        </a>}>
                     <div className="tableheader">
                         <div className="flex-col"><div className="tableheader-name">Имя пациента</div></div>
                         <div className="flex-col"><div className="tableheader-name">Дата приема</div></div>
@@ -45,10 +48,12 @@ class TreatmentTable extends React.Component{
 
 TreatmentTable.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
+    redirect: PropTypes.func,
 };
 
 TreatmentTable.defaultProps = {
     data: [],
+    redirect: () => {},
 };
 
 export default TreatmentTable
