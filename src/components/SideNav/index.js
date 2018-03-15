@@ -10,19 +10,6 @@ import DoctorProfileCard from '../DoctorProfileCard'
 import Icon from '../Icon'
 
 class SideNav extends React.Component{
-    // constructor(props){
-    //     super(props);
-    //     this.state = {
-    //         isShort: false,
-    //     }
-    // }
-
-    // getSelectedKeys = () => {
-    //     const { location: { hash, pathname }, selectedKeys} = this.props;
-    //
-    //     if (selectedKeys && selectedKeys.length) return selectedKeys;
-    //     return [pathname + hash];
-    // };
 
     renderMenuItems = (menuItems) =>{
         let items = [];
@@ -51,8 +38,6 @@ class SideNav extends React.Component{
 
         const rootClass = cn('sidenav-root', {'sidenav-root-short' : isShort});
         const menuClass = 'sidenav-root-menu' + (isShort ? '-short':'');
-
-        //const selectedKeys = this.getSelectedKeys();
 
         return (
             <div className={rootClass}>

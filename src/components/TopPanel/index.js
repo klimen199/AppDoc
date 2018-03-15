@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import cn from 'classnames'
 import moment from 'moment'
 
 import Icon from '../Icon'
@@ -11,7 +10,7 @@ import '../../icon/style.css'
 class TopPanel extends React.Component{
     state = {
         time: moment(),
-    }
+    };
 
     componentDidMount(){
         this.tick();
@@ -25,11 +24,11 @@ class TopPanel extends React.Component{
     firstTick = () => {
         this.tick();
         this.timer = setInterval(this.tick, 60000);
-    }
+    };
 
     tick = () => {
         this.setState({time: moment()});
-    }
+    };
 
     render(){
         const {time} = this.state;
