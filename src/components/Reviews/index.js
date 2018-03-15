@@ -24,7 +24,7 @@ class Reviews extends React.Component{
         return (
                 <Card title="Новые отзывы"
                       className="reviews"
-                      extra={<a href="#"><Icon type="chat" svg size={20}/> <span>Все отзывы</span></a>}>
+                      extra={<a onClick={this.props.redirect}><Icon type="chat" svg size={20}/> <span>Все отзывы</span></a>}>
                     {this.reviewRender(this.props.data)}
                 </Card>
         )
@@ -33,10 +33,12 @@ class Reviews extends React.Component{
 
 Reviews.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
+    redirect: PropTypes.func,
 };
 
 Reviews.defaultProps = {
     data: [],
+    redirect: () => {},
 };
 
 export default Reviews
