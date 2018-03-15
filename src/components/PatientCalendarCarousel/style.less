@@ -25,6 +25,53 @@
 		&-slide{
 			display: flex;
 			justify-content: flex-start;
+			overflow: hidden;
+			transition: @ease;
+			position: relative;
+
+			.btn-prev{
+				position: absolute;
+				top: 5px;
+				left: 0;
+				background-color: transparent;
+				transition: none;
+
+				.icon{
+					color: #344051;
+					font-size: 13px !important;
+				}
+
+				&:hover{
+					background-color: transparent;
+					border: none;
+
+					.icon{
+						color: @blue;
+					}
+				}
+			}
+
+			.btn-next{
+				position: absolute;
+				top: 5px;
+				right: 0;
+				background-color: transparent;
+				transition: none;
+
+				.icon{
+					color: #344051;
+					font-size: 13px !important;
+				}
+
+				&:hover{
+					background-color: transparent;
+					border: none;
+
+					.icon{
+						color: @blue;
+					}
+				}
+			}
 		}
 
 		&-col{

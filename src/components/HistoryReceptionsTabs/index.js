@@ -14,7 +14,7 @@ import './style.css'
 import '../../icon/style.css'
 const TabPane = Tabs.TabPane;
 
-class HistoryReceptionsTabs extends React.Component {
+class HistoryReceptionsTabs extends React.Component { 
     constructor(props) {
         super(props);
         this.state = {
