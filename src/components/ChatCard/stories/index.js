@@ -5,23 +5,26 @@ import ChatCard from '../';
 
 import {filesArr} from './mock-data.js'
 
+const Class = (props) =>{
+
+    return (<div>lool {props.lol}</div>)
+}
+
 storiesOf('ChatCard', module)
     .add('ChatCard', () => (
         <div>
             <ChatCard
                 data={filesArr}
             	patientName='Иванова Александра Константиновна'
-            	online='online'
-            />
-        </div>
-    ))
+                online='online'
+                isActive={false}
 
-    .add('ChatCard Files', () => (
-        <div>
-            <ChatCard data={filesArr}
-            	patientName='Иванова Александра Константиновна'
-            	online='offline'
-            	isActive
+                videoContent = {<Class lol={3}/>}
+
+                videoCalling={false}
+
+                onVideoCallBegin={()=> console.log('Begin video calling')}
+                onVideoCallStop={action('Close video calling')}
             />
         </div>
     ))
