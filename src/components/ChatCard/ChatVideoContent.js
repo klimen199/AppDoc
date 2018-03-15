@@ -18,7 +18,7 @@ const IN_CALL = 2;
 
 
 
-var ws = new WebSocket('wss://' + 'localhost:8443' + '/one2one');
+//var ws = new WebSocket('wss://' + 'localhost:8443' + '/one2one');
 
 /*
 var registerName = null;
@@ -40,11 +40,11 @@ function setRegisterState(nextState) {
 }
 */
 
-
+/*
 window.onbeforeunload = function() {
 	ws.close();
 }
-
+*/
 /*ws.onmessage = function(message) {
 	var parsedMessage = JSON.parse(message.data);
 	console.info('Received message: ' + message.data);
@@ -206,6 +206,7 @@ class ChatVideoContent extends React.Component {
                             this.setState({callState: NO_CALL});
                         }
     
+                        console.log(this);
                         this.generateOffer((error, offerSdp) => {
                             if (error) {
                                 this.setState({callState: NO_CALL});
