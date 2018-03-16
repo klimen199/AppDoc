@@ -8,10 +8,11 @@ import {data1, data2, data3} from './mock-data'
 storiesOf('Review', module)
     .add('main', () => (
         <div>
-            <Review {...data1}/>
+            <Review {...data1} 
+                    onTreatmentClick={(id)=> console.log(id)}/>
         </div>
     ))
-    .add('secondary', () => (
+    /*.add('secondary', () => (
         <div>
             <Review {...data2}/>
         </div>
@@ -20,4 +21,4 @@ storiesOf('Review', module)
         <div>
             <Review {...data3}/>
         </div>
-    ));
+    ))*/;

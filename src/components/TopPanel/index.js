@@ -14,10 +14,11 @@ class TopPanel extends React.Component{
 
     componentDidMount(){
         this.tick();
-        setTimeout(this.firstTick,(60-moment().second())*1000);
+        this.timeout = setTimeout(this.firstTick,(60-moment().second())*1000);
     }
 
     componentWillUnmount(){
+        clearTimeout(this.timeout);
         clearInterval(this.timer);
     }
     

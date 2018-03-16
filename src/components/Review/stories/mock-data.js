@@ -6,6 +6,19 @@ const now = Date.now();
 const date1 = new Date(now - 5 * minute);
 
 export const data1 = {
+    id_user: "2664",
+    id_doc: "2697",
+    id_zap: "120635",
+    fio: "Абрамова Анна Константиновна",
+    comment: "Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. ",
+    date: '1521201672019',
+    makingAppDate: "1518598762",
+    rate: 4,
+
+    commentDoc: "",
+}
+
+export const data1_old = {
     author: "Иванова А. К.",
     avatar: "https://www.proza.ru/pics/2017/06/03/1990.jpg",
     text: "Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. ",
