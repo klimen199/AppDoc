@@ -6,18 +6,18 @@ import Review from '../';
 import {data1, data2, data3} from './mock-data'
 
 storiesOf('Review', module)
-    .add('main', () => (
+    .add('with comment', () => (
         <div>
-            <Review {...data1} 
+            <Review {...data2} 
                     onTreatmentClick={(id)=> console.log(id)}/>
         </div>
     ))
-    /*.add('secondary', () => (
+    .add('without comment', () => (
         <div>
-            <Review {...data2}/>
+            <Review {...data1}/>
         </div>
     ))
-    .add('together', () => (
+    /*.add('together', () => (
         <div>
             <Review {...data3}/>
         </div>
