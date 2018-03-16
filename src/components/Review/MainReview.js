@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment'
 
 import ProfileAvatar from '../ProfileAvatar'
 import Rate from '../Rate'
@@ -31,9 +32,10 @@ class MainReview extends React.Component{
     };
 
     render(){
-        const {author, avatar, date, online, text, rate, treatmentDate, secondaryAllowed, comment} = this.props;
-        let treatment = `Обращение от ${treatmentDate}`;
-        let time = dateToString(date);
+
+        const {author, avatar, date, online, comment, rate, makingAppDate, commentDoc, onTreatmentClick} = this.props;
+        let treatment = `Обращение от ${(moment.unix(+makingAppDate)).format('DD.MM.YYYY')}`;
+        let time = dateToString(new Date(+date));
 
         const commentDisplay = this.state.showComment ? 'block' : 'none';
         const answAreaDisplay = this.state.showAnswerArea ? 'block' : 'none';
@@ -41,15 +43,18 @@ class MainReview extends React.Component{
         return (
             <div className='review-root'>
                 <div className='review'>
-                <ProfileAvatar owner="patient" img={avatar} online={online} size='small'/>
+                <ProfileAvatar owner="patient" 
+                                img={avatar} 
+                                online={online} 
+                                size='small'/>
                 <div className="patient-info">
                     <div className="flex-row">
                         <div className="patient-name">{author}</div>
                         <div className="patient-time">{time}</div>
-                        <Rate defaultValue={rate}/>
+                        <Rate disabled defaultValue={rate}/>
                     </div>
                     <div className="flex-row">
-                        <div className="patient-text">{text}</div>
+                        <div className="patient-text">{comment}</div>
                     </div>
                     <Button
                         btnText={treatment}
@@ -58,11 +63,12 @@ class MainReview extends React.Component{
                         type='go'
                         icon='circle_arrow_right'
                         svg
+                        onClick={()=>{onTreatmentClick(this.props.id_zap)}}
                     />
                 </div>
                 <div className="review-answerBtn">
                     {
-                        comment ?
+                        commentDoc ?
                             <Button btnText={this.state.showComment ? 'Скрыть ответ' : 'Посмотреть ответ'}
                                     size='file'
                                     type='file'
@@ -71,7 +77,7 @@ class MainReview extends React.Component{
                                     onClick={this.showComment}
                             />
                             :
-                            (secondaryAllowed && !this.state.showAnswerArea &&
+                            (!commentDoc && !this.state.showAnswerArea &&
                                 <Button onClick={this.showAnswArea}
                                         btnText='Ответить'
                                         size='mini'
@@ -81,10 +87,10 @@ class MainReview extends React.Component{
                 </div>
                 </div>
                 <div className="review-root-comment" style={{display: commentDisplay}}>
-                    {comment && <SecondaryReview {...comment}/>}
+                    {commentDoc && <SecondaryReview date={'0'} text={commentDoc}/>}
                 </div>
                 <div className="review-root-answerArea" style={{display: answAreaDisplay}}>
-                    { secondaryAllowed && <AnswerArea onSend={message => this.answAreaHandler(message)}/>}
+                    { !commentDoc && <AnswerArea onSend={message => this.answAreaHandler(message)}/>}
                 </div>
             </div>
         )

@@ -10,41 +10,46 @@ import '../../icon/style.css'
 class Review extends React.Component{
 
     render(){
-        const {date, text, secondary} = this.props;
+        const {date, text, fio, commentDoc} = this.props;
+        let authorFIO = fio.split(' ');
+        let author = authorFIO[0] + " "
+                    + authorFIO[1].slice(0,1) + ". " 
+                    + authorFIO[2].slice(0,1) + "."
 
-        return (!secondary) ?
-            <MainReview {...this.props}/>
-            :
-            <SecondaryReview date={date} text={text}/>;
+        return <MainReview {...this.props} author={author}/>;
     }
 } 
 
 Review.propTypes = {
-    author: PropTypes.string,
+    id_zap: PropTypes.string,
+    id_user: PropTypes.string,
+
+    fio: PropTypes.string,
+    comment: PropTypes.string,
+    date: PropTypes.string,
+    makingAppDate: PropTypes.string,
+    rate: PropTypes.number,
+    commentDoc: PropTypes.string,
+
     avatar: PropTypes.string,
     online: PropTypes.bool,
-    text: PropTypes.string,
-    date: PropTypes.instanceOf(Date),
-    treatmentDate: PropTypes.string,
-    rate: PropTypes.number,
 
-    secondaryAllowed: PropTypes.bool,
-    comment: PropTypes.object,
-    secondary: PropTypes.bool,
     onSend: PropTypes.func,
+    onTreatmentClick: PropTypes.func,
 };
 
 Review.defaultProps = {
-    author: '',
-    avatar: '',
-    text: '',
-    treatmentDate: '',
-    rate: 0,
+    id_zap: "0",
+    id_user: "0",
 
-    secondaryAllowed: false,
-    comment: null,
-    secondary: false,
+    fio: '',
+    comment: '',
+    makingAppDate: '',
+    rate: 0,
+    commentDoc: "",
+
     onSend: () => {},
+    onTreatmentClick: () => {},
 };
 
 export default Review
