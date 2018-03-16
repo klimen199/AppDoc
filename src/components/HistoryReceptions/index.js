@@ -9,15 +9,42 @@ import './style.css'
 import '../../icon/style.css'
 
 class HistoryReceptions extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            limit: this.props.limit,
+            limitedShow: true,
+        }
+    }
 
     historyRender = (dataArr) => {
         let historyArr = [];
 
         dataArr.map((item,i) => {
-            historyArr.push(<HistoryReceptionsItem {...item} key={'histRecept'+i}/>)
+            if(this.state.limit > i || !this.state.limitedShow){
+                historyArr.push(<HistoryReceptionsItem {...item} 
+                                                    key={'histRecept'+i}/>)
+            }
         });
 
+        historyArr.push(this.renderShowMoreBtn(dataArr))
+
         return historyArr;
+    };
+
+    renderShowMoreBtn = (arr) => {
+        if (this.state.limit < arr.length && this.state.limitedShow){
+            return (
+                <div className="table-footer">
+                        <Button
+                            btnText='Показать еще'
+                            size='link'
+                            type='link'
+                            icon='circle_arrow_down'
+                            onClick = {() => {this.setState({limitedShow: false})}}
+                        />
+                    </div>)
+        }
     };
 
     render(){
@@ -40,14 +67,7 @@ class HistoryReceptions extends React.Component{
                         <div className="flex-col"><div className="tableheader-name"></div></div>
                     </div>
                     {this.historyRender(this.props.data)}
-                    <div className="table-footer">
-                        <Button
-                            btnText='Показать еще'
-                            size='link'
-                            type='link'
-                            icon='circle_arrow_down'
-                        />
-                    </div>
+                    
                   </Card>
             </div>
         )
@@ -56,10 +76,12 @@ class HistoryReceptions extends React.Component{
 
 HistoryReceptions.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
+    limit: PropTypes.number,
 };
 
 HistoryReceptions.defaultProps = {
     data: [],
+    limit: 7,
 };
 
 export default HistoryReceptions
