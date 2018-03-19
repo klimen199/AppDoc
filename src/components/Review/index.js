@@ -23,13 +23,13 @@ class Review extends React.Component{
 } 
 
 Review.propTypes = {
-    id: PropTypes.string,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     id_zap: PropTypes.string,
     id_user: PropTypes.string,
 
     fio: PropTypes.string,
     comment: PropTypes.string,
-    date: PropTypes.string,
+    date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     dateCommentDoc: PropTypes.string,
     makingAppDate: PropTypes.string,
     rating: PropTypes.string,

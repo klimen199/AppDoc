@@ -28,8 +28,9 @@ class ReviewsTree extends React.Component{
         let curDate = (new Date()).getDate();
         let revArr = [];
 
+
         dataArr.every((item) => {
-            if (curDate === item.date.getDate()){
+            if (curDate === new Date(+item.date).getDate()){
                 revArr.push(item);
                 return true;
             }
@@ -44,7 +45,8 @@ class ReviewsTree extends React.Component{
         let revArr = [];
 
         this.props.data.map((item) => {
-            if (item.date > start && item.date < end)
+            let date = new Date(+item.date);
+            if (date > start && date < end)
                 revArr.push(item);
         });
         return revArr;
