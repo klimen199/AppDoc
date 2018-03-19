@@ -6,27 +6,31 @@ const now = Date.now();
 const date1 = new Date(now - 5 * minute);
 
 export const data1 = {
+    id: "125457",
     id_user: "2664",
     id_doc: "2697",
     id_zap: "120635",
-    fio: "Абрамова Анна Константиновна",
+    //fio: "Абрамова Анна Константиновна",
     comment: "Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. ",
     date: '1521201672019',
+    dateCommentDoc: "1521169068",
     makingAppDate: "1518598762",
-    rate: 4,
+    rating: "3",
 
     commentDoc: "",
 }
 
 export const data2 = {
+    id: "125457",
     id_user: "2664",
     id_doc: "2697",
     id_zap: "120635",
-    fio: "Абрамова Анна Константиновна",
+    //fio: "Абрамова Анна Константиновна",
     comment: "Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. ",
     date: '1521201672019',
+    dateCommentDoc: "1521169068",
     makingAppDate: "1518598762",
-    rate: 4,
+    rating: "3",
 
     commentDoc: "lol",
 }

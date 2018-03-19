@@ -33,7 +33,16 @@ class MainReview extends React.Component{
 
     render(){
 
-        const {author, avatar, date, online, comment, rate, makingAppDate, commentDoc, onTreatmentClick} = this.props;
+        const {author, 
+            avatar, 
+            date, 
+            dateCommentDoc, 
+            online, 
+            comment, 
+            rating, 
+            makingAppDate, 
+            commentDoc, 
+            onTreatmentClick} = this.props;
         let treatment = `Обращение от ${(moment.unix(+makingAppDate)).format('DD.MM.YYYY')}`;
         let time = dateToString(new Date(+date));
 
@@ -51,7 +60,7 @@ class MainReview extends React.Component{
                     <div className="flex-row">
                         <div className="patient-name">{author}</div>
                         <div className="patient-time">{time}</div>
-                        <Rate disabled defaultValue={rate}/>
+                        <Rate disabled defaultValue={+rating}/>
                     </div>
                     <div className="flex-row">
                         <div className="patient-text">{comment}</div>
@@ -87,7 +96,7 @@ class MainReview extends React.Component{
                 </div>
                 </div>
                 <div className="review-root-comment" style={{display: commentDisplay}}>
-                    {commentDoc && <SecondaryReview date={'0'} text={commentDoc}/>}
+                    {commentDoc && <SecondaryReview date={+dateCommentDoc} text={commentDoc}/>}
                 </div>
                 <div className="review-root-answerArea" style={{display: answAreaDisplay}}>
                     { !commentDoc && <AnswerArea onSend={message => this.answAreaHandler(message)}/>}
