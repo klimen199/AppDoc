@@ -94,7 +94,7 @@ class ReviewsTree extends React.Component{
         let arr = [];
         dataArr.map((item, i) => {
             if (this.state.limit > i || !this.state.limitedShow){
-                arr.push(<Review {...item} key={item.id}/>)
+                arr.push(<Review {...item} key={item.id} onSend={this.props.onSend}/>)
             }
         });
         arr.push(this.renderShowMoreBtn(dataArr));
@@ -131,11 +131,13 @@ class ReviewsTree extends React.Component{
 ReviewsTree.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
     limit: PropTypes.number,
+    onSend: PropTypes.func,
 };
 
 ReviewsTree.defaultProps = {
     data: [],
     limit: 5,
+    onSend: () => {},
 };
 
 export default ReviewsTree

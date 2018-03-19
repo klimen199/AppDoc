@@ -14,7 +14,7 @@ class AnswerArea extends React.Component{
 
     btnHandler = () => {
         this.props.onSend(this.state.value);
-        this.setState(prev =>({value: ''}))
+        this.setState({value: ''})
     };
 
     render() {
@@ -26,7 +26,7 @@ class AnswerArea extends React.Component{
                 <div className="reviewAnsw-body">
                     <TextArea placeholder="Ваш текст"
                               value={this.state.value}
-                              onChange={value => this.setState(prev=>({value}))}/>
+                              onChange={value => this.setState({value})}/>
                     <Button btnText='Отправить' onClick={this.btnHandler}/>
                 </div>
             </div>

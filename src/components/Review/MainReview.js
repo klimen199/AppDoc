@@ -28,7 +28,10 @@ class MainReview extends React.Component{
 
     answAreaHandler = (message) => {
         this.setState(prev => ({showAnswerArea:false}));
-        this.props.onSend(message);
+        this.props.onSend({
+            id: this.props.id,
+            message
+        });
     };
 
     render(){

@@ -9,12 +9,14 @@ storiesOf('Review', module)
     .add('with comment', () => (
         <div>
             <Review {...data2} 
-                    onTreatmentClick={(id)=> console.log(id)}/>
+                    onTreatmentClick={(id)=> console.log(id)}
+                    onSend = {(obj) => console.log(obj)}/>
         </div>
     ))
     .add('without comment', () => (
         <div>
-            <Review {...data1}/>
+            <Review {...data1} 
+            onSend = {(obj) => console.log('obj: ',obj)}/>
         </div>
     ))
     /*.add('together', () => (

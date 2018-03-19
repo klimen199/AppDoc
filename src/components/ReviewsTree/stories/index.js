@@ -8,6 +8,6 @@ import {dataArr} from './mock-data'
 storiesOf('ReviewsTree', module)
     .add('ReviewsTree', () => (
         <div>
-            <ReviewsTree data={dataArr} limit={2}/>
+            <ReviewsTree data={dataArr} limit={2} onSend={(obj) => console.log('onSend:', obj)}/>
         </div>
     ))

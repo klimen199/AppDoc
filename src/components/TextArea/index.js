@@ -14,6 +14,13 @@ class TextArea extends React.Component{
 
     changeHandler = (e) => {
         this.setState({value: e.target.value})
+        this.props.onChange(e.target.value);
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps.value === ''){
+            this.setState({value: ""})
+        }
     }
 
     render(){
