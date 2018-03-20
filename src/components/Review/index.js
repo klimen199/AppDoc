@@ -38,6 +38,8 @@ Review.propTypes = {
     avatar: PropTypes.string,
     online: PropTypes.bool,
 
+    isSecondAllowed: PropTypes.bool,
+
     onSend: PropTypes.func,
     onTreatmentClick: PropTypes.func,
 };
@@ -52,6 +54,8 @@ Review.defaultProps = {
     makingAppDate: '',
     rating: "0",
     commentDoc: "",
+
+    isSecondAllowed: true,
 
     onSend: () => {},
     onTreatmentClick: () => {},

@@ -45,6 +45,7 @@ class MainReview extends React.Component{
             rating, 
             makingAppDate, 
             commentDoc, 
+            isSecondAllowed,
             onTreatmentClick} = this.props;
         let treatment = `Обращение от ${(moment.unix(+makingAppDate)).format('DD.MM.YYYY')}`;
         let time = dateToString(new Date(+date));
@@ -80,7 +81,7 @@ class MainReview extends React.Component{
                 </div>
                 <div className="review-answerBtn">
                     {
-                        commentDoc ?
+                        isSecondAllowed && (commentDoc ?
                             <Button btnText={this.state.showComment ? 'Скрыть ответ' : 'Посмотреть ответ'}
                                     size='file'
                                     type='file'
@@ -94,7 +95,7 @@ class MainReview extends React.Component{
                                         btnText='Ответить'
                                         size='mini'
                                         type='blue'
-                                        className='review-answerBtn-answer'/>)
+                                        className='review-answerBtn-answer'/>))
                     }
                 </div>
                 </div>
