@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types'
 
 import MainReview from './MainReview'
-import SecondaryReview from './SecondaryReview'
 
 import './style.css'
 import '../../icon/style.css'
@@ -10,7 +9,7 @@ import '../../icon/style.css'
 class Review extends React.Component{
 
     render(){
-        const {date, text, fio, commentDoc} = this.props;
+        const {fio} = this.props;
         let authorFIO = fio.split(' ');
         let author = authorFIO[0] + " ";
 

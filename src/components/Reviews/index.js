@@ -13,7 +13,9 @@ class Reviews extends React.Component{
         let revArr = [];
 
         dataArr.map((item) => {
-            revArr.push(<Review {...item} key={item.id}/>)
+            revArr.push(<Review {...item}
+                                isSecondAllowed={false}
+                                key={item.id}/>)
         });
 
         return revArr;
