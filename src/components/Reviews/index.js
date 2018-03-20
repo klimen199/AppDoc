@@ -14,7 +14,6 @@ class Reviews extends React.Component{
         let revArr = [];
 
         for (let i = 0, len = dataArr.length; i < num && i < len; i++){
-            console.log(i, len)
             revArr.push(<Review {...dataArr[i]}
                                 isSecondAllowed={false}
                                 key={dataArr[i].id}/>)
