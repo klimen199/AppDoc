@@ -11,6 +11,10 @@ storiesOf('Review', module)
             <Review {...data2} 
                     onTreatmentClick={(id)=> console.log(id)}
                     onSend = {(obj) => console.log(obj)}/>
+            <Review {...data2} 
+                    isSecondAllowed={false}
+                    onTreatmentClick={(id)=> console.log(id)}
+                    onSend = {(obj) => console.log(obj)}/>
         </div>
     ))
     .add('without comment', () => (
