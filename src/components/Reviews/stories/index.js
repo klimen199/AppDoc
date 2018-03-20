@@ -8,6 +8,6 @@ import {dataArr} from './mock-data'
 storiesOf('Reviews', module)
     .add('Reviews', () => (
         <div>
-            <Reviews data={dataArr}/>
+            <Reviews data={dataArr} numToDisplay={3}/>
         </div>
     ));

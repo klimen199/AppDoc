@@ -10,13 +10,15 @@ import './style.css'
 class Reviews extends React.Component{
 
     reviewRender = (dataArr) => {
+        const num = this.props.numToDisplay;
         let revArr = [];
 
-        dataArr.map((item) => {
-            revArr.push(<Review {...item}
+        for (let i = 0, len = dataArr.length; i < num && i < len; i++){
+            console.log(i, len)
+            revArr.push(<Review {...dataArr[i]}
                                 isSecondAllowed={false}
-                                key={item.id}/>)
-        });
+                                key={dataArr[i].id}/>)
+        }
 
         return revArr;
     };
@@ -35,11 +37,13 @@ class Reviews extends React.Component{
 
 Reviews.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
+    numToDisplay: PropTypes.number,
     redirect: PropTypes.func,
 };
 
 Reviews.defaultProps = {
     data: [],
+    numToDisplay: 7,
     redirect: () => {},
 };
 
