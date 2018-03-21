@@ -1,5 +1,5 @@
 export const treatmentArr = [
-    {
+    /*{
         name: "Иванова А. К.",
         date: "15.09.2017",
         time: '15:00-16:00',
@@ -106,7 +106,7 @@ export const treatmentArr = [
         conclusionDownload: "Заключение 252525.pdf",
         review: "Lorem ipsum dolor sit amet, consectetuer...",
         btnText: "Прикрепленный файл с длинным предлинным названием.doc",
-    },
+    },*/
 ];
 
 export const filesArr = [

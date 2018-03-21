@@ -21,6 +21,7 @@ class TreatmentTable extends React.Component{
     };
 
     render(){
+        const {data} = this.props;
         return (
             <div className='treatment-all'>
                 <Card title="Актуальные обращения" 
@@ -38,7 +39,9 @@ class TreatmentTable extends React.Component{
                         <div className="flex-col"><div className="tableheader-name"></div></div>
                     </div>
                     <div className='overflow-x-a'>
-                        {this.treatmentRender(this.props.data)}
+                        {data.length ? 
+                            this.treatmentRender(data) 
+                            : <span>Обращений нет</span>}
                     </div>
                   </Card>
             </div>

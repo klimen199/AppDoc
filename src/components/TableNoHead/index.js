@@ -27,7 +27,8 @@ class TableNoHead extends React.Component{
         
         return (
             <div className={rootClass}>
-                <Card title="График работы на сегодня" extra={<div className="sum">Приемы: {data.length}</div>}>
+                <Card title="График работы на сегодня" 
+                    extra={<div className="sum">Приемы: {data.length}</div>}>
                     <div className="tableheader">
                         <div className="flex-col">
                             <Button
@@ -62,7 +63,9 @@ class TableNoHead extends React.Component{
                             />
                         </div>
                     </div>
-                    {this.scheduleRender(this.props.data)}
+                    {data.length ? 
+                        this.scheduleRender(data) 
+                        : <span>Приемов нет</span>}
                   </Card>
             </div>
         )
