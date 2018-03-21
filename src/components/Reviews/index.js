@@ -23,12 +23,18 @@ class Reviews extends React.Component{
     };
 
     render(){
+        const {data} = this.props;
 
         return (
                 <Card title="Новые отзывы"
                       className="reviews"
-                      extra={<a onClick={this.props.redirect}><Icon type="chat" svg size={20}/> <span>Все отзывы</span></a>}>
-                    {this.reviewRender(this.props.data)}
+                      extra={<a onClick={this.props.redirect}>
+                                <Icon type="chat" svg size={20}/> 
+                                <span>Все отзывы</span>
+                            </a>}>
+                    {data.length ? 
+                        this.reviewRender(data) 
+                        : <span>Отзывов нет</span>}
                 </Card>
         )
     }

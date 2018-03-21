@@ -3,7 +3,7 @@ const hour = minute * 60;
 const day = hour * 24;
 const now = Date.now();
 
-export const dataArr = [{
+export const dataArr = [/*{
         id: 1,
         author: "Иванова А. К.",
         avatar: "https://www.proza.ru/pics/2017/06/03/1990.jpg",
@@ -35,7 +35,7 @@ export const dataArr = [{
         date: new Date(now - 3 * day),
         treatmentDate: '13.09.2017',
         rate: 4,
-    },
+    },*/
 ];
 
 

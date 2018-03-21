@@ -4,7 +4,7 @@ const day = hour * 24;
 const now = Date.now();
 
 export const scheduleArr = [
-    {
+    /*{
         name: "Иванова А. К.",
         img: "https://www.proza.ru/pics/2017/06/03/1990.jpg",
         infoText: "Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. ",
@@ -34,7 +34,7 @@ export const scheduleArr = [
         infoText: "Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. ",
         time: '08:15',
         type: 'chat1',
-    },
+    },*/
 ];
 
 
