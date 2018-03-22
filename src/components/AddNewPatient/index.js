@@ -11,16 +11,27 @@ import './styles.css'
 
 
 class AddNewPatient extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            patients: props.data,
+        }
+    }
+    
 
     patientsRender = (dataArr) => {
         let patientsArr = [];
 
         dataArr.map((item, index) => {
-            patientsArr.push(<AddNewPatientItem {...item} key={item.id + ''+index}/>)
+            patientsArr.push(<AddNewPatientItem {...item} 
+                                                onAdd={this.props.onAdd} 
+                                                key={item.id + ''+index}/>)
         });
 
         return patientsArr;
     };
+
+
 
     render(){
 
@@ -34,7 +45,8 @@ class AddNewPatient extends React.Component{
             >
                 <div className='new-patient'>
                     <div className='new-patient-search'>
-                        <Input.Search placeholder="Введите ФИО пациента" />
+                        <Input.Search placeholder="Введите ФИО пациента" 
+                                        onSearch={value => console.log(value)}/>
                     </div>
                     <div className='new-patient-title'>Результаты поиска</div>
                     <div className='new-patient-list'>
@@ -51,12 +63,14 @@ AddNewPatient.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
     visible: PropTypes.bool,
     onCancel: PropTypes.func,
+    onAdd: PropTypes.func, 
 };
 
 AddNewPatient.defaultProps = {
     data: [],
     visible: false,
     onCancel: () => {},
+    onAdd: () => {},
 };
 
 export default AddNewPatient;
