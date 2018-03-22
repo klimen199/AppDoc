@@ -41,7 +41,7 @@ class TreatmentTable extends React.Component{
                     <div className='overflow-x-a'>
                         {data.length ? 
                             this.treatmentRender(data) 
-                            : <span>Обращений нет</span>}
+                            : <div classname='entry-list'>Обращений нет</div>}
                     </div>
                   </Card>
             </div>
