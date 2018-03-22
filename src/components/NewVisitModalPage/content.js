@@ -29,7 +29,7 @@ class ContentForm extends React.Component {
                 let response = {
                     name: values.name,
                     message: this.ta.state.value,
-                    date: moment(date, "DD:MM:YYYY HH:mm").unix(),
+                    date: moment(date, "DD:MM:YYYY HH:mm").unix()*1000,
                     type: values.radio ,
                 };
                 this.props.onSave(response);
