@@ -66,9 +66,6 @@ class ContentForm extends React.Component {
                     })(
                         <DatePicker placeholder="Дата приёма"/>
                     )}
-                </FormItem>
-
-                <FormItem>
                     {getFieldDecorator('time',{
                         rules: [{
                             required: true, message: 'Введите время',
