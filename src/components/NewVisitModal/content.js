@@ -64,8 +64,10 @@ class ContentForm extends React.Component {
                           className="NewVisitModal-txtarea"/>
 
                 <FormItem>
-                    {getFieldDecorator('radio')(
-                        <Radio icons={['telephone', "video-camera", 'chat1']}/>
+                    {getFieldDecorator('radio', {
+                        initialValue: 'chat1'
+                    })(
+                        <Radio icons={['chat1','telephone', "video-camera"]}/>
                     )}
                 </FormItem>
 
