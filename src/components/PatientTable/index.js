@@ -64,6 +64,7 @@ class PatientTable extends React.Component{
                     <div className="tableheader">
                         <div className="flex-col">
                             <Button
+                                onClick = {this.props.onAdd} 
                                 btnText='Добавить'
                                 size='default'
                                 type='yellow'
@@ -91,10 +92,12 @@ class PatientTable extends React.Component{
 
 PatientTable.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
+    onAdd: PropTypes.func,
 };
 
 PatientTable.defaultProps = {
     data: [],
+    onAdd: () => {},
 };
 
 export default PatientTable

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+import { NavLink } from 'react-router-dom'
 
 import HistoryReceptionsItems from '../HistoryReceptionsItems'
 import Card from '../Card'
@@ -22,8 +23,8 @@ class HistoryReceptions extends React.Component{
 
         dataArr.map((item,i) => {
             if(this.state.limit > i || !this.state.limitedShow){
-                historyArr.push(<HistoryReceptionsItems {...item} 
-                                                    key={'histRecept'+i}/>)
+                historyArr.push(<NavLink exact to={'/chat'}><HistoryReceptionsItems {...item} 
+                                                    key={'histRecept'+i}/></NavLink>)
             }
         });
 

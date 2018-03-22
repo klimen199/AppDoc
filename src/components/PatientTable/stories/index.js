@@ -8,6 +8,6 @@ import {patientArr} from './mock-data'
 storiesOf('PatientTable', module)
     .add('PatientTable', () => (
         <div>
-            <PatientTable data={patientArr}/>
+            <PatientTable data={patientArr} onAdd={() => console.log('ererre')}/>
         </div>
     ))
