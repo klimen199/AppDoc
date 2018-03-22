@@ -65,7 +65,7 @@ class TableNoHead extends React.Component{
                     </div>
                     {data.length ? 
                         this.scheduleRender(data) 
-                        : <span>Приемов нет</span>}
+                        : <div classname='entry-list'>Приемов нет</div>}
                   </Card>
             </div>
         )
