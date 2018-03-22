@@ -10,7 +10,7 @@ const timeFormat = 'HH:mm';
 class TimePicker extends React.Component{
 
     render(){
-        const {range,minuteStep, placeholder, defaultValue} = this.props;
+        const {range,minuteStep, placeholder, defaultValue, onChange} = this.props;
 
         return (
             <div className="timepicker-base">
@@ -21,7 +21,8 @@ class TimePicker extends React.Component{
                             <DefaultTP format={timeFormat}
                                        defaultValue={defaultValue}
                                        placeholder={placeholder}
-                                       minuteStep={minuteStep}/>
+                                       minuteStep={minuteStep}
+                                       {...this.props}/>
                         )
                 }
             </div>

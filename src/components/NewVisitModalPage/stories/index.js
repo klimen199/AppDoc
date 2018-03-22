@@ -15,7 +15,7 @@ storiesOf('Modal - NewVisitModalPage', module)
         <div>
             <NewVisitModalPage visible={true}
                            userName='Петров-Иванов Александр Константинович'
-                           date={new Date(2018,1,4,8,10)}
+                           defaultDate={new Date(2018,1,4,8,10)}
                            patients={patients}
                            onSave = {(obj) => console.log(obj)}
             />
