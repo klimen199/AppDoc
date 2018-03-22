@@ -9,13 +9,13 @@ class Modal extends React.Component{
 
 
     render(){
-        const {visible, title, warning} = this.props;
+        const {visible, title, warning, width} = this.props;
         
 
         return (
             <AntModal visible={visible}
                       title={title}
-                      width={395}
+                      width={width}
                       footer={null}
                       className = {warning ? 'warning' : ''}
                       closable = {!warning}
@@ -31,6 +31,7 @@ class Modal extends React.Component{
 Modal.propTypes = {
     visible: PropTypes.bool,
     title: PropTypes.string,
+    width: PropTypes.number,
     warning: PropTypes.bool,
     onCancel: PropTypes.func,
 };
@@ -38,6 +39,7 @@ Modal.propTypes = {
 Modal.defaultProps = {
     visible: false,
     title: '',
+    width: 395,
     warning: false,
     onCancel: () => {},
 };

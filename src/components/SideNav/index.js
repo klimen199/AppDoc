@@ -52,15 +52,17 @@ class SideNav extends React.Component{
                             )
                     }
                 </button>
-                <DoctorProfileCard {...this.props}
-                                   short={isShort}/>
+                <div className='overwlow-a-y'>
+                    <DoctorProfileCard {...this.props}
+                                       short={isShort}/>
 
-                <Menu
-                    mode="inline"
-                    className={menuClass}
-                >
-                    {this.renderMenuItems(menuItems)}
-                </Menu>
+                    <Menu
+                        mode="inline"
+                        className={menuClass}
+                    >
+                        {this.renderMenuItems(menuItems)}
+                    </Menu>
+                </div>
             </div>
         )
     }

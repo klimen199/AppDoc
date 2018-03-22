@@ -20,7 +20,7 @@ class DiseasesTable extends React.Component{
         });
 
         return diseasesArr;
-    };d
+    };
 
     render(){
         const rootClass = cn('diseases-all');

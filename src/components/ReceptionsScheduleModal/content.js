@@ -237,7 +237,8 @@ class ContentForm extends React.Component {
                             this.props.timeSetCall,
                             getFieldDecorator
                         )}
-                        <Button onClick={(e) => this.addTp('call', e)}
+                        <Button className='mb-1r'
+                                onClick={(e) => this.addTp('call', e)}
                                 btnText='Добавить интервал'
                                 iconSize={30}
                                 size='file'
@@ -247,7 +248,8 @@ class ContentForm extends React.Component {
                         />
                     </Tabs.TabPane>
                 </Tabs>
-                <Button htmlType="submit"
+                <Button 
+                        htmlType="submit"
                         btnText='Сохранить'
                         size='default'
                         type='float'
