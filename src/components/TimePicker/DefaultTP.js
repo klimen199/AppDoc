@@ -7,12 +7,14 @@ const timeFormat = 'HH:mm';
 class DefaultTp extends React.Component {
 
     render() {
-        const {minuteStep, placeholder, defaultValue} = this.props;
+        const {minuteStep, placeholder, defaultValue,onChange} = this.props;
         return (
             <AntTimePicker format={timeFormat}
+                            onChange={onChange}
                            defaultValue={defaultValue}
                            placeholder={placeholder}
-                           minuteStep={minuteStep}/>
+                           minuteStep={minuteStep}
+                           {...this.props}/>
         )
     }
 }

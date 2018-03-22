@@ -30,7 +30,8 @@ class Radio extends React.Component{
     render(){
 
         return (
-            <RadioGroup onChange={this.onChangeHandler} defaultValue={this.props.defaultValue}>
+            <RadioGroup onChange={this.onChangeHandler} 
+                        {...this.props}>
                 {this.renderRadio(this.props.icons)}
             </RadioGroup>
         )
@@ -41,13 +42,11 @@ class Radio extends React.Component{
 Radio.propTypes ={
     icons: PropTypes.arrayOf(PropTypes.string),
     onChange: PropTypes.func,
-    defaultValue: PropTypes.string,
 };
 
 Radio.defaultProps = {
     icons: [],
     onChange: () => {},
-    defaultValue: null,
 };
 
 export default Radio;

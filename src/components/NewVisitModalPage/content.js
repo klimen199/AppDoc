@@ -13,32 +13,70 @@ import TimePicker from '../TimePicker'
 const FormItem = Form.Item;
 
 class ContentForm extends React.Component {
+    state = {
+        time: null,
+    }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        let response = {
-            ...this.props.form.getFieldsValue(),
-            message: this.ta.state.value,
-            date: this.props.date,
-        };
-        this.props.onSave(response);
+        this.props.form.validateFieldsAndScroll((err, values) => {
+            if (!err) {
+              
+                let date = values.day.format("DD:MM:YYYY") + " " 
+                        + values.time.format("HH:mm");
+                const dateMoment = moment(date, "DD:MM:YYYY HH:mm");        
+
+                let response = {
+                    name: values.name,
+                    message: this.ta.state.value,
+                    date: moment(date, "DD:MM:YYYY HH:mm").unix(),
+                    type: values.radio ,
+                };
+                this.props.onSave(response);
+
+            }
+          });
     };
 
     render() {
         const {getFieldDecorator} = this.props.form;
-        const {visible, date, time, userName} = this.props;
+        const {visible, date, time, userName, defaultDate} = this.props;
 
         return (
             <Form onSubmit={this.handleSubmit}
                   className="NewVisitModal">
 
                 <FormItem>
-                    <Input addonBefore="ФИО" defaultValue={userName}/>
+                    {getFieldDecorator('name',{
+                        initialValue: userName,
+                        rules: [{
+                            required: true, message: 'Ввведите имя',
+                        }],
+                    })(
+                        <Input addonBefore="ФИО"/>
+                    )}
                 </FormItem>
 
                 <FormItem>
-                     <DatePicker placeholder="Дата приёма" />
-                     <TimePicker placeholder='Время приёма'/>
+                    {getFieldDecorator('day', {
+                        initialValue: moment(defaultDate),
+                        rules: [{
+                            required: true, message: 'Введите дату',
+                        }],
+                    })(
+                        <DatePicker placeholder="Дата приёма"/>
+                    )}
+                </FormItem>
+
+                <FormItem>
+                    {getFieldDecorator('time',{
+                        rules: [{
+                            required: true, message: 'Введите время',
+                        }],
+                    })(
+                        <TimePicker placeholder='Время приёма' 
+                                    onChange={time => this.setState({time})}/>
+                    )}
                 </FormItem>
 
                 <TextArea label='Комментарий к приему'
@@ -46,8 +84,10 @@ class ContentForm extends React.Component {
                           className="NewVisitModal-txtarea"/>
 
                 <FormItem>
-                    {getFieldDecorator('radio')(
-                        <Radio icons={['telephone', "video-camera", 'chat1']}/>
+                    {getFieldDecorator('radio',{
+                        initialValue: 'chat1',
+                    })(
+                        <Radio icons={['chat1','telephone', "video-camera"]}/>
                     )}
                 </FormItem>
 
