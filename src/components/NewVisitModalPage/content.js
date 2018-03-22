@@ -57,24 +57,29 @@ class ContentForm extends React.Component {
                     )}
                 </FormItem>
 
-                <FormItem>
-                    {getFieldDecorator('day', {
-                        initialValue: moment(defaultDate),
-                        rules: [{
-                            required: true, message: 'Введите дату',
-                        }],
-                    })(
-                        <DatePicker placeholder="Дата приёма"/>
-                    )}
-                    {getFieldDecorator('time',{
-                        rules: [{
-                            required: true, message: 'Введите время',
-                        }],
-                    })(
-                        <TimePicker placeholder='Время приёма' 
-                                    onChange={time => this.setState({time})}/>
-                    )}
-                </FormItem>
+                <div className='flex-row'>
+                    <FormItem>
+                        {getFieldDecorator('day', {
+                            initialValue: moment(defaultDate),
+                            rules: [{
+                                required: true, message: 'Введите дату',
+                            }],
+                        })(
+                            <DatePicker placeholder="Дата приёма"/>
+                        )}
+                    </FormItem>
+
+                    <FormItem>
+                        {getFieldDecorator('time',{
+                            rules: [{
+                                required: true, message: 'Введите время',
+                            }],
+                        })(
+                            <TimePicker placeholder='Время приёма' 
+                                        onChange={time => this.setState({time})}/>
+                        )}
+                    </FormItem>
+                </div>
 
                 <TextArea label='Комментарий к приему'
                           ref={ta => this.ta = ta}
