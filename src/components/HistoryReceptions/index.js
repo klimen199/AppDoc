@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
-import HistoryReceptionsItem from '../HistoryReceptionsItem'
+import HistoryReceptionsItems from '../HistoryReceptionsItems'
 import Card from '../Card'
 import Button from '../Button'
 
@@ -22,7 +22,7 @@ class HistoryReceptions extends React.Component{
 
         dataArr.map((item,i) => {
             if(this.state.limit > i || !this.state.limitedShow){
-                historyArr.push(<HistoryReceptionsItem {...item} 
+                historyArr.push(<HistoryReceptionsItems {...item} 
                                                     key={'histRecept'+i}/>)
             }
         });
