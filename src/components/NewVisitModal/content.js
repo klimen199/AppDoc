@@ -11,16 +11,25 @@ import Icon from '../Icon'
 const FormItem = Form.Item;
 
 class ContentForm extends React.Component {
+    state = {
+        message: '',
+    }
 
     handleSubmit = (e) => {
         e.preventDefault();
         let response = {
             ...this.props.form.getFieldsValue(),
-            message: this.ta.state.value,
+            message: this.state.message,
             date: this.props.date,
         };
         this.props.onSave(response);
     };
+
+    componentWillReceiveProps(nextProps){
+        nextProps.visible == false ? this.setState({message: ''}) : null;
+    }
+
+
 
     renderOptions = () => {
         return this.props.patients.map((patient, i) => {
@@ -59,9 +68,12 @@ class ContentForm extends React.Component {
                     )}
                 </FormItem>
 
-                <TextArea label='Комментарий к приему'
-                          ref={ta => this.ta = ta}
+                
+                <TextArea label='Комментарий к приему' 
+                            value={this.state.message}
+                            onChange={message => this.setState({message})}
                           className="NewVisitModal-txtarea"/>
+                
 
                 <FormItem>
                     {getFieldDecorator('radio', {

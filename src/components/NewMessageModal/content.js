@@ -9,16 +9,23 @@ import Button from '../Button'
 const FormItem = Form.Item;
 
 class ContentForm extends React.Component {
+    state = {
+        message: '',
+    }
 
     handleSubmit = (e) => {
         e.preventDefault();
         let response = {
             ...this.props.form.getFieldsValue(),
-            message: this.ta.state.value,
+            message: this.state.message,
             user: this.props.userName,
         };
         this.props.onSend(response)
     };
+
+    componentWillReceiveProps(nextProps){
+        nextProps.visible == false ? this.setState({message: ''}) : null;
+    }
 
     render() {
         const {getFieldDecorator} = this.props.form;
@@ -34,8 +41,10 @@ class ContentForm extends React.Component {
                         {this.props.userName}
                     </div>
                 </div>
+
                 <TextArea label='Текст сообщения'
-                          ref={ta => this.ta = ta}
+                          value={this.state.message}
+                            onChange={message => this.setState({message})}
                           className="newMessageModal-txtarea"
                 />
                 <FormItem>

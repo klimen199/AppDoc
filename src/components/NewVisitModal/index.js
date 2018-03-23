@@ -5,19 +5,17 @@ import Modal from '../Modal'
 import Content from './content'
 import './styles.css'
 
-class NewVisitModal extends React.Component{
-    render(){
-        const {visible, onCancel} = this.props;
-
-        return (
-            <Modal title='Запись на прием'
-                   visible={visible}
-                   onCancel={onCancel}
-            >
-                <Content {...this.props}/>
-            </Modal>
+const NewVisitModal = (props) => {
+    
+    return (
+        <Modal title='Запись на прием'
+               visible={props.visible}
+               onCancel={props.onCancel}
+                >
+             <Content {...props}/>
+        </Modal>
         )
-    }
+    
 }
 
 NewVisitModal.propTypes = {
