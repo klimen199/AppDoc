@@ -29,10 +29,6 @@ class ContentForm extends React.Component{
         this.props.onSave(response);
     };
 
-    componentWillReceiveProps(nextProps){
-        nextProps.visible == false ? this.setState({message: ''}) : null;
-    }
-
     addDp = (e) => {
         e.preventDefault();
         const {dpNum} = this.state;
@@ -94,6 +90,7 @@ class ContentForm extends React.Component{
     }
 
     componentWillReceiveProps(nextProps){
+        nextProps.visible == false ? this.setState({message: ''}) : null;
         if (nextProps.rangeSet.length !== this.props.rangeSet.length){
             this.setState({
                 dpNum: nextProps.rangeSet.length || 1,
