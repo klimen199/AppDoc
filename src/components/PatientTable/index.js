@@ -49,7 +49,11 @@ class PatientTable extends React.Component{
         let patientArr = [];
 
         dataArr.map((item,index) => {
-            patientArr.push(<PatientTableItem key={index} {...item}/>)
+            patientArr.push(<PatientTableItem key={index} 
+                                            onDelete={this.props.onDelete} 
+                                            onNewVisit={this.props.onNewVisit}
+                                            onNewMessage={this.props.onNewMessage}
+                                            {...item}/>)
         });
 
         return patientArr;

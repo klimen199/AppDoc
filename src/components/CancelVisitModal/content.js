@@ -15,7 +15,8 @@ class ContentForm extends React.Component{
 
         this.state = {
             dpNum: rangeSet.length || 1,
-            rangeSet: rangeSet
+            rangeSet: rangeSet,
+            message: '',
         };
     }
 
@@ -23,10 +24,14 @@ class ContentForm extends React.Component{
         e.preventDefault();
         let response = {
             ...this.props.form.getFieldsValue(),
-            reason: this.ta.state.value,
+            message: this.state.message,
         };
         this.props.onSave(response);
     };
+
+    componentWillReceiveProps(nextProps){
+        nextProps.visible == false ? this.setState({message: ''}) : null;
+    }
 
     addDp = (e) => {
         e.preventDefault();
@@ -111,7 +116,8 @@ class ContentForm extends React.Component{
                   className="cancelVisitModal">
 
                 <TextArea label='Причина отмены'
-                          ref = {ta => this.ta = ta}
+                          value={this.state.message}
+                          onChange={message => this.setState({message})}
                           className="cancelVisitModal-txtarea"/>
 
                 <FormItem>

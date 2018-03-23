@@ -15,6 +15,11 @@ const FormItem = Form.Item;
 class ContentForm extends React.Component {
     state = {
         time: null,
+        message: '',
+    }
+
+    componentWillReceiveProps(nextProps){
+        nextProps.visible == false ? this.setState({message: ''}) : null;
     }
 
     handleSubmit = (e) => {
@@ -28,7 +33,7 @@ class ContentForm extends React.Component {
 
                 let response = {
                     name: values.name,
-                    message: this.ta.state.value,
+                    message: this.state.message,
                     date: moment(date, "DD:MM:YYYY HH:mm").unix()*1000,
                     type: values.radio ,
                 };
@@ -82,7 +87,8 @@ class ContentForm extends React.Component {
                 </div>
 
                 <TextArea label='Комментарий к приему'
-                          ref={ta => this.ta = ta}
+                          value={this.state.message}
+                          onChange={message => this.setState({message})}
                           className="NewVisitModal-txtarea"/>
 
                 <FormItem>

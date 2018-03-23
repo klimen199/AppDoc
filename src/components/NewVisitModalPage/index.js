@@ -5,19 +5,19 @@ import Modal from '../Modal'
 import Content from './content'
 import './styles.css'
 
-class NewVisitModalPage extends React.Component{
-    render(){
-        const {visible, onCancel} = this.props;
+const NewVisitModalPage = (props) => {
+
+        const {visible, onCancel} = props;
 
         return (
             <Modal title='Запись на прием'
                    visible={visible}
                    onCancel={onCancel}
             >
-                <Content {...this.props}/>
+                <Content {...props}/>
             </Modal>
         )
-    }
+
 }
 
 NewVisitModalPage.propTypes = {

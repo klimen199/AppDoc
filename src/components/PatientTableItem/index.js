@@ -30,7 +30,6 @@ class PatientTableItem extends React.Component{
         const { name, age, size, time, date, online, img} = this.props;
         const rootClass = cn('patient-item');
 
-
         return (
             <div className={rootClass}>
                 <div className="flex-col"><ProfileAvatar owner="patient" online={online} img={img} size={size}/></div>
@@ -52,7 +51,10 @@ class PatientTableItem extends React.Component{
                     />
                 </div>
                 <div className="flex-col">
-                    <Button onClick={() => this.setModal2Visible(true)}
+                    <Button onClick={(e) => {
+                            e.preventDefault();
+                            this.setModal2Visible(true)
+                        }}
                         size='file'
                         type='file'
                         icon='mail'
@@ -67,21 +69,27 @@ class PatientTableItem extends React.Component{
                         icon='empty'
                         iconSize={24}
                         title='Удалить пациента'
+                        onClick = {() => this.props.onDelete(this.props.id_p)}
                     />
                 </div>
                 <NewMessageModal 
                     visible={this.state.modal2Visible}
-                    onOk={() => this.setModal2Visible(false)}
+                    onSend={(a) => {
+                        this.setModal2Visible(false);
+                        this.props.onNewMessage(a)
+                    }}
                     onCancel={() => this.setModal2Visible(false)}
                     userName={name}
                 />
                 <NewVisitModalPage 
                     visible={this.state.modal1Visible}
-                    onOk={() => this.setModal1Visible(false)}
+                    onSave={(a) => {
+                        this.setModal1Visible(false);
+                        this.props.onNewVisit(a)
+                    }}
                     onCancel={() => this.setModal1Visible(false)}
                     userName={name}
                     date={new Date(2018,1,4,8,10)}
-                    onSave = {(obj) => console.log(obj)}
                 />
             </div>
         )
@@ -92,7 +100,11 @@ PatientTableItem.propTypes = {
     img: PropTypes.string,
     name: PropTypes.string,
     date: PropTypes.string,
-    time: PropTypes.string
+    time: PropTypes.string,
+
+    onNewVisit: PropTypes.func,
+    onNewMessage: PropTypes.func,
+    onDelete: PropTypes.func,
 };
 
 PatientTableItem.defaultProps = {
@@ -101,6 +113,10 @@ PatientTableItem.defaultProps = {
     size: 'small',
     date: '01.01.2018',
     time: '00:00',
+
+    onNewVisit: () => {},
+    onNewMessage: () => {},
+    onDelete: () => {},
 };
 
 export default PatientTableItem

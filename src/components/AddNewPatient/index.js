@@ -46,7 +46,7 @@ class AddNewPatient extends React.Component{
                 <div className='new-patient'>
                     <div className='new-patient-search'>
                         <Input.Search placeholder="Введите ФИО пациента" 
-                                        onSearch={value => console.log(value)}/>
+                                        onSearch={value => this.props.onSearch(value)}/>
                     </div>
                     <div className='new-patient-title'>Результаты поиска</div>
                     <div className='new-patient-list'>
@@ -64,6 +64,7 @@ AddNewPatient.propTypes = {
     visible: PropTypes.bool,
     onCancel: PropTypes.func,
     onAdd: PropTypes.func, 
+    onSearch: PropTypes.func,
 };
 
 AddNewPatient.defaultProps = {
@@ -71,6 +72,7 @@ AddNewPatient.defaultProps = {
     visible: false,
     onCancel: () => {},
     onAdd: () => {},
+    onSearch: () => {},
 };
 
 export default AddNewPatient;
