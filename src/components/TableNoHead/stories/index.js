@@ -8,6 +8,6 @@ import {scheduleArr} from './mock-data'
 storiesOf('TableNoHead', module)
     .add('TableNoHead', () => (
         <div>
-            <TableNoHead data={scheduleArr}/>
+            <TableNoHead data={scheduleArr} onAdd = {() => console.log('eee')}/>
         </div>
     ))

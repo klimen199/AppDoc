@@ -33,6 +33,7 @@ class TableNoHead extends React.Component{
                         <div className="flex-col">
                             <Button
                                 btnText='Добавить'
+                                onClick={this.props.onAdd}
                                 size='default'
                                 type='yellow'
                                 icon='plus'
@@ -65,7 +66,7 @@ class TableNoHead extends React.Component{
                     </div>
                     {data.length ? 
                         this.scheduleRender(data) 
-                        : <div classname='entry-list'>Приемов нет</div>}
+                        : <div className='entry-list'>Приемов нет</div>}
                   </Card>
             </div>
         )
@@ -74,10 +75,12 @@ class TableNoHead extends React.Component{
 
 TableNoHead.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
+    onAdd: PropTypes.func,
 };
 
 TableNoHead.defaultProps = {
     data: [],
+    onAdd: () => {},
 };
 
 
