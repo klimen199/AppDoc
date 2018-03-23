@@ -10,9 +10,11 @@ storiesOf('TableNoHeadItem', module)
                 name="Иванова А. К." 
                 infoText="Консультация по результатам анализа крови." 
                 img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
-                time="08:15"
+                time={Date.now()}
                 type='chat1'
                 title='Сообщения'
+                onBegin={()=> console.log('begin')}
+                onCancel = {() => console.log('cancel')}
             />
         </div>
     ))

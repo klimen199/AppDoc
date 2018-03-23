@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+import moment from 'moment'
 
 import ProfileAvatar from '../ProfileAvatar'
 import Button from '../Button'
@@ -10,8 +11,18 @@ import '../../icon/style.css'
 
 class TableNoHeadItem extends React.Component{
 
+    onBeginHandler = (e) => {
+        e.preventDefault();
+        this.props.onBegin();
+    }
+
+    onCancelHandler = (e) => {
+        e.preventDefault();
+        this.props.onCancel();
+    }
+
     render(){
-        const {img, type, name, infoText, size, online, title, time} = this.props;
+        const {img, type, name, infoText, size, online, title, time, id_p} = this.props;
 
         return (
             <div className='schedule'>
@@ -20,40 +31,49 @@ class TableNoHeadItem extends React.Component{
                     <div className="patient-name"><a href="#">{name}</a></div>
                     <div className="patient-info">{infoText}</div>
                 </div>
-                <div className="flex-col ml-a"><div className="patient-time">{time}</div></div>
+                <div className="flex-col ml-a">
+                    <div className="patient-time">{moment(time).format('HH:mm')}</div>
+                </div>
                 <div className="flex-col"><Icon svg type={type} size={16} title='title'/></div>
                 <div className="flex-col">
                     <Button
+                        onClick={this.onBeginHandler}
                         btnText='Начать прием'
                         size='default'
                         type='float'
                     />
                 </div>
-                <div className="flex-col"><a href="#">Отменить</a></div>
+                <div className="flex-col" onClick={this.onCancelHandler}><a href="#">Отменить</a></div>
             </div>
         )
     }
 }
 
 TableNoHeadItem.propTypes = {
+    id_p: PropTypes.number,
     img: PropTypes.string,
     name: PropTypes.string,
     type: PropTypes.string.isRequired,
     infoText: PropTypes.string,
     title: PropTypes.string,
-    time: PropTypes.string,
+    time: PropTypes.number,
     specialty: PropTypes.string,
     rateValue: PropTypes.string,
     timesRated: PropTypes.string,
+    onBegin: PropTypes.func,
+    onCancel: PropTypes.func,
 };
 
 TableNoHeadItem.defaultProps = {
+    id_p: 0,
     img: '',
     name: '',
-    title: '',
+    title: 0,
     size: 'small',
     infoText: '',
     time: '00:00',
+    onBegin: () => {},
+    onCancel: () => {},
 };
 
 export default TableNoHeadItem
