@@ -20,7 +20,7 @@ class PatientTable extends React.Component{
     onInputChange = (e) => {
         this.setState({ searchText: e.target.value });
     }
-    onSearch = () => {
+    /*onSearch = () => {
         const { searchText } = this.state;
         console.log(searchText)
         const reg = new RegExp(searchText, 'gi');
@@ -43,7 +43,7 @@ class PatientTable extends React.Component{
                 };
             }).filter(record => !!record),
         });
-    }
+    }*/
 
     patinetRender = (dataArr) => {
         let patientArr = [];
@@ -83,7 +83,7 @@ class PatientTable extends React.Component{
                                 placeholder="Поиск..."
                                 value={this.state.searchText}
                                 onChange={this.onInputChange}
-                                onPressEnter={this.onSearch}
+                                onSearch={e => this.props.onSearch(e)}
                             />
                         </div>
                     </div>
@@ -97,11 +97,13 @@ class PatientTable extends React.Component{
 PatientTable.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
     onAdd: PropTypes.func,
+    onSearch: PropTypes.func,
 };
 
 PatientTable.defaultProps = {
     data: [],
     onAdd: () => {},
+    onSearch: () => {},
 };
 
 export default PatientTable
