@@ -34,7 +34,7 @@ class Reviews extends React.Component{
                             </a>}>
                     {data.length ? 
                         this.reviewRender(data) 
-                        : <div classname='entry-list'>Отзывов нет</div>}
+                        : <div className='entry-list'>Отзывов нет</div>}
                 </Card>
         )
     }

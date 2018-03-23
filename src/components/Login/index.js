@@ -25,16 +25,40 @@ class LoginForm extends React.Component{
     };
 
     render(){
-        const {urlForget, urlRegistration} = this.props;
+        const {errorCode, urlForget, urlRegistration} = this.props;
 
         const { getFieldDecorator } = this.props.form;
         const {userName, password} = this.props.form.getFieldsValue();
+
+        let error = [];
+
+        switch(errorCode){
+            case 400:
+                error = [{
+                    validateStatus: 'error',
+                    help: "Неверное имя или пароль",
+                },{
+                    validateStatus: 'error',
+                }];
+                break;
+            case 500:
+                error = [{
+                    validateStatus: 'error',
+                    help: "Такого пользователя не существует",
+                },{
+                    validateStatus: 'error',
+                }];
+                break;
+            case 200:
+            default:
+                error = [];
+        }
 
         return (
             <Form onSubmit={this.handleSubmit} className="login-form">
                 <div className="login-title">Авторизация</div>
                 <div className="login-notification">* Поля, обязательные для заполнения</div>
-                <FormItem>
+                <FormItem {...error[0]}>
                     {getFieldDecorator('userName', {
                         rules: [{ required: true, message: 'Введите ваш логин или e-mail, пожалуйста' }],
                     })(
@@ -42,7 +66,7 @@ class LoginForm extends React.Component{
                                className='login-form-item'/>
                     )}
                 </FormItem>
-                <FormItem>
+                <FormItem {...error[1]}>
                     {getFieldDecorator('password', {
                         rules: [{ required: true, message: 'Введите ваш пароль, пожалуйста' }],
                     })(
@@ -79,12 +103,14 @@ class LoginForm extends React.Component{
 const Login = Form.create()(LoginForm);
 
 Login.propTypes = {
+    errorCode: PropTypes.oneOf([0,200, 400, 500]),
     urlForget: PropTypes.string,
     urlRegistration: PropTypes.string,
     onSubmit: PropTypes.func,
 };
 
 Login.defaultProps = {
+    errorCode: 0,
     urlForget: '',
     urlRegistration: '',
     onSubmit: () => {},
