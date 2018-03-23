@@ -30,7 +30,9 @@ class ChatDialogs extends React.Component{
         return (
             <div className={rootClass}>
                 <div className='dialog-title'>Ожидают приема<span className='dialog-num_item'>{data.length}</span></div>
-                {this.dialogRender(this.props.data)}
+                <div className='dialog-list'>
+                    {this.dialogRender(this.props.data)}
+                </div>
             </div>
         )
     }
