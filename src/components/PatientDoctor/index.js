@@ -22,7 +22,7 @@ class PatientDoctor extends React.Component{
     }
 
     render(){
-        const { data } = this.props;
+        const { data, onGoto } = this.props;
 
         return (
             <div className='doctor-all'>
@@ -36,10 +36,12 @@ class PatientDoctor extends React.Component{
 
 PatientDoctor.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
+    onGoto: PropTypes.func,
 };
 
 PatientDoctor.defaultProps = {
     data: [],
+    onGoto: () => {},
 };
 
 export default PatientDoctor

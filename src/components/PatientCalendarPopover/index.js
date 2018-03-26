@@ -18,11 +18,11 @@ const PatientCalendarPopover = (props) => {
 				<div className='popover-calendar-item' key={index+1}>
 					<div className='popover-calendar-num'><span>{index+1}</span></div>
 					<div className='popover-calendar-block'>
-						<div onClick={onGoto} className='popover-calendar-speciality'>{item.appointmentSpec}</div>
-						<div onClick={onGotoName} className='popover-calendar-name'>{item.appointmentName}</div>
+						<div onClick={onGoto} className='popover-calendar-speciality go-to'>{item.appointmentSpec}</div>
+						<div onClick={onGotoName} className='popover-calendar-name go-to'>{item.appointmentName}</div>
 						<div className='popover-calendar-info'>
-							<div className='popover-calendar-date go-to'>{item.appointmentDate}</div>
-							<div className='popover-calendar-type go-to'><Icon type={item.appointmentType} size={17} svg title={item.appointmentTypeTitle} /></div>
+							<div className='popover-calendar-date'>{item.appointmentDate}</div>
+							<div className='popover-calendar-type'><Icon type={item.appointmentType} size={17} svg title={item.appointmentTypeTitle} /></div>
 						</div>
 						<div className='popover-calendar-text'>{item.appointmentText}</div>
 					</div>
