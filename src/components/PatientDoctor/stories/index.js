@@ -8,6 +8,9 @@ import {doctorArr} from './mock-data'
 storiesOf('PatientDoctor', module)
     .add('PatientDoctor', () => (
         <div>
-            <PatientDoctor data={doctorArr}/>
+            <PatientDoctor 
+            	data={doctorArr}
+            	onGoto={()=>console.log('click')}
+            />
         </div>
     ))

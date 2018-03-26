@@ -16,6 +16,7 @@ storiesOf('PopoverBody', module)
             	text={dataArr.text}
                 onPhone = {action('onPhone')}
                 onEmail = {action('onPhone')}
+                onGoto={()=>console.log('click')}
             />
         </div>
     ))

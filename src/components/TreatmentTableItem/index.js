@@ -14,13 +14,13 @@ import '../../icon/style.css'
 class TreatmentTableItem extends React.Component{
 
     render(){
-        const {type, name, size, time, date, diagnostic, comments, price, conclusion, conclusionDownload, title, review, content} = this.props;
+        const {type, name, size, time, date, diagnostic, comments, price, conclusion, conclusionDownload, title, review, content, onGoto} = this.props;
         const rootClass = cn('treatment');
 
 
         return (
             <div className={rootClass}>
-                <div className="flex-col"><div className="patient-name"><a href="#">{name}</a></div></div>
+                <div className="flex-col"><div className="patient-name"><div onClick={onGoto} className='go-to'>{name}</div></div></div>
                 <div className="flex-col">
                     <div className="patient-date">{date}</div>
                     <div className="patient-time">{time}</div>
@@ -62,7 +62,8 @@ TreatmentTableItem.propTypes = {
     review: PropTypes.string,
     date: PropTypes.string,
     time: PropTypes.string,
-    title: PropTypes.string
+    title: PropTypes.string,
+    onGoto: PropTypes.func,
 };
 
 TreatmentTableItem.defaultProps = {
@@ -77,6 +78,7 @@ TreatmentTableItem.defaultProps = {
     title: '',
     date: '01.01.2018',
     time: '00:00',
+    onGoto: () => {},
 };
 
 export default TreatmentTableItem

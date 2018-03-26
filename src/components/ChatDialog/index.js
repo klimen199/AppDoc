@@ -23,7 +23,7 @@ class ChatDialog extends React.Component{
                 </div>
                 <div className="flex-col">
                     <div className="dialog-item-name">
-                        <a href="#">{name}</a>
+                        <div className='go-to' onClick={this.props.onGoto}>{name}</div>
                     </div>
                     <div className="dialog-item-consultation">{consultation}</div>
                 </div>

@@ -22,11 +22,11 @@ class PatientNearRecord extends React.Component{
     }
 
     render(){
-        const { data } = this.props;
+        const { data, onGoto } = this.props;
 
         return (
             <div className='record-all'>
-                <Card title="Ближайшие записи" extra={<a href="#"><Icon svg type='calendar' size={18} /> Все</a>}>
+                <Card title="Ближайшие записи" extra={<div onClick={onGoto} className='go-to'><Icon svg type='calendar' size={18} /> Все</div>}>
                 {this.nearRender(this.props.data)}
                 </Card>
             </div>
@@ -36,10 +36,12 @@ class PatientNearRecord extends React.Component{
 
 PatientNearRecord.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
+    onGoto: PropTypes.func,
 };
 
 PatientNearRecord.defaultProps = {
     data: [],
+    onGoto: () => {},
 };
 
 export default PatientNearRecord

@@ -36,7 +36,7 @@ class HistoryReceptionsItem extends React.Component{
 
         return (
             <div className={rootClass}>
-                <div className="flex-col"><div className="patient-name"><a href="#">{name}</a></div></div>
+                <div className="flex-col"><div className="patient-name"><div className='go-to' onClick=''>{name}</div></div></div>
                 <div className="flex-col">
                     <div className={statusClass}></div>
                     <div className="patient-date">{moment(startDate).format('DD.MM.YYYY')}</div>
