@@ -8,11 +8,11 @@ import './style.css'
 
 const PopoverBody = (props) => {
 
-  	const {title, desc, start, end, onEmail} = props;
+  	const {title, desc, start, end, onEmail, onGoto} = props;
 
     return (
       <div className='calendar-body'>
-			<a className='calendar-name'>{title}</a>
+			<div onClick={onGoto} className='go-to calendar-name'>{title}</div>
 			<div className='calendar-date'>
 				{moment(start).format('DD MMMM')}
 				<Button
@@ -59,6 +59,7 @@ PopoverBody.propTypes ={
     desc: PropTypes.string,
     start: PropTypes.instanceOf(Date),
     end: PropTypes.instanceOf(Date),
+    onGoto: PropTypes.func,
 };
 
 PopoverBody.defaultProps = {
@@ -66,6 +67,7 @@ PopoverBody.defaultProps = {
     desc: '',
     start: null,
     end: null,
+    onGoto: () => {},
 };
 
 export default PopoverBody

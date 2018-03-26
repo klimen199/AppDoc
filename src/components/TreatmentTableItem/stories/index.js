@@ -21,6 +21,7 @@ storiesOf('TreatmentTableItem', module)
                 review='Lorem ipsum dolor sit amet, consectetuer...'
 
                 data={filesArr}
+                onGoto={()=>console.log('click')}
             />
         </div>
     ))

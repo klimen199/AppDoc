@@ -8,14 +8,14 @@ import '../../icon/style.css'
 
 class Content extends React.Component {
     render() {
-        const { doctorExperience, doctorMaps } = this.props;
+        const { doctorExperience, doctorMaps,onGoto } = this.props;
 
         return (
             <div className='profile__doctor-information'>  
                 <div className='profile__doctor-information-block'>
                     <div className='profile__doctor-information-title'>Опыт работы</div>
                     <div className='profile__doctor-information-postitle'>Доктор принимает в клиниках:</div>
-                    {doctorMaps.map((item, index)=> <a href='#' className='profile__doctor-information-text' key={index+1}>{item.map}</a>)}
+                    {doctorMaps.map((item, index)=> <div onClick={onGoto} className='profile__doctor-information-text go-to' key={index+1}>{item.map}</div>)}
                 </div>
                 <div className='profile__doctor-information-block'>
                     <div className='profile__doctor-information-title'>Образование</div>
@@ -33,12 +33,14 @@ Content.propTypes ={
     labName: PropTypes.string,
     doctorExperience: PropTypes.array,
     doctorMaps: PropTypes.array,
+    onGoto: PropTypes.func,
 }
 
 Content.defaultProps = {
     labName: '',
     doctorExperience: [],
     doctorMaps: [],
+    onGoto: () => {},
 }
 
 export default Content

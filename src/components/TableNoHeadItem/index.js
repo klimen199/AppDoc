@@ -22,13 +22,13 @@ class TableNoHeadItem extends React.Component{
     }
 
     render(){
-        const {img, type, name, infoText, size, online, title, time, id_p} = this.props;
+        const {img, type, name, infoText, size, online, title, time, id_p, onGoto} = this.props;
 
         return (
             <div className='schedule'>
                 <ProfileAvatar owner="patient" online={online} img={img} size={size}/>
                 <div className="flex-col">
-                    <div className="patient-name"><a href="#">{name}</a></div>
+                    <div className="patient-name"><div onClick={onGoto} className='go-to'>{name}</div></div>
                     <div className="patient-info">{infoText}</div>
                 </div>
                 <div className="flex-col ml-a">
@@ -62,6 +62,7 @@ TableNoHeadItem.propTypes = {
     timesRated: PropTypes.string,
     onBegin: PropTypes.func,
     onCancel: PropTypes.func,
+    onGoto: PropTypes.func,
 };
 
 TableNoHeadItem.defaultProps = {
@@ -74,6 +75,7 @@ TableNoHeadItem.defaultProps = {
     time: '00:00',
     onBegin: () => {},
     onCancel: () => {},
+    onGoto: () => {},
 };
 
 export default TableNoHeadItem

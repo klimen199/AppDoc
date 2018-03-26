@@ -8,6 +8,9 @@ import {nearArr} from './mock-data'
 storiesOf('PatientNearRecord', module)
     .add('PatientNearRecord', () => (
         <div>
-            <PatientNearRecord data={nearArr}/>
+            <PatientNearRecord 
+            	data={nearArr}
+            	onGoto={()=>console.log('click')}
+            />
         </div>
     ))

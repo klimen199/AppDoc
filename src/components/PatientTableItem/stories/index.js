@@ -12,6 +12,7 @@ storiesOf('PatientTableItem', module)
                 age="37" 
                 date="15.09.2017"
                 time="15:00-16:00"
+                onGoto={()=>console.log('click')}
             />
         </div>
     ))

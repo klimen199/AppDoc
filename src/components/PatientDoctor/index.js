@@ -26,7 +26,7 @@ class PatientDoctor extends React.Component{
 
         return (
             <div className='doctor-all'>
-                <Card title="Мои врачи" extra={<a href="#"><Icon svg type='people' size={18} /> Весь список</a>}>
+                <Card title="Мои врачи" extra={<div onClick={onGoto} className='go-to'><Icon svg type='people' size={18} /> Весь список</div>}>
                     {this.doctorRender(this.props.data)}
                 </Card>
             </div>

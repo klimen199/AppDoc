@@ -15,6 +15,7 @@ storiesOf('TableNoHeadItem', module)
                 title='Сообщения'
                 onBegin={()=> console.log('begin')}
                 onCancel = {() => console.log('cancel')}
+                onGoto = {() => console.log('onGoto')}
             />
         </div>
     ))
