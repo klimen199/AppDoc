@@ -14,6 +14,7 @@ class HistoryReceptionsItem extends React.Component{
 
     render(){
         const {
+            id,
             type,
             size,
             name,
@@ -37,7 +38,7 @@ class HistoryReceptionsItem extends React.Component{
 
         return (
             <div className={rootClass}>
-                <div className="flex-col"><div className="patient-name"><div className='go-to' onClick={onGoto}>{name}</div></div></div>
+                <div className="flex-col"><div className="patient-name"><div className='go-to' onClick={() => onGoto(id)}>{name}</div></div></div>
                 <div className="flex-col">
                     <div className={statusClass}></div>
                     <div className="patient-date">{moment(startDate).format('DD.MM.YYYY')}</div>
@@ -72,6 +73,7 @@ class HistoryReceptionsItem extends React.Component{
 }
 
 HistoryReceptionsItem.propTypes = {
+    id: PropTypes.number,
     status: PropTypes.oneOf(['new', 'topical', 'completed', 'extra']),
     type: PropTypes.string.isRequired,
     diagnostic: PropTypes.string,
@@ -88,6 +90,7 @@ HistoryReceptionsItem.propTypes = {
 };
 
 HistoryReceptionsItem.defaultProps = {
+    id: 0,
     size: 'small',
     status: 'new',
     name: '',

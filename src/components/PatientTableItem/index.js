@@ -27,14 +27,16 @@ class PatientTableItem extends React.Component{
     }
 
     render(){
-        const { name, age, size, time, date, online, img, onGoto} = this.props;
+        const { id, name, age, size, time, date, online, img, onGoto} = this.props;
         const rootClass = cn('patient-item');
 
         return (
             <div className={rootClass}>
                 <div className="flex-col"><ProfileAvatar owner="patient" online={online} img={img} size={size}/></div>
                 <div className="flex-col">
-                    <div className="patient-item-name"><div onClick={onGoto} className='go-to'>{name}</div></div>
+                    <div className="patient-item-name">
+                        <div onClick={() => onGoto(id)} className='go-to'>{name}</div>
+                    </div>
                     <div className="patient-item-age">{age} лет</div>
                 </div>
                 <div className="flex-col">
@@ -97,6 +99,7 @@ class PatientTableItem extends React.Component{
 }
 
 PatientTableItem.propTypes = {
+    id: PropTypes.number,
     img: PropTypes.string,
     name: PropTypes.string,
     date: PropTypes.string,
@@ -109,6 +112,7 @@ PatientTableItem.propTypes = {
 };
 
 PatientTableItem.defaultProps = {
+    id: 0,
     img: '',
     name: '',
     size: 'small',

@@ -13,6 +13,7 @@ storiesOf('ChatDialog', module)
                 time="15:00"
                 status='extra'
                 iconType='chat1'
+                onGoto={() => console.log('eee')}
             />
         </div>
     ))

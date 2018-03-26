@@ -12,7 +12,7 @@ const PopoverBody = (props) => {
 
     return (
       <div className='calendar-body'>
-			<div onClick={onGoto} className='go-to calendar-name'>{title}</div>
+			<div onClick={() => onGoto(title)} className='go-to calendar-name'>{title}</div>
 			<div className='calendar-date'>
 				{moment(start).format('DD MMMM')}
 				<Button

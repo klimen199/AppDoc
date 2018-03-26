@@ -21,6 +21,7 @@ storiesOf('HistoryReceptionsItem', module)
                 conclusionDownload='Заключение 252525.pdf'
                 review='Lorem ipsum dolor sit amet, consectetuer...'
 
+                onGoto = {(id) => console.log(id)}
                 data={filesArr}
             />
         </div>

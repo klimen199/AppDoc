@@ -14,13 +14,17 @@ import '../../icon/style.css'
 class TreatmentTableItem extends React.Component{
 
     render(){
-        const {type, name, size, time, date, diagnostic, comments, price, conclusion, conclusionDownload, title, review, content, onGoto} = this.props;
+        const {id, type, name, size, time, date, diagnostic, comments, price, conclusion, conclusionDownload, title, review, content, onGoto} = this.props;
         const rootClass = cn('treatment');
 
 
         return (
             <div className={rootClass}>
-                <div className="flex-col"><div className="patient-name"><div onClick={onGoto} className='go-to'>{name}</div></div></div>
+                <div className="flex-col">
+                    <div className="patient-name">
+                        <div onClick={() => onGoto(id)} className='go-to'>{name}</div>
+                    </div>
+                </div>
                 <div className="flex-col">
                     <div className="patient-date">{date}</div>
                     <div className="patient-time">{time}</div>
@@ -52,6 +56,7 @@ class TreatmentTableItem extends React.Component{
 }
 
 TreatmentTableItem.propTypes = {
+    id: PropTypes.number,
     name: PropTypes.string,
     type: PropTypes.string.isRequired,
     diagnostic: PropTypes.string,
@@ -67,6 +72,7 @@ TreatmentTableItem.propTypes = {
 };
 
 TreatmentTableItem.defaultProps = {
+    id: 0,
     name: '',
     size: 'small',
     diagnostic: '-',
