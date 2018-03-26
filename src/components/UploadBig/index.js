@@ -1,10 +1,10 @@
 import React from 'react'
 import {Upload} from 'antd';
 import PropTypes from 'prop-types'
-
 import Icon from '../Icon'
 
 import './styles.css'
+const { transliter } = require('transliter');
 
 class UploadBig extends React.Component {
     state = {
@@ -19,13 +19,22 @@ class UploadBig extends React.Component {
     };
 
     handleChange = ({fileList}) => {
-        this.setState({fileList});
-        this.props.onChange({fileList})
-    }
+        let list =  fileList;
+        try{
+            let {name} = list[list.length - 1];
+            list[list.length-1].name = transliter(name);
+        }
+        catch (e){
+            this.setState({fileList});
+            this.props.onChange({fileList});
+            return;
+        }
+        this.setState({fileList:list});
+        this.props.onChange({fileList:list})
+    };
 
     render() {
         const {previewImage, fileList, name} = this.state;
-
 
         const uploadButton = (
             <div className='upload-btn' title='Загрузить файл'>

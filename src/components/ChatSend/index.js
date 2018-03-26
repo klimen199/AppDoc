@@ -1,14 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import cn from 'classnames'
-
 import { Input, Upload } from 'antd';
 import Button from '../Button'
 
 import './style.css'
 import '../../icon/style.css'
+const { transliter } = require('transliter');
 
 class ChatSend extends React.Component{
+    handleChange = ({fileList}) => {
+        let list =  fileList;
+        try{
+            let {name} = list[list.length - 1];
+            list[list.length-1].name = transliter(name);
+        }
+        catch (e){
+            this.setState({fileList});
+            this.props.onChange({fileList});
+            return;
+        }
+        this.setState({fileList:list});
+        //this.props.onChange({fileList:list}) generate error
+    };
+
     render(){
         const { TextArea } = Input;
         const {message, attachment, disable} = this.props;
@@ -29,7 +44,7 @@ class ChatSend extends React.Component{
                     <TextArea placeholder="Ваше сообщение..." autosize />
                 </div>
                 <div className='message__send-btns'>
-                    <Upload>
+                    <Upload onChange={this.handleChange}>
                         <Button
                                 btnText=''
                                 size='small'
@@ -39,7 +54,7 @@ class ChatSend extends React.Component{
                                 onClick={e => e.preventDefault()}
                             />
                     </Upload>
-                    <Upload>
+                    <Upload onChange={this.handleChange}>
                         <Button
                             btnText=''
                             size='small'

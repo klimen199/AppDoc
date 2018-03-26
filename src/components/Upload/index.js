@@ -2,14 +2,25 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Upload as AntUpload} from 'antd'
 import cn from 'classnames'
-
 import Button from '../Button'
 import './styles.css'
+const { transliter } = require('transliter');
 
 class Upload extends React.Component{
 
-    handleChange = ({fileList}) => {
-        this.props.onChange({fileList})
+    handleChange = ({file,fileList}) => {
+        let list =  fileList;
+        try{
+            let {name} = list[list.length - 1];
+            list[list.length-1].name = transliter(name);
+        }
+        catch (e){
+            this.setState({fileList});
+            this.props.onChange({fileList});
+            return;
+        }
+        this.setState({fileList:list});
+        this.props.onChange({fileList:list});
     };
 
     render(){
@@ -18,8 +29,10 @@ class Upload extends React.Component{
 
         return (
             <AntUpload className={clName}
-                       listType="picture"
-                       onChange={this.handleChange}>
+                       listType="text"
+                       onChange={this.handleChange}
+                       beforeUpload={this.beforeUpload}
+                        >
                 <Button btnText={text}
                         size='upload'
                         type='upload'
