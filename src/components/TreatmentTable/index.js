@@ -25,9 +25,9 @@ class TreatmentTable extends React.Component{
         return (
             <div className='treatment-all'>
                 <Card title="Актуальные обращения" 
-                        extra={<a onClick={this.props.redirect}>
+                        extra={<div className='go-to' onClick={this.props.redirect}>
                             <Icon svg size={16} type="order-form" /> <span>Все обращения</span>
-                        </a>}>
+                        </div>}>
                     <div className="tableheader">
                         <div className="flex-col"><div className="tableheader-name">Имя пациента</div></div>
                         <div className="flex-col"><div className="tableheader-name">Дата приема</div></div>
