@@ -54,7 +54,8 @@ ChatDialog.propTypes = {
     name: PropTypes.string,
     status: PropTypes.oneOf(['extra', 'default', 'soon']),
     time: PropTypes.string,
-    iconType: PropTypes.string
+    iconType: PropTypes.string,
+    onGoto: PropTypes.func,
 };
 
 ChatDialog.defaultProps = {
@@ -64,6 +65,7 @@ ChatDialog.defaultProps = {
     status: 'default',
     time: '00:00',
     iconType: 'chat1',
+    onGoto: () => {},
 };
 
 export default ChatDialog
