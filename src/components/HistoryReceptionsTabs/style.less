@@ -1,5 +1,15 @@
 @import url("../../styles/variables");
 
+.scrollarea .scrollbar-container.horizontal{
+	bottom: 10px;
+}
+
+.scrollarea .scrollbar-container.horizontal .scrollbar{
+	background-color: @blue;
+	height: 6px;
+	border-radius: 4px;
+}
+
 .receptions{
 	position: relative;
 
@@ -144,10 +154,15 @@
 			align-items: center;
 		}
 
-		.ant-card-body>div{
-			// max-height: 640px;
-			overflow-y: scroll;
-			width: 100%;
+		.ant-card-body{
+			
+			.scrollarea-content{
+				min-width: 1450px;
+			}
+
+			>div{
+				width: 100%;
+			}
 		}
 	}
 }

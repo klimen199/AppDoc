@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import cn from 'classnames'
-
+import ScrollArea from 'react-scrollbar'
 import Button from '../Button'
 import Input from '../Input'
 import PopoverItem from './content'
@@ -28,7 +28,14 @@ class PatientAnalyzesPopover extends React.Component {
         return (
             <div className='analyzes-popover'>  
                 <div className='analyzes-popover-title'>Ближайшие лаборатории, в которых Вы можете сдать данный анализ:</div>
-                <div className='analyzes-popover-overlay'>{this.panelRender(this.props.data)}</div>
+                <ScrollArea
+                            speed={1}
+                            className="analyzes-popover-overlay"
+                            contentClassName="content"
+                            horizontal={false}
+                    >
+                    {this.panelRender(this.props.data)}
+                </ScrollArea>
                 <div className='analyzes-popover-close'>
                     <Button
                         

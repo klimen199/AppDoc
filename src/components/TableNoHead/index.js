@@ -5,7 +5,7 @@ import cn from 'classnames'
 import TableNoHeadItem from '../TableNoHeadItem'
 import Card from '../Card'
 import Button from '../Button'
-
+import ScrollArea from 'react-scrollbar'
 import './style.css'
 import '../../icon/style.css'
 
@@ -27,8 +27,7 @@ class TableNoHead extends React.Component{
         
         return (
             <div className={rootClass}>
-                <Card title="График работы на сегодня" 
-                    extra={<div className="sum">Приемы: {data.length}</div>}>
+                <Card title="График работы на сегодня" extra={<div className="sum">Приемы: {data.length}</div>}>
                     <div className="tableheader">
                         <div className="flex-col">
                             <Button
@@ -64,9 +63,15 @@ class TableNoHead extends React.Component{
                             />
                         </div>
                     </div>
+                    <ScrollArea
+                            speed={1}
+                            className="scroll"
+                            contentClassName="content"
+                    >
                     {data.length ? 
                         this.scheduleRender(data) 
                         : <div className='entry-list'>Приемов нет</div>}
+                        </ScrollArea>
                   </Card>
             </div>
         )

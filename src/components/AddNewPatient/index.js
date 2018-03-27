@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import cn from 'classnames'
+import ScrollArea from 'react-scrollbar'
 
 import AddNewPatientItem from '../AddNewPatientItem'
 import Modal from '../Modal'
@@ -49,9 +50,14 @@ class AddNewPatient extends React.Component{
                                         onSearch={value => this.props.onSearch(value)}/>
                     </div>
                     <div className='new-patient-title'>Результаты поиска</div>
-                    <div className='new-patient-list'>
+                    <ScrollArea
+                            speed={1}
+                            className="new-patient-list"
+                            contentClassName="content"
+                            horizontal={false}
+                    >
                         {this.patientsRender(this.props.data)}
-                    </div>
+                    </ScrollArea>
                 </div>
             </Modal>
         )

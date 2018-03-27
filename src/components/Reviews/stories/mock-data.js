@@ -3,7 +3,7 @@ const hour = minute * 60;
 const day = hour * 24;
 const now = Date.now();
 
-export const dataArr = [/*{
+export const dataArr = [{
         id: 1,
         author: "Иванова А. К.",
         avatar: "https://www.proza.ru/pics/2017/06/03/1990.jpg",
@@ -35,7 +35,31 @@ export const dataArr = [/*{
         date: new Date(now - 3 * day),
         treatmentDate: '13.09.2017',
         rate: 4,
-    },*/
+    },{
+        id: 78,
+        author: "Иванова А. К.",
+        avatar: "https://www.proza.ru/pics/2017/06/03/1990.jpg",
+        text: "Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. ",
+        date: new Date(now - 3 * hour),
+        treatmentDate: '13.10.2017',
+        rate: 4,
+    },,{
+        id: 77,
+        author: "Иванова А. К.",
+        avatar: "https://www.proza.ru/pics/2017/06/03/1990.jpg",
+        text: "Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. ",
+        date: new Date(now - 3 * hour),
+        treatmentDate: '13.10.2017',
+        rate: 4,
+    },,{
+        id: 79,
+        author: "Иванова А. К.",
+        avatar: "https://www.proza.ru/pics/2017/06/03/1990.jpg",
+        text: "Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. ",
+        date: new Date(now - 3 * hour),
+        treatmentDate: '13.10.2017',
+        rate: 4,
+    },
 ];
 
 

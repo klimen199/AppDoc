@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import cn from 'classnames'
 import moment from 'moment'
-
+import ScrollArea from 'react-scrollbar'
 import PatientHistoryReceptionsItem from '../PatientHistoryReceptionsItem'
 import Card from '../Card'
 import Button from '../Button'
@@ -73,22 +73,28 @@ class PatientHistoryReceptions extends React.Component{
         return (
             <div className={rootClass}>
                 <Card title="История приемов">
-                    <div className="tableheader">
-                        <div className="flex-col"><div className="patient-receptions-status new">Новые</div></div>
-                        <div className="flex-col"><div className="patient-receptions-status topical">Актуальные</div></div>
-                        <div className="flex-col"><div className="patient-receptions-status completed">Завершенные</div></div>
-                        <div className="flex-col"><div className="patient-receptions-status extra">Экстренные</div></div>
-                    </div>
-                    <div className="tableheader menu-header">
-                        <div className="flex-col"><div className="tableheader-name">Дата приема</div></div>
-                        <div className="flex-col"><div className="tableheader-name">диагноз</div></div>
-                        <div className="flex-col"><div className="tableheader-name">Комментарий к приему</div></div>
-                        <div className="flex-col"><div className="tableheader-name">стоимость</div></div>
-                        <div className="flex-col"><div className="tableheader-name">заключение</div></div>
-                        <div className="flex-col"><div className="tableheader-name">отзыв</div></div>
-                        <div className="flex-col"><div className="tableheader-name"></div></div>
-                    </div>
-                    {this.historyRender(this.props.data)}
+                    <ScrollArea
+                            speed={1}
+                            className="scroll"
+                            contentClassName="content"
+                    >
+                        <div className="tableheader">
+                            <div className="flex-col"><div className="patient-receptions-status new">Новые</div></div>
+                            <div className="flex-col"><div className="patient-receptions-status topical">Актуальные</div></div>
+                            <div className="flex-col"><div className="patient-receptions-status completed">Завершенные</div></div>
+                            <div className="flex-col"><div className="patient-receptions-status extra">Экстренные</div></div>
+                        </div>
+                        <div className="tableheader menu-header">
+                            <div className="flex-col"><div className="tableheader-name">Дата приема</div></div>
+                            <div className="flex-col"><div className="tableheader-name">диагноз</div></div>
+                            <div className="flex-col"><div className="tableheader-name">Комментарий к приему</div></div>
+                            <div className="flex-col"><div className="tableheader-name">стоимость</div></div>
+                            <div className="flex-col"><div className="tableheader-name">заключение</div></div>
+                            <div className="flex-col"><div className="tableheader-name">отзыв</div></div>
+                            <div className="flex-col"><div className="tableheader-name"></div></div>
+                        </div>
+                        {this.historyRender(this.props.data)}
+                    </ScrollArea>
                   </Card>
             </div>
         )
