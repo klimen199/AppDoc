@@ -17,9 +17,14 @@ class Radio extends React.Component{
 
     renderRadio = (icons) => {
         let radios = [];
+        const key_val = {
+            'chat1': 'chat',
+            'telephone': 'voice', 
+            "video-camera": 'video',
+        }
 
         icons.map((icon,index) => {
-            radios.push(<RadioButton value={icon} key={'radio'+icon+index}>
+            radios.push(<RadioButton value={key_val[icon]} key={'radio'+icon+index}>
                 <Icon svg size={16} type={icon}/>
             </RadioButton>)
         });

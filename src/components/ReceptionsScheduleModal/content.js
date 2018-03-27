@@ -118,7 +118,36 @@ class ContentForm extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.onSave(this.props.form.getFieldsValue());
+        const {day, isDayOff, intervalTime, type, ...rest} = this.props.form.getFieldsValue();
+        let time = [],
+            emergencyTime = [];
+
+        for (let key in rest){
+            if(key.indexOf('callTp') + 1 ){
+                pushTimeToArr(time, rest[key]);
+            }
+            if(key.indexOf('receptionTp') + 1 ){
+                pushTimeToArr(emergencyTime, rest[key]);
+            }
+        }
+
+        function pushTimeToArr(array, time){
+            array.push({
+                start: (time[0]).unix()*1000,
+                end: (time[1]).unix()*1000,
+            })
+        }
+
+        let obj = {
+            day: [(day[0]).unix()*1000, (day[1]).unix()*1000], 
+            isDayOff, 
+            intervalTime, 
+            type,
+            time,
+            emergencyTime,
+        }
+
+        this.props.onSave(obj);
     };
 
     addTp = (tab, e) => {
@@ -202,12 +231,12 @@ class ContentForm extends React.Component {
                             getFieldDecorator
                         )}
                         <FormItem>
-                            {getFieldDecorator('radio')(
-                                <Radio icons={['telephone', "video-camera", 'chat1']}/>
+                            {getFieldDecorator('type')(
+                                <Radio icons={['chat1','telephone', "video-camera"]}/>
                             )}
                         </FormItem>
                         <FormItem>
-                            {getFieldDecorator('durability')(
+                            {getFieldDecorator('intervalTime')(
                                 <Select placeholder="Длительность приема">
                                     {this.renderOptions(selOptions)}
                                 </Select>
@@ -221,7 +250,7 @@ class ContentForm extends React.Component {
                                 icon='add-button'
                                 svg/>
                         <FormItem>
-                            {getFieldDecorator('dayOff', {
+                            {getFieldDecorator('isDayOff', {
                                 valuePropName: 'checked',
                                 initialValue: false,
                             })(
