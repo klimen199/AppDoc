@@ -19,14 +19,17 @@ class ContentForm extends React.Component {
         e.preventDefault();
         let response = {
             ...this.props.form.getFieldsValue(),
-            message: this.state.message,
-            date: this.props.date,
+            comment: this.state.message,
+            date: (this.props.date).getTime(),
         };
         this.props.onSave(response);
     };
 
     componentWillReceiveProps(nextProps){
-        nextProps.visible == false ? this.setState({message: ''}) : null;
+        nextProps.visible == false ? (
+            this.setState({message: ''}),
+            this.props.form.resetFields()
+        ) : null;
     }
 
 
@@ -34,7 +37,7 @@ class ContentForm extends React.Component {
     renderOptions = () => {
         return this.props.patients.map((patient, i) => {
             return (
-                <Select.Option value={patient.name}
+                <Select.Option value={patient.id}
                                key={`my_patient_${i}`}>
                     {patient.name}</Select.Option>)
         })
@@ -61,7 +64,7 @@ class ContentForm extends React.Component {
                 </div>
 
                 <FormItem>
-                    {getFieldDecorator('patient')(
+                    {getFieldDecorator('id_user')(
                         <Select placeholder="ФИО">
                             {this.renderOptions()}
                         </Select>
@@ -76,8 +79,8 @@ class ContentForm extends React.Component {
                 
 
                 <FormItem>
-                    {getFieldDecorator('radio', {
-                        initialValue: 'chat1'
+                    {getFieldDecorator('type', {
+                        initialValue: 'chat'
                     })(
                         <Radio icons={['chat1','telephone', "video-camera"]}/>
                     )}
