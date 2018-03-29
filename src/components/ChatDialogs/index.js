@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import cn from 'classnames'
+import ScrollArea from 'react-scrollbar'
 
 import Button from '../Button'
 import Rate from '../Rate'
@@ -30,9 +31,14 @@ class ChatDialogs extends React.Component{
         return (
             <div className={rootClass}>
                 <div className='dialog-title'>Ожидают приема<span className='dialog-num_item'>{data.length}</span></div>
-                <div className='dialog-list'>
+                <ScrollArea
+                    speed={1}
+                    className="dialog-list"
+                    contentClassName="content"
+                    horizontal={false}
+                >
                     {this.dialogRender(this.props.data)}
-                </div>
+                </ScrollArea>
             </div>
         )
     }

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import cn from 'classnames'
-
+import ScrollArea from 'react-scrollbar'
 import Button from '../Button'
 import Radio from '../Radio'
 import ChatFiles from '../ChatFiles'
@@ -105,9 +105,10 @@ class ChatCard extends React.Component {
                             />
                         </div>
                         {
-                            this.state.isActive && <div className='chat-card-files__items'>
+                            this.state.isActive && 
+                            <ScrollArea speed={1} className="chat-card-files__items" contentClassName="content" horizontal={false}>
                                 {this.filesRender(this.props.data)}
-                            </div>
+                            </ScrollArea>
                         }
                     </div>
 

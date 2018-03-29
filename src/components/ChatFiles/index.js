@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import cn from 'classnames'
+import ScrollArea from 'react-scrollbar'
 
 import DownloadLink from '../DownloadLink'
 

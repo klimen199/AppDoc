@@ -91,7 +91,6 @@
 
         .ant-card-body{
             max-height: 715px;
-            overflow-y: auto;
 
             > div{
                 width: 100%;
@@ -100,6 +99,14 @@
                 display: flex;
                 align-items: flex-start;
                 flex-direction: column;
+
+                .scroll{
+                    max-height: 715px;
+                    
+                    .content{
+                        min-width: 1450px;
+                    }
+                }
             }
         }
     }

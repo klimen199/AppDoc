@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import moment from 'moment'
-
+import ScrollArea from 'react-scrollbar'
 import HistoryReceptionsItem from '../HistoryReceptionsItem'
 import Card from '../Card'
 import Button from '../Button'
@@ -196,28 +196,48 @@ class HistoryReceptionsTabs extends React.Component {
                                               defaultValue={this.state.range}/>
                                   <Input.Search placeholder="Поиск..."/></div>}>
                         <TabPane tab="Все" key="all">
-                            <div className='overflow-x-a'>
+                            <ScrollArea
+                                speed={1}
+                                className=""
+                                contentClassName="content" 
+                                horizontal={true}
+                            >
                                 {this.tabHeaderRender()}
                                 {this.historyRender(this.props.data)}
-                            </div>
+                            </ScrollArea>
                         </TabPane>
                         <TabPane tab="Завершенные" key="completed">
-                            <div className='overflow-x-a'>
+                            <ScrollArea
+                                speed={1}
+                                className=""
+                                contentClassName="content"
+                                horizontal={true} 
+                            >
                                 {this.tabHeaderRender()}
                                 {this.historyRender(this.state.completedReceptions)}
-                            </div>
+                            </ScrollArea>
                         </TabPane>
                         <TabPane tab="Актуальные" key="topical">
-                            <div className='overflow-x-a'>
+                            <ScrollArea
+                                speed={1}
+                                className=""
+                                contentClassName="content"
+                                horizontal={true} 
+                            >
                                 {this.tabHeaderRender()}
                                 {this.historyRender(this.state.topicalReceptions)}
-                            </div>
+                            </ScrollArea>
                         </TabPane>
                         <TabPane tab="Предстоящие" key="upcoming">
-                            <div className='overflow-x-a'>
+                            <ScrollArea
+                                speed={1}
+                                className=""
+                                contentClassName="content"
+                                horizontal={true} 
+                            >
                                 {this.tabHeaderRender()}
                                 {this.historyRender(this.state.upcomingReceptions)}
-                            </div>
+                            </ScrollArea>
                         </TabPane>
                     </Tabs>
                 </Card>

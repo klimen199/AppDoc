@@ -108,9 +108,15 @@
 			align-items: center;
 		}
 
-		.ant-card-body>div{
-			max-height: 640px;
-			overflow-y: scroll;
+		.ant-card-body{
+
+			.scroll{
+				height: 640px;
+
+				.content{
+					min-width: 1300px;
+				}
+			}
 		}
 	}
 }

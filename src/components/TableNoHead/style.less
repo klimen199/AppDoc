@@ -1,5 +1,9 @@
 @import url("../../styles/variables");
 
+.scrollarea{
+	width: 100%;
+}
+
 .schedule{
 	
 	&:nth-child(odd){
@@ -29,7 +33,6 @@
 
 		.ant-card-body{
 			height: 485px;
-			overflow-y: auto;
 
 			> div{
                 width: 100%;
@@ -38,6 +41,15 @@
                 display: flex;
                 align-items: flex-start;
                 flex-direction: column;
+            }
+
+            .scroll{
+            	width: 100%;
+    			
+
+    			.content{
+    				min-width: 820px;
+    			}
             }
 		}
 	}

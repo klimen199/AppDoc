@@ -5,7 +5,7 @@ import PatientTableItem from '../PatientTableItem'
 import Card from '../Card'
 import Button from '../Button'
 import Input from '../Input'
-
+import ScrollArea from 'react-scrollbar'
 import './style.css'
 import '../../icon/style.css'
 
@@ -65,29 +65,35 @@ class PatientTable extends React.Component{
         return (
             <div className='patient-all'>
                 <Card title="Список пациентов" extra={<div className='patient-count'>{data.length}</div>}>
-                    <div className="tableheader">
-                        <div className="flex-col">
-                            <Button
-                                onClick = {this.props.onAdd} 
-                                btnText='Добавить'
-                                size='default'
-                                type='yellow'
-                                icon='plus'
-                                iconSize={11}
-                                svg
-                            />
+                    <ScrollArea
+                            speed={1}
+                            className="scroll"
+                            contentClassName="content"
+                    >
+                        <div className="tableheader">
+                            <div className="flex-col">
+                                <Button
+                                    onClick = {this.props.onAdd} 
+                                    btnText='Добавить'
+                                    size='default'
+                                    type='yellow'
+                                    icon='plus'
+                                    iconSize={11}
+                                    svg
+                                />
+                            </div>
+                            <div className="flex-col ico-btn">
+                                <Input.Search
+                                    ref={ele => this.searchInput = ele}
+                                    placeholder="Поиск..."
+                                    value={this.state.searchText}
+                                    onChange={this.onInputChange}
+                                    onSearch={e => this.props.onSearch(e)}
+                                />
+                            </div>
                         </div>
-                        <div className="flex-col ico-btn">
-                            <Input.Search
-                                ref={ele => this.searchInput = ele}
-                                placeholder="Поиск..."
-                                value={this.state.searchText}
-                                onChange={this.onInputChange}
-                                onSearch={e => this.props.onSearch(e)}
-                            />
-                        </div>
-                    </div>
-                    {this.patinetRender(this.props.data)}
+                        {this.patinetRender(this.props.data)}
+                    </ScrollArea>
                   </Card>
             </div>
         )
