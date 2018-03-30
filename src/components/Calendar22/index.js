@@ -43,7 +43,7 @@ class BigCalendar extends React.Component{
     }
 
     changeSchedule = () => {
-        let newSched = this.props.schedules.map((sched)=>{
+        let newSched = this.props.schedules ? this.props.schedules.map((sched)=>{
             const {intervalOb,intervalEx} = sched;
             let newIntervalOb = [];
             for(let i = 0, len = intervalOb.length; i < len; i++){
@@ -63,18 +63,18 @@ class BigCalendar extends React.Component{
                 intervalEx: newIntervalEx,
             }
 
-        })
+        }) : [];
 
         return newSched;
     }
 
     changeEvents = () => {
-        let newEvents = this.props.events.map((event) => {
+        let newEvents = this.props.events ? this.props.events.map((event) => {
             return {
                 ...event,
                 ...this.changeIntervalDate(event.start, event.end),
             }
-        })
+        }) : [];
 
         return newEvents;
     }
