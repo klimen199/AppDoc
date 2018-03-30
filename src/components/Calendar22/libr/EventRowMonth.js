@@ -141,11 +141,11 @@ class EventRowMonth extends React.Component {
 
             <div className="month-row-segment-schedule">
 
-            {sched.time.length !== 0
+            {sched.intervalOb.length !== 0
             && <div className="schedule-time">
                 <div className="schedule-time-item empty"></div>
                 <div className="schedule-time-item">
-                    {sched.time.map((time, i) => (<div key={'time'+i}>
+                    {sched.intervalOb.map((time, i) => (<div key={'time'+i}>
                                         {
                                             moment(time.start).format('HH:mm')
                                         } - {
@@ -159,13 +159,13 @@ class EventRowMonth extends React.Component {
             }
 
 
-            {sched.emergencyTime.length !== 0
+            {sched.intervalEx.length !== 0
             && <div className="schedule-emrgtime">
                 <div className="schedule-emrgtime-item with-sign">
                     <div><Icon type="emergency-call" svg size={20}/></div>
                 </div>
                 <div className="schedule-emrgtime-item">
-                    {sched.emergencyTime.map((time, i) => (<div key={'emrgtime'+i}>
+                    {sched.intervalEx.map((time, i) => (<div key={'emrgtime'+i}>
                         {moment(time.start).format('HH:mm')
                         } - {
                         moment(time.end).format('HH:mm')}

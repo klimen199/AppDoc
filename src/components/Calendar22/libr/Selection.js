@@ -78,7 +78,6 @@ class Selection {
   }
 
   emit(type, ...args) {
-        //console.log('CHECK Point', type)
     let result
     let handlers = this._listeners[type] || []
     handlers.forEach(fn => {
