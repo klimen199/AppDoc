@@ -22,15 +22,7 @@ storiesOf('Modal - ReceptionsScheduleModal', module)
                         defaultEndValue: moment(new Date(2017, 11, 11, 11, 50), "YYYY-MM-DD HH:mm"),
                     }
                 ]}
-                timeSetReception= {[
-                    {
-                        defaultStartValue: moment(new Date(2017, 11, 11, 14, 55), "YYYY-MM-DD HH:mm"),
-                        defaultEndValue: moment(new Date(2017, 11, 11, 14, 50), "YYYY-MM-DD HH:mm"),
-                    },{
-                        defaultStartValue: moment(new Date(2017, 11, 11, 14, 55), "YYYY-MM-DD HH:mm"),
-                        defaultEndValue: moment(new Date(2017, 11, 11, 14, 50), "YYYY-MM-DD HH:mm"),
-                    }
-                ]}
+                
                 selOptions={options}
                 onSave={(obj) => console.log(obj)}
             />
