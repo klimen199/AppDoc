@@ -284,8 +284,8 @@ class MonthView extends React.Component {
             let selectedTime = range[0],
                 notNext = false;
             this.props.schedules.every(sched => {
-                if(sched.time.length !==0){
-                  time = sched.time[0].start;
+                if(sched.intervalOb.length !==0){
+                  time = sched.intervalOb[0].start;
                   notNext = time.getDate() === selectedTime.getDate() &&
                       time.getMonth() === selectedTime.getMonth() &&
                       time.getFullYear() === selectedTime.getFullYear();
@@ -294,8 +294,8 @@ class MonthView extends React.Component {
                     schedule = sched;
                   }
                 }
-                else if(sched.emergencyTime.length !==0){
-                    time = sched.emergencyTime[0].start;
+                else if(sched.intervalEx.length !==0){
+                    time = sched.intervalEx[0].start;
                     notNext = time.getDate() === selectedTime.getDate() &&
                         time.getMonth() === selectedTime.getMonth() &&
                         time.getFullYear() === selectedTime.getFullYear();

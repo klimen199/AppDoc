@@ -68,8 +68,8 @@ BigCalendar.propTypes = {
         PropTypes.shape({
             id: PropTypes.number,
             isEditable: PropTypes.bool,
-            time: PropTypes.array,
-            emergencyTime: PropTypes.array,
+            intervalOb: PropTypes.array,
+            intervalEx: PropTypes.array,
         })
     ),
     receptionNum: PropTypes.oneOfType([

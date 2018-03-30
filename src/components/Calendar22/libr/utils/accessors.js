@@ -1,8 +1,8 @@
 function validateEditor(data,field){
-  if(data.time.length !== 0)
-    return data.time[0][field];
-  if (data.emergencyTime.length !== 0)
-      return data.emergencyTime[0][field];
+  if(data.intervalOb.length !== 0)
+    return data.intervalOb[0][field];
+  if (data.intervalEx.length !== 0)
+      return data.intervalEx[0][field];
 }
 
 export function accessor(data, field, editor) {
