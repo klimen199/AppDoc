@@ -134,8 +134,8 @@ class ContentForm extends React.Component {
         function pushTimeToArr(array, time){
             (time[0] && time[1]) ? 
                 array.push({
-                    start: (time[0]).unix()*1000,
-                    end: (time[1]).unix()*1000,
+                    start: (time[0]).unix(),
+                    end: (time[1]).unix(),
                 }) : null;
         }
 
