@@ -34,28 +34,82 @@ class BigCalendar extends React.Component{
             }
         }
     };
+
+    changeIntervalDate = (start, end) => {
+        return {
+            start: new Date((+start)*1000),
+            end: new Date((+end)*1000),
+        }
+    }
+
+    changeSchedule = () => {
+        let newSched = this.props.schedules.map((sched)=>{
+            const {intervalOb,intervalEx} = sched;
+            let newIntervalOb = [];
+            for(let i = 0, len = intervalOb.length; i < len; i++){
+                let interv = intervalOb[i];
+                newIntervalOb.push(this.changeIntervalDate(interv.start, interv.end))
+            }
+
+            let newIntervalEx = [];
+            for(let i = 0, len = intervalEx.length; i < len; i++){
+                let interv = intervalEx[i];
+                newIntervalEx.push(this.changeIntervalDate(interv.start, interv.end))
+            }
+
+            return {
+                ...sched,
+                intervalOb: newIntervalOb,
+                intervalEx: newIntervalEx,
+            }
+
+        })
+
+        return newSched;
+    }
+
+    changeEvents = () => {
+        let newEvents = this.props.events.map((event) => {
+            return {
+                ...event,
+                ...this.changeIntervalDate(event.start, event.end),
+            }
+        })
+
+        return newEvents;
+    }
     
-    render() {
+    render() {       
+
+        let prop = this.props.editor ? {
+                ...this.props,
+                schedules: this.changeSchedule(),
+            }
+            : {
+                ...this.props,
+                events: this.changeEvents(),
+            }
+
         return (<div>
             {
                 this.props.editor ?
                     <Calendar
                         className='calendar-editor'
-                        schedules={this.props.schedules}
+                        schedules={this.changeSchedule()}
                         view={'month'}
                         onView={() => {
                         }}
                         onSelecting={(r,slot,selecting, schedule) =>
                             this.selectHandler(r, slot,selecting, schedule)}
-                        {...this.props}
+                        {...prop}
                     />
                     :
                     <Calendar
-                        events={this.props.events}
+                        events={this.changeEvents()}
                         defaultView={'week'}
                         views={['day', 'week', 'month']}
 
-                        {...this.props}
+                        {...prop}
                     />
             }
         </div>);
