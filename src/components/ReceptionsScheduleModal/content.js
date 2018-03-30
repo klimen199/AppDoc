@@ -132,19 +132,21 @@ class ContentForm extends React.Component {
         }
 
         function pushTimeToArr(array, time){
-            array.push({
-                start: (time[0]).unix()*1000,
-                end: (time[1]).unix()*1000,
-            })
+            (time[0] && time[1]) ? 
+                array.push({
+                    start: (time[0]).unix()*1000,
+                    end: (time[1]).unix()*1000,
+                }) : null;
         }
 
         let obj = {
-            day: [(day[0]).unix()*1000, (day[1]).unix()*1000], 
+            datestart: (day[0]).unix()*1000,
+            dateend: (day[1]).unix()*1000,
             isDayOff, 
             intervalTime, 
             type,
-            time,
-            emergencyTime,
+            intervalOb: time,
+            intervalEx: emergencyTime,
         }
 
         this.props.onSave(obj);
@@ -231,7 +233,9 @@ class ContentForm extends React.Component {
                             getFieldDecorator
                         )}
                         <FormItem>
-                            {getFieldDecorator('type')(
+                            {getFieldDecorator('type', {
+                                initialValue: 'chat'
+                            })(
                                 <Radio icons={['chat1','telephone', "video-camera"]}/>
                             )}
                         </FormItem>
