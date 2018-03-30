@@ -20,8 +20,9 @@ class ContentForm extends React.Component {
         let response = {
             ...this.props.form.getFieldsValue(),
             comment: this.state.message,
-            date: (this.props.date).getTime(),
+            date: (this.props.date).getTime()/1000,
         };
+        console.log(response)
         this.props.onSave(response);
     };
 

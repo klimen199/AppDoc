@@ -34,7 +34,7 @@ class ContentForm extends React.Component {
                 let response = {
                     name: values.name,
                     message: this.state.message,
-                    date: moment(date, "DD:MM:YYYY HH:mm").unix()*1000,
+                    date: moment(date, "DD:MM:YYYY HH:mm").unix(),
                     type: values.radio ,
                 };
                 this.props.onSave(response);
@@ -93,7 +93,7 @@ class ContentForm extends React.Component {
 
                 <FormItem>
                     {getFieldDecorator('radio',{
-                        initialValue: 'chat1',
+                        initialValue: 'chat',
                     })(
                         <Radio icons={['chat1','telephone', "video-camera"]}/>
                     )}

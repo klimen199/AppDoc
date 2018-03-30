@@ -140,8 +140,8 @@ class ContentForm extends React.Component {
         }
 
         let obj = {
-            datestart: (day[0]).unix()*1000,
-            dateend: (day[1]).unix()*1000,
+            datestart: (day[0]).unix(),
+            dateend: (day[1]).unix(),
             isDayOff, 
             intervalTime, 
             type,
