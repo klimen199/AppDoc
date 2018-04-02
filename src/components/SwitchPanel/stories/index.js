@@ -7,7 +7,7 @@ import SwitchPanel from '../';
 storiesOf('SwitchPanel', module)
     .add('default', () => (
         <div>
-           <SwitchPanel icon='phone'
+           <SwitchPanel icon='emergency-call'
                         title="Экстренные вызовы"/>
         </div>
     ))

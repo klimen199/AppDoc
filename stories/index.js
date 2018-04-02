@@ -121,11 +121,11 @@ const loadStories = () => {
     require('../src/components/PatientProfileDoctorItem/stories');
     require('../src/components/PatientHistoryReceptionsItem/stories');
     require('../src/components/PatientHistoryReceptions/stories');
-
-  require('../src/components/HistoryReceptionsItems/stories');
-
+    require('../src/components/HistoryReceptionsItems/stories');
     require('../src/components/AddNewPatient/stories');
     require('../src/components/AddNewPatientItem/stories');
+    require('../src/components/Header/stories');
+    require('../src/components/AutoComplete/stories');
 };
 
 configure(loadStories, module);

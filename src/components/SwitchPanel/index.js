@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import './styles.css'
 
 import Switch from '../Switch'
-import {Icon} from 'antd'
+import Icon from '../Icon'
 
 class SwitchPanel extends React.Component{
     constructor(props){
@@ -16,20 +16,15 @@ class SwitchPanel extends React.Component{
 
     render(){
         const {icon, title, disabled, defaultChecked} = this.props;
-        const icColor = this.state.isChecked ? '#ef5350' : '#d3d3d3';
-
-        const icStyle = {
-            fontSize: 19,
-            color: icColor,
-        }
+        const rootClass = this.state.isChecked ? 'switch-panel switch-panel-checked' : 'switch-panel';
 
         return (
-            <div>
-                {icon && (<Icon type={icon} style={icStyle}/>)}
-                <span className="switchPanel-title">{title}</span>
+            <div className={rootClass}>
+                {icon && (<Icon type={icon} />)}
+                <span className="switch-panel-title">{title}</span>
                 <Switch defaultChecked={defaultChecked}
                         disabled = {disabled}
-                        onChange={(e) => this.setState({isChecked:e})}/>
+                        onChange={(e) => this.setState({isChecked:e})}/> 
             </div>
         )
     }

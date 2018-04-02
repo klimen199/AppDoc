@@ -32,7 +32,7 @@ class NotificationApp extends React.Component {
       </Popover>
     );
   }
-}
+} 
 
 
 NotificationApp.propTypes = {
