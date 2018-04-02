@@ -20,6 +20,10 @@ storiesOf('Modal - ReceptionsScheduleModal', module)
                     {
                         defaultStartValue: moment(new Date(2016, 11, 11, 14, 55), "YYYY-MM-DD HH:mm"),
                         defaultEndValue: moment(new Date(2017, 11, 11, 11, 50), "YYYY-MM-DD HH:mm"),
+                    },
+                    {
+                        defaultStartValue: moment(new Date(2016, 11, 11, 14, 55), "YYYY-MM-DD HH:mm"),
+                        defaultEndValue: moment(new Date(2017, 11, 11, 11, 50), "YYYY-MM-DD HH:mm"),
                     }
                 ]}
                 

@@ -74,7 +74,7 @@ const events1 = [
 const schedules1 = [
     {
         id: 12,
-        isEditable: false,
+        isEditable: '0',
         intervalOb: [{
             start: new Date(2018, 0, 15, 8, 30, 0).getTime()/1000,
             end: new Date(2018, 0, 15, 10, 0, 0).getTime()/1000,
@@ -89,7 +89,7 @@ const schedules1 = [
     },
     {
         id: 12,
-        isEditable: false,
+        isEditable: '0',
         intervalOb: [{
             start: new Date(2018, 0, 25, 8, 30, 0).getTime()/1000,
             end: new Date(2018, 0, 25, 10, 0, 0).getTime()/1000,
@@ -104,7 +104,7 @@ const schedules1 = [
     },
     {
         id: 13,
-        isEditable: true,
+        isEditable: '1',
         intervalOb: [{
             start: new Date(2018, 1, 8, 8, 30, 0).getTime()/1000,
             end: new Date(2018, 1, 8, 9, 30, 0).getTime()/1000,
@@ -122,7 +122,7 @@ const schedules1 = [
     },
     {
         id: 15,
-        isEditable: false,
+        isEditable: '0',
         intervalOb: [{
             start: new Date(2018, 1, 7, 8, 30, 0).getTime()/1000,
             end: new Date(2018, 1, 7, 9, 30, 0).getTime()/1000,

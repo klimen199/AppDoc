@@ -121,7 +121,7 @@ BigCalendar.propTypes = {
     schedules: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.number,
-            isEditable: PropTypes.bool,
+            isEditable: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
             intervalOb: PropTypes.array,
             intervalEx: PropTypes.array,
         })

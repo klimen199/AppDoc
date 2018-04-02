@@ -290,7 +290,7 @@ class MonthView extends React.Component {
                       time.getMonth() === selectedTime.getMonth() &&
                       time.getFullYear() === selectedTime.getFullYear();
                   if(notNext){
-                    allowed = sched.isEditable;
+                    allowed = +(sched.isEditable);
                     schedule = sched;
                   }
                 }
@@ -300,7 +300,7 @@ class MonthView extends React.Component {
                         time.getMonth() === selectedTime.getMonth() &&
                         time.getFullYear() === selectedTime.getFullYear();
                     if(notNext){
-                        allowed = sched.isEditable;
+                        allowed = +(sched.isEditable);
                         schedule = sched;
                     }
                 }

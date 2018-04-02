@@ -228,7 +228,7 @@ class ContentForm extends React.Component {
                         <Tabs.TabPane tab="Плановые приемы"
                                   key="1">
                         {this.renderTpBlock(
-                            'reception',
+                            'call',
                             this.props.timeSetReception,
                             getFieldDecorator
                         )}
@@ -246,7 +246,7 @@ class ContentForm extends React.Component {
                                 </Select>
                             )}
                         </FormItem>
-                        <Button onClick={(e) => this.addTp('reception', e)}
+                        <Button onClick={(e) => this.addTp('call', e)}
                                 btnText='Добавить интервал'
                                 iconSize={30}
                                 size='file'
@@ -266,12 +266,12 @@ class ContentForm extends React.Component {
                     <Tabs.TabPane tab="Экстренные вызовы"
                                   key="2">
                         {this.renderTpBlock(
-                            'call',
+                            'reception',
                             this.props.timeSetCall,
                             getFieldDecorator
                         )}
                         <Button className='mb-1r'
-                                onClick={(e) => this.addTp('call', e)}
+                                onClick={(e) => this.addTp('reception', e)}
                                 btnText='Добавить интервал'
                                 iconSize={30}
                                 size='file'
