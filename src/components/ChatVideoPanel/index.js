@@ -8,6 +8,11 @@ import './style.css'
 import '../../icon/style.css'
 
 class ChatVideoPanel extends React.Component{
+
+    checkTimeFormat = (number) => {
+        return (''+number).length < 2 ? '0'+number : number;
+    }
+
     render(){
         const { duration, isCalling} = this.props;
 
@@ -47,6 +52,7 @@ class ChatVideoPanel extends React.Component{
                             type='no-brd'
                             icon='plus'
                             iconSize={16}
+                            onClick={this.props.onPlus}
                         />
                         <Button
                             btnText=''
@@ -54,6 +60,7 @@ class ChatVideoPanel extends React.Component{
                             type='no-brd'
                             icon='chat1'
                             iconSize={16}
+                            onClick={this.props.onChat}
                         />
                     </div>
                 </Hoc>
@@ -80,6 +87,7 @@ class ChatVideoPanel extends React.Component{
                             type='no-brd'
                             icon='chat1'
                             iconSize={16}
+                            onClick={this.props.onChat}
                         />
                     </div>
                 </Hoc>
@@ -90,17 +98,25 @@ class ChatVideoPanel extends React.Component{
 }
 
 ChatVideoPanel.propTypes = {
-    duration: PropTypes.string,
+    sec: PropTypes.number,
+    min: PropTypes.number,
+    hour: PropTypes.number,
     isCalling: PropTypes.bool,
     onStop: PropTypes.func,
     onCall: PropTypes.func,
+    onPlus: PropTypes.func,
+    onChat: PropTypes.func,
 };
 
 ChatVideoPanel.defaultProps = {
-    duration: '',
+    sec: 0,
+    min: 0,
+    hour: 0,
     isCalling: false,
     onStop: () => {},
     onCall: () => {},
+    onPlus: () => {},
+    onChat: () => {},
 };
 
 export default ChatVideoPanel
