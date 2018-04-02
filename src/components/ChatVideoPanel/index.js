@@ -14,7 +14,7 @@ class ChatVideoPanel extends React.Component{
     }
 
     render(){
-        const { duration, isCalling} = this.props;
+        const { duration, isCalling, sec, min, hour} = this.props;
 
 
         return (
@@ -23,7 +23,7 @@ class ChatVideoPanel extends React.Component{
                 {isCalling ? 
                 <Hoc>
                     <div className="message__panel-duration">
-                        {duration}
+                        {this.checkTimeFormat(hour)} : {this.checkTimeFormat(min)} : {this.checkTimeFormat(sec)}
                     </div>
                     <div className="message__panel-btns">
                         <Button
