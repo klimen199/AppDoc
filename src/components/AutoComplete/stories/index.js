@@ -9,7 +9,8 @@ storiesOf('AutoComplete', module)
     .add('Search', () => (
         <div>
            <AutoComplete
-		      data={patientsArr}
+              data={patientsArr}
+              onAdd = {(id) => console.log(id)}
 		    />
         </div>
     ))

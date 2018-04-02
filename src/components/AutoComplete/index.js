@@ -21,14 +21,18 @@ class AutoComplete extends React.Component{
         this.setState(prev => ({onFocus: isFocused}))
     };
 
+    searchHandler = () => {
+
+    }
 
 
     patientsRender = (dataArr) => {
         let patientsArr = [];
 
         dataArr.map((item, index) => {
-            patientsArr.push(<AddNewPatientItem onClick={() => this.focusHandler(false)} {...item} 
-                                                onAdd={this.props.onAdd} 
+            patientsArr.push(<AddNewPatientItem {...item} 
+                                                isSearchItem={true}
+                                                onAdd = {(id) => {this.props.onAdd(id); this.focusHandler(false)}}
                                                 key={item.id + ''+index}/>)
         });
 
@@ -43,13 +47,12 @@ class AutoComplete extends React.Component{
 
         return (
             <div className={rootClass} 
-                onBlur={() => this.focusHandler(false)}
-                onFocus={() => this.focusHandler(true)}
+                onFocus={(e) => console.log(e.target)}
             >
                 <div className='auto__complete-search'>
                     <Input 
                         placeholder='Поиск'
-                        
+                        onChange={this.searchHandler}
                        
                     />
                 </div>
