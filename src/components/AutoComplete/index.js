@@ -6,6 +6,7 @@ import ScrollArea from 'react-scrollbar'
 import AddNewPatientItem from '../AddNewPatientItem'
 import Input from '../Input'
 import Icon from '../Icon'
+import {search} from '../../helpers/searching'
 import './style.css'
 
 class AutoComplete extends React.Component{
@@ -21,49 +22,16 @@ class AutoComplete extends React.Component{
     }
 
     searchHandler = (e) => {
-        let search = () => {
-            this.setState({inputFocus: true});
-            let str = (e.target.value).toLowerCase();
-            let newArr = this.props.data.filter(elem => {
-                console.log(str.split(' ').length > 1 )
-                return str.split(' ').length === 1 
-                    ? search1word(elem, str)
-                    : searchSeveralWords(elem, str);
-                
-            })
-    
-            this.setState({searchRes: newArr})
-
-            function search1word(elem, str){
-                let fioArr = elem.name.toLowerCase().split(' ');
-                for (let i =0, len = fioArr.length; i < len; i++){
-                    if(fioArr[i].indexOf(str) === 0){
-                        return true;
-                    }
-                }
-            }
-            function searchSeveralWords(elem, str){
-                let searchArr = str.split(' ');
-                for(let j = 0, len = searchArr.length; j < len; j++){
-                    if (!search1word(elem, searchArr[j])){
-                        return false;
-                    }
-                    else if(j == len - 1) return true;
-                }
-                
-            }
-        }
 
         e.target.value.length > 0 
-            ? search() 
+            ? (this.setState({
+                inputFocus: true, 
+                searchRes: search(e.target.value, this.props.data),
+            }))
             : this.setState({
                 inputFocus: false,
                 searchRes: this.props.data,
             });
-        
-       
-
-        
     }
 
 
