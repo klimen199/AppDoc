@@ -23,6 +23,12 @@ class AutoComplete extends React.Component{
         this.input;
     }
 
+    focusHandler = (e) => {
+        this.setState({
+            isVisible: false,
+        });
+    };
+
     searchHandler = (e) => {
 
         e.target.value.length > 0 
@@ -68,10 +74,12 @@ class AutoComplete extends React.Component{
         const { data, collapsed} = this.props;
         const rootClass = cn('auto__complete');
         const resultClass = (this.state.isVisible)? 'auto__complete-result auto__complete-result-focus' : 'auto__complete-result';
+        const overlayClass = (this.state.isVisible)? 'auto__complete-overlay auto__complete-overlay-focus' : 'auto__complete-overlay';
 
 
         return (
             <div className={rootClass}>
+                <div className={overlayClass} onClick={() => this.focusHandler(false)}></div>
                 <div className='auto__complete-search'>
                     <Input 
                         placeholder='Поиск'
