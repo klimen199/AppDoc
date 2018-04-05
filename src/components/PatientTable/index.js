@@ -20,30 +20,6 @@ class PatientTable extends React.Component{
     onInputChange = (e) => {
         this.setState({ searchText: e.target.value });
     }
-    /*onSearch = () => {
-        const { searchText } = this.state;
-        console.log(searchText)
-        const reg = new RegExp(searchText, 'gi');
-        this.setState({
-            filtered: !!searchText,
-            patientArr: this.props.data.map((record) => {
-                const match = record.name.match(reg);
-                if (!match) {
-                    return null;
-                }
-                return {
-                    ...record,
-                    name: (
-                    <span>
-                        {record.name.split(reg).map((text, i) => (
-                            i > 0 ? [<span className="highlight">{match[0]}</span>, text] : text
-                        ))}
-                    </span>
-                ),
-                };
-            }).filter(record => !!record),
-        });
-    }*/
 
     patinetRender = (dataArr) => {
         let patientArr = [];

@@ -24,7 +24,8 @@ class ContentForm extends React.Component {
     };
 
     componentWillReceiveProps(nextProps){
-        nextProps.visible == false ? this.setState({message: ''}) : null;
+        nextProps.visible == false ? (this.setState({message: ''}), this.props.form.resetFields()) : null;
+
     }
 
     render() {

@@ -71,7 +71,7 @@ class PatientTableItem extends React.Component{
                         icon='empty'
                         iconSize={24}
                         title='Удалить пациента'
-                        onClick = {() => this.props.onDelete(this.props.id_p)}
+                        onClick = {() => this.props.onDelete(this.props.id)}
                     />
                 </div>
                 <NewMessageModal 
@@ -91,6 +91,7 @@ class PatientTableItem extends React.Component{
                     }}
                     onCancel={() => this.setModal1Visible(false)}
                     userName={name}
+                    id={id}
                     date={new Date(2018,1,4,8,10)}
                 />
             </div>
@@ -102,8 +103,6 @@ PatientTableItem.propTypes = {
     id: PropTypes.number,
     img: PropTypes.string,
     name: PropTypes.string,
-    date: PropTypes.string,
-    time: PropTypes.string,
 
     onNewVisit: PropTypes.func,
     onNewMessage: PropTypes.func,
@@ -116,8 +115,6 @@ PatientTableItem.defaultProps = {
     img: '',
     name: '',
     size: 'small',
-    date: '01.01.2018',
-    time: '00:00',
 
     onNewVisit: () => {},
     onNewMessage: () => {},
