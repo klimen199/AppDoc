@@ -13,6 +13,8 @@ class AutoComplete extends React.Component{
     constructor(props){
         super(props);
         this.state ={
+            isVisible: false,
+
             inputFocus: false,
             itemFocus: false,
             
@@ -25,13 +27,26 @@ class AutoComplete extends React.Component{
 
         e.target.value.length > 0 
             ? (this.setState({
-                inputFocus: true, 
+                isVisible: true, 
                 searchRes: search(e.target.value, this.props.data),
             }))
             : this.setState({
-                inputFocus: false,
+                isVisible: false,
                 searchRes: this.props.data,
             });
+    }
+
+    onAddHandler = (id) => {
+        let user;
+        this.state.searchRes.some((el, i) => {
+            (el.id === id) ? user = el : null;
+            return el.id === id;
+        })
+
+        this.input.inp.input.value = user.name;
+        this.input.setFocus(true);
+        this.props.onAdd(id);
+        this.setState({isVisible: false})
     }
 
 
@@ -41,7 +56,7 @@ class AutoComplete extends React.Component{
         dataArr.map((item, index) => {
             patientsArr.push(<AddNewPatientItem {...item} 
                                                 isSearchItem={true}
-                                                onAdd = {(id) => {this.props.onAdd(id)}}
+                                                onAdd = {(id) => {this.onAddHandler(id)}}
                                                 key={item.id + ''+index}/>)
         });
 
@@ -52,9 +67,8 @@ class AutoComplete extends React.Component{
         
         const { data, collapsed} = this.props;
         const rootClass = cn('auto__complete');
-        const resultClass = (this.state.itemFocus || this.state.inputFocus)? 'auto__complete-result auto__complete-result-focus' : 'auto__complete-result';
+        const resultClass = (this.state.isVisible)? 'auto__complete-result auto__complete-result-focus' : 'auto__complete-result';
 
-        console.log(this.state.inputFocus, this.state.itemFocus)
 
         return (
             <div className={rootClass}>
@@ -62,29 +76,11 @@ class AutoComplete extends React.Component{
                     <Input 
                         placeholder='Поиск'
                         onChange={(e) => this.searchHandler(e)}
-                        onBlur={()=> {
-                            console.log('input blur')
-                            //this.setState({inputFocus: false})
-                        }}
                         ref = {inp => {this.input = inp}}
-                       
                     />
                 </div>
-                <div className={resultClass}
-
-                    
-                    onBlur={()=> {
-                        console.log('items blur')
-                        this.setState({itemFocus: false})
-                    }}
-                    onFocus={() => {
-                        console.log('items focus')
-                        this.setState({itemFocus: true})
-                    }}
-                >
-                    <div className='auto__complete-title' onClick={() => {
-                            this.input.setFocus(true)
-                        }}>
+                <div className={resultClass}>
+                    <div className='auto__complete-title'>
                         Результаты поиска 
                         <span className='auto__complete-count'>{this.state.searchRes.length}</span>
                     </div>
