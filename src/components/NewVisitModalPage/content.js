@@ -19,7 +19,7 @@ class ContentForm extends React.Component {
     }
 
     componentWillReceiveProps(nextProps){
-        nextProps.visible == false ? this.setState({message: ''}) : null;
+        nextProps.visible == false ? (this.setState({message: ''}), this.props.form.resetFields()) : null;
     }
 
     handleSubmit = (e) => {
@@ -32,8 +32,8 @@ class ContentForm extends React.Component {
                 const dateMoment = moment(date, "DD:MM:YYYY HH:mm");        
 
                 let response = {
-                    name: values.name,
-                    message: this.state.message,
+                    id: this.props.id,
+                    comment: this.state.message,
                     date: moment(date, "DD:MM:YYYY HH:mm").unix(),
                     type: values.radio ,
                 };
@@ -51,21 +51,21 @@ class ContentForm extends React.Component {
             <Form onSubmit={this.handleSubmit}
                   className="NewVisitModal">
 
-                <FormItem>
+               {/* <FormItem>
                     {getFieldDecorator('name',{
                         initialValue: userName,
                         rules: [{
                             required: true, message: 'Ввведите имя',
                         }],
-                    })(
-                        <Input addonBefore="ФИО"/>
-                    )}
-                </FormItem>
+                    })(*/}
+                        <Input addonBefore="ФИО" value={userName} readOnly/>
+                    {/*})}
+                </FormItem>*/}
 
                 <div className='flex-row'>
                     <FormItem>
                         {getFieldDecorator('day', {
-                            initialValue: moment(defaultDate),
+                            
                             rules: [{
                                 required: true, message: 'Введите дату',
                             }],
