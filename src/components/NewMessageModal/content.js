@@ -16,9 +16,11 @@ class ContentForm extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         let response = {
-            ...this.props.form.getFieldsValue(),
+            file: this.props.form.getFieldValue('file') 
+                ? this.props.form.getFieldValue('file').fileList 
+                : [],
             message: this.state.message,
-            user: this.props.userName,
+            to: this.props.id,
         };
         this.props.onSend(response)
     };
@@ -26,6 +28,10 @@ class ContentForm extends React.Component {
     componentWillReceiveProps(nextProps){
         nextProps.visible == false ? (this.setState({message: ''}), this.props.form.resetFields()) : null;
 
+    }
+
+    shouldComponentUpdate(nextProps){
+        return nextProps.visible
     }
 
     render() {

@@ -44,6 +44,7 @@ class Step2_From extends React.Component{
                     ...values,
                     ...this.state,
                 };
+
                 this.props.onSubmit(toSubmit);
                 this.props.onNext();
             }
@@ -119,10 +120,7 @@ class Step2_From extends React.Component{
                     )}
                 </FormItem>
                 <FormItem>
-                    {getFieldDecorator('academicdegreedoc',{
-                        valuePropName: 'fileList',
-                        getValueFromEvent: this.normFile,
-                    })(
+                    {getFieldDecorator('academicdegreedoc')(
                         <Upload 
                             text="Прикрепить документ, подтверждающий ученую степень"/>
                     )}
@@ -138,10 +136,7 @@ class Step2_From extends React.Component{
                     )}
                 </FormItem>
                 <FormItem>
-                    {getFieldDecorator('academicstatusdoc',{
-                        valuePropName: 'fileList',
-                        getValueFromEvent: this.normFile,
-                    })(
+                    {getFieldDecorator('academicstatusdoc')(
                         <Upload text="Прикрепить документ, подтверждающий ученое звание"/>
                     )}
                 </FormItem>
