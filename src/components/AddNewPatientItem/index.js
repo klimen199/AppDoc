@@ -17,11 +17,11 @@ class AddNewPatientItem extends React.Component{
     }
 
     render(){
-        const { name, age, img, online } = this.props;
+        const { name, age, img, online, isSearchItem} = this.props;
         const rootClass = cn('new-patient-item');
 
         return (
-            <div className='new-patient-item'>
+            <div className='new-patient-item' onClick={isSearchItem ? this.onAddHandler : () => {}}>
                 <div className='new-patient-avatar'>
                     <ProfileAvatar owner="patient" online={online} img={img} size='small'/>
                 </div>
@@ -29,16 +29,18 @@ class AddNewPatientItem extends React.Component{
                     <div className='new-patient-name'>{name}</div>
                     <div className='new-patient-age'>{age} лет</div>
                 </div>
-                <div className='new-patient-btn'>
-                    <Button
-                        btnText=''
-                        onClick={(e) => this.onAddHandler(e)}
-                        size='file'
-                        type='file'
-                        icon='add-button'
-                        svg
-                    />
-                </div>
+                {
+                    !isSearchItem && <div className='new-patient-btn'>
+                        <Button
+                            btnText=''
+                            onClick={(e) => this.onAddHandler(e)}
+                            size='file'
+                            type='file'
+                            icon='add-button'
+                            svg
+                        />
+                    </div>
+                }
             </div>
         )
     }
@@ -50,6 +52,7 @@ AddNewPatientItem.propTypes = {
     age: PropTypes.string,
     img: PropTypes.string,
     online: PropTypes.bool,
+    isSearchItem: PropTypes.bool,
     onAdd: PropTypes.func,
 };
 
@@ -59,6 +62,7 @@ AddNewPatientItem.defaultProps = {
     age: '',
     online: false,
     img: '',
+    isSearchItem: false,
     onAdd: () => {},
 };
 
