@@ -6,19 +6,26 @@ import Card from '../Card'
 import Button from '../Button'
 import Input from '../Input'
 import ScrollArea from 'react-scrollbar'
+import {search} from '../../helpers/searching'
 import './style.css'
 import '../../icon/style.css'
 
 
 class PatientTable extends React.Component{
     state = {
-        patientArr: [],
-        searchText: '',
+        searchRes: this.props.data,
         filtered: false,
     };
 
     onInputChange = (e) => {
-        this.setState({ searchText: e.target.value });
+
+        e.target.value.length > 0 
+            ? (this.setState({
+                searchRes: search(e.target.value, this.props.data),
+            }))
+            : this.setState({
+                searchRes: this.props.data,
+            });
     }
 
     patinetRender = (dataArr) => {
@@ -60,15 +67,13 @@ class PatientTable extends React.Component{
                             </div>
                             <div className="flex-col ico-btn">
                                 <Input.Search
-                                    ref={ele => this.searchInput = ele}
                                     placeholder="Поиск..."
-                                    value={this.state.searchText}
                                     onChange={this.onInputChange}
                                     onSearch={e => this.props.onSearch(e)}
                                 />
                             </div>
                         </div>
-                        {this.patinetRender(this.props.data)}
+                        {this.patinetRender(this.state.searchRes)}
                     </ScrollArea>
                   </Card>
             </div>
