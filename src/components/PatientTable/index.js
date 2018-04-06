@@ -17,6 +17,14 @@ class PatientTable extends React.Component{
         filtered: false,
     };
 
+    
+
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            searchRes: nextProps.data,
+        })
+    }
+
     onInputChange = (e) => {
 
         e.target.value.length > 0 

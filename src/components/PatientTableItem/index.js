@@ -27,6 +27,7 @@ class PatientTableItem extends React.Component{
         this.setState({ modal2Visible });
     }
 
+
     render(){
         const { id, name, age, size, time, date, online, avatar, onGoto, dateend, datestart} = this.props;
         const rootClass = cn('patient-item');

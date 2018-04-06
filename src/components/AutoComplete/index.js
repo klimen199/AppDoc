@@ -38,7 +38,7 @@ class AutoComplete extends React.Component{
             }))
             : this.setState({
                 isVisible: false,
-                searchRes: this.props.data,
+                searchRes: [],
             });
     }
 
