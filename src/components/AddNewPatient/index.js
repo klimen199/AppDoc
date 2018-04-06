@@ -17,6 +17,7 @@ class AddNewPatient extends React.Component{
         this.state = {
             patients: props.data,
         }
+        this.inp;
     }
     
 
@@ -32,9 +33,13 @@ class AddNewPatient extends React.Component{
         return patientsArr;
     };
 
+    componentWillReceiveProps(nextProps){
+        (nextProps.visible === false && this.inp) ? this.inp.input.input.value = '' : null;
+    }
 
 
     render(){
+        this.inp && console.log(this.inp.input.input.value)
 
         const {visible, onCancel} = this.props;
 
@@ -47,7 +52,8 @@ class AddNewPatient extends React.Component{
                 <div className='new-patient'>
                     <div className='new-patient-search'>
                         <Input.Search placeholder="Введите ФИО пациента" 
-                                        onSearch={value => this.props.onSearch(value)}/>
+                                    ref={inp => this.inp = inp}
+                                    onSearch={value => this.props.onSearch(value)}/>
                     </div>
                     <div className='new-patient-title'>Результаты поиска</div>
                     <ScrollArea
