@@ -8,18 +8,16 @@ import './styles.css'
 
 class Upload extends React.Component{
 
-    handleChange = ({fileList}) => {
-        this.props.onChange({fileList})
-    };
-
     render(){
         const {className, text} = this.props;
         const clName = cn("uploadContent", className);
 
+
         return (
             <AntUpload className={clName}
+                       fileList = {this.props.value ? this.props.value.fileList : []}
                        listType="picture"
-                       onChange={this.handleChange}>
+                       onChange={this.props.onChange}>
                 <Button btnText={text}
                         size='upload'
                         type='upload'
