@@ -33,6 +33,7 @@ class PatientTable extends React.Component{
 
         dataArr.map((item,index) => {
             patientArr.push(<PatientTableItem key={index} 
+                                            onGoto={this.props.onGoto}
                                             onDelete={this.props.onDelete} 
                                             onNewVisit={this.props.onNewVisit}
                                             onNewMessage={this.props.onNewMessage}
@@ -85,12 +86,14 @@ PatientTable.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
     onAdd: PropTypes.func,
     onSearch: PropTypes.func,
+    onGoto: PropTypes.func,
 };
 
 PatientTable.defaultProps = {
     data: [],
     onAdd: () => {},
     onSearch: () => {},
+    onGoto: () => {},
 };
 
 export default PatientTable

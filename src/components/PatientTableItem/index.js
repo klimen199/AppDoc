@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import cn from 'classnames'
+import moment from 'moment'
 
 import Button from '../Button'
 import Rate from '../Rate'
@@ -27,12 +28,12 @@ class PatientTableItem extends React.Component{
     }
 
     render(){
-        const { id, name, age, size, time, date, online, img, onGoto} = this.props;
+        const { id, name, age, size, time, date, online, avatar, onGoto, dateend, datestart} = this.props;
         const rootClass = cn('patient-item');
 
         return (
             <div className={rootClass}>
-                <div className="flex-col"><ProfileAvatar owner="patient" online={online} img={img} size={size}/></div>
+                <div className="flex-col"><ProfileAvatar owner="patient" online={online} img={avatar} size={size}/></div>
                 <div className="flex-col">
                     <div className="patient-item-name">
                         <div onClick={() => onGoto(id)} className='go-to'>{name}</div>
@@ -41,7 +42,13 @@ class PatientTableItem extends React.Component{
                 </div>
                 <div className="flex-col">
                     <div className="patient-item-title">Последний приём:</div>
-                    <div className="patient-item-time">{date} {time}</div>
+                    <div className="patient-item-time">
+                        {moment.unix(datestart).format('DD.MM.YYYY')} 
+                        <br/>
+                        {moment.unix(datestart).format('HH:mm')}
+                        -
+                        {moment.unix(dateend).format('HH:mm')}                        
+                    </div>
                 </div>
                 <div className="flex-col">
                     <Button onClick={() => this.setModal1Visible(true)}
@@ -101,7 +108,7 @@ class PatientTableItem extends React.Component{
 
 PatientTableItem.propTypes = {
     id: PropTypes.number,
-    img: PropTypes.string,
+    avatar: PropTypes.string,
     name: PropTypes.string,
 
     onNewVisit: PropTypes.func,
@@ -112,7 +119,7 @@ PatientTableItem.propTypes = {
 
 PatientTableItem.defaultProps = {
     id: 0,
-    img: '',
+    avatar: '',
     name: '',
     size: 'small',
 
