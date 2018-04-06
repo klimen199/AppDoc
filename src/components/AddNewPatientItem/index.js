@@ -17,13 +17,13 @@ class AddNewPatientItem extends React.Component{
     }
 
     render(){
-        const { name, age, img, online, isSearchItem} = this.props;
+        const { name, age, avatar, online, isSearchItem} = this.props;
         const rootClass = cn('new-patient-item');
 
         return (
             <div className='new-patient-item' onClick={isSearchItem ? this.onAddHandler : () => {}}>
                 <div className='new-patient-avatar'>
-                    <ProfileAvatar owner="patient" online={online} img={img} size='small'/>
+                    <ProfileAvatar owner="patient" online={online} img={avatar} size='small'/>
                 </div>
                 <div className='new-patient-info'>
                     <div className='new-patient-name'>{name}</div>
@@ -47,10 +47,10 @@ class AddNewPatientItem extends React.Component{
 }
 
 AddNewPatientItem.propTypes = {
-    id: PropTypes.number,
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     name: PropTypes.string,
-    age: PropTypes.string,
-    img: PropTypes.string,
+    age: PropTypes.number,
+    avatar: PropTypes.string,
     online: PropTypes.bool,
     isSearchItem: PropTypes.bool,
     onAdd: PropTypes.func,
@@ -61,7 +61,7 @@ AddNewPatientItem.defaultProps = {
     name: '',
     age: '',
     online: false,
-    img: '',
+    avatar: '',
     isSearchItem: false,
     onAdd: () => {},
 };
