@@ -161,7 +161,6 @@ class Step3 extends React.Component{
         const data = this.props.data;
         let result = {};
         for (let key in data){
-            console.log(key)
             result = (key.indexOf('educationsgroup')+1)
                 ? this.fillNewField(result,key)
                 : (key.indexOf('doc')+1 || key.indexOf('photos')+1 || key.indexOf('contract')+1) 
@@ -192,7 +191,6 @@ class Step3 extends React.Component{
                                 : [] 
                 : null;
         }*/
-        console.log(result)
         this.props.onFinish(result)
     };
 
