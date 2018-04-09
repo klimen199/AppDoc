@@ -28,7 +28,9 @@ class TableNoHeadItem extends React.Component{
             <div className='schedule'>
                 <ProfileAvatar owner="patient" online={online} img={img} size={size}/>
                 <div className="flex-col">
-                    <div className="patient-name"><div onClick={onGoto} className='go-to'>{name}</div></div>
+                    <div className="patient-name">
+                        <div onClick={() => onGoto(id)} className='go-to'>{name}</div>
+                    </div>
                     <div className="patient-info">{infoText}</div>
                 </div>
                 <div className="flex-col ml-a">
@@ -50,7 +52,7 @@ class TableNoHeadItem extends React.Component{
 }
 
 TableNoHeadItem.propTypes = {
-    id_p: PropTypes.number,
+    id: PropTypes.number,
     img: PropTypes.string,
     name: PropTypes.string,
     type: PropTypes.string.isRequired,
@@ -66,7 +68,7 @@ TableNoHeadItem.propTypes = {
 };
 
 TableNoHeadItem.defaultProps = {
-    id_p: 0,
+    id: 0,
     img: '',
     name: '',
     title: 0,

@@ -15,7 +15,11 @@ class Content extends React.Component {
                 <div className='profile__doctor-information-block'>
                     <div className='profile__doctor-information-title'>Опыт работы</div>
                     <div className='profile__doctor-information-postitle'>Доктор принимает в клиниках:</div>
-                    {doctorMaps.map((item, index)=> <div onGoto={()=>console.log('click')} className='profile__doctor-information-text go-to' key={index+1}>{item.map}</div>)}
+                    {doctorMaps.map((item, index)=> (<div onClick={() => onGoto(item.map)} 
+                                                            className='profile__doctor-information-text go-to' 
+                                                            key={index+1}>
+                                                                {item.map}
+                                                            </div>))}
                 </div>
                 <div className='profile__doctor-information-block'>
                     <div className='profile__doctor-information-title'>Образование</div>

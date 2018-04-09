@@ -118,7 +118,38 @@ class ContentForm extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.onSave(this.props.form.getFieldsValue());
+        const {day, isDayOff, intervalTime, type, ...rest} = this.props.form.getFieldsValue();
+        let time = [],
+            emergencyTime = [];
+
+        for (let key in rest){
+            if(key.indexOf('callTp') + 1 ){
+                pushTimeToArr(time, rest[key]);
+            }
+            if(key.indexOf('receptionTp') + 1 ){
+                pushTimeToArr(emergencyTime, rest[key]);
+            }
+        }
+
+        function pushTimeToArr(array, time){
+            (time[0] && time[1]) ? 
+                array.push({
+                    start: (time[0]).unix(),
+                    end: (time[1]).unix(),
+                }) : null;
+        }
+
+        let obj = {
+            datestart: (day[0]).unix(),
+            dateend: (day[1]).unix(),
+            isDayOff, 
+            intervalTime, 
+            type,
+            intervalOb: time,
+            intervalEx: emergencyTime,
+        }
+
+        this.props.onSave(obj);
     };
 
     addTp = (tab, e) => {
@@ -197,23 +228,25 @@ class ContentForm extends React.Component {
                         <Tabs.TabPane tab="Плановые приемы"
                                   key="1">
                         {this.renderTpBlock(
-                            'reception',
+                            'call',
                             this.props.timeSetReception,
                             getFieldDecorator
                         )}
                         <FormItem>
-                            {getFieldDecorator('radio')(
-                                <Radio icons={['telephone', "video-camera", 'chat1']}/>
+                            {getFieldDecorator('type', {
+                                initialValue: 'chat'
+                            })(
+                                <Radio icons={['chat1','telephone', "video-camera"]}/>
                             )}
                         </FormItem>
                         <FormItem>
-                            {getFieldDecorator('durability')(
+                            {getFieldDecorator('intervalTime')(
                                 <Select placeholder="Длительность приема">
                                     {this.renderOptions(selOptions)}
                                 </Select>
                             )}
                         </FormItem>
-                        <Button onClick={(e) => this.addTp('reception', e)}
+                        <Button onClick={(e) => this.addTp('call', e)}
                                 btnText='Добавить интервал'
                                 iconSize={30}
                                 size='file'
@@ -221,7 +254,7 @@ class ContentForm extends React.Component {
                                 icon='add-button'
                                 svg/>
                         <FormItem>
-                            {getFieldDecorator('dayOff', {
+                            {getFieldDecorator('isDayOff', {
                                 valuePropName: 'checked',
                                 initialValue: false,
                             })(
@@ -233,12 +266,12 @@ class ContentForm extends React.Component {
                     <Tabs.TabPane tab="Экстренные вызовы"
                                   key="2">
                         {this.renderTpBlock(
-                            'call',
+                            'reception',
                             this.props.timeSetCall,
                             getFieldDecorator
                         )}
                         <Button className='mb-1r'
-                                onClick={(e) => this.addTp('call', e)}
+                                onClick={(e) => this.addTp('reception', e)}
                                 btnText='Добавить интервал'
                                 iconSize={30}
                                 size='file'

@@ -59,10 +59,7 @@ class Step2_educ extends React.Component {
                         )}
                     </FormItem>
                     <FormItem>
-                        {getFieldDecorator('educationsgroup1-diplomphoto-' + number,{
-                            valuePropName: 'fileList',
-                            getValueFromEvent: this.props.normFile,
-                        })(
+                        {getFieldDecorator('educationsgroup1-diplomphoto-' + number)(
                             <Upload
                                 text="Прикрепить диплом, свидетельство"/>
                         )}

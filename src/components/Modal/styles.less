@@ -1,44 +1,56 @@
 @import "../../styles/variables";
 
-.ant-modal-body{
-  padding: 0;
-  position: relative;
-}
-.ant-modal-title{
-  font-family: @f-r;
+.ant-modal-body {
+    padding: 0;
+    position: relative;
 }
 
-.ant{
-  &-modal{
+.ant-modal-title {
+    font-family: @f-r;
+}
 
-    &-header{
-      background-color: @blue;
-      color: @white;
+.ant-modal-mask {
+    z-index: 9999;
+}
 
-      .ant-modal-title{
-        color: @white;
-        font-size: 20px;
-      }
+.ant-modal-wrap {
+    z-index: 10000;
+}
+
+.ant {
+
+    &-modal {
+
+        &-header {
+            background-color: @blue;
+            color: @white;
+
+            .ant-modal-title {
+                color: @white;
+                font-size: 20px;
+            }
+        }
+
+        &-close {
+        	
+            &-x {
+                color: @white;
+            }
+        }
     }
 
-    &-close{
-      &-x{
-        color: @white;
-      }
-    }
-  }
+    &-modal.warning {
 
-  &-modal.warning{
-    .ant-modal-header{
-      background-color: @yllw;
-      color: @white;
-    }
+        .ant-modal-header {
+            background-color: @yllw;
+            color: @white;
+        }
 
-    .icon{
-      position: absolute;
-      color: @white;
-      top: -40px;
-      right: 35px;
+        .icon {
+            position: absolute;
+            color: @white;
+            top: -40px;
+            right: 35px;
+        }
     }
-  }
 }

@@ -209,7 +209,7 @@ class DayColumn extends React.Component {
       let continuesPrior = startsBefore(start, min)
       let continuesAfter = startsAfter(end, max)
 
-      let title = get(event, titleAccessor)
+      let fio = get(event, 'fio')
       let label
       if (_continuesPrior && _continuesAfter) {
         label = messages.allDay
@@ -241,9 +241,9 @@ class DayColumn extends React.Component {
               ...xStyle,
               top: `${top}%`,
               height: `${height}%`,
-              [isRtl ? 'right' : 'left']: `${Math.max(0, xOffset)}%`,
+              /*[isRtl ? 'right' : 'left']: `${Math.max(0, xOffset)}%`,*/
             }}
-            title={(typeof label === 'string' ? label + ': ' : '') + title}
+            title={(typeof label === 'string' ? label + ': ' : '') + fio}
             onClick={e => this.onEventClickHandler(event, e)}
             onDoubleClick={e => this._doubleClick(event, e)}
             className={cn('rbc-event', className, {
@@ -259,9 +259,9 @@ class DayColumn extends React.Component {
 */}
             <div className="rbc-event-content">
               {EventComponent ? (
-                <EventComponent event={event} title={title} />
+                <EventComponent event={event} title={fio} />
               ) : (
-                title
+                fio
               )}
             </div>
           </div>
