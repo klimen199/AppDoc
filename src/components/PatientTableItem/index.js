@@ -31,7 +31,7 @@ class PatientTableItem extends React.Component{
     render(){
         const { id, name, age, size, time, date, online, avatar, onGoto, dateend, datestart} = this.props;
         const rootClass = cn('patient-item');
-
+        
         return (
             <div className={rootClass}>
                 <div className="flex-col"><ProfileAvatar owner="patient" online={online} img={avatar} size={size}/></div>
@@ -86,10 +86,12 @@ class PatientTableItem extends React.Component{
                     visible={this.state.modal2Visible}
                     onSend={(a) => {
                         this.setModal2Visible(false);
+                        console.log(a)
                         this.props.onNewMessage(a)
                     }}
                     onCancel={() => this.setModal2Visible(false)}
                     userName={name}
+                    id={this.props.id}
                 />
                 <NewVisitModalPage 
                     visible={this.state.modal1Visible}
