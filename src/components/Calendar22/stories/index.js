@@ -51,8 +51,8 @@ const events1 = [
     {
         id: 12,
         fio: 'Иванова Александра',
-        start: new Date(2018, 0, 24, 8, 0, 0).getTime()/1000,
-        end: new Date(2018, 0, 24, 8, 10, 0).getTime()/1000,
+        start: new Date(2018, 0, 23, 8, 0, 0).getTime()/1000,
+        end: new Date(2018, 0, 23, 8, 10, 0).getTime()/1000,
         comment: 'Most important meal of the day',
     },
     {

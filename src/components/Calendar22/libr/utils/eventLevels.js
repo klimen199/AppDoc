@@ -30,7 +30,7 @@ export function eventSegments(
   return {
     event,
     span,
-    left: padding + 1,
+    //left: padding + 1,
     right: Math.max(padding + span, 1),
   }
 }
