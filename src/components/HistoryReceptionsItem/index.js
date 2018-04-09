@@ -12,9 +12,15 @@ import '../../icon/style.css'
 
 class HistoryReceptionsItem extends React.Component{
 
+    handleClick = (e) => {
+        e.stopPropagation();
+        e.nativeEvent.stopImmediatePropagation();
+      }
+
     render(){
         const {
             id,
+            id_user,
             type,
             size,
             name,
@@ -26,26 +32,44 @@ class HistoryReceptionsItem extends React.Component{
             comments,
             price,
             conclusion,
-            conclusionDownload,
-            title,
+            conclusionDownloadName,
+            conclusionDownloadLink,
             review,
             content,
             onGoto,
+            rating,
+            onGotoChat,
         } = this.props;
         const rootClass = cn('receptions',`${status}`);
         const statusClass = cn('patient-status', 'receptions-status',`${status}`);
 
+        const key_val = {
+            'chat': 'chat1',
+            'voice': 'telephone', 
+            'video': "video-camera",
+        }
+
 
         return (
-            <div className={rootClass}>
-                <div className="flex-col"><div className="patient-name"><div className='go-to' onClick={() => onGoto(id)}>{name}</div></div></div>
+            <div className={rootClass} 
+                onClick={(e) => {
+                    onGotoChat(id)
+                    this.handleClick(e);
+                }}>
+                <div className="flex-col"><div className="patient-name">
+                    <div className='go-to' 
+                        onClick={(e) => {                            
+                            onGoto(id_user);
+                            this.handleClick(e);
+                        }}>{name}</div></div>
+                </div>
                 <div className="flex-col">
                     <div className={statusClass}></div>
-                    <div className="patient-date">{moment(startDate).format('DD.MM.YYYY')}</div>
+                    <div className="patient-date">{moment(startDate*1000).format('DD.MM.YYYY')}</div>
                     <div className="patient-time">
-                        {moment(startDate).format('HH:mm')} - {moment(endDate).format('HH:mm')}
+                        {moment(startDate*1000).format('HH:mm')} - {moment(endDate*1000).format('HH:mm')}
                     </div>
-                    <div className="patient-icon"><Icon title={title} svg type={type} size={16} /></div>
+                    <div className="patient-icon"><Icon svg type={key_val[type]} size={16} /></div>
                 </div>
                 <div className="flex-col">
                     <div className="patient-diagnostic">{diagnostic}</div>
@@ -58,10 +82,12 @@ class HistoryReceptionsItem extends React.Component{
                 </div>
                 <div className="flex-col">
                     <div className="patient-conclusion">{conclusion}</div>
-                    <a href="#" download>{conclusionDownload}</a>
+                    <a href={conclusionDownloadLink} download onClick={this.handleClick}>
+                        {conclusionDownloadName}
+                    </a>
                 </div>
                 <div className="flex-col">
-                    <Rate defaultValue={4}/>
+                    <Rate defaultValue={rating} disabled/>
                     <div className="patient-review">{review}</div>
                 </div>
                 <div className="flex-col">
@@ -74,6 +100,7 @@ class HistoryReceptionsItem extends React.Component{
 
 HistoryReceptionsItem.propTypes = {
     id: PropTypes.number,
+    id_user: PropTypes.number,
     status: PropTypes.oneOf(['new', 'topical', 'completed', 'extra']),
     type: PropTypes.string.isRequired,
     diagnostic: PropTypes.string,
@@ -81,16 +108,17 @@ HistoryReceptionsItem.propTypes = {
     comments: PropTypes.string,
     price: PropTypes.string,
     conclusion: PropTypes.string,
-    conclusionDownload: PropTypes.string,
+    conclusionDownloadName: PropTypes.string,
     review: PropTypes.string,
     date: PropTypes.string,
     time: PropTypes.string,
-    title: PropTypes.string,
     onGoto: PropTypes.func,
+    rating: PropTypes.number,
 };
 
 HistoryReceptionsItem.defaultProps = {
     id: 0,
+    id_user: 0,
     size: 'small',
     status: 'new',
     name: '',
@@ -98,12 +126,13 @@ HistoryReceptionsItem.defaultProps = {
     comment: '-',
     price: '-',
     conclusion: '-',
-    conclusionDownload: '',
+    conclusionDownloadName: '',
+    conclusionDownloadLink: '#',
     review: '-',
     date: '-',
     time: '-',
-    title: '',
     onGoto: () => {},
+    rating: 0,
 };
 
 export default HistoryReceptionsItem

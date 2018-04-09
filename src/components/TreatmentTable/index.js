@@ -14,7 +14,11 @@ class TreatmentTable extends React.Component{
         let treatmentArr = [];
 
         dataArr.map((item, index) => {
-            treatmentArr.push(<TreatmentTableItem {...item} data={this.props.data} key={item.id + ''+index}/>)
+            treatmentArr.push(<TreatmentTableItem {...item} 
+                                    onGotoChat = {this.props.onGotoChat}
+                                    onGoto={this.props.onGoto} 
+                                    data={this.props.data} 
+                                    key={item.id + ''+index}/>)
         });
 
         return treatmentArr;
@@ -56,12 +60,14 @@ class TreatmentTable extends React.Component{
 
 TreatmentTable.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
-    redirect: PropTypes.func,
+    onGoto: PropTypes.func,
+    onGotoChat: PropTypes.func,
 };
 
 TreatmentTable.defaultProps = {
     data: [],
-    redirect: () => {},
+    onGoto: () => {},
+    onGotoChat: () => {},
 };
 
 export default TreatmentTable

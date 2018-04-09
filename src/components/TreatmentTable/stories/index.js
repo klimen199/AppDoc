@@ -8,6 +8,8 @@ import {treatmentArr} from './mock-data'
 storiesOf('TreatmentTable', module)
     .add('TreatmentTable', () => (
         <div>
-            <TreatmentTable data={treatmentArr} redirect={()=>console.log('go to new adress')}/>
+            <TreatmentTable data={treatmentArr} 
+                        onGoto={(id) => console.log(id)}
+                        onGotoChat = {(id) => console.log(id)}/>
         </div>
     ))

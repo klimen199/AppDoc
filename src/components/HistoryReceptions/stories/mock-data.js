@@ -5,6 +5,20 @@ const now = Date.now();
 
 export const historyArr = [
     {
+        id: 1,
+        id_user: 2223,
+        status: "new",
+        startDate: new Date(2017,9,14,15).getTime()/1000,
+        endDate: new Date(2017,9,14,16).getTime()/1000,
+        type: 'chat',
+        diagnostic: "Сахарный диабет",
+        comments: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+        price: "112 руб.",
+        conclusion: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit",
+        conclusionDownloadName: "Заключение 252525.pdf",
+        review: "Lorem ipsum dolor sit amet, consectetuer...",
+        rating: 3,
+    }, {
         status: "new",
         date: "15.09.2017",
         time: '15:00-16:00',
@@ -13,7 +27,7 @@ export const historyArr = [
         comments: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
         price: "112 руб.",
         conclusion: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit",
-        conclusionDownload: "Заключение 252525.pdf",
+        conclusionDownloadName: "Заключение 252525.pdf",
         review: "Lorem ipsum dolor sit amet, consectetuer...",
     }, {
         status: "new",
@@ -24,7 +38,7 @@ export const historyArr = [
         comments: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
         price: "112 руб.",
         conclusion: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit",
-        conclusionDownload: "Заключение 252525.pdf",
+        conclusionDownloadName: "Заключение 252525.pdf",
         review: "Lorem ipsum dolor sit amet, consectetuer...",
     }, {
         status: "new",
@@ -35,18 +49,7 @@ export const historyArr = [
         comments: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
         price: "112 руб.",
         conclusion: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit",
-        conclusionDownload: "Заключение 252525.pdf",
-        review: "Lorem ipsum dolor sit amet, consectetuer...",
-    }, {
-        status: "new",
-        date: "15.09.2017",
-        time: '15:00-16:00',
-        type: 'chat1',
-        diagnostic: "Сахарный диабет",
-        comments: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-        price: "112 руб.",
-        conclusion: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit",
-        conclusionDownload: "Заключение 252525.pdf",
+        conclusionDownloadName: "Заключение 252525.pdf",
         review: "Lorem ipsum dolor sit amet, consectetuer...",
     },{
         status: "new",
@@ -57,7 +60,7 @@ export const historyArr = [
         comments: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
         price: "112 руб.",
         conclusion: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit",
-        conclusionDownload: "Заключение 252525.pdf",
+        conclusionDownloadName: "Заключение 252525.pdf",
         review: "Lorem ipsum dolor sit amet, consectetuer...",
     },{
         status: "topical",
@@ -68,7 +71,7 @@ export const historyArr = [
         comments: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
         price: "112 руб.",
         conclusion: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit",
-        conclusionDownload: "Заключение 252525.pdf",
+        conclusionDownloadName: "Заключение 252525.pdf",
         review: "Lorem ipsum dolor sit amet, consectetuer...",
     },{
         status: "extra",
@@ -79,7 +82,7 @@ export const historyArr = [
         comments: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
         price: "112 руб.",
         conclusion: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit",
-        conclusionDownload: "Заключение 252525.pdf",
+        conclusionDownloadName: "Заключение 252525.pdf",
         review: "Lorem ipsum dolor sit amet, consectetuer...",
     },{
         status: "completed",
@@ -90,7 +93,7 @@ export const historyArr = [
         comments: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
         price: "112 руб.",
         conclusion: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit",
-        conclusionDownload: "Заключение 252525.pdf",
+        conclusionDownloadName: "Заключение 252525.pdf",
         review: "Lorem ipsum dolor sit amet, consectetuer...",
     },
 ];
