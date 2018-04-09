@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import cn from 'classnames'
+import moment from 'moment'
 
 import Button from '../Button'
 import Rate from '../Rate'
@@ -13,22 +14,67 @@ import '../../icon/style.css'
 
 class TreatmentTableItem extends React.Component{
 
-    render(){
-        const {id, type, name, size, time, date, diagnostic, comments, price, conclusion, conclusionDownload, title, review, content, onGoto} = this.props;
-        const rootClass = cn('treatment');
+    handleClick = (e) => {
+        e.stopPropagation();
+        e.nativeEvent.stopImmediatePropagation();
+      }
 
+    render(){
+        //const {id, type, name, size, time, date, diagnostic, comments, price, conclusion, conclusionDownload, title, review, content, onGoto} = this.props;
+        const {
+            id,
+            id_user,
+            type,
+            size,
+            name,
+            time,
+            startDate,
+            endDate,
+            status,
+            diagnostic,
+            comments,
+            price,
+            conclusion,
+            conclusionDownloadName,
+            conclusionDownloadLink,
+            review,
+            content,
+            onGoto,
+            rating,
+            onGotoChat,
+        } = this.props;
+        const rootClass = cn('treatment');
+        
+        const key_val = {
+            'chat': 'chat1',
+            'voice': 'telephone', 
+            'video': "video-camera",
+        }
 
         return (
-            <div className={rootClass}>
+            <div className={rootClass} 
+                    onClick={(e) => {
+                        onGotoChat(id)
+                        this.handleClick(e);
+                    }}
+            >
                 <div className="flex-col">
                     <div className="patient-name">
-                        <div onClick={() => onGoto(id)} className='go-to'>{name}</div>
+                        <div onClick={(e) => {
+                            onGoto(id_user)
+                            this.handleClick(e);
+                        }} className='go-to'>{name}</div>
                     </div>
                 </div>
                 <div className="flex-col">
-                    <div className="patient-date">{date}</div>
-                    <div className="patient-time">{time}</div>
-                    <div className="patient-icon"><Icon svg type={type} size={16} title={title} /></div>
+                    <div className="patient-date">
+                        {moment(startDate*1000).format('DD.MM.YYYY')}</div>
+                    <div className="patient-time">
+                    {moment(startDate*1000).format('HH:mm')} - {moment(endDate*1000).format('HH:mm')}
+                    </div>
+                    <div className="patient-icon">
+                        <Icon svg type={key_val[type]} size={16}/>
+                    </div>
                 </div>
                 <div className="flex-col">
                     <div className="patient-diagnostic">{diagnostic}</div>
@@ -41,10 +87,12 @@ class TreatmentTableItem extends React.Component{
                 </div>
                 <div className="flex-col">
                     <div className="patient-conclusion">{conclusion}</div>
-                    <a href="#" download>{conclusionDownload}</a>
+                    <a href={conclusionDownloadLink} download onClick={this.handleClick}>
+                        {conclusionDownloadName}
+                    </a>
                 </div>
                 <div className="flex-col">
-                    <Rate defaultValue={4}/>
+                    <Rate defaultValue={rating} disabled/>
                     <div className="patient-review">{review}</div>
                 </div>
                 <div className="flex-col">
@@ -67,7 +115,6 @@ TreatmentTableItem.propTypes = {
     review: PropTypes.string,
     date: PropTypes.string,
     time: PropTypes.string,
-    title: PropTypes.string,
     onGoto: PropTypes.func,
 };
 
@@ -81,9 +128,8 @@ TreatmentTableItem.defaultProps = {
     conclusion: '-',
     conclusionDownload: '',
     review: '-',
-    title: '',
-    date: '01.01.2018',
-    time: '00:00',
+    date: '',
+    time: '',
     onGoto: () => {},
 };
 
