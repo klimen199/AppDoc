@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import cn from 'classnames'
+import moment from 'moment'
 
 import Button from '../Button'
 import Rate from '../Rate'
@@ -14,13 +14,12 @@ class DiseasesTableItem extends React.Component{
 
     render(){
         const {date, diseases} = this.props;
-        const rootClass = cn('diseases');
 
 
         return (
-            <div className={rootClass}>
+            <div className='diseases'>
                 <div className="flex-col">
-                    <div className="patient-date">{date}</div>
+                    <div className="patient-date">{moment(+(date)*1000).format('DD.MM.YYYY')}</div>
                 </div>
                 <div className="flex-col">
                     <div className="patient-diseases">{diseases}</div>
@@ -32,12 +31,12 @@ class DiseasesTableItem extends React.Component{
 
 DiseasesTableItem.propTypes = {
     diseases: PropTypes.string,
-    date: PropTypes.string
+    date: PropTypes.number
 };
 
 DiseasesTableItem.defaultProps = {
     diseases: '',
-    date: '01.01.2018'
+    date: 0,
 };
 
 export default DiseasesTableItem
