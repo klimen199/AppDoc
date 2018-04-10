@@ -14,7 +14,7 @@ import '../../icon/style.css'
 class TreatmentTableItem extends React.Component{
 
     render(){
-        const {type, name, size, time, date, diagnostic, comments, price, conclusion, conclusionDownload, title, review, content, onGoto} = this.props;
+        const {type, files, name, size, time, date, diagnostic, comments, price, conclusion, conclusionDownload, title, review, content, onGoto} = this.props;
         const rootClass = cn('treatment');
 
 
@@ -44,7 +44,7 @@ class TreatmentTableItem extends React.Component{
                     <div className="patient-review">{review}</div>
                 </div>
                 <div className="flex-col">
-                    <PopoverFile data={this.props.data}></PopoverFile>
+                    <PopoverFile data={files}></PopoverFile>
                 </div>
             </div>
         )
@@ -64,6 +64,7 @@ TreatmentTableItem.propTypes = {
     time: PropTypes.string,
     title: PropTypes.string,
     onGoto: PropTypes.func,
+    files: PropTypes.array,
 };
 
 TreatmentTableItem.defaultProps = {
@@ -78,6 +79,7 @@ TreatmentTableItem.defaultProps = {
     title: '',
     date: '01.01.2018',
     time: '00:00',
+    files: [],
     onGoto: () => {},
 };
 

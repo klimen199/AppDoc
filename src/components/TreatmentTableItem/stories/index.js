@@ -5,6 +5,20 @@ import TreatmentTableItem from '../';
 
 import {filesArr} from './mock-data'
 
+const filse =[
+        {
+            btnText: "Файл1.doc",
+        },{
+            btnText: "Прикрепленный файл с длинным предлинным названием.doc",
+        },{
+            btnText: "52525.pdf",
+        },{
+            btnText: "Прикрепленный файл с длинным предлинным названием.doc",
+        },{
+            btnText: "52525.pdf",
+        },
+    ]
+
 storiesOf('TreatmentTableItem', module)
     .add('TreatmentTableItem', () => (
         <div>
@@ -19,8 +33,7 @@ storiesOf('TreatmentTableItem', module)
                 conclusion='Lorem ipsum dolor sit amet, consectetuer adipiscing elit'
                 conclusionDownload='Заключение 252525.pdf'
                 review='Lorem ipsum dolor sit amet, consectetuer...'
-
-                data={filesArr}
+                files={filse}
                 onGoto={()=>console.log('click')}
             />
         </div>
