@@ -62,7 +62,7 @@ class MainReview extends React.Component{
                                 size='small'/>
                 <div className="patient-info">
                     <div className="flex-row">
-                        <div className="patient-name">{author}</div>
+                        <div className="patient-name go-to">{author}</div>
                         <div className="patient-time">{time}</div>
                         <Rate disabled defaultValue={+rating}/>
                     </div>
