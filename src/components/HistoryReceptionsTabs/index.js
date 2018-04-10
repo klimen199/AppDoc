@@ -30,6 +30,9 @@ class HistoryReceptionsTabs extends React.Component {
     }
 
     // отзывы должны быть размещены в соответствии с: чем меньше id, тем раньше он был опубликован
+    /*shouldComponentUpdate(nextProps){
+        return nextProps.data.length !== this.props.data.length
+    }*/
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.data.length !== this.props.data.length) {
@@ -38,7 +41,7 @@ class HistoryReceptionsTabs extends React.Component {
                 periodReceptions: [],
                 limitedShow: true,
             }));
-            this.sortHistoryReceptions();
+            this.sortHistoryReceptions(nextProps.data);
         }
     }
 
@@ -119,12 +122,12 @@ class HistoryReceptionsTabs extends React.Component {
         return historyArr;
     };
 
-    sortHistoryReceptions =() => {
+    sortHistoryReceptions =(data = this.props.data) => {
         let topicalArr = [],
             completedArr = [],
             upcomingArr =[];
         const now = Date.now() /1000;
-        this.props.data.map((item) => {
+        data.map((item) => {
             switch (item.status){
                 case 'topical':
                     topicalArr.push(item);
