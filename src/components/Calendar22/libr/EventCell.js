@@ -67,7 +67,7 @@ class EventCell extends React.Component {
     return (
       <EventWrapper event={event}>
         <div
-          style={{ ...props.style, ...style }}
+          style={{ ...props.style, ...style, left: 0 }}
           className={cn('rbc-event', className, xClassName, {
             'rbc-selected': selected,
             'rbc-event-allday': isAllDayEvent,
