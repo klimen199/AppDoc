@@ -15,7 +15,12 @@ class TableNoHead extends React.Component{
         let scheduleArr = [];
 
         dataArr.map((item,index) => {
-            scheduleArr.push(<TableNoHeadItem {...item} key={'nogead-item'+index}/>)
+            scheduleArr.push(<TableNoHeadItem {...item} 
+                                    key={'nogead-item'+index}
+                                    onBegin={this.props.onBegin}
+                                    onCancel={this.props.onCancel}
+                                    onGoto={this.props.onGoto}
+            />)
         });
 
         return scheduleArr;
@@ -81,11 +86,17 @@ class TableNoHead extends React.Component{
 TableNoHead.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
     onAdd: PropTypes.func,
+    onBegin: PropTypes.func,
+    onCancel: PropTypes.func,
+    onGoto: PropTypes.func,
 };
 
 TableNoHead.defaultProps = {
     data: [],
     onAdd: () => {},
+    onBegin: () => {},
+    onCancel: () => {},
+    onGoto: () => {},
 };
 
 
