@@ -12,24 +12,22 @@ import Popover from '../Popover'
 
 import './style.css'
 import '../../icon/style.css'
+import {profileDoctor} from '../PersonalContactItem/mock-data'
+import PersonalInformation from "../PersonalInformation";
 
 class PersonalExperience extends React.Component{
 
     render(){
-        const {placeOfWord,  post, dateStart, thisTime, expWork} = this.props;
         const rootClass = cn('personal-experience-all');
         const Panel = Accordion.Panel;
 
-
         return (
+
             <div className={rootClass}>
                 <Accordion defaultActiveKey={['1']}>
                     <Panel header="Опыт работы" key="1">
-                        <PersonalExperienceItem 
-                            post={post}
-                            placeOfWord={placeOfWord}
-                            dateStart={dateStart}
-                            expWork={expWork}
+                        <PersonalExperienceItem
+                            profileDoctor={this.props.profileDoctor}
                         />
                     </Panel>
                 </Accordion>
@@ -39,17 +37,11 @@ class PersonalExperience extends React.Component{
 }
 
 PersonalExperience.propTypes = {
-    post: PropTypes.string,
-    placeOfWord: PropTypes.string,
-    dateStart: PropTypes.string,
-    expWork: PropTypes.string,
+    profileDoctor: PropTypes.object
 };
 
 PersonalExperience.defaultProps = {
-    post: '',
-    placeOfWord: '',
-    dateStart: '',
-    expWork: '',
+    profileDoctor: {}
 };
 
 
