@@ -53,6 +53,7 @@ class MainReview extends React.Component{
         const commentDisplay = this.state.showComment ? 'block' : 'none';
         const answAreaDisplay = this.state.showAnswerArea ? 'block' : 'none';
 
+        console.log(this.props)
         return (
             <div className='review-root'>
                 <div className='review'>
@@ -62,7 +63,11 @@ class MainReview extends React.Component{
                                 size='small'/>
                 <div className="patient-info">
                     <div className="flex-row">
-                        <div className="patient-name">{author}</div>
+                        <div className="patient-name"
+                            onClick={()=>this.props.onGoto(this.props.id_user)}
+                        >
+                            {author}
+                        </div>
                         <div className="patient-time">{time}</div>
                         <Rate disabled defaultValue={+rating}/>
                     </div>
@@ -76,7 +81,7 @@ class MainReview extends React.Component{
                         type='go'
                         icon='circle_arrow_right'
                         svg
-                        onClick={()=>{onTreatmentClick(this.props.id_zap)}}
+                        onClick={()=>this.props.onGotoChat(this.props.id_zap)}
                     />
                 </div>
                 <div className="review-answerBtn">
