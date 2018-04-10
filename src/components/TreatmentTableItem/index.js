@@ -20,7 +20,7 @@ class TreatmentTableItem extends React.Component{
       }
 
     render(){
-        const {type, files, name, size, time, date, diagnostic, comments, price, conclusion, conclusionDownloadLink, conclusionDownloadName, rating, title, review, content, onGoto,startDate, endDate} = this.props;
+        const {type, id, id_user, files, name, size, time, date, diagnostic, comments, price, conclusion, conclusionDownloadLink, conclusionDownloadName, rating, title, review, content, onGoto,startDate, endDate} = this.props;
         const rootClass = cn('treatment');
         const key_val = {
             'chat': 'chat1',
