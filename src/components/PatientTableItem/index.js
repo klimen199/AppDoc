@@ -101,8 +101,8 @@ class PatientTableItem extends React.Component{
                     }}
                     onCancel={() => this.setModal1Visible(false)}
                     userName={name}
+                    
                     id={id}
-                    date={new Date(2018,1,4,8,10)}
                 />
             </div>
         )

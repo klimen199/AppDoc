@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Review from '../Review'
 import Card from '../Card'
 import Icon from '../Icon'
-
+import ScrollArea from 'react-scrollbar'
 import './style.css'
 
 class Reviews extends React.Component{
@@ -32,9 +32,15 @@ class Reviews extends React.Component{
                                 <Icon type="chat" svg size={20}/> 
                                 <span>Все отзывы</span>
                             </a>}>
+                    <ScrollArea
+                            speed={1}
+                            className="reviews-list"
+                            contentClassName="content"
+                    >
                     {data.length ? 
                         this.reviewRender(data) 
                         : <div className='entry-list'>Отзывов нет</div>}
+                    </ScrollArea>
                 </Card>
         )
     }

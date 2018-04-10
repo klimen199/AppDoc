@@ -59,7 +59,7 @@ class PatientTable extends React.Component{
                 <Card title="Список пациентов" extra={<div className='patient-count'>{data.length}</div>}>
                     <ScrollArea
                             speed={1}
-                            className="scroll"
+                            className="patient-list"
                             contentClassName="content"
                     >
                         <div className="tableheader">
