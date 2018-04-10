@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import cn from 'classnames'
+import moment from 'moment'
 
 import ProfileAvatar from '../ProfileAvatar'
 import Card from '../Card'
@@ -42,7 +43,7 @@ class ProfilePatient extends React.Component{
 
                       <div className="patient-info">
                             <div className="patient-name">{secondname}<br/>{firstname} {patronymic}</div>
-                            <div className="patient__last-active">Последнее обращение: {lastDate} / {doctorType} {doctor}</div>
+                            <div className="patient__last-active">Последнее обращение: {moment((+lastDate)*1000).format('DD.MM.YYYY')} / {doctorType} {doctor}</div>
                             <div className="btn-row">
                                 <Button onClick={() => this.setModal1Visible(true)}
                                     btnText='записать на прием'
@@ -77,7 +78,7 @@ class ProfilePatient extends React.Component{
                       <div className="patient-info__more">
                             <div className="patient-row">
                                 <span className="title">Дата рождения:</span>
-                                <span className="text">{birthday}</span>
+                                <span className="text">{moment((+birthday)*1000).format('DD.MM.YYYY')}</span>
                             </div>
                             <div className="patient-row">
                                 <span className="title">Возраст:</span>
@@ -120,10 +121,10 @@ ProfilePatient.propTypes = {
     patronymic: PropTypes.string,
     img: PropTypes.string,
     status: PropTypes.string,
-    lastDate: PropTypes.string,
+    lastDate: PropTypes.number,
     doctorType: PropTypes.string,
     doctor: PropTypes.string,
-    birthday: PropTypes.string,
+    birthday: PropTypes.number,
     age: PropTypes.string,
     height: PropTypes.string,
     weight: PropTypes.string
@@ -135,10 +136,10 @@ ProfilePatient.defaultProps = {
     patronymic: '',
     img: '',
     status: '',
-    lastDate: '',
+    lastDate: 0,
     doctorType: '',
     doctor: '',
-    birthday: '',
+    birthday: 0,
     age: '',
     height: '',
     weight: ''
