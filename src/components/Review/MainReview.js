@@ -63,11 +63,12 @@ class MainReview extends React.Component{
                                 size='small'/>
                 <div className="patient-info">
                     <div className="flex-row">
-                        <div className="patient-name"
+                        <div className="patient-name go-to"
                             onClick={()=>this.props.onGoto(this.props.id_user)}
                         >
                             {author}
                         </div>
+
                         <div className="patient-time">{time}</div>
                         <Rate disabled defaultValue={+rating}/>
                     </div>
