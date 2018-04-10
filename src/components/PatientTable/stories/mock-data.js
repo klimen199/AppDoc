@@ -83,8 +83,7 @@ export const patientArr = [
         name: "Иванова А. К.",
         date: "15.09.2017",
         time: '15:00-16:00',
-    }
-=======
+    },
     {
         age:48,
         avatar:"http://178.172.235.105/media/img/zaglushka.jpg",
