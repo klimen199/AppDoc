@@ -24,6 +24,9 @@ class ContentForm extends React.Component{
         e.preventDefault();
         let response = {
             ...this.props.form.getFieldsValue(),
+            file: this.props.form.getFieldValue('file') 
+                ? this.props.form.getFieldValue('file').fileList 
+                : [],
             message: this.state.message,
         };
         this.props.onSave(response);
@@ -90,13 +93,18 @@ class ContentForm extends React.Component{
     }
 
     componentWillReceiveProps(nextProps){
-        nextProps.visible == false ? this.setState({message: ''}) : null;
+        nextProps.visible == false ? (this.setState({message: ''}), this.props.form.resetFields()) : null;
+
         if (nextProps.rangeSet.length !== this.props.rangeSet.length){
             this.setState({
                 dpNum: nextProps.rangeSet.length || 1,
                 rangeSet: nextProps.rangeSet || [],
             })
         }
+    }
+
+    shouldComponentUpdate(nextProps){
+        return nextProps.visible
     }
 
     componentDidUpdate(prevProps){
@@ -119,7 +127,8 @@ class ContentForm extends React.Component{
 
                 <FormItem>
                     {getFieldDecorator('file')(
-                        <Upload className="cancelVisitModal-upload" text="Прикрепить файл"/>
+                        <Upload className="cancelVisitModal-upload" 
+                                text="Прикрепить файл"/>
                     )}
                 </FormItem>
                 {this.renderDp(getFieldDecorator)}

@@ -12,7 +12,7 @@ import '../../icon/style.css'
 
 class ChatDialog extends React.Component{
     render(){
-        const { name, consultation, size, time, online, img, status, iconType} = this.props;
+        const { name, consultation, size, time, online, img, status, iconType, id} = this.props;
         const rootClass = cn('dialog-item',  `dialog-status-${status}`);
 
 
@@ -23,7 +23,7 @@ class ChatDialog extends React.Component{
                 </div>
                 <div className="flex-col">
                     <div className="dialog-item-name">
-                        <div className='go-to' onClick={this.props.onGoto}>{name}</div>
+                        <div className='go-to' onClick={() => this.props.onGoto(id)}>{name}</div>
                     </div>
                     <div className="dialog-item-consultation">{consultation}</div>
                 </div>
@@ -50,20 +50,24 @@ class ChatDialog extends React.Component{
 }
 
 ChatDialog.propTypes = {
+    id: PropTypes.number,
     img: PropTypes.string,
     name: PropTypes.string,
     status: PropTypes.oneOf(['extra', 'default', 'soon']),
     time: PropTypes.string,
-    iconType: PropTypes.string
+    iconType: PropTypes.string,
+    onGoto: PropTypes.func,
 };
 
 ChatDialog.defaultProps = {
+    id: 0,
     img: '',
     name: '',
     size: 'small',
     status: 'default',
     time: '00:00',
     iconType: 'chat1',
+    onGoto: () => {},
 };
 
 export default ChatDialog

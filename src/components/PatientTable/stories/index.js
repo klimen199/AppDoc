@@ -10,6 +10,7 @@ storiesOf('PatientTable', module)
         <div>
             <PatientTable data={patientArr} 
                         onAdd={() => console.log('ererre')}
+                        onGoto={(id) => console.log('goto', id)}
                         onSearch={(a) => console.log(a)}
                         onNewMessage={(obj) => console.log('e ',obj)}
                         onNewVisit={(obj) => console.log('e ',obj)}

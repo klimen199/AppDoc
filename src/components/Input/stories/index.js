@@ -14,7 +14,12 @@ storiesOf('Inputs', module)
     ))
     .add('Input', () => (
 		<div>
-			<Input addonAfter="After" addonBefore='Before'/>
+			<Input addonAfter="After" value='testestestes' addonBefore='Before'/>
 			<Input placeholder="Enter smth" />
 		</div>
+    ))
+    .add('Input2', () => (
+        <div>
+            <Input addonBefore="ФИО" value='asdasdad' readOnly/>
+        </div>
     ));

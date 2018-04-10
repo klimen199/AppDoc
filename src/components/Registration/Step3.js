@@ -134,6 +134,7 @@ class Step3 extends React.Component{
         let array = [];
         if (res[info[0]])
             array = [...res[info[0]]];
+
         array[+info[2]] = (info[1] === 'ucationyears' && data[name])
             ? {
                 ...array[+info[2]],
@@ -144,7 +145,11 @@ class Step3 extends React.Component{
             }
             : {
                 ...array[+info[2]],
-                [info[1]]: data[name],
+                [info[1]]: info[1].indexOf('photo')+1 
+                                ? data[name] 
+                                    ? data[name].fileList
+                                    : []
+                                : data[name],
             };
         return {
             ...res,
@@ -158,16 +163,34 @@ class Step3 extends React.Component{
         for (let key in data){
             result = (key.indexOf('educationsgroup')+1)
                 ? this.fillNewField(result,key)
-                : (key === 'workdate' || key === 'datebirth')
-                    ? {
-                        ...result,
-                        [key]: (data[key] instanceof moment) ? (data[key]).unix() : data[key],
-                    }
-                    : {
-                        ...result,
-                        [key]: data[key],
-                    };
+                : (key.indexOf('doc')+1 || key.indexOf('photos')+1 || key.indexOf('contract')+1) 
+                    ? data[key] 
+                        ? {
+                            ...result,
+                            [key]: data[key].fileList,
+                        }
+                        : {
+                            ...result,
+                            [key]: [],
+                        } 
+                    : (key === 'workdate' || key === 'datebirth')
+                        ? {
+                            ...result,
+                            [key]: (data[key] instanceof moment) ? (data[key]).unix() : data[key],
+                        }
+                        : {
+                            ...result,
+                            [key]: data[key],
+                        };
         }
+
+        /*for (let key in data){
+            (key.indexOf('doc')+1 || key.indexOf('photo')+1 || key.indexOf('contract')+1) 
+                ? data[key] = data[key] 
+                                ? data[key].fileList 
+                                : [] 
+                : null;
+        }*/
         this.props.onFinish(result)
     };
 

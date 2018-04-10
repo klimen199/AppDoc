@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import cn from 'classnames'
+import moment from 'moment'
 
 import Button from '../Button'
 import Rate from '../Rate'
@@ -26,20 +27,29 @@ class PatientTableItem extends React.Component{
         this.setState({ modal2Visible });
     }
 
-    render(){
-        const { name, age, size, time, date, online, img, onGoto} = this.props;
-        const rootClass = cn('patient-item');
 
+    render(){
+        const { id, name, age, size, time, date, online, avatar, onGoto, dateend, datestart} = this.props;
+        const rootClass = cn('patient-item');
+        
         return (
             <div className={rootClass}>
-                <div className="flex-col"><ProfileAvatar owner="patient" online={online} img={img} size={size}/></div>
+                <div className="flex-col"><ProfileAvatar owner="patient" online={online} img={avatar} size={size}/></div>
                 <div className="flex-col">
-                    <div className="patient-item-name"><div onClick={onGoto} className='go-to'>{name}</div></div>
+                    <div className="patient-item-name">
+                        <div onClick={() => onGoto(id)} className='go-to'>{name}</div>
+                    </div>
                     <div className="patient-item-age">{age} лет</div>
                 </div>
                 <div className="flex-col">
                     <div className="patient-item-title">Последний приём:</div>
-                    <div className="patient-item-time">{date} {time}</div>
+                    <div className="patient-item-time">
+                        {moment.unix(datestart).format('DD.MM.YYYY')} 
+                        <br/>
+                        {moment.unix(datestart).format('HH:mm')}
+                        -
+                        {moment.unix(dateend).format('HH:mm')}                        
+                    </div>
                 </div>
                 <div className="flex-col">
                     <Button onClick={() => this.setModal1Visible(true)}
@@ -69,17 +79,19 @@ class PatientTableItem extends React.Component{
                         icon='empty'
                         iconSize={24}
                         title='Удалить пациента'
-                        onClick = {() => this.props.onDelete(this.props.id_p)}
+                        onClick = {() => this.props.onDelete(this.props.id)}
                     />
                 </div>
                 <NewMessageModal 
                     visible={this.state.modal2Visible}
                     onSend={(a) => {
                         this.setModal2Visible(false);
+                        console.log(a)
                         this.props.onNewMessage(a)
                     }}
                     onCancel={() => this.setModal2Visible(false)}
                     userName={name}
+                    id={this.props.id}
                 />
                 <NewVisitModalPage 
                     visible={this.state.modal1Visible}
@@ -90,6 +102,7 @@ class PatientTableItem extends React.Component{
                     onCancel={() => this.setModal1Visible(false)}
                     userName={name}
                     
+                    id={id}
                 />
             </div>
         )
@@ -97,10 +110,9 @@ class PatientTableItem extends React.Component{
 }
 
 PatientTableItem.propTypes = {
-    img: PropTypes.string,
+    id: PropTypes.number,
+    avatar: PropTypes.string,
     name: PropTypes.string,
-    date: PropTypes.string,
-    time: PropTypes.string,
 
     onNewVisit: PropTypes.func,
     onNewMessage: PropTypes.func,
@@ -109,11 +121,10 @@ PatientTableItem.propTypes = {
 };
 
 PatientTableItem.defaultProps = {
-    img: '',
+    id: 0,
+    avatar: '',
     name: '',
     size: 'small',
-    date: '01.01.2018',
-    time: '00:00',
 
     onNewVisit: () => {},
     onNewMessage: () => {},

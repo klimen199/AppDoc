@@ -6,50 +6,42 @@ import Card from '../Card'
 import Button from '../Button'
 import Input from '../Input'
 import ScrollArea from 'react-scrollbar'
+import {search} from '../../helpers/searching'
 import './style.css'
 import '../../icon/style.css'
 
 
 class PatientTable extends React.Component{
     state = {
-        patientArr: [],
-        searchText: '',
+        searchRes: this.props.data,
         filtered: false,
     };
 
-    onInputChange = (e) => {
-        this.setState({ searchText: e.target.value });
-    }
-    /*onSearch = () => {
-        const { searchText } = this.state;
-        console.log(searchText)
-        const reg = new RegExp(searchText, 'gi');
+    
+
+    componentWillReceiveProps(nextProps){
         this.setState({
-            filtered: !!searchText,
-            patientArr: this.props.data.map((record) => {
-                const match = record.name.match(reg);
-                if (!match) {
-                    return null;
-                }
-                return {
-                    ...record,
-                    name: (
-                    <span>
-                        {record.name.split(reg).map((text, i) => (
-                            i > 0 ? [<span className="highlight">{match[0]}</span>, text] : text
-                        ))}
-                    </span>
-                ),
-                };
-            }).filter(record => !!record),
-        });
-    }*/
+            searchRes: nextProps.data,
+        })
+    }
+
+    onInputChange = (e) => {
+
+        e.target.value.length > 0 
+            ? (this.setState({
+                searchRes: search(e.target.value, this.props.data),
+            }))
+            : this.setState({
+                searchRes: this.props.data,
+            });
+    }
 
     patinetRender = (dataArr) => {
         let patientArr = [];
 
         dataArr.map((item,index) => {
             patientArr.push(<PatientTableItem key={index} 
+                                            onGoto={this.props.onGoto}
                                             onDelete={this.props.onDelete} 
                                             onNewVisit={this.props.onNewVisit}
                                             onNewMessage={this.props.onNewMessage}
@@ -84,15 +76,13 @@ class PatientTable extends React.Component{
                             </div>
                             <div className="flex-col ico-btn">
                                 <Input.Search
-                                    ref={ele => this.searchInput = ele}
                                     placeholder="Поиск..."
-                                    value={this.state.searchText}
                                     onChange={this.onInputChange}
                                     onSearch={e => this.props.onSearch(e)}
                                 />
                             </div>
                         </div>
-                        {this.patinetRender(this.props.data)}
+                        {this.patinetRender(this.state.searchRes)}
                     </ScrollArea>
                   </Card>
             </div>
@@ -104,12 +94,14 @@ PatientTable.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
     onAdd: PropTypes.func,
     onSearch: PropTypes.func,
+    onGoto: PropTypes.func,
 };
 
 PatientTable.defaultProps = {
     data: [],
     onAdd: () => {},
     onSearch: () => {},
+    onGoto: () => {},
 };
 
 export default PatientTable

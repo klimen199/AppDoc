@@ -30,6 +30,9 @@ class HistoryReceptionsTabs extends React.Component {
     }
 
     // отзывы должны быть размещены в соответствии с: чем меньше id, тем раньше он был опубликован
+    /*shouldComponentUpdate(nextProps){
+        return nextProps.data.length !== this.props.data.length
+    }*/
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.data.length !== this.props.data.length) {
@@ -38,7 +41,7 @@ class HistoryReceptionsTabs extends React.Component {
                 periodReceptions: [],
                 limitedShow: true,
             }));
-            this.sortHistoryReceptions();
+            this.sortHistoryReceptions(nextProps.data);
         }
     }
 
@@ -70,16 +73,26 @@ class HistoryReceptionsTabs extends React.Component {
         const [start, end] = period,
             currentTab = this.state.currentTab;
         let revArr = [];
+        
 
         let itemsToSort = currentTab === 'all'
             ? this.props.data
             : this.state[`${currentTab}Receptions`];
 
-        itemsToSort.map((item) => {
-            if (item.startDate > start && item.endDate < end)
-                revArr.push(item);
-        });
-        return revArr;
+            if (start && end){
+                const starttmp = start.unix(),
+                    endtmp = end.unix();
+                itemsToSort.map((item) => {
+                    if (item.startDate > starttmp && item.endDate < endtmp)
+                        revArr.push(item);
+                });
+
+                return revArr;
+            }
+            else {
+                return itemsToSort;
+            }
+        
     };
 
     dpHandler = (range) => {
@@ -99,19 +112,22 @@ class HistoryReceptionsTabs extends React.Component {
             ? this.state.periodReceptions : dataArr;
         arr.map((item, i) => {
             if (this.state.limit > i || !this.state.limitedShow) {
-                historyArr.push(<HistoryReceptionsItem {...item} key={'histRecept' + i}/>)
+                historyArr.push(<HistoryReceptionsItem {...item} 
+                                    onGotoChat = {this.props.onGotoChat}
+                                    onGoto={this.props.onGoto} 
+                                    key={'histRecept' + i}/>)
             }
         });
         historyArr.push(this.renderShowMoreBtn(arr));
         return historyArr;
     };
 
-    sortHistoryReceptions =() => {
+    sortHistoryReceptions =(data = this.props.data) => {
         let topicalArr = [],
             completedArr = [],
             upcomingArr =[];
-        const now = Date.now();
-        this.props.data.map((item) => {
+        const now = Date.now() /1000;
+        data.map((item) => {
             switch (item.status){
                 case 'topical':
                     topicalArr.push(item);
@@ -249,11 +265,15 @@ class HistoryReceptionsTabs extends React.Component {
 HistoryReceptionsTabs.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
     limit: PropTypes.number,
+    onGoto: PropTypes.func,
+    onGotoChat: PropTypes.func,
 };
 
 HistoryReceptionsTabs.defaultProps = {
     data: [],
     limit: 7,
+    onGoto: () => {},
+    onGotoChat: () => {},
 };
 
 export default HistoryReceptionsTabs

@@ -8,6 +8,9 @@ import {historyArr} from './mock-data'
 storiesOf('HistoryReceptionsTabs', module)
     .add('HistoryReceptionsTabs', () => (
         <div>
-            <HistoryReceptionsTabs data={historyArr}/>
+            <HistoryReceptionsTabs data={historyArr} 
+                                    onGoto={(id) => console.log(id)}
+                                    onGotoChat = {(id) => console.log(id)}
+            />
         </div>
     ))

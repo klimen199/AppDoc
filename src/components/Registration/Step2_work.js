@@ -59,10 +59,7 @@ class Step2_work extends React.Component {
                     </FormItem>
                 </div>
                 <FormItem>
-                    {getFieldDecorator('copycontract',{
-                        valuePropName: 'fileList',
-                        getValueFromEvent: this.props.normFile,
-                    })(
+                    {getFieldDecorator('copycontract')(
                         <Upload 
                             text="Прикрепить копию контракта"/>
                     )}

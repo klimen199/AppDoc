@@ -18,9 +18,10 @@ storiesOf('HistoryReceptionsItem', module)
                 comments='Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
                 price='112 руб.'
                 conclusion='Lorem ipsum dolor sit amet, consectetuer adipiscing elit'
-                conclusionDownload='Заключение 252525.pdf'
+                conclusionDownloadName='Заключение 252525.pdf'
                 review='Lorem ipsum dolor sit amet, consectetuer...'
 
+                onGoto = {(id) => console.log(id)}
                 data={filesArr}
             />
         </div>

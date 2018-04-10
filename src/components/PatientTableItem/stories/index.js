@@ -10,8 +10,10 @@ storiesOf('PatientTableItem', module)
                 img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
                 name="Иванова А. К." 
                 age="37" 
-                date="15.09.2017"
-                time="15:00-16:00"
+                dateend = {0}
+                datestart ={0}
+                id={2663}
+                id_zap= {0}
                 onGoto={()=>console.log('click')}
             />
         </div>
