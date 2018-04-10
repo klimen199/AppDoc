@@ -15,6 +15,8 @@ class Reviews extends React.Component{
 
         for (let i = 0, len = dataArr.length; i < num && i < len; i++){
             revArr.push(<Review {...dataArr[i]}
+                                onGoto={this.props.onGoto}
+                                onGotoChat={this.props.onGotoChat}
                                 isSecondAllowed={false}
                                 key={dataArr[i].id}/>)
         }
@@ -50,12 +52,16 @@ Reviews.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
     numToDisplay: PropTypes.number,
     redirect: PropTypes.func,
+    onGoto: PropTypes.func,
+    onGotoChat: PropTypes.func,
 };
 
 Reviews.defaultProps = {
     data: [],
     numToDisplay: 7,
     redirect: () => {},
+    onGoto: () => {},
+    onGotoChat: () => {},
 };
 
 export default Reviews

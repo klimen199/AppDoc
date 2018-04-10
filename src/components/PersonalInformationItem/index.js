@@ -40,7 +40,7 @@ class PersonalInformationItemForm extends React.Component{
             if (!err) {
                 let newProfile = this.addPersonInfo(values);
                 this.props.form.resetFields();
-                console.log("get: ", newProfile);
+                //.log("get: ", newProfile);
             }
         });
     };

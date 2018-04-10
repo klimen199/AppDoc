@@ -53,7 +53,6 @@ class MainReview extends React.Component{
         const commentDisplay = this.state.showComment ? 'block' : 'none';
         const answAreaDisplay = this.state.showAnswerArea ? 'block' : 'none';
 
-        console.log(this.props)
         return (
             <div className='review-root'>
                 <div className='review'>

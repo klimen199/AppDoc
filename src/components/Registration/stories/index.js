@@ -35,13 +35,13 @@ const DATA = {
 };
 
 const fillNewField = (res, name) => {
-    console.log('in fillNewField')
+    //console.log('in fillNewField')
     const data = DATA;
     const info = name.split('-');
     let array = [];
     if (res[info[0]])
         array = [...res[info[0]]];
-    console.log(info)
+    //console.log(info)
     array[+info[2]] = (info[1] === 'ucationyears' && data[name])
         ? {
             ...array[+info[2]],
@@ -77,7 +77,7 @@ const onFinishHandler = () => {
                     [key]: data[key],
                 };
     }
-    console.log(result)
+    //console.log(result)
 };
 
 storiesOf('Registration', module)

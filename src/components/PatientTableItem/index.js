@@ -86,7 +86,7 @@ class PatientTableItem extends React.Component{
                     visible={this.state.modal2Visible}
                     onSend={(a) => {
                         this.setModal2Visible(false);
-                        console.log(a)
+                        //console.log(a)
                         this.props.onNewMessage(a)
                     }}
                     onCancel={() => this.setModal2Visible(false)}

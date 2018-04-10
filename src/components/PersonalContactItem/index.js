@@ -40,7 +40,7 @@ class PersonalContactItemForm extends React.Component{
             if (!err) {
                 let newProfile = this.onSave(values);
                 this.props.form.resetFields();
-                console.log("get", newProfile);
+                //console.log("get", newProfile);
             }
         });
     };

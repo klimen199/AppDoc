@@ -70,7 +70,7 @@ class PersonalExperienceItemForm extends React.Component{
                 }
                 this.props.form.resetFields();
                 this.setState({experBlock : 0});
-                console.log("get: ", newProfile);
+                //console.log("get: ", newProfile);
             }
         });
     };

@@ -148,7 +148,7 @@ class PersonalEducationItemForm extends React.Component{
                 }
                 this.props.form.resetFields();
                 this.setState({educatBlock: 0});
-                console.log("get", newProfile);
+                //console.log("get", newProfile);
             }
         });
     };
