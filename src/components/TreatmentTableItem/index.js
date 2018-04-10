@@ -20,31 +20,8 @@ class TreatmentTableItem extends React.Component{
       }
 
     render(){
-        //const {id, type, name, size, time, date, diagnostic, comments, price, conclusion, conclusionDownload, title, review, content, onGoto} = this.props;
-        const {
-            id,
-            id_user,
-            type,
-            size,
-            name,
-            time,
-            startDate,
-            endDate,
-            status,
-            diagnostic,
-            comments,
-            price,
-            conclusion,
-            conclusionDownloadName,
-            conclusionDownloadLink,
-            review,
-            content,
-            onGoto,
-            rating,
-            onGotoChat,
-        } = this.props;
+        const {type, files, name, size, time, date, diagnostic, comments, price, conclusion, conclusionDownload, title, review, content, onGoto} = this.props;
         const rootClass = cn('treatment');
-        
         const key_val = {
             'chat': 'chat1',
             'voice': 'telephone', 
@@ -96,7 +73,7 @@ class TreatmentTableItem extends React.Component{
                     <div className="patient-review">{review}</div>
                 </div>
                 <div className="flex-col">
-                    <PopoverFile data={this.props.data}></PopoverFile>
+                    <PopoverFile data={files}></PopoverFile>
                 </div>
             </div>
         )
@@ -116,6 +93,7 @@ TreatmentTableItem.propTypes = {
     date: PropTypes.string,
     time: PropTypes.string,
     onGoto: PropTypes.func,
+    files: PropTypes.array,
 };
 
 TreatmentTableItem.defaultProps = {
@@ -128,8 +106,10 @@ TreatmentTableItem.defaultProps = {
     conclusion: '-',
     conclusionDownload: '',
     review: '-',
-    date: '',
-    time: '',
+    title: '',
+    date: '01.01.2018',
+    time: '00:00',
+    files: [],
     onGoto: () => {},
 };
 

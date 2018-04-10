@@ -124,8 +124,8 @@ export const treatmentArr = [
         conclusionDownload: "Заключение 252525.pdf",
         review: "Lorem ipsum dolor sit amet, consectetuer...",
         btnText: "Прикрепленный файл с длинным предлинным названием.doc",
-    }
-];*/
+    },
+];
 
 export const filesArr = [
     {
@@ -140,3 +140,4 @@ export const filesArr = [
         btnText: "52525.pdf",
     },
 ];
+
