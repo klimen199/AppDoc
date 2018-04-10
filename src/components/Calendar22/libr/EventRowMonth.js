@@ -134,6 +134,8 @@ class EventRowMonth extends React.Component {
 
     renderScheduleContent = (sched) => {
         let rootCl = +(sched.isEditable) ? 'root_schedule' : 'root_schedule no-edit'
+
+        
         return (<div className={rootCl}>
             {+(sched.isEditable)
                 ? <Icon type="setting_edit" size={20} svg/>

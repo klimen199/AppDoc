@@ -94,7 +94,11 @@ class ReviewsTree extends React.Component{
         let arr = [];
         dataArr.map((item, i) => {
             if (this.state.limit > i || !this.state.limitedShow){
-                arr.push(<Review {...item} key={item.id} onSend={this.props.onSend}/>)
+                arr.push(<Review {...item} 
+                                key={item.id} 
+                                onGoto={this.props.onGoto}
+                                onGotoChat={this.props.onGotoChat}
+                                onSend={this.props.onSend}/>)
             }
         });
         arr.push(this.renderShowMoreBtn(dataArr));

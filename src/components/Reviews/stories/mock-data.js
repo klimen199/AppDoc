@@ -5,7 +5,7 @@ const now = Date.now();
 
 export const dataArr = [{
         id: 1,
-        author: "Иванова А. К.",
+        fio: "Иванова А. К.",
         avatar: "https://www.proza.ru/pics/2017/06/03/1990.jpg",
         text: "Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. ",
         date: new Date(now - 17 * minute),
