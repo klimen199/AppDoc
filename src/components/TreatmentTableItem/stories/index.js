@@ -16,6 +16,7 @@ const filse =[
             btnText: "Прикрепленный файл с длинным предлинным названием.doc",
         },{
             btnText: "52525.pdf",
+            href: 'load'
         },
     ]
 

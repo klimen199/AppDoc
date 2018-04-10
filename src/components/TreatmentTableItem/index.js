@@ -20,7 +20,7 @@ class TreatmentTableItem extends React.Component{
       }
 
     render(){
-        const {type, files, name, size, time, date, diagnostic, comments, price, conclusion, conclusionDownload, title, review, content, onGoto} = this.props;
+        const {type, files, name, size, time, date, diagnostic, comments, price, conclusion, conclusionDownloadLink, conclusionDownloadName, rating, title, review, content, onGoto,startDate, endDate} = this.props;
         const rootClass = cn('treatment');
         const key_val = {
             'chat': 'chat1',
@@ -93,6 +93,7 @@ TreatmentTableItem.propTypes = {
     date: PropTypes.string,
     time: PropTypes.string,
     onGoto: PropTypes.func,
+    startDate: PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
     files: PropTypes.array,
 };
 
@@ -110,6 +111,7 @@ TreatmentTableItem.defaultProps = {
     date: '01.01.2018',
     time: '00:00',
     files: [],
+    startDate: 0,
     onGoto: () => {},
 };
 
