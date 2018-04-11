@@ -26,6 +26,7 @@ class Header extends React.Component{
             <div className={rootClass}>
                 <div className='header-search'>
                     <AutoComplete
+                        onAdd = {this.props.onAdd}
                         data={this.props.data}
                     />
                 </div>
