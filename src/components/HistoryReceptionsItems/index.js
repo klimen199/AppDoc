@@ -6,7 +6,7 @@ import moment from 'moment'
 import Button from '../Button'
 import Rate from '../Rate'
 import Icon from '../Icon'
-import Popover from '../Popover'
+import PopoverFile from '../PopoverFile'
 
 import './style.css'
 import '../../icon/style.css'
@@ -81,9 +81,7 @@ class HistoryReceptionsItems extends React.Component{
                     <div className="patient-review">{review}</div>
                 </div>
                 <div className="flex-col">
-                    <Popover placement="bottomRight" content={content} trigger="click">
-                         <Icon svg type={"file-download popover-nun"} size={30}  num={3}/>
-                    </Popover>
+                    <PopoverFile placement="bottomRight" content={content} trigger="click"/>                         
                 </div>
             </div>
         )

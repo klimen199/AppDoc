@@ -201,7 +201,7 @@ class PersonalExperienceItemForm extends React.Component{
 
     render(){
         const { getFieldDecorator } = this.props.form;
-        const {arrayExpWork,  expWork} = this.props.profileDoctor;
+        const {arrayExpWork = [],  expWork = []} = this.props.profileDoctor;
 
         const works = arrayExpWork.map((elem) => {
                 return (

@@ -89,6 +89,9 @@ SideNav.propTypes = {
 SideNav.defaultProps = {
     menuItems: [],
     isShort: false,
+    timesRated: 0,
+    rateValue: 0,
+    name: '',
     onClick: () => {},
 };
 

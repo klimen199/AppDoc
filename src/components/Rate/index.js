@@ -5,11 +5,21 @@ import { Rate as AntRate} from 'antd'
 import Icon from '../Icon'
 import './styles.css'
 
-const Rate = (props) => {
+class Rate extends React.Component{
     //if (props.character)
-    return(
-        <AntRate {...props} character={props.character || <Icon type="star" size={props.starSize} svg/>}/>
-    )
+    shouldComponentUpdate(nextProps){
+        return true;
+    }
+
+    render(){
+        return(
+            <AntRate {...this.props} 
+                    character={this.props.character 
+                        || <Icon type="star" 
+                                    size={this.props.starSize} 
+                                    svg/>}/>
+        )
+    }
 };
 
 Rate.propTypes = {

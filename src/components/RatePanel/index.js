@@ -5,6 +5,7 @@ import './styles.css'
 import Rate from '../Rate'
 
 class RatePanel extends React.Component{
+    
 
     render(){
         const {rateValue,timesRated } = this.props;

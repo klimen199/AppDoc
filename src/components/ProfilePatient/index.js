@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import cn from 'classnames'
+import moment from 'moment'
 
 import ProfileAvatar from '../ProfileAvatar'
 import Card from '../Card'
@@ -11,6 +12,7 @@ import NewVisitModalPage from '../NewVisitModalPage'
 
 import './style.css'
 import '../../icon/style.css'
+import { fn } from 'moment';
 
 class ProfilePatient extends React.Component{
     state = {
@@ -26,9 +28,9 @@ class ProfilePatient extends React.Component{
     }
 
     render(){
-        const {secondname, firstname, patronymic, img, status, lastDate, doctorType, doctor, birthday, age, height, weight} = this.props;
+        const {name, img, status, lastDate, doctorType, doctor, birthday, age, height, weight} = this.props;
         const rootClass = cn('profile-patient');
-        const fioPatient = cn(`${secondname}`, `${firstname}`, `${patronymic}`);
+        const [fname, ...rest] = name.split(' ')
 
         return (
             <div className={rootClass}>
@@ -41,8 +43,10 @@ class ProfilePatient extends React.Component{
                       />
 
                       <div className="patient-info">
-                            <div className="patient-name">{secondname}<br/>{firstname} {patronymic}</div>
-                            <div className="patient__last-active">Последнее обращение: {lastDate} / {doctorType} {doctor}</div>
+                            <div className="patient-name">{fname}<br/>{rest.concat(' ')}</div>
+                            <div className="patient__last-active">
+                                Последнее обращение: {moment((+lastDate)*1000).format('DD.MM.YYYY')} / {doctorType} {doctor}
+                            </div>
                             <div className="btn-row">
                                 <Button onClick={() => this.setModal1Visible(true)}
                                     btnText='записать на прием'
@@ -98,15 +102,14 @@ class ProfilePatient extends React.Component{
                     visible={this.state.modal2Visible}
                     onOk={() => this.setModal2Visible(false)}
                     onCancel={() => this.setModal2Visible(false)}
-                    userName={fioPatient}
+                    userName={name}
                 />
 
                 <NewVisitModalPage 
                     visible={this.state.modal1Visible}
                     onOk={() => this.setModal1Visible(false)}
                     onCancel={() => this.setModal1Visible(false)}
-                    userName={fioPatient}
-                    date={new Date(2018,1,4,8,10)}
+                    userName={name}
                     onSave = {(obj) => console.log(obj)}
                 />
             </div>
@@ -115,12 +118,10 @@ class ProfilePatient extends React.Component{
 }
 
 ProfilePatient.propTypes = { 
-    secondname: PropTypes.string,
-    firstname: PropTypes.string,
-    patronymic: PropTypes.string,
+    name: PropTypes.string,
     img: PropTypes.string,
     status: PropTypes.string,
-    lastDate: PropTypes.string,
+    lastDate: PropTypes.number,
     doctorType: PropTypes.string,
     doctor: PropTypes.string,
     birthday: PropTypes.string,
@@ -130,12 +131,10 @@ ProfilePatient.propTypes = {
 };
 
 ProfilePatient.defaultProps = {
-    secondname: '',
-    firstname: '',
-    patronymic: '',
+    name: '',
     img: '',
     status: '',
-    lastDate: '',
+    lastDate: 0,
     doctorType: '',
     doctor: '',
     birthday: '',

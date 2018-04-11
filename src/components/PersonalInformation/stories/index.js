@@ -10,8 +10,7 @@ storiesOf('PersonalInformation', module)
     .add('PersonalInformation', () => (
         <div>
             <PersonalInformation 
-                langData={langData}
-                priceData={priceData}
+                
             />
         </div>
     ))

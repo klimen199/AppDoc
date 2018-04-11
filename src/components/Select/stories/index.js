@@ -9,7 +9,6 @@ storiesOf('Select', module)
     .add('Select', () => (
 		<Select defaultValue="Длительность приема">
 		  <Option value="5 мин">5 мин</Option>
-		  <Option value="10 мин">10 мин</Option>
 		  <Option value="15 мин">15 мин</Option>
 		</Select>
     ))

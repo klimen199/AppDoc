@@ -26,7 +26,7 @@ class Header extends React.Component{
             <div className={rootClass}>
                 <div className='header-search'>
                     <AutoComplete
-                        data={patientsArr}
+                        data={this.props.data}
                     />
                 </div>
                 <div className='header-call'>
@@ -55,6 +55,7 @@ class Header extends React.Component{
                         iconSize={20}
                         svg
                         title='Выход'
+                        onClick={this.props.logout}
                     />
                 </div>
             </div>
@@ -64,11 +65,13 @@ class Header extends React.Component{
 
 Header.propTypes = {
     content: PropTypes.string,
+    logout: PropTypes.func,
 
 };
 
 Header.defaultProps = {
     content: 'small',
+    logout: () => {},
 };
 
 export default Header

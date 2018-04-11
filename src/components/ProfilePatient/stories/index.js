@@ -8,11 +8,9 @@ storiesOf('ProfilePatient', module)
         <div>
             <ProfilePatient
                 status='online'
-            	secondname="Петров-Иванов"
-            	firstname="Александр"
-            	patronymic="Константинович"
+            	name= "тестовый пациент"
             	img="https://24smi.org/public/media/resize/660x-/person/2017/10/25/cdRRFH0JWoYv_supermen.jpg"
-            	lastDate="01.01.2000"
+            	lastDate={1523425200}
             	doctorType="врач-терапевт"
             	doctor="Тимошенко Т.И"
             	birthday="31.12.1999"

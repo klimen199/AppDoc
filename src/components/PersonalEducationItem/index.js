@@ -361,7 +361,7 @@ class PersonalEducationItemForm extends React.Component{
 
     render(){
         const { getFieldDecorator } = this.props.form;
-        const {arrayMainInstitution,  arraySecondInstitution,  arrayDegree} = this.props.profileDoctor;
+        const {arrayMainInstitution = [],  arraySecondInstitution = [],  arrayDegree = []} = this.props.profileDoctor;
         const rootClass = cn('personal-education');
 
         const instituions = arrayMainInstitution.map((elem) => {

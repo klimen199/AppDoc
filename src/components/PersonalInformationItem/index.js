@@ -77,12 +77,7 @@ class PersonalInformationItemForm extends React.Component{
                             <div className="radio-block">
                                 <div className="radio-title">Консультация детей:</div>
                                 <FormItem className="personal-item" >
-                                    {getFieldDecorator('childrenField', {
-                                        rules: [{
-                                            required: true,
-                                            message: 'Введите проводите ли консультацию с детьми'
-                                        }],
-                                    })(
+                                    {getFieldDecorator('childrenField')(
                                         <RadioGroup>
                                             <Radio value={1}>Да</Radio>
                                             <Radio value={2}>Нет</Radio>

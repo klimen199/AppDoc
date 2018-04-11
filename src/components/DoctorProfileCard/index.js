@@ -6,9 +6,13 @@ import RatePanel from '../RatePanel'
 import './styles.css'
 
 class DoctorProfileCard extends React.Component{
-
+    
     shouldComponentUpdate(nextProps){
-        return this.props.short !== nextProps.short;
+        return (this.props.timesRated !== nextProps.timesRated)
+                    || (this.props.timesRated !== nextProps.timesRated)
+                    || (this.props.img !== nextProps.img)
+                    || (this.props.name !== nextProps.name)
+                    || (this.props.isShort !== nextProps.isShort)
     }
 
     render(){
