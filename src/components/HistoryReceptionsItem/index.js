@@ -82,7 +82,7 @@ class HistoryReceptionsItem extends React.Component{
                 </div>
                 <div className="flex-col">
                     <div className="patient-conclusion">{conclusion}</div>
-                    <a href={conclusionDownloadLink} download onClick={this.handleClick}>
+                    <a href={conclusionDownloadLink} download onClick={(e) => this.handleClick(e)}>
                         {conclusionDownloadName}
                     </a>
                 </div>

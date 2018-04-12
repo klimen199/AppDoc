@@ -12,6 +12,7 @@ export const treatmentArr = [
         price: "112 руб.",
         conclusion: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit",
         conclusionDownloadName: "Заключение 252525.pdf",
+        conclusionDownloadLink: '#',
         review: "Lorem ipsum dolor sit amet, consectetuer...",
         rating: 3,
     }, {
