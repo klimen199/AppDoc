@@ -33,50 +33,52 @@ class TableNoHead extends React.Component{
         return (
             <div className={rootClass}>
                 <Card title="График работы на сегодня" extra={<div className="sum">Приемы: {data.length}</div>}>
-                    <div className="tableheader">
-                        <div className="flex-col">
-                            <Button
-                                btnText='Добавить'
-                                onClick={this.props.onAdd}
-                                size='default'
-                                type='yellow'
-                                icon='plus'
-                                iconSize={11}
-                                svg
-                                title='Добавить новый приём'
-                            />
-                        </div>
-                        <div className="flex-col ico-btn">
-                            <Button 
-                                size='link'
-                                type='link'
-                                icon='printer'
-                                svg
-                                title='Распечатать'
-                            />
-                            <Button 
-                                size='link'
-                                type='link'
-                                icon='pdf-file'
-                                title='Скачать pdf-файл'
-                            />
-                            <Button 
-                                size='link'
-                                type='link'
-                                icon='xls-file'
-                                title='Скачать xls-файл'
-                            />
-                        </div>
-                    </div>
                     <ScrollArea
-                            speed={1}
+                            speed={0.5}
                             className="scroll"
+                            smoothScrolling={true}
                             contentClassName="content"
+
                     >
-                    {data.length ? 
-                        this.scheduleRender(data) 
-                        : <div className='entry-list'>Приемов нет</div>}
-                        </ScrollArea>
+                        <div className="tableheader">
+                            <div className="flex-col">
+                                <Button
+                                    btnText='Добавить'
+                                    onClick={this.props.onAdd}
+                                    size='default'
+                                    type='yellow'
+                                    icon='plus'
+                                    iconSize={11}
+                                    svg
+                                    title='Добавить новый приём'
+                                />
+                            </div>
+                            <div className="flex-col ico-btn">
+                                <Button 
+                                    size='link'
+                                    type='link'
+                                    icon='printer'
+                                    svg
+                                    title='Распечатать'
+                                />
+                                <Button 
+                                    size='link'
+                                    type='link'
+                                    icon='pdf-file'
+                                    title='Скачать pdf-файл'
+                                />
+                                <Button 
+                                    size='link'
+                                    type='link'
+                                    icon='xls-file'
+                                    title='Скачать xls-файл'
+                                />
+                            </div>
+                        </div>
+                        {data.length ? 
+                            this.scheduleRender(data) 
+                            : <div className='entry-list'>Приемов нет</div>}
+                    </ScrollArea>
                   </Card>
             </div>
         )
