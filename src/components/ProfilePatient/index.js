@@ -65,6 +65,8 @@ class ProfilePatient extends React.Component{
                                         iconSize={16}
                                         title='Отправить сообщение'
                                 />
+                                {
+                                    this.props.isMy &&
                                 <Button 
                                         className="btn-add"
                                         btnText=''
@@ -74,14 +76,16 @@ class ProfilePatient extends React.Component{
                                         svg
                                         title='Добавть в мои пациенты'
                                         iconSize={28}
+                                        onClick={() => this.props.onAdd(this.props.id)}
                                 />
+                                }
                             </div>
                       </div>
 
                       <div className="patient-info__more">
                             <div className="patient-row">
                                 <span className="title">Дата рождения:</span>
-                                <span className="text">{birthday}</span>
+                                <span className="text">{moment((+birthday)*1000).format('DD.MM.YYYY')}</span>
                             </div>
                             <div className="patient-row">
                                 <span className="title">Возраст:</span>
@@ -124,7 +128,7 @@ ProfilePatient.propTypes = {
     lastDate: PropTypes.number,
     doctorType: PropTypes.string,
     doctor: PropTypes.string,
-    birthday: PropTypes.string,
+    birthday: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     age: PropTypes.string,
     height: PropTypes.string,
     weight: PropTypes.string
@@ -137,7 +141,7 @@ ProfilePatient.defaultProps = {
     lastDate: 0,
     doctorType: '',
     doctor: '',
-    birthday: '',
+    birthday: 0,
     age: '',
     height: '',
     weight: ''

@@ -16,7 +16,10 @@ storiesOf('ProfilePatient', module)
             	birthday="31.12.1999"
             	age="18"
             	height="187"
-            	weight="85"
+				weight="85"
+				isMy={true}
+				id={2223}
+				onAdd={(id) => {console.log(id)}}
             />
         </div>
     ))
