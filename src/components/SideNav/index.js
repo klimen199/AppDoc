@@ -41,7 +41,7 @@ class SideNav extends React.Component{
 
         return (
             <div className={rootClass}>
-                <div className="logo"><span className="logo-img"></span></div>
+                <div className="logo" onClick={this.props.onLogoClick}><span className="logo-img"></span></div>
                 <button onClick={onClick}
                         className="sidenav-root-btn">
                     {
@@ -84,6 +84,7 @@ SideNav.propTypes = {
     rateValue: PropTypes.number,
     timesRated: PropTypes.number,
     onClick: PropTypes.func,
+    onLogoClick: PropTypes.func,
 };
 
 SideNav.defaultProps = {
@@ -93,6 +94,7 @@ SideNav.defaultProps = {
     rateValue: 0,
     name: '',
     onClick: () => {},
+    onLogoClick: () => {},
 };
 
 export default SideNav;
