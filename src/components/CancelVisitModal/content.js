@@ -27,8 +27,9 @@ class ContentForm extends React.Component{
             file: this.props.form.getFieldValue('file') 
                 ? this.props.form.getFieldValue('file').fileList 
                 : [],
-            message: this.state.message,
+            comment: this.state.message,
         };
+        console.log(response)
         this.props.onSave(response);
     };
 
@@ -55,8 +56,8 @@ class ContentForm extends React.Component{
         let dpArr = [];
         for(let i =0; i<this.state.dpNum;i++){
             dpArr.push(
-                <FormItem key={'dp'+i}>
-                    {fieldDecorator(`dp${i}`)(
+                <FormItem key={'range'+i}>
+                    {fieldDecorator(`range${i}`)(
                         <DatePicker range
                                     rangeSet={this.state.rangeSet[i]}
                                     onChange={(dateArr) => this.dpChangeHandler(dateArr,i)}
@@ -77,13 +78,13 @@ class ContentForm extends React.Component{
             for(let i = 0; i < dpNum; i++){
                 let {defaultStartValue, defaultEndValue} = rangeSet[i];
                 this.props.form.setFieldsValue({
-                    ['dp'+i]: [defaultStartValue, defaultEndValue],
+                    ['range'+i]: [defaultStartValue, defaultEndValue],
                 });
             }
         }
         else {
             this.props.form.setFieldsValue({
-                ['dp0']: [null, null],
+                ['range0']: [null, null],
             });
         }
     };
