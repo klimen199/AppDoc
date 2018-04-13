@@ -22,14 +22,26 @@ class ContentForm extends React.Component{
 
     handleSubmit = (e) => {
         e.preventDefault();
-        let response = {
+        let tmp = {
             ...this.props.form.getFieldsValue(),
+        }
+        
+        let rangeArr = [];
+        for (let key in tmp){
+            key.indexOf('range') === 0 && (tmp[key][0] || tmp[key][1]) && rangeArr.push({
+                start: tmp[key][0].unix(),
+                end: tmp[key][1].unix(),
+            })
+        }
+
+        let response = {
             file: this.props.form.getFieldValue('file') 
                 ? this.props.form.getFieldValue('file').fileList 
                 : [],
             comment: this.state.message,
+            range: rangeArr,
         };
-        console.log(response)
+
         this.props.onSave(response);
     };
 

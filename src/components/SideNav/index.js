@@ -54,6 +54,7 @@ class SideNav extends React.Component{
                 </button>
                 <div className='overwlow-a-y'>
                     <DoctorProfileCard {...this.props}
+                                        online={true}
                                        short={isShort}/>
 
                     <Menu
