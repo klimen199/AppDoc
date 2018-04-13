@@ -101,7 +101,8 @@ class AutoComplete extends React.Component{
                                 this.setState({
                                     isVisible: true, 
                                     searchRes: this.props.data,
-                                })
+                                });
+                                this.props.findName(this.input.inp.input.value)
                             }
                           }}
                     />

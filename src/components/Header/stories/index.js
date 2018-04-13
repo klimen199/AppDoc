@@ -13,6 +13,7 @@ storiesOf('Header', module)
                 data={patientsArr}
                 onAdd = {(id, name) => console.log('add',id, name)}
                 onGoto = {(id) => console.log('goto',id)}
+                findName = {(name) => console.log(name)}
                 logout={() => alert()}
             />
         </div>
