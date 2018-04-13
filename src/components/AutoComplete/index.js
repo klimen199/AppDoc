@@ -14,6 +14,7 @@ class AutoComplete extends React.Component{
         super(props);
         this.state ={
             isVisible: false,
+            tmp: 0,
 
             inputFocus: false,
             itemFocus: false,
@@ -29,7 +30,7 @@ class AutoComplete extends React.Component{
         });
     };
 
-    searchHandler = (e) => {
+    /*searchHandler = (e) => {
 
         e.target.value.length > 0 
             ? (this.setState({
@@ -40,7 +41,7 @@ class AutoComplete extends React.Component{
                 isVisible: false,   
                 searchRes: [],
             });
-    }
+    }*/
 
     onClickHandler = (id, flag) => {
         let user;
@@ -54,9 +55,13 @@ class AutoComplete extends React.Component{
             this.props.onGoto(id),
             this.setState({isVisible: false})
         )
-        : this.props.onAdd(id, this.input.inp.input.value);        
+        : (
+            this.props.onAdd(id, this.input.inp.input.value),
+            this.setState({tmp: this.state.tmp +1})
+        );
     }
 
+   
 
     patientsRender = (dataArr) => {
         let patientsArr = [];
@@ -85,8 +90,20 @@ class AutoComplete extends React.Component{
                 <div className='auto__complete-search'>
                     <Input 
                         placeholder='Поиск'
-                        onChange={(e) => this.searchHandler(e)}
+                        onChange={(e) => {
+                            e.target.value.length === 0 && this.setState({
+                                isVisible: false,   
+                            })
+                        }}
                         ref = {inp => {this.input = inp}}
+                        onKeyPress={event => {
+                            if (event.key === 'Enter') {
+                                this.setState({
+                                    isVisible: true, 
+                                    searchRes: this.props.data,
+                                })
+                            }
+                          }}
                     />
                 </div>
                 <div className={resultClass}>
