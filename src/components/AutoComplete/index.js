@@ -54,7 +54,7 @@ class AutoComplete extends React.Component{
             this.props.onGoto(id),
             this.setState({isVisible: false})
         )
-        : this.props.onAdd(id);        
+        : this.props.onAdd(id, this.input.inp.input.value);        
     }
 
 
