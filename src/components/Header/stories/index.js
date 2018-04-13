@@ -11,7 +11,8 @@ storiesOf('Header', module)
             <Header 
                 content="15.09.2017"
                 data={patientsArr}
-                onAdd = {(id) => console.log(id)}
+                onAdd = {(id) => console.log('add',id)}
+                onGoto = {(id) => console.log('goto',id)}
                 logout={() => alert()}
             />
         </div>
