@@ -1,18 +1,14 @@
 @import url("../../styles/variables");
-a{
-	color: #204d8d;
-
-	&:hover{
-		color: #204d8d;
-		text-decoration: underline;
-	}
-}
-
 .reception	{
 	display: flex;
 	align-items: flex-start;
 	position: relative;
 	border-left: 4px solid transparent;
+	cursor: pointer;
+
+	&:hover{
+        background-color: #fffbec;
+    }
 
 	.flex-col{
 		padding: 25px 0;
@@ -169,5 +165,9 @@ a{
 	&.new{
 		background-color: #e4f6eb !important;
 		border-left-color: #00c853;
+
+		&:hover{
+			background-color: #fffbec  !important;
+		}
 	}
 }
