@@ -4,8 +4,7 @@ import PropTypes from 'prop-types'
 import './styles.css'
 import Rate from '../Rate'
 
-class RatePanel extends React.Component{
-    
+class RatePanel extends React.Component{ 
 
     render(){
         const {rateValue,timesRated } = this.props;
@@ -15,7 +14,8 @@ class RatePanel extends React.Component{
             <div className="ratePanel">
                 <span className="value">{rateValue.toFixed(1)}</span>
                 <Rate style={{fontSize:12}}
-                      defaultValue={Math.ceil(rateValue)}
+                      disabled = {this.props.disable || false}
+                      value={Math.ceil(rateValue)}
                       />
                 <span className="times">({timesRated})</span>
             </div>

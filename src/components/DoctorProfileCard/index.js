@@ -26,7 +26,7 @@ class DoctorProfileCard extends React.Component{
                 <ProfileAvatar owner="doctor" {...this.props} short={short} size={(short ? 'medium' : 'large')}/>
                 <div className={rootClass + '-name'}>{name}</div>
                 <div className={rootClass + '-specialty'}>{spec}</div>
-                <RatePanel {...this.props}/>
+                <RatePanel {...this.props} disable={true}/>
             </div>
         )
     }
