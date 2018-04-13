@@ -13,6 +13,11 @@ import '../../icon/style.css'
 
 class HistoryReceptionsItems extends React.Component{
 
+    handleClick = (e) => {
+        e.stopPropagation();
+        e.nativeEvent.stopImmediatePropagation();
+      }
+
     render(){
         //const {type, size, time, date, status, diagnostic, comments, price, conclusion, conclusionDownload, review, content} = this.props;
         const {

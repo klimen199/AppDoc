@@ -6,7 +6,7 @@ import Rate from '../';
 storiesOf('Rate', module)
     .add('Rate', () => (
         <div>
-            <Rate defaultValue={4}/>
+            <Rate defaultValue={2}/>
             <br/>
             <Rate defaultValue={2} disabled/>
         </div>

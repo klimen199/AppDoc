@@ -61,47 +61,52 @@ class ProfilePatient extends React.Component{
                                         iconSize={12}
                                     />
 
-                                    <Button onClick={() => this.setModal2Visible(true)}
-                                            btnText=''
-                                            size='icon'
-                                            type='light-blue'
-                                            icon='mail'
-                                            svg
-                                            iconSize={16}
-                                            title='Отправить сообщение'
-                                    />
-                                    <Button 
-                                            className="btn-add"
-                                            btnText=''
-                                            size='file'
-                                            type='file'
-                                            icon='add-button'
-                                            svg
-                                            title='Добавть в мои пациенты'
-                                            iconSize={28}
-                                    />
-                                </div>
-                        </div>
+                                <Button onClick={() => this.setModal2Visible(true)}
+                                        btnText=''
+                                        size='icon'
+                                        type='light-blue'
+                                        icon='mail'
+                                        svg
+                                        iconSize={16}
+                                        title='Отправить сообщение'
+                                />
+                                {
+                                    this.props.isMy &&
+                                <Button 
+                                        className="btn-add"
+                                        btnText=''
+                                        size='file'
+                                        type='file'
+                                        icon='add-button'
+                                        svg
+                                        title='Добавть в мои пациенты'
+                                        iconSize={28}
+                                        onClick={() => this.props.onAdd(this.props.id)}
+                                />
+                                }
+                            </div>
+                      </div>
 
-                        <div className="patient-info__more">
-                                <div className="patient-row">
-                                    <span className="title">Дата рождения:</span>
-                                    <span className="text">{birthday}</span>
-                                </div>
-                                <div className="patient-row">
-                                    <span className="title">Возраст:</span>
-                                    <span className="text">{age}</span>
-                                </div>
-                                <div className="patient-row">
-                                    <span className="title">Рост:</span>
-                                    <span className="text">{height} см</span>
-                                </div>
-                                <div className="patient-row">
-                                    <span className="title">Вес:</span>
-                                    <span className="text">{weight} кг</span>
-                                </div>
-                        </div>
+                      <div className="patient-info__more">
+                            <div className="patient-row">
+                                <span className="title">Дата рождения:</span>
+                                <span className="text">{moment((+birthday)*1000).format('DD.MM.YYYY')}</span>
+                            </div>
+                            <div className="patient-row">
+                                <span className="title">Возраст:</span>
+                                <span className="text">{age}</span>
+                            </div>
+                            <div className="patient-row">
+                                <span className="title">Рост:</span>
+                                <span className="text">{height} см</span>
+                            </div>
+                            <div className="patient-row">
+                                <span className="title">Вес:</span>
+                                <span className="text">{weight} кг</span>
+                            </div>
+                      </div> 
                     </ScrollArea>
+
                 </Card>
 
                 <NewMessageModal 
@@ -130,7 +135,7 @@ ProfilePatient.propTypes = {
     lastDate: PropTypes.number,
     doctorType: PropTypes.string,
     doctor: PropTypes.string,
-    birthday: PropTypes.string,
+    birthday: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     age: PropTypes.string,
     height: PropTypes.string,
     weight: PropTypes.string
@@ -143,7 +148,7 @@ ProfilePatient.defaultProps = {
     lastDate: 0,
     doctorType: '',
     doctor: '',
-    birthday: '',
+    birthday: 0,
     age: '',
     height: '',
     weight: ''

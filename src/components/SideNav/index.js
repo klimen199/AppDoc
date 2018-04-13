@@ -41,7 +41,7 @@ class SideNav extends React.Component{
 
         return (
             <div className={rootClass}>
-                <div className="logo"><span className="logo-img"></span></div>
+                <div className="logo" onClick={this.props.onLogoClick}><span className="logo-img"></span></div>
                 <button onClick={onClick}
                         className="sidenav-root-btn">
                     {
@@ -54,6 +54,7 @@ class SideNav extends React.Component{
                 </button>
                 <div className='overwlow-a-y'>
                     <DoctorProfileCard {...this.props}
+                                        online={true}
                                        short={isShort}/>
 
                     <Menu
@@ -84,6 +85,7 @@ SideNav.propTypes = {
     rateValue: PropTypes.number,
     timesRated: PropTypes.number,
     onClick: PropTypes.func,
+    onLogoClick: PropTypes.func,
 };
 
 SideNav.defaultProps = {
@@ -93,6 +95,7 @@ SideNav.defaultProps = {
     rateValue: 0,
     name: '',
     onClick: () => {},
+    onLogoClick: () => {},
 };
 
 export default SideNav;

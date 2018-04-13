@@ -25,7 +25,6 @@ class HistoryReceptions extends React.Component{
             if(this.state.limit > i || !this.state.limitedShow){
                 historyArr.push(<HistoryReceptionsItems {...item} 
                                                     onGotoChat = {this.props.onGotoChat}
-                                                    onGoto={this.props.onGoto} 
                                                     key={'histRecept'+i}/>)
             }
         });
@@ -80,14 +79,12 @@ class HistoryReceptions extends React.Component{
 HistoryReceptions.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
     limit: PropTypes.number,
-    onGoto: PropTypes.func,
     onGotoChat: PropTypes.func,
 };
 
 HistoryReceptions.defaultProps = {
     data: [],
     limit: 7,
-    onGoto: () => {},
     onGotoChat: () => {},
 };
 

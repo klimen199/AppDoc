@@ -8,14 +8,19 @@ import {filesArr} from './mock-data'
 const filse =[
         {
             btnText: "Файл1.doc",
+            href: 'load'
+
         },{
-            btnText: "Прикрепленный файл с длинным предлинным названием.doc",
+            btnText: "Прикрепленный Файл1.doc",
+            href: 'load'
         },{
-            btnText: "52525.pdf",
+            btnText: "Прикрепленный Файл1.pdf",
+            href: 'load'
         },{
-            btnText: "Прикрепленный файл с длинным предлинным названием.doc",
+            btnText: "Прикрепленный Файл1.doc",
+            href: 'load'
         },{
-            btnText: "52525.pdf",
+            btnText: "Прикрепленный Файл1.pdf",
             href: 'load'
         },
     ]
