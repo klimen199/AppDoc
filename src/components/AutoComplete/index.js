@@ -61,7 +61,6 @@ class AutoComplete extends React.Component{
 
         dataArr.map((item, index) => {
             patientsArr.push(<AddNewPatientItem {...item} 
-                                                isSearchItem={true}
                                                 onAdd = {(id) => {this.onAddHandler(id)}}
                                                 key={item.id + ''+index}/>)
         });
@@ -98,7 +97,10 @@ class AutoComplete extends React.Component{
                             contentClassName="content"
                             horizontal={false}
                     >
-                        {this.patientsRender(this.state.searchRes)}
+                        {(this.state.searchRes).length ? 
+                            this.patientsRender(this.state.searchRes)
+                            : <div className='entry-list'>Пациентов нет</div>
+                        }
                     </ScrollArea>
                 </div>
             </div>

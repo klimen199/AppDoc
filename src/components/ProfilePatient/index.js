@@ -9,7 +9,7 @@ import Button from '../Button'
 import Icon from '../Icon'
 import NewMessageModal from '../NewMessageModal'
 import NewVisitModalPage from '../NewVisitModalPage'
-
+import ScrollArea from 'react-scrollbar'
 import './style.css'
 import '../../icon/style.css'
 import { fn } from 'moment';
@@ -35,26 +35,31 @@ class ProfilePatient extends React.Component{
         return (
             <div className={rootClass}>
                 <Card title="Общая информация" className="patient-card">
-                    <ProfileAvatar 
-                      img={img}
-                      owner='patient'
-                      size="large"
-                      online={status}
-                      />
+                    <ScrollArea
+                            speed={0.5}
+                            contentClassName="flex-div"
+                            smoothScrolling={true}
+                    >
+                        <ProfileAvatar 
+                          img={img}
+                          owner='patient'
+                          size="large"
+                          online={status}
+                          />
 
-                      <div className="patient-info">
-                            <div className="patient-name">{fname}<br/>{rest.concat(' ')}</div>
-                            <div className="patient__last-active">
-                                Последнее обращение: {moment((+lastDate)*1000).format('DD.MM.YYYY')} / {doctorType} {doctor}
-                            </div>
-                            <div className="btn-row">
-                                <Button onClick={() => this.setModal1Visible(true)}
-                                    btnText='записать на прием'
-                                    size='default'
-                                    type='float'
-                                    icon='form'
-                                    iconSize={12}
-                                />
+                        <div className="patient-info">
+                                <div className="patient-name">{fname}<br/>{rest.concat(' ')}</div>
+                                <div className="patient__last-active">
+                                    Последнее обращение: {moment((+lastDate)*1000).format('DD.MM.YYYY')} / {doctorType} {doctor}
+                                </div>
+                                <div className="btn-row">
+                                    <Button onClick={() => this.setModal1Visible(true)}
+                                        btnText='записать на прием'
+                                        size='default'
+                                        type='float'
+                                        icon='form'
+                                        iconSize={12}
+                                    />
 
                                 <Button onClick={() => this.setModal2Visible(true)}
                                         btnText=''
@@ -99,7 +104,9 @@ class ProfilePatient extends React.Component{
                                 <span className="title">Вес:</span>
                                 <span className="text">{weight} кг</span>
                             </div>
-                      </div>
+                      </div> 
+                    </ScrollArea>
+
                 </Card>
 
                 <NewMessageModal 
