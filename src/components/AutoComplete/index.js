@@ -42,17 +42,19 @@ class AutoComplete extends React.Component{
             });
     }
 
-    onAddHandler = (id) => {
+    onClickHandler = (id, flag) => {
         let user;
-        this.state.searchRes.some((el, i) => {
-            (el.id === id) ? user = el : null;
-            return el.id === id;
-        })
-
-        this.input.inp.input.value = user.name;
-        this.input.setFocus(true);
-        this.props.onAdd(id);
-        this.setState({isVisible: false})
+        flag === 'goto' ? (
+            this.state.searchRes.some((el, i) => {
+                (el.id === id) ? user = el : null;
+                return el.id === id;
+            }),
+            this.input.inp.input.value = user.name,
+            this.input.setFocus(true),
+            this.props.onGoto(id),
+            this.setState({isVisible: false})
+        )
+        : this.props.onAdd(id);        
     }
 
 
@@ -61,7 +63,8 @@ class AutoComplete extends React.Component{
 
         dataArr.map((item, index) => {
             patientsArr.push(<AddNewPatientItem {...item} 
-                                                onAdd = {(id) => {this.onAddHandler(id)}}
+                                                onAdd = {(id) => {this.onClickHandler(id, 'add')}}
+                                                onGoto = {(id) => {this.onClickHandler(id, 'goto')}}
                                                 key={item.id + ''+index}/>)
         });
 

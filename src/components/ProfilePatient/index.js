@@ -71,7 +71,7 @@ class ProfilePatient extends React.Component{
                                         title='Отправить сообщение'
                                 />
                                 {
-                                    this.props.isMy &&
+                                    !this.props.isMy &&
                                 <Button 
                                         className="btn-add"
                                         btnText=''

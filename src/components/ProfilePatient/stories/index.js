@@ -10,10 +10,10 @@ storiesOf('ProfilePatient', module)
                 status='online'
             	name= "тестовый пациент"
             	img="https://24smi.org/public/media/resize/660x-/person/2017/10/25/cdRRFH0JWoYv_supermen.jpg"
-            	lastDate={1523425200}
+            	lastDate={1523610900}
             	doctorType="врач-терапевт"
             	doctor="Тимошенко Т.И"
-            	birthday="31.12.1999"
+            	birthday={631271421}
             	age="18"
             	height="187"
 				weight="85"

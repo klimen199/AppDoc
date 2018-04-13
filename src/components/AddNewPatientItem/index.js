@@ -12,7 +12,8 @@ import '../../icon/style.css'
 class AddNewPatientItem extends React.Component{
 
     onAddHandler = (e) => {
-        e.preventDefault();
+        e.stopPropagation();
+        e.nativeEvent.stopImmediatePropagation();
         this.props.onAdd(this.props.id);
     }
 
@@ -21,7 +22,7 @@ class AddNewPatientItem extends React.Component{
         const rootClass = cn('new-patient-item');
 
         return (
-            <div className='new-patient-item' onClick={isSearchItem ? this.onAddHandler : () => {}}>
+            <div className='new-patient-item' onClick={() => this.props.onGoto(this.props.id)}>
                 <div className='new-patient-avatar'>
                     <ProfileAvatar owner="patient" online={online} img={avatar} size='small'/>
                 </div>
