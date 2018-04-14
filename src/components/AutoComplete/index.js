@@ -76,6 +76,16 @@ class AutoComplete extends React.Component{
         return patientsArr;
     };
 
+    /*shouldComponentUpdate(nextProps){
+        console.log(this.props.data.length)
+        console.log(nextProps.data.length)
+        return this.props.data.length !== nextProps.data.length
+    }*/
+
+    componentWillReceiveProps(nextProps){
+        this.props.data.length !== nextProps.data.length && this.setState({searchRes: nextProps.data})
+    }
+
     render() {
         
         const { data, collapsed} = this.props;
