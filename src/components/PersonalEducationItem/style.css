@@ -1,12 +1,25 @@
 /* fonts */
 /* COLORS */
 /* VAR */
+.entry-list {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 1.25rem;
+  color: #eee;
+}
 a {
   color: #204d8d;
 }
 a:hover {
   color: #204d8d;
   text-decoration: underline;
+}
+.ant-form-explain {
+  position: absolute;
+  top: 45px;
 }
 .personal-education .personal-title {
   font-size: 12px;
@@ -95,4 +108,25 @@ a:hover {
 }
 .brd-d {
   border-bottom-style: dashed;
+}
+.personal-education .ant-form-item {
+  position: relative;
+  margin-bottom: 45px;
+  min-height: 65px;
+}
+.personal-education .ant-form-item .has-error .input-root-focus {
+  border-bottom: #ff4242 1px solid;
+}
+.personal-education .ant-form-item .has-error .input-root {
+  border-bottom: #ff4242 1px solid;
+}
+.personal-education .ant-form-item .has-error .ant-input:focus {
+  box-shadow: none;
+}
+.personal-education .ant-form-item .has-error .ant-input-group-addon {
+  color: #777777;
+}
+.personal-education .ant-form-item .ant-form-explain {
+  position: absolute;
+  top: 45px;
 }

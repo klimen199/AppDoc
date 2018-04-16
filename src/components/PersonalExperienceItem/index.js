@@ -70,7 +70,8 @@ class PersonalExperienceItemForm extends React.Component{
                 }
                 this.props.form.resetFields();
                 this.setState({experBlock : 0});
-                //console.log("get: ", newProfile);
+                this.props.onSubmit(newProfile);
+                //console.log("get", newProfile);
             }
         });
     };
@@ -87,7 +88,8 @@ class PersonalExperienceItemForm extends React.Component{
         });
         newProfile.arrayExpWork = newArray;
 
-        console.log("get", newProfile);
+        this.props.onSubmit(newProfile);
+        //console.log("get", newProfile);
     };
 
     // для upload
@@ -140,13 +142,14 @@ class PersonalExperienceItemForm extends React.Component{
 
                     <FormItem className="personal-item" >
                         {getFieldDecorator('confirmWork', {
+                            valuePropName: 'checked',
                             initialValue: false,
                             rules: [{
                                 required: true,
                                 message: 'Введите подтверждение работы'
                             }],
                         })(
-                            <Checkbox >Продолжаю работать</Checkbox>
+                            <Checkbox>Продолжаю работать</Checkbox>
                         )}
                     </FormItem>
                     <FormItem className="personal-item" >
@@ -183,9 +186,9 @@ class PersonalExperienceItemForm extends React.Component{
                         })(
                             <Select placeholder="Ученая степень">
                                 <Option value="Высшая категория">Высшая категория</Option>
-                                <Option value="1-ая категория">1-ая категория</Option>
-                                <Option value="2-ая категория">2-ая категория</Option>
-                                <Option value="Нет категории">Нет категории</Option>
+                                <Option value="1-ая категория">Первая категория</Option>
+                                <Option value="2-ая категория">Вторая категория</Option>
+                                <Option value="Нет категории">Без категории</Option>
                             </Select>
                         )}
                     </FormItem>
@@ -201,9 +204,8 @@ class PersonalExperienceItemForm extends React.Component{
 
     render(){
         const { getFieldDecorator } = this.props.form;
-        const {arrayExpWork = [],  expWork = []} = this.props.profileDoctor;
-
-        const works = arrayExpWork.map((elem) => {
+        const {arrayExpWork,  expWork} = this.props.profileDoctor;
+        let works = (this.props.profileDoctor.arrayExpWork).map((elem) => {
                 return (
                     <div key={elem.id}>
                         <div className="personal-item">
@@ -237,9 +239,6 @@ class PersonalExperienceItemForm extends React.Component{
                             <div className="expWork">Опыт работы ({expWork} лет)</div>
                         </div>
 
-                        <div className="personal-item">
-                            <div className="personal-title">Текущее место работы</div>
-                        </div>
 
                         {works}
                         <div className="personal-item">
@@ -258,7 +257,7 @@ class PersonalExperienceItemForm extends React.Component{
 
                     <div className="personal-block">
                         {category}
-                        <div className="personal-item">
+                        <div className="personal-item add_category">
                              <Button onClick={this.addDp2}
                              className="personal-btn"
                                 btnText='Добавить категорию'

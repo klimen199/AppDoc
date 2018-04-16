@@ -34,7 +34,6 @@ class PersonalEducationItemForm extends React.Component{
     };
 
     sendMainInstution = (values) => {
-
         let newProfile = JSON.parse(JSON.stringify(this.props.profileDoctor));
 
         let inst  = newProfile.arrayMainInstitution;
@@ -100,29 +99,30 @@ class PersonalEducationItemForm extends React.Component{
     };
 
     sendDegree = (values) => {
+        ////////////////////////////////////////
         let newProfile = JSON.parse(JSON.stringify(this.props.profileDoctor));
        // let newProfile = {...this.props.profileDoctor};
-        let inst  = newProfile.arrayDegree;
-        inst.push(
-            {
-                id        : inst[inst.length-1].id + 1,
-                degree    : values.addDegreeField,
-                documents : values.uploadAddDegree || []
-            });
+        newProfile.degree = {
+            name      : values.addDegreeField,
+            documents : values.uploadAddDegree
+        };
+
         return newProfile;
     };
 
     changeDegree = (values) => {
         let newProfile = JSON.parse(JSON.stringify(this.props.profileDoctor));
         //let newProfile = {...this.props.profileDoctor};
-        let inst  = newProfile.arrayDegree;
+       // let inst  = newProfile.arrayDegree;
+        newProfile.degree.name = values.changeDegreeField;
+        newProfile.degree.documents = values.uploadDegree;
 
-        inst.map((elem) => {
+       /* inst.map((elem) => {
             if(elem.id === this.state.idCurrentDegree) {
                 elem.degree = values.changeDegreeField;
                 elem.documents = values.uploadDegree || [];
             }
-        });
+        });*/
         this.setState({idCurrentDegree: null});
         return newProfile;
     };
@@ -148,6 +148,7 @@ class PersonalEducationItemForm extends React.Component{
                 }
                 this.props.form.resetFields();
                 this.setState({educatBlock: 0});
+                this.props.onSubmit(newProfile);
                 //console.log("get", newProfile);
             }
         });
@@ -178,14 +179,18 @@ class PersonalEducationItemForm extends React.Component{
             dpArr.push(
                 <div className="personal-item" key={this.state.educatBlock}>
                     <FormItem className="personal-item" >
-                        {getFieldDecorator('mainInstitutionField', {
-                            rules: [{
-                                required: true,
-                                message: 'Введите учебное заведение'
-                            }],
-                        })(
-                            <Input id="mainInstitution" addonBefore="Учебное заведение"/>
-                        )}
+                        <div>
+                            {getFieldDecorator('mainInstitutionField', {
+                                rules: [{
+                                    required: true,
+                                    message: 'Введите учебное заведение'
+                                }],
+                            })(
+                                <Input addonBefore="Учебное заведение"
+                                       className='step-form-item'/>
+                            )}
+                        </div>
+
                     </FormItem>
                     <FormItem className="personal-item" >
                         {getFieldDecorator('mainSpecialtyField', {
@@ -194,7 +199,7 @@ class PersonalEducationItemForm extends React.Component{
                                 message: 'Введите cпециальность'
                             }],
                         })(
-                            <Input id="mainSpecialty" addonBefore="Специальность"/>
+                            <Input addonBefore="Специальность"  className='step-form-item'/>
                         )}
                     </FormItem>
                     <FormItem className="personal-item" >
@@ -320,10 +325,11 @@ class PersonalEducationItemForm extends React.Component{
             );
     };
     addDp4 = () => {
-        this.setState({educatBlock:4})
+        if(!this.props.profileDoctor.degree) this.setState({educatBlock:4})
     };
 
     renderDp4 = (getFieldDecorator) =>{
+
         let dpArr4 = [];
 
         if(this.state.educatBlock === 4) {
@@ -361,7 +367,7 @@ class PersonalEducationItemForm extends React.Component{
 
     render(){
         const { getFieldDecorator } = this.props.form;
-        const {arrayMainInstitution = [],  arraySecondInstitution = [],  arrayDegree = []} = this.props.profileDoctor;
+        const {arrayMainInstitution,  arraySecondInstitution,  arrayDegree} = this.props.profileDoctor;
         const rootClass = cn('personal-education');
 
         const instituions = arrayMainInstitution.map((elem) => {
@@ -379,21 +385,20 @@ class PersonalEducationItemForm extends React.Component{
                 </div> );
         });
 
-
-        const degrees = arrayDegree.map((elem) => {
-            return (
-                <div key={elem.id} className="personal-item mb-35">
-                    <div className="personal-info">{elem.degree}</div>
-                    <Button onClick={() => this.addDp3(elem.id)}
+        const degree = (
+                <div className="personal-item mb-35">
+                    <div className="personal-info">{this.props.profileDoctor.degree.name}</div>
+                    <Button onClick={this.addDp3}
                             className="personal-edit"
                             size='small'
                             type='blue-float'
                             icon='setting_edit'
                             iconSize={17}
                             svg
-                        />
-                </div> );
-        });
+                    />
+                </div>);
+
+
 
         return (
                 <Form className={rootClass} onSubmit={this.handleSubmit}>
@@ -442,7 +447,7 @@ class PersonalEducationItemForm extends React.Component{
                         <div className="personal-item">
                             <div className="personal-title">Ученая степень</div>
                         </div>
-                        {degrees}
+                        {degree}
                         {this.renderDp3(getFieldDecorator)}
                     </div>
 
