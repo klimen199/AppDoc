@@ -26,6 +26,7 @@ class PersonalInformation extends React.Component{
                     <Panel header="Опыт работы" key="1">
                         <PersonalInformationItem
                             profileDoctor={this.props.profileDoctor}
+                            onSubmit={this.props.onSubmit}
                         />
                     </Panel>
                 </Accordion>
@@ -35,11 +36,13 @@ class PersonalInformation extends React.Component{
 }
 
 PersonalInformation.propTypes = {
-    profileDoctor: PropTypes.object
+    profileDoctor: PropTypes.object,
+    onSubmit: PropTypes.func
 };
 
 PersonalInformation.defaultProps = {
-    profileDoctor: {}
+    profileDoctor: {},
+    onSubmit: () => {}
 };
 
 export default PersonalInformation

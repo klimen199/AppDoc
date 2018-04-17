@@ -40,7 +40,8 @@ class PersonalInformationItemForm extends React.Component{
             if (!err) {
                 let newProfile = this.addPersonInfo(values);
                 this.props.form.resetFields();
-                //.log("get: ", newProfile);
+                this.props.onSubmit(newProfile);
+                //console.log("get", newProfile);
             }
         });
     };
@@ -48,11 +49,11 @@ class PersonalInformationItemForm extends React.Component{
     render(){
         const { getFieldDecorator } = this.props.form;
         const Option = Select.Option;
-        const priceData = ['менее 50 руб', '50 - 100 руб', '100 - 200 руб', '200 - 500 руб', '500 - 1000 руб', 'более 1000руб'];
 
         const langOptions = ['Английский', 'Русский', 'Немецкий', 'Японский'].map(lang => <Option key={lang}>{lang}</Option>);
-        const priceOptions = priceData.map(price => <Option key={price}>{price}</Option>);
+        const priceData = ['менее 50 руб', '50 - 100 руб', '100 - 200 руб', '200 - 500 руб', '500 - 1000 руб', 'более 1000руб'];
 
+        const priceOptions = priceData.map(price => <Option key={price}>{price}</Option>);
         const rootClass = cn('personal-information');
         const RadioGroup = Radio.Group;
 
@@ -62,6 +63,7 @@ class PersonalInformationItemForm extends React.Component{
                         <div className="personal-item">
                             <FormItem className="personal-item" >
                                 {getFieldDecorator('languagesField', {
+                                    initialValue: this.props.profileDoctor.langData,
                                     rules: [{
                                         required: true,
                                         message: 'Знание языков'
@@ -77,7 +79,13 @@ class PersonalInformationItemForm extends React.Component{
                             <div className="radio-block">
                                 <div className="radio-title">Консультация детей:</div>
                                 <FormItem className="personal-item" >
-                                    {getFieldDecorator('childrenField')(
+                                    {getFieldDecorator('childrenField', {
+                                        initialValue: this.props.profileDoctor.consultChildren ? 1 : 2,
+                                        rules: [{
+                                            required: true,
+                                            message: 'Введите проводите ли консультацию с детьми'
+                                        }],
+                                    })(
                                         <RadioGroup>
                                             <Radio value={1}>Да</Radio>
                                             <Radio value={2}>Нет</Radio>
@@ -89,6 +97,7 @@ class PersonalInformationItemForm extends React.Component{
                         <div className="personal-item">
                             <FormItem className="personal-item" >
                                 {getFieldDecorator('priceField', {
+                                    initialValue: this.props.profileDoctor.priceData,
                                 })(
                                     <Select placeholder="Желаемая оплата">
                                       {priceOptions}
@@ -101,10 +110,10 @@ class PersonalInformationItemForm extends React.Component{
                                 <div className="radio-title">Готовы проводить консультации бесплатно?</div>
                                 <FormItem className="personal-item" >
                                     {getFieldDecorator('freeConsultField', {
-                                        intialValue: false,
-
+                                        valuePropName: 'checked',
+                                        initialValue: this.props.profileDoctor.freeConsult,
                                     })(
-                                        <Checkbox>Да</Checkbox>
+                                        <Checkbox >Да</Checkbox>
                                     )}
                                 </FormItem>
                             </div>
@@ -119,7 +128,6 @@ class PersonalInformationItemForm extends React.Component{
                             type='float'
                         />
                     </div>
-
                 </Form>
         )
     }

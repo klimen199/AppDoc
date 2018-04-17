@@ -43,17 +43,9 @@ export const profileDoctor = {
                     dateEnd           : "30.07.2018",
                     documents         : []
                 }],
-            arrayDegree : [
-                {
-                    id               : 1,
-                    degree :"Кандидат медицинских наук",
-                    documents   : []
-                },
-                {
-                    id               : 2,
-                    degree :"Профессор зельеворенья",
-                    documents   : []
-                }],
+            degree: {
+                name: "Пункт 1"
+            },
     /*personExperience*/
             expWork      : "10",
             arrayExpWork : [
@@ -62,7 +54,7 @@ export const profileDoctor = {
                     post        : "Стоматолог",
                     placeOfWord : "Мед центр «Lorem ipsum dolor sit amet»",
                     dateStart   : "2011",
-                    isWorking   : null,
+                    isWorking   : true,
                     documents   : []
                 },
                 {
@@ -70,14 +62,14 @@ export const profileDoctor = {
                     post        : "Лесоруб",
                     placeOfWord : "Мед центр «Lorem ipsum dolor sit amet»",
                     dateStart   : "2011",
-                    isWorking   : null,
+                    isWorking   : false,
                     documents   : []
                 }
             ],
-            category : null,
+            category : "1-ая категория",
     /*personInformation */
-            langData  : [],
-            priceData : [],
-            consultChildren : null,
-            freeConsult : null
+            langData  : ["Английский", "Русский"],
+            priceData : '50 - 100 руб',
+            consultChildren : true,
+            freeConsult : true
 };
