@@ -9,6 +9,20 @@ import './style.css'
 import '../../icon/style.css'
 
 class ChatSend extends React.Component{
+
+    sendHandler = () => {
+        console.log(this.inp.textAreaRef.value)
+        this.inp.textAreaRef.value = '';
+        this.props.send({
+            text: this.inp.textAreaRef.value,
+            date: Math.floor(Date.now()/1000),
+        })
+    }
+
+    componentDidMount(){
+        this.inp.focus();
+    }
+
     render(){
         const { TextArea } = Input;
         const {message, attachment, disable} = this.props;
@@ -26,7 +40,15 @@ class ChatSend extends React.Component{
                     />
                 </div>
                 <div className='message__send-area'>
-                    <TextArea placeholder="Ваше сообщение..." autosize />
+                    <TextArea 
+                        ref={inp => this.inp = inp}
+                        onKeyPress = {e => {
+                            if (e.key === 'Enter') {
+                                this.sendHandler();
+                            }
+                        }}
+                        placeholder="Ваше сообщение..." 
+                        autosize />
                 </div>
                 <div className='message__send-btns'>
                     <Upload>
@@ -53,13 +75,14 @@ class ChatSend extends React.Component{
                         className='message__send-send'
                         btnText=''
                         title='Отправить сообщение'
+                        onClick = {this.sendHandler}
                     />
                     <Button
                         btnText='завершить прием'
                         size='default'
                         type='yellow'
                         {...(disable ? { disabled: true } : {})}
-                        disable
+                        onClick={this.props.closeVisit}
                     />
                 </div>
             </div>
@@ -70,11 +93,15 @@ class ChatSend extends React.Component{
 ChatSend.propTypes = {
     attachment: PropTypes.string,
     disable: PropTypes.bool,
+    send: PropTypes.func,
+    closeVisit: PropTypes.func,
 };
 
 ChatSend.defaultProps = {
     attachment: '',
     disable: true,
+    send: () => {},
+    closeVisit: () => {},
 };
 
 export default ChatSend
