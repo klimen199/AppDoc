@@ -113,7 +113,7 @@ class PersonalInformationItemForm extends React.Component{
                                         valuePropName: 'checked',
                                         initialValue: this.props.profileDoctor.freeConsult,
                                     })(
-                                        <Checkbox >Да</Checkbox>
+                                        <Checkbox>Да</Checkbox>
                                     )}
                                 </FormItem>
                             </div>
