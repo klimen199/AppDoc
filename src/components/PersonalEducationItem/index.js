@@ -50,10 +50,10 @@ class PersonalEducationItemForm extends React.Component{
 
         if(values.datePickerMain){
             if(values.datePickerMain[0]) {
-                dateStart = Math.floor(( +values.datePickerMain[0].format('x')) / 1000);
+                dateStart = values.datePickerMain[0].format("D.M.Y");
             }
             if(values.datePickerMain[1]) {
-                dateEnd = Math.floor(( +values.datePickerMain[1].format('x')) / 1000);
+                dateEnd = values.datePickerMain[1].format("D.M.Y");
             }
         }
 
@@ -78,12 +78,13 @@ class PersonalEducationItemForm extends React.Component{
         let dateStart = null;
         let dateEnd = null;
 
+
         if(values.datePickerSecond){
             if(values.datePickerSecond[0]) {
-                dateStart = Math.floor(( +values.datePickerSecond[0].format('x')) / 1000);
+                dateStart = values.datePickerSecond[0].format("D.M.Y");
             }
             if(values.datePickerSecond[1]) {
-                dateEnd = Math.floor(( +values.datePickerSecond[1].format('x')) / 1000);
+                dateEnd = values.datePickerSecond[1].format("D.M.Y");
             }
         }
         inst.push(
@@ -99,9 +100,7 @@ class PersonalEducationItemForm extends React.Component{
     };
 
     sendDegree = (values) => {
-        ////////////////////////////////////////
         let newProfile = JSON.parse(JSON.stringify(this.props.profileDoctor));
-       // let newProfile = {...this.props.profileDoctor};
         newProfile.degree = {
             name      : values.addDegreeField,
             documents : values.uploadAddDegree
@@ -112,17 +111,10 @@ class PersonalEducationItemForm extends React.Component{
 
     changeDegree = (values) => {
         let newProfile = JSON.parse(JSON.stringify(this.props.profileDoctor));
-        //let newProfile = {...this.props.profileDoctor};
-       // let inst  = newProfile.arrayDegree;
+
         newProfile.degree.name = values.changeDegreeField;
         newProfile.degree.documents = values.uploadDegree;
 
-       /* inst.map((elem) => {
-            if(elem.id === this.state.idCurrentDegree) {
-                elem.degree = values.changeDegreeField;
-                elem.documents = values.uploadDegree || [];
-            }
-        });*/
         this.setState({idCurrentDegree: null});
         return newProfile;
     };
@@ -149,23 +141,8 @@ class PersonalEducationItemForm extends React.Component{
                 this.props.form.resetFields();
                 this.setState({educatBlock: 0});
                 this.props.onSubmit(newProfile);
-                //console.log("get", newProfile);
             }
         });
-    };
-
-    onChange = (a) => {
-        alert();
-        try{
-            if(a){
-                if(a[0]) this.mainDateStart = Math.floor(( +a[0].format('x')) / 1000);
-                if(a[1]) this.mainDateEnd = Math.floor(( +a[0].format('x')) / 1000);
-            }
-        }
-        catch (e){
-            console.log(e);
-        }
-
     };
 
     addDp = () => {

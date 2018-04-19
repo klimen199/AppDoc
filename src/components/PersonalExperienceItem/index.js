@@ -38,7 +38,8 @@ class PersonalExperienceItemForm extends React.Component{
 
         let dateStart = null;
         if(values.datePickerWork){ // for server
-            dateStart = Math.floor(( +values.datePickerWork.format('x')) / 1000); // ?
+            dateStart = values.datePickerWork.format("D.M.Y");
+            //dateStart = Math.floor(( +values.datePickerWork.format('x')) / 1000); // ?
         }
         inst.arrayExpWork.push(
             {
@@ -115,18 +116,18 @@ class PersonalExperienceItemForm extends React.Component{
                                 message: 'Введите место работы'
                             }],
                         })(
-                        <Input addonBefore="Наименование места работы" />
-                    )}
+                            <Input addonBefore="Наименование места работы" />
+                        )}
                     </FormItem>
                     <FormItem className="personal-item" >
                         {getFieldDecorator('workPosition', {
-                             rules: [{
-                                 required: true,
-                                 message: 'Введите должность'
-                              }],
+                            rules: [{
+                                required: true,
+                                message: 'Введите должность'
+                            }],
                         })(
-                        <Input addonBefore="Должность"/>
-                    )}
+                            <Input addonBefore="Должность"/>
+                        )}
                     </FormItem>
 
                     <FormItem className="personal-item" >
@@ -165,7 +166,7 @@ class PersonalExperienceItemForm extends React.Component{
             <div className="new-d">
                 {dpArr}
             </div>
-            );
+        );
     };
 
     addDp2 = () => {
