@@ -23,10 +23,14 @@ class PersonalContactItemForm extends React.Component{
         let pr = JSON.parse(JSON.stringify(this.props.profileDoctor));
         //let pr = clone( this.props.profileDoctor);
         //let pr = {...this.props.profileDoctor};
-        let array = values.fioField.match(/[А-ЯЁ][а-яё-]+/ig);
+
+       /* let array = values.fioField.match(/[А-ЯЁ][а-яё-]+/ig);
         pr.secondname = array[0];
         pr.firstname = array[1];
-        pr.patronymic = array[2];
+        pr.patronymic = array[2];*/
+
+        pr.fio = values.fioField;
+
         pr.phone = values.phoneField;
         pr.email = values.emailField;
         pr.newPassword = values.newPasswordField;
@@ -48,12 +52,12 @@ class PersonalContactItemForm extends React.Component{
 
     render(){
         const { getFieldDecorator } = this.props.form;
-        const {secondname, firstname, patronymic, phone, email, oldPassword, newPassword} = this.props.profileDoctor;
+        const {/*secondname, firstname, patronymic,*/ fio, phone, email, oldPassword, newPassword} = this.props.profileDoctor;
 
       //  const {secondname, firstname, patronymic, phone, email, oldPassword, newPassword} = this.props;
         const rootClass = cn('personal-contact');
-        let fio = `${secondname} ${firstname} ${patronymic}`;
-
+      /*  let fio = `${secondname} ${firstname} ${patronymic}`;*/
+      
         return (
             <Form className={rootClass} onSubmit={this.handleSubmit} >
                 <div className="personal-block">
