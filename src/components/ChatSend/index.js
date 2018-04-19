@@ -9,6 +9,27 @@ import './style.css'
 import '../../icon/style.css'
 
 class ChatSend extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            value: props.value,
+        }
+    }
+    
+
+    sendHandler = () => {        
+        this.inp.focus();
+        this.props.send({
+            text: this.state.value,
+            date: Math.floor(Date.now()/1000),
+        });
+        this.setState({value: ''});
+    }
+
+    componentDidMount(){
+        this.inp.focus();
+    }
+
     render(){
         const { TextArea } = Input;
         const {message, attachment, disable} = this.props;
@@ -26,7 +47,15 @@ class ChatSend extends React.Component{
                     />
                 </div>
                 <div className='message__send-area'>
-                    <TextArea placeholder="Ваше сообщение..." autosize />
+                    <TextArea 
+                        ref={inp => this.inp = inp}
+                        value = {this.state.value}
+                        onChange = { e => {
+                            e.target.value.charCodeAt(e.target.value.length - 1) === 10 
+                                ? this.sendHandler() : this.setState({value: e.target.value})
+                        }}
+                        placeholder="Ваше сообщение..." 
+                        autosize />
                 </div>
                 <div className='message__send-btns'>
                     <Upload>
@@ -53,13 +82,14 @@ class ChatSend extends React.Component{
                         className='message__send-send'
                         btnText=''
                         title='Отправить сообщение'
+                        onClick = {this.sendHandler}
                     />
                     <Button
                         btnText='завершить прием'
                         size='default'
                         type='yellow'
                         {...(disable ? { disabled: true } : {})}
-                        disable
+                        onClick={this.props.closeVisit}
                     />
                 </div>
             </div>
@@ -68,13 +98,19 @@ class ChatSend extends React.Component{
 }
 
 ChatSend.propTypes = {
+    value: PropTypes.string,
     attachment: PropTypes.string,
     disable: PropTypes.bool,
+    send: PropTypes.func,
+    closeVisit: PropTypes.func,
 };
 
 ChatSend.defaultProps = {
+    value: '',
     attachment: '',
     disable: true,
+    send: () => {},
+    closeVisit: () => {},
 };
 
 export default ChatSend

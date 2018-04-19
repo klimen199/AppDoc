@@ -9,7 +9,7 @@ import '../../icon/style.css'
 
 class ChatComments extends React.Component{
     render(){
-        const {comments, attachment} = this.props;
+        const {comments, files} = this.props;
         const rootClass = cn('message__comments-area');
 
 
@@ -19,26 +19,20 @@ class ChatComments extends React.Component{
                     {comments}
                 </div>
                 <div className='message__comments-attachment'>
-                    {attachment}
-                    <DownloadLink
-                        btnText="Прикрепленный файл с длинным предлинным названием.doc"
-                        size="default" 
-                        type="link"
-                        download
-                        svg
-                        icon="file"
-                        iconSize={11}
-                    />
-
-                    <DownloadLink
-                        btnText="Прикрепленный файл с длинным предлинным названием.doc"
-                        size="default" 
-                        type="link"
-                        download
-                        svg
-                        icon="file"
-                        iconSize={11}
-                    />
+                    {
+                        files.map((el,i) => {
+                            return (<DownloadLink
+                                {...el}
+                                size="default" 
+                                type="link"
+                                download
+                                svg
+                                icon="file"
+                                iconSize={11}
+                                key={i}
+                            />)
+                        })
+                    }
                 </div>
             </div>
         )
@@ -47,12 +41,12 @@ class ChatComments extends React.Component{
 
 ChatComments.propTypes = {
     comments: PropTypes.string,
-    attachment: PropTypes.string,
+    files: PropTypes.array,
 };
 
 ChatComments.defaultProps = {
     comments: '',
-    attachment: '',
+    files: [],
 };
 
 export default ChatComments
