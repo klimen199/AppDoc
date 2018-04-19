@@ -9,14 +9,21 @@ import './style.css'
 import '../../icon/style.css'
 
 class ChatSend extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            value: props.value,
+        }
+    }
+    
 
-    sendHandler = () => {
-        console.log(this.inp.textAreaRef.value)
-        this.inp.textAreaRef.value = '';
+    sendHandler = () => {        
+        this.inp.focus();
         this.props.send({
-            text: this.inp.textAreaRef.value,
+            text: this.state.value,
             date: Math.floor(Date.now()/1000),
-        })
+        });
+        this.setState({value: ''});
     }
 
     componentDidMount(){
@@ -42,10 +49,10 @@ class ChatSend extends React.Component{
                 <div className='message__send-area'>
                     <TextArea 
                         ref={inp => this.inp = inp}
-                        onKeyPress = {e => {
-                            if (e.key === 'Enter') {
-                                this.sendHandler();
-                            }
+                        value = {this.state.value}
+                        onChange = { e => {
+                            e.target.value.charCodeAt(e.target.value.length - 1) === 10 
+                                ? this.sendHandler() : this.setState({value: e.target.value})
                         }}
                         placeholder="Ваше сообщение..." 
                         autosize />
@@ -91,6 +98,7 @@ class ChatSend extends React.Component{
 }
 
 ChatSend.propTypes = {
+    value: PropTypes.string,
     attachment: PropTypes.string,
     disable: PropTypes.bool,
     send: PropTypes.func,
@@ -98,6 +106,7 @@ ChatSend.propTypes = {
 };
 
 ChatSend.defaultProps = {
+    value: '',
     attachment: '',
     disable: true,
     send: () => {},
