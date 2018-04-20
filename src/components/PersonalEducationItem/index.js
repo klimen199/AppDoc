@@ -50,10 +50,10 @@ class PersonalEducationItemForm extends React.Component{
 
         if(values.datePickerMain){
             if(values.datePickerMain[0]) {
-                dateStart = values.datePickerMain[0].format("D.M.Y");
+                dateStart = values.datePickerMain[0]/*.format("D.M.Y")*/;
             }
             if(values.datePickerMain[1]) {
-                dateEnd = values.datePickerMain[1].format("D.M.Y");
+                dateEnd = values.datePickerMain[1]/*.format("D.M.Y")*/;
             }
         }
 
@@ -81,10 +81,10 @@ class PersonalEducationItemForm extends React.Component{
 
         if(values.datePickerSecond){
             if(values.datePickerSecond[0]) {
-                dateStart = values.datePickerSecond[0].format("D.M.Y");
+                dateStart = values.datePickerSecond[0]/*.format("D.M.Y")*/;
             }
             if(values.datePickerSecond[1]) {
-                dateEnd = values.datePickerSecond[1].format("D.M.Y");
+                dateEnd = values.datePickerSecond[1]/*.format("D.M.Y")*/;
             }
         }
         inst.push(

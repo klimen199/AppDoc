@@ -38,7 +38,7 @@ class PersonalExperienceItemForm extends React.Component{
 
         let dateStart = null;
         if(values.datePickerWork){ // for server
-            dateStart = values.datePickerWork.format("D.M.Y");
+            dateStart = values.datePickerWork/*.format("D.M.Y")*/;
             //dateStart = Math.floor(( +values.datePickerWork.format('x')) / 1000); // ?
         }
         inst.arrayExpWork.push(
