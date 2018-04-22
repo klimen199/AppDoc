@@ -3,14 +3,21 @@ import PropTypes from 'prop-types'
 
 import RangeTP from './RangeTP'
 import DefaultTP from './DefaultTP'
-
+import  moment from 'moment'
 import './styles.css'
-const timeFormat = 'HH:mm';
 
 class TimePicker extends React.Component{
+    range = (start, end) =>{
+        const result = [];
+        for (let i = start; i < end; i++) {
+            result.push(i);
+        }
+        return result;
+    };
+
 
     render(){
-        const {range,minuteStep, placeholder, defaultValue, onChange} = this.props;
+        const {range,defaultValue} = this.props;
 
         return (
             <div className="timepicker-base">
@@ -18,10 +25,7 @@ class TimePicker extends React.Component{
                     range ? (
                         <RangeTP {...this.props}/>
                         ) : (
-                            <DefaultTP format={timeFormat}
-                                       defaultValue={defaultValue}
-                                       placeholder={placeholder}
-                                       minuteStep={minuteStep}
+                            <DefaultTP defaultValue={defaultValue}
                                        {...this.props}/>
                         )
                 }
@@ -32,6 +36,10 @@ class TimePicker extends React.Component{
 
 TimePicker.propTypes = {
     //defaultValue: PropTypes.object,
+    placeholder: PropTypes.string, //
+    availableArea: PropTypes.array, // доступный промежуток времени
+    minuteStep:  PropTypes.number, // интервал
+
     range: PropTypes.bool,
     rangeSet: PropTypes.shape({
         defaultStartValue: PropTypes.object,
@@ -40,8 +48,6 @@ TimePicker.propTypes = {
         placeholderEnd: PropTypes.string,
     }),
     isReset: PropTypes.bool,
-    placeholder: PropTypes.string,
-    minuteStep: PropTypes.number,
     delimiter: PropTypes.string,
     onChange: PropTypes.func,
 };
@@ -51,7 +57,7 @@ TimePicker.defaultProps = {
     range: false,
     rangeSet: {},
     isReset: false,
-    placeholder: ' ',
+    placeholder: " ",
     minuteStep: 5,
     delimiter: ' ',
     onChange: () => {},
