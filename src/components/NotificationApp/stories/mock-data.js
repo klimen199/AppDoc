@@ -1,29 +1,35 @@
 export const notificationArr = [
     {
-        title: "добавлена Новая запись",
+        title: "Добавлены результаты исследований ",
         time: "15:50",
         thisTime: "10:50",
         desc: "Иванов Александр",
         date: '26.11.2018',
-        status: 'new'
+        status: 'research',
+        watch: false,
     },{
         title: "добавлена Новая запись",
         time: "15:50",
         thisTime: "10:50",
         desc: "Иванов Александр",
         date: '26.11.2018',
-        status: 'new'
+        status: 'new',
+        watch: true,
     },{
-        title: "добавлена Новая запись",
+        title: "Прием начинается через 5 минут",
         time: "15:50",
-        thisTime: "10:50",
+        thisTime: "15:45",
         desc: "Иванов Александр",
         date: '26.11.2018',
+        status: 'five',
+        watch: true,
     },{
-        title: "добавлена Новая запись",
+        title: "Экстренный вызов",
         time: "15:50",
-        thisTime: "10:50",
+        thisTime: "15:45",
         desc: "Иванов Александр",
         date: '26.11.2018',
+        status: 'call',
+        watch: false,
     }
 ];
