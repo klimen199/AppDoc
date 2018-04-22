@@ -24,17 +24,9 @@ class PersonalEducationItemForm extends React.Component{
         }
     }
 
-    clone = (obj) => {
-        if (null == obj || "object" !== typeof obj) return obj;
-        let copy = obj.constructor();
-        for (let attr in obj) {
-            if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
-        }
-        return copy;
-    };
 
     sendMainInstution = (values) => {
-        let newProfile = JSON.parse(JSON.stringify(this.props.profileDoctor));
+        let newProfile = this.props.profileDoctor;
 
         let inst  = newProfile.arrayMainInstitution;
         let idInst = null;
@@ -70,14 +62,19 @@ class PersonalEducationItemForm extends React.Component{
     };
 
     sendSecondInstution = (values) => {
-        let newProfile = JSON.parse(JSON.stringify(this.props.profileDoctor));
+        let newProfile = this.props.profileDoctor;
         //let newProfile = {...this.props.profileDoctor};
 
         let inst  = newProfile.arraySecondInstitution;
-
+        let idInst = null;
+        try{
+            idInst = (inst[inst.length-1].id + 1);
+        }
+        catch(e) {
+            idInst = 0;
+        }
         let dateStart = null;
         let dateEnd = null;
-
 
         if(values.datePickerSecond){
             if(values.datePickerSecond[0]) {
@@ -89,7 +86,7 @@ class PersonalEducationItemForm extends React.Component{
         }
         inst.push(
             {
-                id                 : inst[inst.length-1].id + 1,
+                id                 : idInst,
                 secondInstitution  : values.secondInstitutionField,
                 secondSpecialty    : values.secondSpecialtyField,
                 secondDateStart    : dateStart,
@@ -100,7 +97,7 @@ class PersonalEducationItemForm extends React.Component{
     };
 
     sendDegree = (values) => {
-        let newProfile = JSON.parse(JSON.stringify(this.props.profileDoctor));
+        let newProfile = this.props.profileDoctor;
         newProfile.degree = {
             name      : values.addDegreeField,
             documents : values.uploadAddDegree
@@ -110,7 +107,7 @@ class PersonalEducationItemForm extends React.Component{
     };
 
     changeDegree = (values) => {
-        let newProfile = JSON.parse(JSON.stringify(this.props.profileDoctor));
+        let newProfile = this.props.profileDoctor;
 
         newProfile.degree.name = values.changeDegreeField;
         newProfile.degree.documents = values.uploadDegree;
@@ -350,14 +347,14 @@ class PersonalEducationItemForm extends React.Component{
         const instituions = arrayMainInstitution.map((elem) => {
             return (
                 <div key={elem.id} className="personal-item mb-35">
-                    <div className="personal-info">{elem.mainInstitution}, {elem.mainDateStart}-{elem.mainDateEnd}</div>
+                    <div className="personal-info">{elem.mainInstitution}, {elem.mainDateStart.format('L')}-{elem.mainDateEnd.format('L')}</div>
                     <div className="personal-info">{elem.mainSpecialty}</div>
                 </div> );
         });
         const instituionsSecond = arraySecondInstitution.map((elem) => {
             return (
                 <div key={elem.id} className="personal-item pb-25 mb-35 brd-b brd-d">
-                    <div className="personal-info">{elem.secondInstitution}, {elem.dateStart}-{elem.dateEnd}</div>
+                    <div className="personal-info">{elem.secondInstitution}, {elem.dateStart.format('L')}-{elem.dateEnd.format('L')}</div>
                     <div className="personal-info">{elem.secondSpecialty}</div>
                 </div> );
         });

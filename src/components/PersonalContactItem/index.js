@@ -21,13 +21,6 @@ class PersonalContactItemForm extends React.Component{
 
     onSave = (values) => {
         let pr = JSON.parse(JSON.stringify(this.props.profileDoctor));
-        //let pr = clone( this.props.profileDoctor);
-        //let pr = {...this.props.profileDoctor};
-
-       /* let array = values.fioField.match(/[А-ЯЁ][а-яё-]+/ig);
-        pr.secondname = array[0];
-        pr.firstname = array[1];
-        pr.patronymic = array[2];*/
 
         pr.fio = values.fioField;
 

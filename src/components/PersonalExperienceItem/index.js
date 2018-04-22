@@ -225,7 +225,7 @@ class PersonalExperienceItemForm extends React.Component{
                         <div className="personal-item mb-35">
                             <div className="personal-info"><b>{elem.post}</b></div>
                             <div className="personal-info">{elem.placeOfWord}</div>
-                            <div className="personal-info">{elem.dateStart} - {elem.thisTime}</div>
+                            <div className="personal-info">{elem.dateStart.format('L')}</div>
                         </div>
                     </div> );
             });
