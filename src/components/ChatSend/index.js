@@ -88,7 +88,7 @@ class ChatSend extends React.Component{
                         btnText='завершить прием'
                         size='default'
                         type='yellow'
-                        {...(disable ? { disabled: true } : {})}
+                        disable = {disable}
                         onClick={this.props.closeVisit}
                     />
                 </div>

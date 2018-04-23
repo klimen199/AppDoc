@@ -17,7 +17,9 @@ class Upload extends React.Component{
             <AntUpload className={clName}
                        fileList = {this.props.value ? this.props.value.fileList : []}
                        listType="picture"
-                       onChange={this.props.onChange}>
+                       onChange={this.props.onChange}
+                       {...this.props}
+            >
                 <Button btnText={text}
                         size='upload'
                         type='upload'
