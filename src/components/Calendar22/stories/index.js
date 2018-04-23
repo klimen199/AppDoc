@@ -74,7 +74,7 @@ const events1 = [
 const schedules1 = [
     {
         id: 12,
-        isEditable: '0',
+        isEditable: '1',
         intervalOb: [{
             start: new Date(2018, 0, 15, 8, 30, 0).getTime()/1000,
             end: new Date(2018, 0, 15, 10, 0, 0).getTime()/1000,
@@ -88,7 +88,7 @@ const schedules1 = [
         intervalEx: [],
     },
     {
-        id: 12,
+        id: 13,
         isEditable: '0',
         intervalOb: [{
             start: new Date(2018, 0, 25, 8, 30, 0).getTime()/1000,
@@ -103,7 +103,7 @@ const schedules1 = [
         intervalEx: [],
     },
     {
-        id: 13,
+        id: 14,
         isEditable: '1',
         intervalOb: [{
             start: new Date(2018, 1, 8, 8, 30, 0).getTime()/1000,

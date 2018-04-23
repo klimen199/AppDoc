@@ -8,6 +8,7 @@ import momentLocalizer from './libr/localizers/moment.js'
 
 import './react-big-calendar.css'
 import './style.css'
+import Modal from "../Modal";
 
 moment.locale('ru');
 momentLocalizer(moment);
@@ -15,11 +16,14 @@ momentLocalizer(moment);
 class BigCalendar extends React.Component{
     state = {
         dayRange: [],
+        schedule: null,
+        visible: false
     };
 
     selectHandler = (range, slotInfo,selecting, schedule) => {
         if (slotInfo.action === 'click'){
-            this.props.onMonthSelect(range, schedule)
+            this.props.onMonthSelect(range, schedule);
+            this.setState({schedule: schedule, visible: true});
             // console.log('RETURN', range)
             return
         }
@@ -78,8 +82,35 @@ class BigCalendar extends React.Component{
 
         return newEvents;
     }
-    
-    render() {       
+
+    onCancel = () => {
+        this.setState({visible: false, schedule: null});
+    };
+    render() {
+        const {visible,schedule} = this.state;
+
+        let sched = null, sched2 = null;
+        if(schedule){
+            let count = schedule.intervalOb.length;
+            let count2 = schedule.intervalEx.length;
+            sched = (schedule.intervalOb).map((elem) => {
+                return (
+                    <div id={count--} style={{padding: '10px', 'padding-bottom':'5px'}}>
+                        {elem.start.getHours()}:{elem.start.getMinutes()}
+                        -
+                        {elem.end.getHours()}:{elem.end.getMinutes()}
+                    </div> );
+            });
+            sched2 = (schedule.intervalEx).map((elem) => {
+                return (
+                    <div id={count2--} style={{padding: '10px', color: '#ef5350'}}>
+                        {elem.start.getHours()}:{elem.start.getMinutes()}
+                        -
+                        {elem.end.getHours()}:{elem.end.getMinutes()}
+                    </div> );
+            });
+        }
+
 
         let prop = this.props.editor ? {
                 ...this.props,
@@ -90,8 +121,16 @@ class BigCalendar extends React.Component{
                 events: this.changeEvents(),
             }
 
-        return (<div>
-            {
+
+        return (
+            <div>
+                <Modal width={300} title="Расписание" visible={visible} onCancel={this.onCancel}>
+                    <div style={{padding: '30px'}}>
+                        {sched}
+                        {sched2}
+                    </div>
+                </Modal>
+                {
                 this.props.editor ?
                     <Calendar
                         className='calendar-editor'
@@ -111,8 +150,8 @@ class BigCalendar extends React.Component{
 
                         {...prop}
                     />
-            }
-        </div>);
+                }
+            </div>);
     }
 }
 
