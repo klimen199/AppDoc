@@ -221,7 +221,7 @@ class PersonalExperienceItemForm extends React.Component{
                         <div className="personal-item mb-35">
                             <div className="personal-info"><b>{elem.post}</b></div>
                             <div className="personal-info">{elem.placeOfWord}</div>
-                            <div className="personal-info">{elem.dateStart.format('L')}</div>
+                            <div className="personal-info">{elem.dateStart.format('YYYY')} - настоящее время</div>
                         </div>
                     </div> );
             });
@@ -233,7 +233,7 @@ class PersonalExperienceItemForm extends React.Component{
                 <Form className={rootClass} onSubmit={this.handleSubmit}>
                     <div className="personal-block">
                         <div className="personal-item">
-                            <div className="expWork">Опыт работы ({expWork} лет)</div>
+                            <div className="expWork">Опыт работы ( {expWork} )</div>
                         </div>
 
 

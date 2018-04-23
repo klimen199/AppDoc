@@ -20,7 +20,7 @@ class PersonalContactItemForm extends React.Component{
 
 
     onSave = (values) => {
-        let pr = his.props.profileDoctor;
+        let pr = this.props.profileDoctor;
         pr.fio = values.fioField;
 
         pr.phone = values.phoneField;
