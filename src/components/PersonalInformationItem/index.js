@@ -22,7 +22,7 @@ class PersonalInformationItemForm extends React.Component{
         }
     }
     addPersonInfo = (values) => {
-        let pr = JSON.parse(JSON.stringify(this.props.profileDoctor));
+        let pr = his.props.profileDoctor;
         pr.langData = values.languagesField;
         pr.priceData = values.priceField;
 
