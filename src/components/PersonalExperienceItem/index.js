@@ -72,15 +72,13 @@ class PersonalExperienceItemForm extends React.Component{
                 this.props.form.resetFields();
                 this.setState({experBlock : 0});
                 this.props.onSubmit(newProfile);
-                //console.log("get", newProfile);
             }
         });
     };
 
 
     deleteWork = (id) => {
-        let newProfile = JSON.parse(JSON.stringify(this.props.profileDoctor));
-        //let newProfile = {...this.props.profileDoctor};
+        let newProfile = this.props.profileDoctor;
 
         this.setState({idDeleteWork: id});
         let newArray = [];
@@ -90,10 +88,8 @@ class PersonalExperienceItemForm extends React.Component{
         newProfile.arrayExpWork = newArray;
 
         this.props.onSubmit(newProfile);
-        //console.log("get", newProfile);
     };
 
-    // для upload
     normFile = (e) => {
         if (Array.isArray(e)) {
             return e;

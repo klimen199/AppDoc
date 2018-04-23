@@ -8,7 +8,7 @@ export const profileDoctor = {
             oldPassword : "",  // пользователь сам вводит старый пароль ( как например в vk )
             newPassword : "",
     /*personEducation*/
-            arrayMainInstitution   : [ ],
+            arrayMainInstitution   : [],
             arraySecondInstitution   : [],
             degree: {
                 name: "Пункт 1"
@@ -16,6 +16,7 @@ export const profileDoctor = {
     /*personExperience*/
             expWork      : "10",
             arrayExpWork : [
+
             ],
             category : "1-ая категория",
     /*personInformation */
