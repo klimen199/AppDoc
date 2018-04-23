@@ -52,7 +52,8 @@ class ChatSend extends React.Component{
                         value = {this.state.value}
                         onChange = { e => {
                             e.target.value.charCodeAt(e.target.value.length - 1) === 10 
-                                ? this.sendHandler() : this.setState({value: e.target.value})
+                                ? (!disable && this.sendHandler())
+                                : this.setState({value: e.target.value})
                         }}
                         placeholder="Ваше сообщение..." 
                         autosize />
@@ -82,6 +83,7 @@ class ChatSend extends React.Component{
                         className='message__send-send'
                         btnText=''
                         title='Отправить сообщение'
+                        disable = {disable}
                         onClick = {this.sendHandler}
                     />
                     <Button
