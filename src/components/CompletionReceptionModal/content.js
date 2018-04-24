@@ -22,7 +22,9 @@ class ContentForm extends React.Component {
                   className={rootClass}>
 
                     <FormItem>
-                        {getFieldDecorator('diagnosis')(
+                        {getFieldDecorator('diagnosis',{
+                            rules: [{required: true, message: 'Ввведите диагноз',}]
+                        })(
                             <Input className={rootClass + '-input'}
                                    placeholder="Диагноз"/>
                         )}
@@ -39,7 +41,6 @@ class ContentForm extends React.Component {
                             size="default"
                             type="float"
                     />
-
             </Form>
         )
     }
