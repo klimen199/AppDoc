@@ -21,7 +21,7 @@ class ChatMessage extends React.Component {
                 <div className={`${rootClass}-area`}>
                     {
                         date && <div className={`${rootClass}-time`}>
-                            {moment(date).format('HH:mm')}
+                            {moment(date*1000).format('HH:mm')}
                         </div>
                     }
                     <div className={`${rootClass}-box`}>
