@@ -28,7 +28,7 @@ class ContentForm extends React.Component {
                         )}
                     </FormItem>
                     <FormItem>
-                        {getFieldDecorator('flag')(
+                        {getFieldDecorator('isHronic')(
                             <Checkbox className={rootClass + '-checkbox'}>
                                 Добавить в список хронических болезней</Checkbox>
                         )}
