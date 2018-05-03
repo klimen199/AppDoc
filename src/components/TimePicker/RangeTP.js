@@ -44,7 +44,7 @@ class RangeTp extends React.Component {
     };
 
     // выбранный час
-    getNotAvailableMin = (hour) => { // получить массив из доступных часов
+    getNotAvailableMin = (hour) => {
 
         const area = this.props.availableArea;
         let errorMin = []; // ответ
@@ -71,18 +71,31 @@ class RangeTp extends React.Component {
         return errorMin;
     };
 
+    getAvailableMin = (notMin) => {
+      let min = [];
+      for(let i = 0; i < 60; i++ ){
+          if( notMin.indexOf(i) === -1)
+              min.push(i);
+      }
+      return min;
+    };
     onChange = (field, value) => {
         //начальная проверка
         const hourCheck = value._d.getHours();
-        const minCheck = value._d.getMinutes();
+        let minCheck = value._d.getMinutes();
         const array = this.getAvailableHour();
         const arrayMin = this.getNotAvailableMin(parseInt(value.format('HH')));
+        const arrayGoodMin = this.getAvailableMin(arrayMin);
+
+        if(arrayGoodMin.indexOf(minCheck) === -1 ){
+            value.minute(arrayGoodMin[0]); //1-ая доступная минута
+            minCheck = arrayGoodMin[0];
+        }
+        this.setState({falseMin : arrayMin });
 
         if (array.indexOf(hourCheck) === -1 || arrayMin.indexOf(minCheck) !== -1)
             return;
 
-        console.log(field, value);
-       this.setState({falseMin : arrayMin });
         if (!value) {
             this.setState({
                 startValue: value,

@@ -7,6 +7,7 @@ import  moment from 'moment'
 import './styles.css'
 
 class TimePicker extends React.Component{
+
     range = (start, end) =>{
         const result = [];
         for (let i = start; i < end; i++) {
@@ -15,8 +16,17 @@ class TimePicker extends React.Component{
         return result;
     };
 
+    transformDate = () => {
+        let area = this.props.availableArea;
+        for(let i = 0; i < area.length; i++){
+            area[i].from = moment(+area[i].from );
+            area[i].to = moment(+area[i].to );
+        }
+        this.startValue = moment(+this.props.value );
+    };
 
     render(){
+        this.transformDate();
         const {range,defaultValue} = this.props;
 
         return (
@@ -25,8 +35,7 @@ class TimePicker extends React.Component{
                     range ? (
                         <RangeTP {...this.props}/>
                         ) : (
-                            <DefaultTP defaultValue={defaultValue}
-                                       {...this.props}/>
+                            <DefaultTP {...this.props}/>
                         )
                 }
             </div>

@@ -17,9 +17,10 @@ class DefaultTp extends React.Component {
             falseHour: this.getNotAvailableHour(),
             trueMin: [],
             falseMin: [],
-
         };
     };
+
+
 
     getNotAvailableHour = () => { // получить массив из не доступных часов
         return this.falseHour;
@@ -52,6 +53,7 @@ class DefaultTp extends React.Component {
         let countQqual = [];
 
         for(let i = 0; i < area.length; i++) {
+
             let beforeH = parseInt(area[i].from.format('HH'));
             let beforeM = parseInt(area[i].from.format('mm'));
             if (hour === beforeH) {
@@ -71,16 +73,31 @@ class DefaultTp extends React.Component {
         return errorMin;
     };
 
+    getAvailableMin = (notMin) => {
+        let min = [];
+        for(let i = 0; i < 60; i++ ){
+            if( notMin.indexOf(i) === -1)
+                min.push(i);
+        }
+        return min;
+    };
+
     onChange = (field, value) => {
         //начальная проверка
         const hourCheck = value._d.getHours();
-        const minCheck = value._d.getMinutes();
+        let minCheck = value._d.getMinutes();
         const array = this.getAvailableHour();
         const arrayMin = this.getNotAvailableMin(parseInt(value.format('HH')));
+        const arrayGoodMin = this.getAvailableMin(arrayMin);
+
+        if(arrayGoodMin.indexOf(minCheck) === -1 ){
+            value.minute(arrayGoodMin[0]); //1-ая доступная минута
+            minCheck = arrayGoodMin[0];
+        }
+        this.setState({falseMin : arrayMin });
         if (array.indexOf(hourCheck) === -1 || arrayMin.indexOf(minCheck) !== -1)
             return;
-debugger;
-        this.setState({falseMin : arrayMin });
+
         if (!value) {
             this.setState({
                 startValue: value,
