@@ -190,7 +190,7 @@ class PersonalEducationItemForm extends React.Component{
                     <FormItem className="personal-item" >
                         {getFieldDecorator('uploadMain', {
                         })(
-                            <Upload text="Прикрепить документ, подтверждающий ученую степень" />
+                            <Upload text="Прикрепить диплом (сертификат, свидетельство)" />
                         )}
                     </FormItem>
                 </div>
@@ -247,7 +247,7 @@ class PersonalEducationItemForm extends React.Component{
                     <FormItem className="personal-item" >
                         {getFieldDecorator('uploadSecond', {
                         })(
-                            <Upload text="Прикрепить документ, подтверждающий ученую степень"/>
+                            <Upload text="Прикрепить диплом (сертификат, свидетельство)"/>
                         )}
                     </FormItem>
                 </div>
@@ -346,16 +346,32 @@ class PersonalEducationItemForm extends React.Component{
 
         const instituions = arrayMainInstitution.map((elem) => {
             return (
-                <div key={elem.id} className="personal-item mb-35">
-                    <div className="personal-info">{elem.mainInstitution}, {elem.mainDateStart.format('L')}-{elem.mainDateEnd.format('L')}</div>
-                    <div className="personal-info">{elem.mainSpecialty}</div>
+                <div key={elem.id} className="personal-item mb-35 brd-b brd-d">
+                    <div className="personal-info">
+                        <p>
+                            {elem.mainInstitution}, {elem.mainDateStart.format('YYYY')} - {elem.mainDateEnd.format('YYYY')}
+                        </p>
+                    </div>
+                    <div className="personal-info">
+                        <p>
+                            {elem.mainSpecialty}
+                        </p>
+                    </div>
                 </div> );
         });
         const instituionsSecond = arraySecondInstitution.map((elem) => {
             return (
                 <div key={elem.id} className="personal-item pb-25 mb-35 brd-b brd-d">
-                    <div className="personal-info">{elem.secondInstitution}, {elem.dateStart.format('L')}-{elem.dateEnd.format('L')}</div>
-                    <div className="personal-info">{elem.secondSpecialty}</div>
+                    <div className="personal-info">
+                        <p>
+                            {elem.secondInstitution}, {elem.dateStart.format('MMMM YYYY')} - {elem.dateEnd.format('MMMM YYYY')}
+                        </p>
+                    </div>
+                    <div className="personal-info">
+                        <p>
+                            {elem.secondSpecialty}
+                        </p>
+                    </div>
                 </div> );
         });
 
