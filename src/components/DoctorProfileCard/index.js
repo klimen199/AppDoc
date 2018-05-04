@@ -16,7 +16,7 @@ class DoctorProfileCard extends React.Component{
     }
 
     render(){
-        const {img, short, name, specialty,online} = this.props;
+        const {img, short, name, specialty=[],online} = this.props;
         let spec = specialty.map(function(elem) {
             return elem.toUpperCase();
         });
