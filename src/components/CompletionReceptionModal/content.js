@@ -30,12 +30,12 @@ class ContentForm extends React.Component {
                         )}
                     </FormItem>
                     <FormItem>
-                        {getFieldDecorator('isHronic')(
+                        {getFieldDecorator('isChronic')(
                             <Checkbox className={rootClass + '-checkbox'}>
                                 Добавить в список хронических болезней</Checkbox>
                         )}
                     </FormItem>
-                    <Button onClick={this.props.onComplete}
+                    <Button 
                             htmlType="submit"
                             btnText="Завершить"
                             size="default"
