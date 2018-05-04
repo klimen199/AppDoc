@@ -16,7 +16,7 @@ class DoctorProfileCard extends React.Component{
     }
 
     render(){
-        const {img, short, name, specialty=[],online} = this.props;
+        const {img, short, name, specialty,online} = this.props;
         let spec = specialty.map(function(elem) {
             return elem.toUpperCase();
         });
@@ -37,7 +37,7 @@ class DoctorProfileCard extends React.Component{
 
 DoctorProfileCard.propTypes = {
     name: PropTypes.string,
-    specialty: PropTypes.string,
+    specialty: PropTypes.array,
     short: PropTypes.bool,
     rateValue: PropTypes.number,
     timesRated: PropTypes.number,
@@ -46,7 +46,7 @@ DoctorProfileCard.propTypes = {
 DoctorProfileCard.defaultProps = {
     img: '',
     name: '',
-    specialty: '',
+    specialty: [],
     short: false,
 };
 
