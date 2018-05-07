@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import cn from 'classnames'
+import moment from 'moment'
 
 import Button from '../Button'
 import Rate from '../Rate'
@@ -9,38 +10,77 @@ import ProfileAvatar from '../ProfileAvatar'
 
 import './style.css'
 import '../../icon/style.css'
+import { format } from 'util';
 
 class ChatDialog extends React.Component{
-    render(){
-        const { name, consultation, size, time, online, img, status, iconType, id} = this.props;
-        const rootClass = cn('dialog-item',  `dialog-status-${status}`);
+    constructor(props){
+        super(props);
+        let timeDifference = Math.floor((+this.props.start) - Date.now()/1000);
+        this.state = {
+            status: 
+            (timeDifference < 900 && timeDifference > 0)
+                    ? 'soon' : 'default'
+        }
+    }
 
+    handleClick = (e) => {
+        e.stopPropagation();
+        e.nativeEvent.stopImmediatePropagation();
+    }
+
+    render(){
+        const { fio, comment, size, avatar, type, id, id_user,
+            online, status} = this.props;
+        const rootClass = cn('dialog-item',  `dialog-status-${this.state.status}`);
+
+        const key_val = {
+            'chat': 'chat1',
+            'voice': 'telephone', 
+            'video': "video-camera",
+        }
+        let time = this.state.status === 'soon' ? 
+            'через ' 
+            + Math.floor(((+this.props.start) - (Date.now()/1000))/60) 
+            + ' мин.'
+            : moment((+this.props.start)*1000).format('HH:mm');
 
         return (
-            <div className={rootClass}>
+            <div className={rootClass} 
+                onClick={(e) => {
+                    this.handleClick(e);
+                    this.props.onGotoChat(id);
+                }}>
                 <div className="flex-col" > 
-                    <ProfileAvatar owner="patient" online={online} img={img} size={size}/>
+                    <ProfileAvatar owner="patient" online={online} img={avatar} size={size}/>
                 </div>
                 <div className="flex-col">
                     <div className="dialog-item-name">
-                        <div className='go-to' onClick={() => this.props.onGoto(id)}>{name}</div>
+                        <div className='go-to' 
+                            onClick={(e) => {
+                                this.handleClick(e);
+                                this.props.onGoto(id_user);
+                            }}>{fio}</div>
                     </div>
-                    <div className="dialog-item-consultation">{consultation}</div>
+                    <div className="dialog-item-consultation">{comment}</div>
                 </div>
                 <div className="flex-col">
-                    <div className='dialog-item-time'>{time}</div>
-                    <Button className='dialog-item-extra' onClick={this.showModal}
+                    <div className='dialog-item-time'>
+                        {time}
+                    </div>
+                    <Button className='dialog-item-extra' 
+                        //onClick={this.showModal}
                         size='file'
                         type='file'
                         svg
                         icon='emergency-call'
                         iconSize={25}
                     />
-                    <Button className='dialog-item-type' onClick={this.showModal}
+                    <Button className='dialog-item-type' 
+                        //onClick={this.showModal}
                         size='file'
                         type='file'
                         svg
-                        icon={iconType}
+                        icon={key_val[type]}
                         iconSize={16}
                     />
                 </div>
@@ -51,23 +91,23 @@ class ChatDialog extends React.Component{
 
 ChatDialog.propTypes = {
     id: PropTypes.number,
-    img: PropTypes.string,
-    name: PropTypes.string,
+    avatar: PropTypes.string,
+    fio: PropTypes.string,
     status: PropTypes.oneOf(['extra', 'default', 'soon']),
-    time: PropTypes.string,
-    iconType: PropTypes.string,
+    type: PropTypes.string,
     onGoto: PropTypes.func,
+    onGotoChat: PropTypes.func,
 };
 
 ChatDialog.defaultProps = {
     id: 0,
-    img: '',
-    name: '',
+    avatar: '',
+    fio: '',
     size: 'small',
     status: 'default',
-    time: '00:00',
-    iconType: 'chat1',
+    type: 'chat',
     onGoto: () => {},
+    onGotoChat: () => {},
 };
 
 export default ChatDialog

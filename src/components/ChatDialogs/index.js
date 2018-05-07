@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import cn from 'classnames'
+import moment from 'moment'
 import ScrollArea from 'react-scrollbar'
 
 import Button from '../Button'
@@ -12,12 +13,37 @@ import './style.css'
 import '../../icon/style.css'
 
 class ChatDialogs extends React.Component{
+    state = {
+        time: moment(),
+    };
+
+    componentDidMount(){
+        this.tick();
+        this.timeout = setTimeout(this.firstTick,(60-moment().second())*1000);
+    }
+
+    componentWillUnmount(){
+        clearTimeout(this.timeout);
+        clearInterval(this.timer);
+    }
+    
+    firstTick = () => {
+        this.tick();
+        this.timer = setInterval(this.tick, 60000);
+    };
+
+    tick = () => {
+        this.setState({time: moment()});
+    };
 
     dialogRender = (dataArr) => {
         let dialogArr = [];
 
         dataArr.map((item, index) => {
-            dialogArr.push(<ChatDialog {...item} key={item.id + ''+index}/>)
+            dialogArr.push(<ChatDialog {...item} 
+                onGotoChat={this.props.onGotoChat}
+                onGoto={this.props.onGoto}
+                key={item.id + ''+index}/>)
         });
 
         return dialogArr;

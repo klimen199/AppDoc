@@ -63,6 +63,7 @@ TimePicker.propTypes = {
 
 TimePicker.defaultProps = {
     //defaultValue: null,
+    availableArea: [],
     range: false,
     rangeSet: {},
     isReset: false,
