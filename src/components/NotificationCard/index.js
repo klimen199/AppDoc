@@ -19,8 +19,9 @@ class NotificationCard extends React.Component{
     };
 
     render(){
+        console.log("notific_card");
         return (
-            <div className='notification-card'>
+            <div style={{position:"fixed"}} className='notification-card'>
                 <Card title="Уведомления">
                     {this.notificationRender(this.props.data)}
                 </Card>

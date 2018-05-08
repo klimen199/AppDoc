@@ -22,22 +22,6 @@ const NotificationItem = (props) => {
                     </div>
                 </div>
                 <div className='notification-info'>{desc} {date} {time}</div>
-                <div className='notification-links'>
-                    <DownloadLink
-                        btnText="Прикрепленный файл с длинным предлинным названием.doc"
-                        size="default"
-                        type="link"
-                        download
-                    />
-                    <Button
-                        size='file'
-                        type='file'
-                        icon='download'
-                        iconSize={20}
-                        svg
-                        title='Скачать всё'
-                    />
-                </div>
             </div>
         );
     };
@@ -168,19 +152,13 @@ const NotificationItem = (props) => {
 
     }
 
-
-    console.log("watch", watch);
     let rootClass = null;
     if(!watch)
         rootClass =  cn( `notification-item` ,`notification-${addClass}`);
     else {
         rootClass = cn( `notification-item` ,`notification-watch`);
-
-        console.log("111");
     }
 
-
-    console.log("class", rootClass);
     return (
                 <div className={rootClass}>
                     {renderType}

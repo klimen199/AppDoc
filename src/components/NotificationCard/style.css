@@ -10,10 +10,16 @@
   font-size: 1.25rem;
   color: #eee;
 }
+.notific_component {
+  position: relative;
+}
+.notific_component .notification {
+  position: absolute;
+}
 .notification-card {
+  position: absolute;
+  top: 25%;
   width: 415px;
-  margin-top: 20px;
-  margin-left: -45px;
 }
 .notification-card .ant-card-head {
   background-color: #fdc401;
