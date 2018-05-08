@@ -28,13 +28,13 @@ class ContentForm extends React.Component {
                     {
                         ...this.props.form.getFieldsValue(),
                         comment: this.state.message,
-                        date: (newDate).getTime()/1000,
+                        date: Math.floor((newDate).getTime()/1000),
                     }
                 ):(
                     {
                         ...this.props.form.getFieldsValue(),
                         comment: this.state.message,
-                        date: (this.props.date).getTime()/1000,
+                        date: Math.floor((this.props.date).getTime()/1000),
                     }
                 );
                 this.props.onSave(response);
