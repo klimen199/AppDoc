@@ -10,13 +10,16 @@ import PropTypes from "prop-types";
 class DefaultTp extends React.Component {
     constructor(props) {
         super(props);
+        let ar = [];
+        for(let i = 0; i < 60; i++)
+            ar.push(i);
         this.state = {
             startValue: moment("07:06", "hh:mm"),
             curValue: this.props.value || null,
             trueHour: this.getAvailableHour(),
             falseHour: this.getNotAvailableHour(),
             trueMin: [],
-            falseMin: [],
+            falseMin: ar,
         };
     };
 
@@ -98,6 +101,7 @@ class DefaultTp extends React.Component {
         if (array.indexOf(hourCheck) === -1 || arrayMin.indexOf(minCheck) !== -1)
             return;
 
+
         if (!value) {
             this.setState({
                 startValue: value,
@@ -114,15 +118,15 @@ class DefaultTp extends React.Component {
                 const {defaultStartValue} = rangeSet;
                 start = defaultStartValue || value;
             }
-
-            this.props.onChange([start, value]);
+            //новое значение в свойстве _d
+            this.props.onChange(value);
         }
         else {
             this.setState({
                 [field]: value,
                 curValue: value,
             });
-            this.props.onChange([value, value]);
+            this.props.onChange(value);
         }
     };
 

@@ -22,12 +22,16 @@ storiesOf('TimePicker', module)
                         minuteStep={5}
                         availableArea={[
                             {
-                                from : 1396009227,
-                                to   : 1396020327
+                                from : 1395985227000,
+                                to   : 1395990227000
                             },
                             {
-                                from : 1396030327,
-                                to   : 1396037327
+                                from : 1396005227000,
+                                to   : 1396010327000
+                            },
+                            {
+                                from : 1396020027000,
+                                to   : 1396025327000
                             }
                         ]}
                         placeholder= "Время деньги"
@@ -47,16 +51,16 @@ storiesOf('TimePicker', module)
                         onChange={action('Time picked')}
                         availableArea={[
                             {
-                                from : 1395985227,
-                                to   : 1395990227
+                                from : 1395985227000,
+                                to   : 1395990227000
                             },
                             {
-                                from : 1396005227,
-                                to   : 1396010327
+                                from : 1396005227000,
+                                to   : 1396010327000
                             },
                             {
-                                from : 1396020027,
-                                to   : 1396025327
+                                from : 1396020027000,
+                                to   : 1396025327000
                             }
                         ]}/>
 

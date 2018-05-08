@@ -47,6 +47,8 @@ class ContentForm extends React.Component {
         const {getFieldDecorator} = this.props.form;
         const {visible, date, time, userName, defaultDate} = this.props;
 
+
+        console.log("newModal");
         return (
             <Form onSubmit={this.handleSubmit}
                   className="NewVisitModal">
@@ -66,7 +68,21 @@ class ContentForm extends React.Component {
                             rules: [{required: true, message: 'Введите время',}],
                         })(
                             <TimePicker placeholder='Время приёма' 
-                                        onChange={time => this.setState({time})}/>
+                                        onChange={time => this.setState({time})}
+                                        availableArea={[
+                                            {
+                                                from : 1395985227000,
+                                                to   : 1395990227000
+                                            },
+                                            {
+                                                from : 1396005227000,
+                                                to   : 1396010327000
+                                            },
+                                            {
+                                                from : 1396020027000,
+                                                to   : 1396025327000
+                                            }
+                                        ]}/>
                         )}
                     </FormItem>
                 </div>

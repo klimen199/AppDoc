@@ -8,13 +8,16 @@ import DefaultTp from "./DefaultTP";
 class RangeTp extends React.Component {
     constructor(props) {
         super(props);
+        let ar = [];
+        for(let i = 0; i < 60; i++)
+            ar.push(i);
         this.state = {
             startValue: this.props.rangeSet.defaultStartValue || null,
             endValue: this.props.rangeSet.defaultEndValue || null,
             trueHour: this.getAvailableHour(),
             falseHour: this.getNotAvailableHour(),
             trueMin: [],
-            falseMin: [],
+            falseMin: ar,
 
         };
     };
