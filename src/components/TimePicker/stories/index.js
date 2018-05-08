@@ -5,29 +5,60 @@ import { action } from '@storybook/addon-actions';
 
 import TimePicker from '../';
 
-const timeFormat = 'HH:mm';
 const rangeSet = {
     placeholderStart: 'Начало',
-    defaultStartValue: moment(new Date(2018,1,1,14,20), "YYYY-MM-DD HH:mm"),
-    defaultEndValue: moment(new Date(2018,1,1,14,30), "YYYY-MM-DD HH:mm"),
+    placeholderEnd: 'Конец',
+    defaultStartValue: moment("01:26", "hh:mm"), /*задать в доступный промежуток времени(желательно)*/
+    defaultEndValue: moment("15:26", "hh:mm"), /*задать в доступный промежуток времени*/
 };
+const valueTime = moment("13:45", "hh:mm");
 
 storiesOf('TimePicker', module)
     .add('single', () => (
         <div>
             <br/>
-            <TimePicker title='Интервал рабочего времени'
-                        onChange={action('Time picked')}/>
+            <TimePicker format="HH:mm"
+                        onChange={action('Time picked')}
+                        minuteStep={5}
+                        availableArea={[
+                            {
+                                from : 1396009227000,
+                                to   : 1396020327000
+                            },
+                            {
+                                from : 1396030327000,
+                                to   : 1396037327000
+                            }
+                        ]}
+                        placeholder= "Время деньги"
+                        value = {valueTime} //если убрать, то будет placeholder
+            />
         </div>
     ))
     .add('range', () => (
         <div>
-            <TimePicker range
+            <TimePicker format="HH:mm"
+                        minuteStep={5}
+                        value = {valueTime}
+
+                        range
                         rangeSet={rangeSet}
                         delimiter="&mdash;"
-                        onChange={action('Time picked')}/>
-            <TimePicker range
-                        delimiter="&mdash;"
-                        onChange={action('Time picked')}/>
+                        onChange={action('Time picked')}
+                        availableArea={[
+                            {
+                                from : 1395985227000,
+                                to   : 1395990227000
+                            },
+                            {
+                                from : 1396005227000,
+                                to   : 1396010327000
+                            },
+                            {
+                                from : 1396020027000,
+                                to   : 1396025327000
+                            }
+                        ]}/>
+
         </div>
     ));

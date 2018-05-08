@@ -17,7 +17,10 @@ class DoctorProfileCard extends React.Component{
 
     render(){
         const {img, short, name, specialty,online} = this.props;
-        const spec = specialty.toUpperCase();
+        let spec = specialty.map(function(elem) {
+            return elem.toUpperCase();
+        });
+        spec = spec.join(", ");
 
         const rootClass = short ? "doctorProfileCard-short" : "doctorProfileCard";
 
@@ -26,7 +29,7 @@ class DoctorProfileCard extends React.Component{
                 <ProfileAvatar owner="doctor" {...this.props} short={short} size={(short ? 'medium' : 'large')}/>
                 <div className={rootClass + '-name'}>{name}</div>
                 <div className={rootClass + '-specialty'}>{spec}</div>
-                <RatePanel {...this.props}/>
+                <RatePanel {...this.props} disable={true}/>
             </div>
         )
     }
@@ -34,7 +37,7 @@ class DoctorProfileCard extends React.Component{
 
 DoctorProfileCard.propTypes = {
     name: PropTypes.string,
-    specialty: PropTypes.string,
+    specialty: PropTypes.array,
     short: PropTypes.bool,
     rateValue: PropTypes.number,
     timesRated: PropTypes.number,
@@ -43,7 +46,7 @@ DoctorProfileCard.propTypes = {
 DoctorProfileCard.defaultProps = {
     img: '',
     name: '',
-    specialty: '',
+    specialty: [],
     short: false,
 };
 

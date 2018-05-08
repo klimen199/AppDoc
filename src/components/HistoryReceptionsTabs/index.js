@@ -135,10 +135,12 @@ class HistoryReceptionsTabs extends React.Component {
                 case 'completed':
                     completedArr.push(item);
                     break;
+                case 'new':
+                    upcomingArr.push(item);
+                    break;
                 default:
                     break;
             }
-            item.endDate > now ? upcomingArr.push(item) : null;
         });
         this.setState({
             topicalReceptions: topicalArr,

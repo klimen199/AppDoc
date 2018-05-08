@@ -5,6 +5,6 @@ import CompletionReceptionModal from '../';
 storiesOf('Modal - CompletionReceptionModal', module)
     .add('modal', () => (
         <div>
-            <CompletionReceptionModal visible={true} />
+            <CompletionReceptionModal visible={true} onComplete={(e) => console.log(e)}/>
         </div>
     ));

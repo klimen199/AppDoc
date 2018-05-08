@@ -10,7 +10,8 @@ storiesOf('AutoComplete', module)
         <div>
            <AutoComplete
               data={patientsArr}
-              onAdd = {(id) => console.log(id)}
+              onAdd = {(id) => console.log('add',id, name)}
+              onGoto = {(id) => console.log('goto',id)}
 		    />
         </div>
     ))

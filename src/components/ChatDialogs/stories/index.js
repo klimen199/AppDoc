@@ -8,6 +8,8 @@ import {dialogArr} from './mock-data'
 storiesOf('ChatDialogs', module)
     .add('ChatDialogs', () => (
         <div>
-            <ChatDialogs data={dialogArr}/>
+            <ChatDialogs data={dialogArr} 
+                onGoto = {id => console.log(id)}
+                onGotoChat={id => console.log(id)}/>
         </div>
     ))

@@ -8,7 +8,6 @@ import { MemoryRouter } from 'react-router';
 import SideNav from '../';
 import {menuItems} from './mock-data'
 
-let a = 4;
 storiesOf('SideNav', module)
     .addDecorator(story => (
         <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>
@@ -19,9 +18,10 @@ storiesOf('SideNav', module)
             <SideNav menuItems={menuItems}
                      img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
                      name='Ивано Иван Иванович'
-                     specialty='терапевт'
-                     rateValue={a}
+                     specialty={["терапевт","хирург","Массажист"]}
+                     rateValue={2}
                      timesRated={34}
+                     onLogoClick = {() => {console.log('logo click')}}
                      online/>
         </div>
     ))
@@ -31,7 +31,7 @@ storiesOf('SideNav', module)
         <SideNav menuItems={menuItems}
                  img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
                  name='Ивано Иван Иванович'
-                 specialty='терапевт'
+                 specialty={["терапевт","хирург"]}
                  rateValue={4}
                  timesRated={34}
                  isShort={true}

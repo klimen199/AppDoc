@@ -17,8 +17,7 @@ import '../../icon/style.css'
 class PersonalEducation extends React.Component{
 
     render(){
-       // const {mainInstitution,  mainSpecialty, secondInstitution, secondSpecialty, mainDateStart, mainDateEnd, dateStart, dateEnd, degree} = this.props;
-        const rootClass = cn('personal-education-all');
+       const rootClass = cn('personal-education-all');
         const Panel = Accordion.Panel;
         return (
             <div className={rootClass}>
@@ -26,6 +25,7 @@ class PersonalEducation extends React.Component{
                     <Panel header="Образование" key="1">
                         <PersonalEducationItem
                             profileDoctor={this.props.profileDoctor}
+                            onSubmit={this.props.onSubmit}
                         />
                     </Panel>
                 </Accordion>
@@ -35,11 +35,13 @@ class PersonalEducation extends React.Component{
 }
 
 PersonalEducation.propTypes = {
-    profileDoctor: PropTypes.object
+    profileDoctor: PropTypes.object,
+    onSubmit: PropTypes.func
 };
 
 PersonalEducation.defaultProps = {
-    profileDoctor: {}
+    profileDoctor: {},
+    onSubmit: () => {}
 };
 
 export default PersonalEducation

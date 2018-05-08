@@ -22,24 +22,25 @@ class ContentForm extends React.Component {
                   className={rootClass}>
 
                     <FormItem>
-                        {getFieldDecorator('diagnosis')(
+                        {getFieldDecorator('diagnosis',{
+                            rules: [{required: true, message: 'Ввведите диагноз',}]
+                        })(
                             <Input className={rootClass + '-input'}
                                    placeholder="Диагноз"/>
                         )}
                     </FormItem>
                     <FormItem>
-                        {getFieldDecorator('flag')(
+                        {getFieldDecorator('isChronic')(
                             <Checkbox className={rootClass + '-checkbox'}>
                                 Добавить в список хронических болезней</Checkbox>
                         )}
                     </FormItem>
-                    <Button onClick={this.props.onComplete}
+                    <Button 
                             htmlType="submit"
                             btnText="Завершить"
                             size="default"
                             type="float"
                     />
-
             </Form>
         )
     }

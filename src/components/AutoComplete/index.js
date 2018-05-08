@@ -14,6 +14,7 @@ class AutoComplete extends React.Component{
         super(props);
         this.state ={
             isVisible: false,
+            tmp: 0,
 
             inputFocus: false,
             itemFocus: false,
@@ -29,7 +30,7 @@ class AutoComplete extends React.Component{
         });
     };
 
-    searchHandler = (e) => {
+    /*searchHandler = (e) => {
 
         e.target.value.length > 0 
             ? (this.setState({
@@ -40,33 +41,50 @@ class AutoComplete extends React.Component{
                 isVisible: false,   
                 searchRes: [],
             });
-    }
+    }*/
 
-    onAddHandler = (id) => {
+    onClickHandler = (id, flag) => {
         let user;
-        this.state.searchRes.some((el, i) => {
-            (el.id === id) ? user = el : null;
-            return el.id === id;
-        })
-
-        this.input.inp.input.value = user.name;
-        this.input.setFocus(true);
-        this.props.onAdd(id);
-        this.setState({isVisible: false})
+        flag === 'goto' ? (
+            this.state.searchRes.some((el, i) => {
+                (el.id === id) ? user = el : null;
+                return el.id === id;
+            }),
+            this.input.inp.input.value = user.name,
+            this.input.setFocus(true),
+            this.props.onGoto(id),
+            this.setState({isVisible: false})
+        )
+        : (
+            this.props.onAdd(id, this.input.inp.input.value),
+            this.setState({tmp: this.state.tmp +1})
+        );
     }
 
+   
 
     patientsRender = (dataArr) => {
         let patientsArr = [];
 
         dataArr.map((item, index) => {
             patientsArr.push(<AddNewPatientItem {...item} 
-                                                onAdd = {(id) => {this.onAddHandler(id)}}
+                                                onAdd = {(id) => {this.onClickHandler(id, 'add')}}
+                                                onGoto = {(id) => {this.onClickHandler(id, 'goto')}}
                                                 key={item.id + ''+index}/>)
         });
 
         return patientsArr;
     };
+
+    /*shouldComponentUpdate(nextProps){
+        console.log(this.props.data.length)
+        console.log(nextProps.data.length)
+        return this.props.data.length !== nextProps.data.length
+    }*/
+
+    componentWillReceiveProps(nextProps){
+        this.props.data.length !== nextProps.data.length && this.setState({searchRes: nextProps.data})
+    }
 
     render() {
         
@@ -82,8 +100,21 @@ class AutoComplete extends React.Component{
                 <div className='auto__complete-search'>
                     <Input 
                         placeholder='Поиск'
-                        onChange={(e) => this.searchHandler(e)}
+                        onChange={(e) => {
+                            e.target.value.length === 0 && this.setState({
+                                isVisible: false,   
+                            })
+                        }}
                         ref = {inp => {this.input = inp}}
+                        onKeyPress={event => {
+                            if (event.key === 'Enter') {
+                                this.setState({
+                                    isVisible: true, 
+                                    searchRes: this.props.data,
+                                });
+                                this.props.findName(this.input.inp.input.value)
+                            }
+                          }}
                     />
                 </div>
                 <div className={resultClass}>

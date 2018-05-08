@@ -24,18 +24,9 @@ class PersonalEducationItemForm extends React.Component{
         }
     }
 
-    clone = (obj) => {
-        if (null == obj || "object" !== typeof obj) return obj;
-        let copy = obj.constructor();
-        for (let attr in obj) {
-            if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
-        }
-        return copy;
-    };
 
     sendMainInstution = (values) => {
-
-        let newProfile = JSON.parse(JSON.stringify(this.props.profileDoctor));
+        let newProfile = this.props.profileDoctor;
 
         let inst  = newProfile.arrayMainInstitution;
         let idInst = null;
@@ -51,10 +42,10 @@ class PersonalEducationItemForm extends React.Component{
 
         if(values.datePickerMain){
             if(values.datePickerMain[0]) {
-                dateStart = Math.floor(( +values.datePickerMain[0].format('x')) / 1000);
+                dateStart = values.datePickerMain[0]/*.format("D.M.Y")*/;
             }
             if(values.datePickerMain[1]) {
-                dateEnd = Math.floor(( +values.datePickerMain[1].format('x')) / 1000);
+                dateEnd = values.datePickerMain[1]/*.format("D.M.Y")*/;
             }
         }
 
@@ -71,25 +62,31 @@ class PersonalEducationItemForm extends React.Component{
     };
 
     sendSecondInstution = (values) => {
-        let newProfile = JSON.parse(JSON.stringify(this.props.profileDoctor));
+        let newProfile = this.props.profileDoctor;
         //let newProfile = {...this.props.profileDoctor};
 
         let inst  = newProfile.arraySecondInstitution;
-
+        let idInst = null;
+        try{
+            idInst = (inst[inst.length-1].id + 1);
+        }
+        catch(e) {
+            idInst = 0;
+        }
         let dateStart = null;
         let dateEnd = null;
 
         if(values.datePickerSecond){
             if(values.datePickerSecond[0]) {
-                dateStart = Math.floor(( +values.datePickerSecond[0].format('x')) / 1000);
+                dateStart = values.datePickerSecond[0]/*.format("D.M.Y")*/;
             }
             if(values.datePickerSecond[1]) {
-                dateEnd = Math.floor(( +values.datePickerSecond[1].format('x')) / 1000);
+                dateEnd = values.datePickerSecond[1]/*.format("D.M.Y")*/;
             }
         }
         inst.push(
             {
-                id                 : inst[inst.length-1].id + 1,
+                id                 : idInst,
                 secondInstitution  : values.secondInstitutionField,
                 secondSpecialty    : values.secondSpecialtyField,
                 secondDateStart    : dateStart,
@@ -100,29 +97,21 @@ class PersonalEducationItemForm extends React.Component{
     };
 
     sendDegree = (values) => {
-        let newProfile = JSON.parse(JSON.stringify(this.props.profileDoctor));
-       // let newProfile = {...this.props.profileDoctor};
-        let inst  = newProfile.arrayDegree;
-        inst.push(
-            {
-                id        : inst[inst.length-1].id + 1,
-                degree    : values.addDegreeField,
-                documents : values.uploadAddDegree || []
-            });
+        let newProfile = this.props.profileDoctor;
+        newProfile.degree = {
+            name      : values.addDegreeField,
+            documents : values.uploadAddDegree
+        };
+
         return newProfile;
     };
 
     changeDegree = (values) => {
-        let newProfile = JSON.parse(JSON.stringify(this.props.profileDoctor));
-        //let newProfile = {...this.props.profileDoctor};
-        let inst  = newProfile.arrayDegree;
+        let newProfile = this.props.profileDoctor;
 
-        inst.map((elem) => {
-            if(elem.id === this.state.idCurrentDegree) {
-                elem.degree = values.changeDegreeField;
-                elem.documents = values.uploadDegree || [];
-            }
-        });
+        newProfile.degree.name = values.changeDegreeField;
+        newProfile.degree.documents = values.uploadDegree;
+
         this.setState({idCurrentDegree: null});
         return newProfile;
     };
@@ -148,23 +137,9 @@ class PersonalEducationItemForm extends React.Component{
                 }
                 this.props.form.resetFields();
                 this.setState({educatBlock: 0});
-                //console.log("get", newProfile);
+                this.props.onSubmit(newProfile);
             }
         });
-    };
-
-    onChange = (a) => {
-        alert();
-        try{
-            if(a){
-                if(a[0]) this.mainDateStart = Math.floor(( +a[0].format('x')) / 1000);
-                if(a[1]) this.mainDateEnd = Math.floor(( +a[0].format('x')) / 1000);
-            }
-        }
-        catch (e){
-            console.log(e);
-        }
-
     };
 
     addDp = () => {
@@ -178,14 +153,18 @@ class PersonalEducationItemForm extends React.Component{
             dpArr.push(
                 <div className="personal-item" key={this.state.educatBlock}>
                     <FormItem className="personal-item" >
-                        {getFieldDecorator('mainInstitutionField', {
-                            rules: [{
-                                required: true,
-                                message: 'Введите учебное заведение'
-                            }],
-                        })(
-                            <Input id="mainInstitution" addonBefore="Учебное заведение"/>
-                        )}
+                        <div>
+                            {getFieldDecorator('mainInstitutionField', {
+                                rules: [{
+                                    required: true,
+                                    message: 'Введите учебное заведение'
+                                }],
+                            })(
+                                <Input addonBefore="Учебное заведение"
+                                       className='step-form-item'/>
+                            )}
+                        </div>
+
                     </FormItem>
                     <FormItem className="personal-item" >
                         {getFieldDecorator('mainSpecialtyField', {
@@ -194,7 +173,7 @@ class PersonalEducationItemForm extends React.Component{
                                 message: 'Введите cпециальность'
                             }],
                         })(
-                            <Input id="mainSpecialty" addonBefore="Специальность"/>
+                            <Input addonBefore="Специальность"  className='step-form-item'/>
                         )}
                     </FormItem>
                     <FormItem className="personal-item" >
@@ -211,7 +190,7 @@ class PersonalEducationItemForm extends React.Component{
                     <FormItem className="personal-item" >
                         {getFieldDecorator('uploadMain', {
                         })(
-                            <Upload text="Прикрепить документ, подтверждающий ученую степень" />
+                            <Upload text="Прикрепить диплом (сертификат, свидетельство)" />
                         )}
                     </FormItem>
                 </div>
@@ -268,7 +247,7 @@ class PersonalEducationItemForm extends React.Component{
                     <FormItem className="personal-item" >
                         {getFieldDecorator('uploadSecond', {
                         })(
-                            <Upload text="Прикрепить документ, подтверждающий ученую степень"/>
+                            <Upload text="Прикрепить диплом (сертификат, свидетельство)"/>
                         )}
                     </FormItem>
                 </div>
@@ -320,10 +299,11 @@ class PersonalEducationItemForm extends React.Component{
             );
     };
     addDp4 = () => {
-        this.setState({educatBlock:4})
+        if(!this.props.profileDoctor.degree) this.setState({educatBlock:4})
     };
 
     renderDp4 = (getFieldDecorator) =>{
+
         let dpArr4 = [];
 
         if(this.state.educatBlock === 4) {
@@ -361,39 +341,54 @@ class PersonalEducationItemForm extends React.Component{
 
     render(){
         const { getFieldDecorator } = this.props.form;
-        const {arrayMainInstitution = [],  arraySecondInstitution = [],  arrayDegree = []} = this.props.profileDoctor;
+        const {arrayMainInstitution,  arraySecondInstitution,  arrayDegree} = this.props.profileDoctor;
         const rootClass = cn('personal-education');
 
         const instituions = arrayMainInstitution.map((elem) => {
             return (
-                <div key={elem.id} className="personal-item mb-35">
-                    <div className="personal-info">{elem.mainInstitution}, {elem.mainDateStart}-{elem.mainDateEnd}</div>
-                    <div className="personal-info">{elem.mainSpecialty}</div>
+                <div key={elem.id} className="personal-item mb-35 brd-b brd-d">
+                    <div className="personal-info">
+                        <p>
+                            {elem.mainInstitution}, {elem.mainDateStart.format('YYYY')} - {elem.mainDateEnd.format('YYYY')}
+                        </p>
+                    </div>
+                    <div className="personal-info">
+                        <p>
+                            {elem.mainSpecialty}
+                        </p>
+                    </div>
                 </div> );
         });
         const instituionsSecond = arraySecondInstitution.map((elem) => {
             return (
                 <div key={elem.id} className="personal-item pb-25 mb-35 brd-b brd-d">
-                    <div className="personal-info">{elem.secondInstitution}, {elem.dateStart}-{elem.dateEnd}</div>
-                    <div className="personal-info">{elem.secondSpecialty}</div>
+                    <div className="personal-info">
+                        <p>
+                            {elem.secondInstitution}, {elem.dateStart.format('MMMM YYYY')} - {elem.dateEnd.format('MMMM YYYY')}
+                        </p>
+                    </div>
+                    <div className="personal-info">
+                        <p>
+                            {elem.secondSpecialty}
+                        </p>
+                    </div>
                 </div> );
         });
 
-
-        const degrees = arrayDegree.map((elem) => {
-            return (
-                <div key={elem.id} className="personal-item mb-35">
-                    <div className="personal-info">{elem.degree}</div>
-                    <Button onClick={() => this.addDp3(elem.id)}
+        const degree = (
+                <div className="personal-item mb-35">
+                    <div className="personal-info">{this.props.profileDoctor.degree.name}</div>
+                    <Button onClick={this.addDp3}
                             className="personal-edit"
                             size='small'
                             type='blue-float'
                             icon='setting_edit'
                             iconSize={17}
                             svg
-                        />
-                </div> );
-        });
+                    />
+                </div>);
+
+
 
         return (
                 <Form className={rootClass} onSubmit={this.handleSubmit}>
@@ -442,7 +437,7 @@ class PersonalEducationItemForm extends React.Component{
                         <div className="personal-item">
                             <div className="personal-title">Ученая степень</div>
                         </div>
-                        {degrees}
+                        {degree}
                         {this.renderDp3(getFieldDecorator)}
                     </div>
 

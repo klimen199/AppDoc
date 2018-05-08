@@ -14,6 +14,7 @@ import './style.css'
 import '../../icon/style.css'
 import {profileDoctor} from '../PersonalContactItem/mock-data'
 import PersonalInformation from "../PersonalInformation";
+import PersonalEducation from "../PersonalEducation";
 
 class PersonalExperience extends React.Component{
 
@@ -28,6 +29,7 @@ class PersonalExperience extends React.Component{
                     <Panel header="Опыт работы" key="1">
                         <PersonalExperienceItem
                             profileDoctor={this.props.profileDoctor}
+                            onSubmit={this.props.onSubmit}
                         />
                     </Panel>
                 </Accordion>
@@ -37,12 +39,13 @@ class PersonalExperience extends React.Component{
 }
 
 PersonalExperience.propTypes = {
-    profileDoctor: PropTypes.object
+    profileDoctor: PropTypes.object,
+    onSubmit: PropTypes.func
 };
 
 PersonalExperience.defaultProps = {
-    profileDoctor: {}
+    profileDoctor: {},
+    onSubmit: () => {}
 };
-
 
 export default PersonalExperience

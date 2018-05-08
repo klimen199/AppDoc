@@ -26,9 +26,8 @@ class ContentForm extends React.Component {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-              
                 let date = values.day.format("DD:MM:YYYY") + " " 
-                        + values.time.format("HH:mm");
+                        + values.time[1].format("HH:mm");
                 const dateMoment = moment(date, "DD:MM:YYYY HH:mm");        
 
                 let response = {
@@ -50,35 +49,20 @@ class ContentForm extends React.Component {
         return (
             <Form onSubmit={this.handleSubmit}
                   className="NewVisitModal">
-
-               {/* <FormItem>
-                    {getFieldDecorator('name',{
-                        initialValue: userName,
-                        rules: [{
-                            required: true, message: 'Ввведите имя',
-                        }],
-                    })(*/}
-                        <Input addonBefore="ФИО" value={userName} readOnly/>
-                    {/*})}
-                </FormItem>*/}
+                <Input addonBefore="ФИО" value={userName} readOnly/>
 
                 <div className='flex-row'>
                     <FormItem>
                         {getFieldDecorator('day', {
-                            
-                            rules: [{
-                                required: true, message: 'Введите дату',
-                            }],
+                            rules: [{required: true, message: 'Введите дату',}],
                         })(
                             <DatePicker placeholder="Дата приёма"/>
                         )}
                     </FormItem>
-
+                    
                     <FormItem>
                         {getFieldDecorator('time',{
-                            rules: [{
-                                required: true, message: 'Введите время',
-                            }],
+                            rules: [{required: true, message: 'Введите время',}],
                         })(
                             <TimePicker placeholder='Время приёма' 
                                         onChange={time => this.setState({time})}/>

@@ -9,7 +9,6 @@ storiesOf('HistoryReceptions', module)
     .add('HistoryReceptions', () => (
         <div>
             <HistoryReceptions data={historyArr} 
-                        onGoto={(id) => console.log(id)}
                         onGotoChat = {(id) => console.log(id)}/>
         </div>
     ))
