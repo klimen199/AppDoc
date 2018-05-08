@@ -9,11 +9,17 @@ import '../../icon/style.css'
 
 class ChatMessage extends React.Component {
     render() {
-        const {message, size, time, online, img, isMy} = this.props;
+        const {message, size, time, online, img, isMy, isDate} = this.props;
         const rootClass = isMy ? 'message__out' : 'message__in';
+        let dt = new Date();
+        let monthes = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'Декабрь'];
+        let month = monthes[dt.getMonth()+1];
+        let day = dt.getDate();
+        let year = dt.getFullYear();
 
-        return (
-            <div className={`${rootClass}-item`}>
+        let content = isDate 
+            ? <div className='message-today'>{day + ' ' + month + ' ' + year}</div>
+            : <div className={`${rootClass}-item`}>
                 {!isMy && <ProfileAvatar owner="patient"
                                          online={online}
                                          img={img}
@@ -31,6 +37,11 @@ class ChatMessage extends React.Component {
                     </div>
                 </div>
             </div>
+
+        return (
+            <div>
+            {content}
+            </div>
         )
     }
 }
@@ -39,6 +50,7 @@ ChatMessage.propTypes = {
     img: PropTypes.string,
     message: PropTypes.string,
     isMy: PropTypes.bool,
+    isDate: PropTypes.bool,
     time: PropTypes.number,
 };
 
@@ -46,6 +58,7 @@ ChatMessage.defaultProps = {
     img: '',
     message: '',
     isMy: false,
+    isDate: false,
     size: 'small',
     time: null,
 };

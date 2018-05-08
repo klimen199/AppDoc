@@ -17,6 +17,7 @@ storiesOf('ChatMessage', module)
                 img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
                 message="Да"
                 time={Date.now()}
+                isDate
             />
 
             <ChatMessage 
