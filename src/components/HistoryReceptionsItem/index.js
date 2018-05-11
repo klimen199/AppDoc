@@ -32,8 +32,6 @@ class HistoryReceptionsItem extends React.Component{
             comments,
             price,
             conclusion,
-            conclusionDownloadName,
-            conclusionDownloadLink,
             review,
             content,
             onGoto,
@@ -81,14 +79,25 @@ class HistoryReceptionsItem extends React.Component{
                     <div className="patient-price">{price}</div>
                 </div>
                 <div className="flex-col">
-                    <div className="patient-conclusion">{conclusion}</div>
-                    <a href={conclusionDownloadLink} download onClick={(e) => this.handleClick(e)}>
-                        {conclusionDownloadName}
-                    </a>
+                    <div className="patient-conclusion">
+                    {
+                        conclusion ? (
+                            <a href={conclusion.link} download onClick={this.handleClick}>
+                                {conclusion.Name}
+                            </a>
+                        ) : <span>&mdash;</span>
+                    }  
+                    </div>
                 </div>
                 <div className="flex-col">
-                    <Rate defaultValue={rating} disabled/>
-                    <div className="patient-review">{review}</div>
+                {
+                    rating ? (
+                        <Hoc>
+                            <Rate defaultValue={rating} disabled/>
+                            <div className="patient-review">{review}</div>
+                        </Hoc>
+                    ) : <span>&mdash;</span>
+                }
                 </div>
                 <div className="flex-col">
                     <PopoverFile data={this.props.data}></PopoverFile>
@@ -107,13 +116,15 @@ HistoryReceptionsItem.propTypes = {
     name: PropTypes.string,
     comments: PropTypes.string,
     price: PropTypes.string,
-    conclusion: PropTypes.string,
-    conclusionDownloadName: PropTypes.string,
+    conclusion: PropTypes.oneOf([null,PropTypes.shape({
+        Name: PropTypes.string,
+        link: PropTypes.string,
+    })]),
     review: PropTypes.string,
     date: PropTypes.string,
     time: PropTypes.string,
     onGoto: PropTypes.func,
-    rating: PropTypes.number,
+    rating: PropTypes.oneOf([null, PropTypes.number]),
 };
 
 HistoryReceptionsItem.defaultProps = {
@@ -125,14 +136,12 @@ HistoryReceptionsItem.defaultProps = {
     diagnostic: '-',
     comment: '-',
     price: '-',
-    conclusion: '-',
-    conclusionDownloadName: '',
-    conclusionDownloadLink: '#',
+    conclusion: null,
+    rating: null,
     review: '-',
     date: '-',
     time: '-',
     onGoto: () => {},
-    rating: 0,
 };
 
 export default HistoryReceptionsItem
