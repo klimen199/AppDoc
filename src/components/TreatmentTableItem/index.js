@@ -8,6 +8,7 @@ import Rate from '../Rate'
 import Icon from '../Icon'
 import Popover from '../Popover'
 import PopoverFile from '../PopoverFile'
+import Hoc from '../Hoc'
 
 import './style.css'
 import '../../icon/style.css'
@@ -20,7 +21,7 @@ class TreatmentTableItem extends React.Component{
       }
 
     render(){
-        const {type, id, id_user, files, name, size, time, date, diagnostic, comments, price, conclusion, conclusionDownloadLink, conclusionDownloadName, rating, title, review, content, onGoto,startDate, endDate, onGotoChat} = this.props;
+        const {type, id, id_user, files, name, size, time, date, diagnostic, comments, price, conclusion, rating, title, review, content, onGoto,startDate, endDate, onGotoChat} = this.props;
         const rootClass = cn('treatment');
         const key_val = {
             'chat': 'chat1',
@@ -63,14 +64,26 @@ class TreatmentTableItem extends React.Component{
                     <div className="patient-price">{price}</div>
                 </div>
                 <div className="flex-col">
-                    <div className="patient-conclusion">{conclusion}</div>
-                    <a href={conclusionDownloadLink} download onClick={this.handleClick}>
-                        {conclusionDownloadName}
-                    </a>
+                    <div className="patient-conclusion">
+                    {/*conclusion*/}
+                    {
+                        conclusion ? (
+                            <a href={conclusion.link} download onClick={this.handleClick}>
+                                {conclusion.Name}
+                            </a>
+                        ) : <span>&mdash;</span>
+                    }  
+                    </div>
                 </div>
                 <div className="flex-col">
-                    <Rate defaultValue={rating} disabled/>
-                    <div className="patient-review">{review}</div>
+                {
+                    rating ? (
+                        <Hoc>
+                            <Rate defaultValue={rating} disabled/>
+                            <div className="patient-review">{review}</div>
+                        </Hoc>
+                    ) : <span>&mdash;</span>
+                }
                 </div>
                 <div className="flex-col">
                     <PopoverFile data={files}></PopoverFile>
@@ -87,7 +100,11 @@ TreatmentTableItem.propTypes = {
     diagnostic: PropTypes.string,
     comments: PropTypes.string,
     price: PropTypes.string,
-    conclusion: PropTypes.string,
+    conclusion: PropTypes.oneOf([null,PropTypes.shape({
+        Name: PropTypes.string,
+        link: PropTypes.string,
+    })]),
+    rating: PropTypes.oneOf([null, PropTypes.number]),
     conclusionDownload: PropTypes.string,
     review: PropTypes.string,
     date: PropTypes.string,
@@ -104,9 +121,9 @@ TreatmentTableItem.defaultProps = {
     diagnostic: '-',
     comment: '-',
     price: '-',
-    conclusion: '-',
-    conclusionDownload: '',
-    review: '-',
+    conclusion: null,
+    rating: null,
+    review: '',
     title: '',
     date: '01.01.2018',
     time: '00:00',
