@@ -100,11 +100,14 @@ TreatmentTableItem.propTypes = {
     diagnostic: PropTypes.string,
     comments: PropTypes.string,
     price: PropTypes.string,
-    conclusion: PropTypes.oneOf([null,PropTypes.shape({
-        Name: PropTypes.string,
-        link: PropTypes.string,
+    conclusion: PropTypes.oneOfType([
+        PropTypes.shape({
+            Name: PropTypes.string,
+            link: PropTypes.string,
     })]),
-    rating: PropTypes.oneOf([null, PropTypes.number]),
+    rating: PropTypes.oneOfType([
+        PropTypes.number
+    ]),
     conclusionDownload: PropTypes.string,
     review: PropTypes.string,
     date: PropTypes.string,
