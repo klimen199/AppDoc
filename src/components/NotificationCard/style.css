@@ -19,6 +19,7 @@
 .notification-card {
   position: absolute;
   top: 25%;
+  margin-left: -350px;
   width: 415px;
 }
 .notification-card .ant-card-head {
