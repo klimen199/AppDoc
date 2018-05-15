@@ -22,6 +22,7 @@ storiesOf('HistoryReceptionsItem', module)
                 review='Lorem ipsum dolor sit amet, consectetuer...'
 
                 onGoto = {(id) => console.log(id)}
+                onGotoChat = {(id) => console.log('toChat',id)}
                 data={filesArr}
             />
         </div>

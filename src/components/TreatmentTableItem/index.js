@@ -85,7 +85,8 @@ class TreatmentTableItem extends React.Component{
                     ) : <span>&mdash;</span>
                 }
                 </div>
-                <div className="flex-col">
+                <div className="flex-col"
+                    onClick={this.handleClick}>
                     <PopoverFile data={files}></PopoverFile>
                 </div>
             </div>
