@@ -41,6 +41,7 @@ storiesOf('TreatmentTableItem', module)
                 rating={3}
                 files={filse}
                 onGoto={()=>console.log('click')}
+                onGotoChat={(id)=>console.log('gotoChat',id)}
             />
 
             <TreatmentTableItem 
