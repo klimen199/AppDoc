@@ -125,9 +125,6 @@ HistoryReceptionsItem.propTypes = {
     date: PropTypes.string,
     time: PropTypes.string,
     onGoto: PropTypes.func,
-    rating: PropTypes.oneOfType([
-        PropTypes.number
-    ]),
 };
 
 HistoryReceptionsItem.defaultProps = {
