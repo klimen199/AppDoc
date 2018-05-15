@@ -6,6 +6,7 @@ import moment from 'moment'
 import Rate from '../Rate'
 import Icon from '../Icon'
 import PopoverFile from '../PopoverFile'
+import Hoc from '../Hoc'
 
 import './style.css'
 import '../../icon/style.css'
