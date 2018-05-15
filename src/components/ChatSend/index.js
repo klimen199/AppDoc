@@ -13,9 +13,31 @@ class ChatSend extends React.Component{
         super(props);
         this.state = {
             value: props.value,
+            fileList: [],
+            conclusionList: [],
         }
     }
     
+    uploadFiles = (e, isConclusion) => {
+        isConclusion 
+            ? this.setState(state => {return {
+                conclusionList:[...state.conclusionList, e.file], 
+            }})
+            : this.setState(state => {return {
+                fileList:[...state.fileList, e.file]
+            }})
+
+        if(e.event){
+            isConclusion ? 
+                (
+                    this.props.uploadConclusion(e.fileList),
+                    this.setState({conclusionList: []})
+            ) : (
+                this.props.uploadFiles(e.fileList),
+                this.setState({fileList: []})
+            );
+        }
+    }
 
     sendHandler = () => {        
         this.inp.focus();
@@ -59,7 +81,10 @@ class ChatSend extends React.Component{
                         autosize />
                 </div>
                 <div className='message__send-btns'>
-                    <Upload>
+                    <Upload multiple={true}
+                        showUploadList={false}
+                        fileList={this.state.conclusionList}
+                        onChange = {(e) => this.uploadFiles(e,true)}>
                         <Button
                                 btnText=''
                                 size='small'
@@ -69,14 +94,17 @@ class ChatSend extends React.Component{
                                 onClick={e => e.preventDefault()}
                             />
                     </Upload>
-                    <Upload>
+                    <Upload
+                        multiple={true}
+                        showUploadList={false}
+                        fileList={this.state.fileList}
+                        onChange = {(e) => this.uploadFiles(e)}>
                         <Button
                             btnText=''
                             size='small'
                             type='no-brd'
                             icon='clip'
                             title='Прикрепить файл'
-                            onClick={e => e.preventDefault()}
                         />
                     </Upload>
                     <Button
