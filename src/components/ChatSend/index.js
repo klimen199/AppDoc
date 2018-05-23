@@ -5,6 +5,8 @@ import cn from 'classnames'
 import { Input, Upload } from 'antd';
 import Button from '../Button'
 
+import {modifyFiles} from '../../helpers/modifyFiles'
+
 import './style.css'
 import '../../icon/style.css'
 
@@ -30,10 +32,10 @@ class ChatSend extends React.Component{
         if(e.event){
             isConclusion ? 
                 (
-                    this.props.uploadConclusion(e.fileList),
+                    this.props.uploadConclusion(modifyFiles(e.fileList)),
                     this.setState({conclusionList: []})
             ) : (
-                this.props.uploadFiles(e.fileList),
+                this.props.uploadFiles(modifyFiles(e.fileList)),
                 this.setState({fileList: []})
             );
         }
