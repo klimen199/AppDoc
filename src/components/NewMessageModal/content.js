@@ -6,7 +6,7 @@ import TextArea from '../TextArea'
 import Upload from '../Upload'
 import Button from '../Button'
 
-import {modifyFiles} from '../../helpers/modifyFiles'
+//import {modifyFiles} from '../../helpers/modifyFiles'
 
 const FormItem = Form.Item;
 
@@ -19,7 +19,7 @@ class ContentForm extends React.Component {
         e.preventDefault();
         let response = {
             file: this.props.form.getFieldValue('file') 
-                ? modifyFiles(this.props.form.getFieldValue('file').fileList) 
+                ? (this.props.form.getFieldValue('file').fileList) 
                 : [],
             message: this.state.message,
             to: this.props.id,

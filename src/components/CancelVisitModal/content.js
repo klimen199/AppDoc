@@ -6,7 +6,7 @@ import Upload from '../Upload'
 import DatePicker from '../DatePicker'
 import Button from '../Button'
 
-import {modifyFiles} from '../../helpers/modifyFiles'
+//import {modifyFiles} from '../../helpers/modifyFiles'
 
 const FormItem = Form.Item;
 
@@ -38,7 +38,7 @@ class ContentForm extends React.Component{
 
         let response = {
             file: this.props.form.getFieldValue('file') 
-                ? modifyFiles( this.props.form.getFieldValue('file').fileList) 
+                ? ( this.props.form.getFieldValue('file').fileList) 
                 : [],
             comment: this.state.message,
             range: rangeArr,

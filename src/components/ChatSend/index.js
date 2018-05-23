@@ -5,7 +5,7 @@ import cn from 'classnames'
 import { Input, Upload } from 'antd';
 import Button from '../Button'
 
-import {modifyFiles} from '../../helpers/modifyFiles'
+import {previewFile} from '../../helpers/modifyFiles'
 
 import './style.css'
 import '../../icon/style.css'
@@ -16,11 +16,31 @@ class ChatSend extends React.Component{
         this.state = {
             value: props.value,
             fileList: [],
+            generatedList: [],
+            isGenerated: true,
             conclusionList: [],
         }
     }
+
+    modifyFiles = (fileList) => {
+        let that = this;
+        fileList.map(file => {
+            previewFile(file.originFileObj, function (previewDataUrl) {
+                file.thumbUrl = previewDataUrl;
+                console.log('reerere')
+                that.setState((prev) => {
+                    return {
+                        ...prev,
+                        isGenerated: fileList.length == prev.generatedList.length + 1,
+                        generatedList:[...prev.generatedList, file],
+                    }
+                })
+            });
+        })
+    }
     
     uploadFiles = (e, isConclusion) => {
+        console.log(e)
         isConclusion 
             ? this.setState(state => {return {
                 conclusionList:[...state.conclusionList, e.file], 
@@ -29,13 +49,14 @@ class ChatSend extends React.Component{
                 fileList:[...state.fileList, e.file]
             }})
 
-        if(e.event){
+        if(e.event && this.state.isGenerated){
+            console.log('[push]')
             isConclusion ? 
                 (
-                    this.props.uploadConclusion(modifyFiles(e.fileList)),
+                    this.props.uploadConclusion(this.modifyFiles(e.fileList)),
                     this.setState({conclusionList: []})
             ) : (
-                this.props.uploadFiles(modifyFiles(e.fileList)),
+                this.props.uploadFiles(this.modifyFiles(e.fileList)),
                 this.setState({fileList: []})
             );
         }
@@ -59,6 +80,8 @@ class ChatSend extends React.Component{
         const {message, attachment, disable} = this.props;
         const rootClass = cn('message__send');
 
+        this.state.isGenerated ? 
+                console.log('rendered') : console.log('not rendered');
 
         return (
             <div className={rootClass}>
