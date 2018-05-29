@@ -70,7 +70,7 @@ class RangeTp extends React.Component {
             }
         };
 
-        if( countQqual > 1) errorMin = [];
+        //if( countQqual > 1) errorMin = [];
         return errorMin;
     };
 
@@ -92,7 +92,14 @@ class RangeTp extends React.Component {
 
         if(arrayGoodMin.indexOf(minCheck) === -1 ){
             value.minute(arrayGoodMin[0]); //1-ая доступная минута
-            minCheck = arrayGoodMin[0];
+            minCheck = arrayGoodMin[0]; // по умолчанию - первая
+            for(let i = 0; i < arrayGoodMin.length; i++){
+                if(arrayGoodMin[i] % this.props.minuteStep === 0){
+                    value.minute(arrayGoodMin[i]); //кратна
+                    minCheck = arrayGoodMin[i];
+                    break;
+                }
+            }
         }
         this.setState({falseMin : arrayMin });
 

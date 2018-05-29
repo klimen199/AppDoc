@@ -30,6 +30,7 @@ class DefaultTp extends React.Component {
     };
 
     getAvailableHour = () => { // получить массив из доступных часов
+       
         const area = this.props.availableArea;
         let errorHour = [];
         let availableHour = [];
@@ -51,6 +52,8 @@ class DefaultTp extends React.Component {
 
     // выбранный час
     getNotAvailableMin = (hour) => { // получить массив из доступных часов
+
+        debugger;
         const area = this.props.availableArea;
         let errorMin = []; // ответ
         let countQqual = [];
@@ -72,7 +75,7 @@ class DefaultTp extends React.Component {
                 countQqual++
             }
         };
-        if( countQqual > 1) errorMin = [];
+       // if( countQqual > 1) errorMin = [];
         return errorMin;
     };
 
@@ -87,6 +90,7 @@ class DefaultTp extends React.Component {
 
     onChange = (field, value) => {
         //начальная проверка
+        
         const hourCheck = value._d.getHours();
         let minCheck = value._d.getMinutes();
         const array = this.getAvailableHour();
@@ -95,7 +99,14 @@ class DefaultTp extends React.Component {
 
         if(arrayGoodMin.indexOf(minCheck) === -1 ){
             value.minute(arrayGoodMin[0]); //1-ая доступная минута
-            minCheck = arrayGoodMin[0];
+            minCheck = arrayGoodMin[0]; // по умолчанию - первая
+            for(let i = 0; i < arrayGoodMin.length; i++){
+                if(arrayGoodMin[i] % this.props.minuteStep === 0){
+                    value.minute(arrayGoodMin[i]); //кратна
+                    minCheck = arrayGoodMin[i];
+                    break;
+                }
+            }
         }
         this.setState({falseMin : arrayMin });
         if (array.indexOf(hourCheck) === -1 || arrayMin.indexOf(minCheck) !== -1)
@@ -148,7 +159,6 @@ class DefaultTp extends React.Component {
 
     render() {
         const {format, placeholder, minuteStep} = this.props;
-
         const myprops = (this.state.curValue) ?
             {
                 format : format,

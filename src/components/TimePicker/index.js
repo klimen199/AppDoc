@@ -26,7 +26,7 @@ class TimePicker extends React.Component{
     };
 
     render(){
-        this.transformDate();
+        this.props.availableArea && this.transformDate();
         const {range,defaultValue} = this.props;
 
         return (
