@@ -22,25 +22,31 @@ class ChatSend extends React.Component{
         }
     }
 
-    modifyFiles = (fileList) => {
+    modifyFiles = (fileList, isConclusion) => {
+        console.log('in mpdify')
         let that = this;
         fileList.map(file => {
             previewFile(file.originFileObj, function (previewDataUrl) {
                 file.thumbUrl = previewDataUrl;
-                console.log('reerere')
+                console.log('reerere');
                 that.setState((prev) => {
                     return {
                         ...prev,
                         isGenerated: fileList.length == prev.generatedList.length + 1,
                         generatedList:[...prev.generatedList, file],
                     }
-                })
+                });
+                console.log(fileList.length, that.state.generatedList.length + 1)
+                if (fileList.length == that.state.generatedList.length + 1){
+                    console.log('eeeeeee')
+                    that.pushFiles([...that.state.generatedList, file], isConclusion);
+                }
             });
         })
     }
     
     uploadFiles = (e, isConclusion) => {
-        console.log(e)
+        //this.setState({isGenerated: false})
         isConclusion 
             ? this.setState(state => {return {
                 conclusionList:[...state.conclusionList, e.file], 
@@ -49,17 +55,21 @@ class ChatSend extends React.Component{
                 fileList:[...state.fileList, e.file]
             }})
 
-        if(e.event && this.state.isGenerated){
+        
+    }
+
+    pushFiles = (files, isConclusion) => {
+        
             console.log('[push]')
             isConclusion ? 
                 (
-                    this.props.uploadConclusion(this.modifyFiles(e.fileList)),
+                    this.props.uploadConclusion(this.modifyFiles(files, isConclusion)),
                     this.setState({conclusionList: []})
             ) : (
-                this.props.uploadFiles(this.modifyFiles(e.fileList)),
+                this.props.uploadFiles(this.modifyFiles(files, isConclusion)),
                 this.setState({fileList: []})
             );
-        }
+        
     }
 
     sendHandler = () => {        
