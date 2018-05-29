@@ -52,8 +52,6 @@ class DefaultTp extends React.Component {
 
     // выбранный час
     getNotAvailableMin = (hour) => { // получить массив из доступных часов
-
-        debugger;
         const area = this.props.availableArea;
         let errorMin = []; // ответ
         let countQqual = [];
@@ -97,7 +95,7 @@ class DefaultTp extends React.Component {
         const arrayMin = this.getNotAvailableMin(parseInt(value.format('HH')));
         const arrayGoodMin = this.getAvailableMin(arrayMin);
 
-        
+
         if(arrayGoodMin.indexOf(minCheck) === -1 ){
             value.minute(arrayGoodMin[0]); //1-ая доступная минута
             minCheck = arrayGoodMin[0]; // по умолчанию - первая

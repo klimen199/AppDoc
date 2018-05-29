@@ -16,15 +16,21 @@ class ContentForm extends React.Component {
     state = {
         time: null,
         message: '',
+        chooseTime: null,
     }
 
     onChangeTime = (start, value) => {
-        console.log("time", start[1].format('x'));
+
+        console.log("time", start.format('x'));
+        let a = moment( +start.format('x'));
+       
+        console.log(a.format('MMMM Do YYYY, h:mm:ss a'));
         //this.props.onChangeTime(start[1].format('x'));
     };
 
     onChangeDate = (date) => {
         console.log("date", date.format('x'));
+        console.log(date.format('MMMM Do YYYY, h:mm:ss a'));
         //this.props.onChangeTime(start[1].format('x'));
     };
 
@@ -67,7 +73,8 @@ class ContentForm extends React.Component {
                         {getFieldDecorator('day', {
                             rules: [{required: true, message: 'Введите дату',}],
                         })(
-                            <DatePicker placeholder="Дата приёма"/>
+                            <DatePicker placeholder="Дата приёма"
+                                        onChange={this.onChangeDate} />
                         )}
                     </FormItem>
                     
@@ -84,7 +91,7 @@ class ContentForm extends React.Component {
                                             }
                                         ]}
                                         placeholder='Время приёма' 
-                                        onChange={time => this.setState({time})}/>
+                                        onChange={this.onChangeTime}/>
                         )}
                     </FormItem>
                 </div>
