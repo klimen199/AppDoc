@@ -206,7 +206,6 @@ class PersonalExperienceItemForm extends React.Component{
                 return (
                     <div key={elem.id}>
                         <div className="personal-item">
-                            { !elem.isWorking || <div className="personal-title">Текущее место работы</div>}
                             <Button
                                 onClick={() => this.deleteWork(elem.id)}
                                 className="personal-delete"
@@ -220,8 +219,8 @@ class PersonalExperienceItemForm extends React.Component{
                         </div>
                         <div className="personal-item mb-35">
                             <div className="personal-info"><b>{elem.post}</b></div>
-                            <div className="personal-info">{elem.placeOfWord}</div>
-                            <div className="personal-info">{elem.dateStart.format('YYYY')} - настоящее время</div>
+                            <div className="personal-info"><p>{elem.placeOfWord}</p></div>
+                            <div className="personal-info"><p>{elem.dateStart.format('YYYY')} - настоящее время</p></div>
                         </div>
                     </div> );
             });
@@ -235,7 +234,7 @@ class PersonalExperienceItemForm extends React.Component{
                         <div className="personal-item">
                             <div className="expWork">Опыт работы ( {expWork} )</div>
                         </div>
-
+                        <div className="personal-title">Текущее место работы</div>
 
                         {works}
                         <div className="personal-item">

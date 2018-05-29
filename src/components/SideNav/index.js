@@ -80,7 +80,7 @@ SideNav.propTypes = {
     img: PropTypes.string,
     online: PropTypes.bool,
     name: PropTypes.string,
-    specialty: PropTypes.string,
+    specialty: PropTypes.array,
     isShort: PropTypes.bool,
     rateValue: PropTypes.number,
     timesRated: PropTypes.number,

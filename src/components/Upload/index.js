@@ -16,7 +16,7 @@ class Upload extends React.Component{
         return (
             <AntUpload className={clName}
                        fileList = {this.props.value ? this.props.value.fileList : []}
-                       listType="picture"
+                       listType={this.props.listType}
                        onChange={this.props.onChange}
                        {...this.props}
             >
@@ -36,11 +36,13 @@ class Upload extends React.Component{
 Upload.propTypes = {
     className: PropTypes.string,
     text: PropTypes.string,
+    listType: PropTypes.string,
 };
 
 Upload.defaultProps = {
     className: '',
     text: '',
+    listType: 'picture',
 };
 
 export default Upload;

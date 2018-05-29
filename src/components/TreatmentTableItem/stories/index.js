@@ -36,9 +36,28 @@ storiesOf('TreatmentTableItem', module)
                 diagnostic='Сахарный диабет'
                 comments='Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
                 price='112 руб.'
-                conclusion='Lorem ipsum dolor sit amet, consectetuer adipiscing elit'
-                conclusionDownload='Заключение 252525.pdf'
+                conclusion={null}
                 review='Lorem ipsum dolor sit amet, consectetuer...'
+                rating={3}
+                files={filse}
+                onGoto={()=>console.log('click')}
+                onGotoChat={(id)=>console.log('gotoChat',id)}
+            />
+
+            <TreatmentTableItem 
+                name="Иванова А. К." 
+                date="15.09.2017"
+                time="15:00-16:00"
+                type='chat1'
+                diagnostic='Сахарный диабет'
+                comments='Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+                price='112 руб.'
+                conclusion={
+                    {Name: 'eeeeee.txt',
+                    link: ''}
+                }
+                review='Lorem ipsum dolor sit amet, consectetuer...'
+                rating={null}
                 files={filse}
                 onGoto={()=>console.log('click')}
             />

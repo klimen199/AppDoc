@@ -36,9 +36,8 @@ class ContentForm extends React.Component {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-              
                 let date = values.day.format("DD:MM:YYYY") + " " 
-                        + values.time.format("HH:mm");
+                        + values.time[1].format("HH:mm");
                 const dateMoment = moment(date, "DD:MM:YYYY HH:mm");        
 
                 let response = {
