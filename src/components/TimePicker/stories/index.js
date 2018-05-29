@@ -22,7 +22,6 @@ storiesOf('TimePicker', module)
                         minuteStep={5}
                         availableArea={[
                             {
-<<<<<<< HEAD
                                 from : 1395985227000,
                                 to   : 1395990227000
                             },
@@ -33,14 +32,6 @@ storiesOf('TimePicker', module)
                             {
                                 from : 1396020027000,
                                 to   : 1396025327000
-=======
-                                from : 1396009227000,
-                                to   : 1396020327000
-                            },
-                            {
-                                from : 1396030327000,
-                                to   : 1396037327000
->>>>>>> origin/VisitModalPage
                             }
                         ]}
                         placeholder= "Время деньги"
