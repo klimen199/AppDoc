@@ -19,9 +19,6 @@ class PatientTableItem extends React.Component{
         modal1Visible: false,
         modal2Visible: false,
     }
-    onChangeDate = () => {
-        this.props.onChangeDate();
-    }
     setModal1Visible(modal1Visible) {
         this.setState({ modal1Visible });
     }
@@ -104,7 +101,7 @@ class PatientTableItem extends React.Component{
                     onCancel={() => this.setModal1Visible(false)}
                     userName={name}
                     availableArea={this.props.availableArea}
-                    onChangeDate={this.onChangeDate}
+                    onChangeDate={this.props.onChangeDate}
 
                     id={id}
                 />

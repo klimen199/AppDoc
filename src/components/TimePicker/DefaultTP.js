@@ -97,9 +97,9 @@ class DefaultTp extends React.Component {
         const array = this.getAvailableHour();
         const arrayMin = this.getNotAvailableMin(parseInt(value.format('HH')));
         const arrayGoodMin = this.getAvailableMin(arrayMin);
-
-
+        
         if(arrayGoodMin.indexOf(minCheck) === -1 ){
+            
             value.minute(arrayGoodMin[0]); //1-ая доступная минута
             minCheck = arrayGoodMin[0]; // по умолчанию - первая
             for(let i = 0; i < arrayGoodMin.length; i++){
