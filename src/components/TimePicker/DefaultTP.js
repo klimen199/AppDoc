@@ -26,7 +26,10 @@ class DefaultTp extends React.Component {
 
 
     getNotAvailableHour = () => { // получить массив из не доступных часов
-        return this.falseHour;
+        if(this.props.availableArea.length)
+            return this.falseHour;
+
+        return [...Array.from(Array(24).keys())];
     };
 
     getAvailableHour = () => { // получить массив из доступных часов
