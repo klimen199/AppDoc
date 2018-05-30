@@ -13,24 +13,37 @@ import TimePicker from '../TimePicker'
 const FormItem = Form.Item;
 
 class ContentForm extends React.Component {
-    state = {
-        time: null,
-        message: '',
-        chooseTime: null,
-    }
+    constructor(props) {
+        super(props);
+        this.currentTime = moment(0);
+        this.state = {
+            time: null,
+            message: '',
+            chooseTime: null,
+        };
+    };
 
     onChangeTime = (start, value) => {
-
-        console.log("time", start.format('x'));
+  
+        this.currentTime.hour(start._d.getHours());
+        this.currentTime.minute(start._d.getMinutes());
+        this.currentTime.second(0);
         let a = moment( +start.format('x'));
        
-        console.log(a.format('MMMM Do YYYY, h:mm:ss a'));
-        //this.props.onChangeTime(start[1].format('x'));
+        console.log("currentTime", this.currentTime.format('MMMM Do YYYY, h:mm:ss a'));
+        //this.props.onChangeTime(this.currentTime.format('x')); // передать наверх
     };
 
     onChangeDate = (date) => {
-        console.log("date", date.format('x'));
-        console.log(date.format('MMMM Do YYYY, h:mm:ss a'));
+        const bufHours = this.currentTime._d.getHours();   
+        const bufMinutes = this.currentTime._d.getMinutes();   
+
+        this.currentTime = date;
+        this.currentTime.hour(bufHours);
+        this.currentTime.minute(bufMinutes);
+        this.currentTime.second(0);
+
+        console.log("currentTime", this.currentTime.format('MMMM Do YYYY, h:mm:ss a'));
         //this.props.onChangeTime(start[1].format('x'));
     };
 
@@ -86,8 +99,16 @@ class ContentForm extends React.Component {
                                         minuteStep={5}
                                         availableArea={[
                                             {
-                                                from : 1000000,
-                                                to   : 2000000
+                                                from : 1395985227000,
+                                                to   : 1395990227000
+                                            },
+                                            {
+                                                from : 1396005227000,
+                                                to   : 1396010327000
+                                            },
+                                            {
+                                                from : 1396020027000,
+                                                to   : 1396025327000
                                             }
                                         ]}
                                         placeholder='Время приёма' 
