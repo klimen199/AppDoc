@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import Modal from '../Modal'
 import Content from './content'
 import './styles.css'
+import { PropTypes } from 'prop-types';
 
 const NewVisitModalPage = (props) => {
 
@@ -24,18 +25,23 @@ NewVisitModalPage.propTypes = {
     visible: PropTypes.bool,
     date: PropTypes.instanceOf(Date),
     patients: PropTypes.array,
+    availableArea: PropTypes.array,
     userName: PropTypes.string,
+
     onSave: PropTypes.func,
     onCancel: PropTypes.func,
+    onChangeDate: PropTypes.func,
 };
 
 NewVisitModalPage.defaultProps = {
     visible: false,
     date: null,
     patients: [],
+    availableArea: [],
     userName: '',
     onSave: () => {},
     onCancel: () => {},
+    onChangeDate: () => {},
 };
 
 export default NewVisitModalPage;

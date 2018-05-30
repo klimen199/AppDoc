@@ -44,7 +44,7 @@ class ContentForm extends React.Component {
         this.currentTime.second(0);
 
         console.log("currentTime", this.currentTime.format('MMMM Do YYYY, h:mm:ss a'));
-        //this.props.onChangeTime(start[1].format('x'));
+        //this.props.onChangeDate(start[1].format('x'));
     };
 
     componentWillReceiveProps(nextProps){

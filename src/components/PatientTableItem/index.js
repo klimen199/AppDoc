@@ -19,7 +19,9 @@ class PatientTableItem extends React.Component{
         modal1Visible: false,
         modal2Visible: false,
     }
-
+    onChangeDate = () => {
+        this.props.onChangeDate();
+    }
     setModal1Visible(modal1Visible) {
         this.setState({ modal1Visible });
     }
@@ -101,7 +103,9 @@ class PatientTableItem extends React.Component{
                     }}
                     onCancel={() => this.setModal1Visible(false)}
                     userName={name}
-                    
+                    availableArea={this.props.availableArea}
+                    onChangeDate={this.onChangeDate}
+
                     id={id}
                 />
             </div>
@@ -113,7 +117,9 @@ PatientTableItem.propTypes = {
     id: PropTypes.number,
     avatar: PropTypes.string,
     name: PropTypes.string,
+    availableArea: PropTypes.array,
 
+    onChangeDate: PropTypes.func,
     onNewVisit: PropTypes.func,
     onNewMessage: PropTypes.func,
     onDelete: PropTypes.func,
@@ -125,7 +131,9 @@ PatientTableItem.defaultProps = {
     avatar: '',
     name: '',
     size: 'small',
+    availableArea: [],
 
+    onChangeDate: () => {},
     onNewVisit: () => {},
     onNewMessage: () => {},
     onDelete: () => {},
