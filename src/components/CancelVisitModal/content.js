@@ -6,6 +6,8 @@ import Upload from '../Upload'
 import DatePicker from '../DatePicker'
 import Button from '../Button'
 
+import {previewFile} from '../../helpers/modifyFiles'
+
 //import {modifyFiles} from '../../helpers/modifyFiles'
 
 const FormItem = Form.Item;
@@ -128,6 +130,39 @@ class ContentForm extends React.Component{
         }
     }
 
+    modifyFiles = (file) => {
+        console.log('out modify')
+        if(!file.thumbUrl){
+            console.log('in modify')
+            let that = this;
+            previewFile(file.originFileObj, function (previewDataUrl) {
+                file.thumbUrl = previewDataUrl;
+                console.log('ready');
+                /*that.setState((prev) => {
+                    return {
+                        ...prev,
+                       isGenerated: fileList.length == prev.generatedList.length + 1,
+                        generatedList:[...prev.generatedList, file],
+                    }
+                });*/
+                /*that.setState({
+                    isGenerated: true,
+                    fileInfo: {
+                        fileSend: file,
+                        isConclusion: isConclusion,
+                    },
+                });*/
+                //console.log(file.thumbUrl)
+                //console.log(fileList.length, that.state.generatedList.length + 1)
+                /*if (fileList.length == that.state.generatedList.length + 1){
+                    console.log('eeeeeee')
+                    that.pushFiles([...that.state.generatedList, file], isConclusion);
+                }*/
+            });
+        }
+        
+    }
+
     render(){
         const { getFieldDecorator } = this.props.form;
 
@@ -143,6 +178,7 @@ class ContentForm extends React.Component{
                 <FormItem>
                     {getFieldDecorator('file')(
                         <Upload className="cancelVisitModal-upload"
+                                onChange={({file}) => this.modifyFiles(file)}
                                 listType = 'text'
                                 text="Прикрепить файл"/>
                     )}
