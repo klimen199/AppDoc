@@ -6,7 +6,7 @@ import TextArea from '../TextArea'
 import Upload from '../Upload'
 import Button from '../Button'
 
-import {modifyFiles} from '../../helpers/modifyFiles'
+import {previewFile} from '../../helpers/modifyFiles'
 
 const FormItem = Form.Item;
 
@@ -19,7 +19,7 @@ class ContentForm extends React.Component {
         e.preventDefault();
         let response = {
             file: this.props.form.getFieldValue('file') 
-                ? modifyFiles(this.props.form.getFieldValue('file').fileList) 
+                ? (this.props.form.getFieldValue('file').fileList) 
                 : [],
             message: this.state.message,
             to: this.props.id,
@@ -34,6 +34,16 @@ class ContentForm extends React.Component {
 
     shouldComponentUpdate(nextProps){
         return nextProps.visible
+    }
+
+    modifyFiles = (file) => {
+        if(!file.thumbUrl && !file.modify){
+            file.modify = true;
+            let that = this;
+            previewFile(file.originFileObj, function (previewDataUrl) {
+                file.thumbUrl = previewDataUrl;
+            });
+        }
     }
 
     render() {
@@ -59,6 +69,7 @@ class ContentForm extends React.Component {
                 <FormItem>
                     {getFieldDecorator('file')(
                         <Upload className="newMessageModal-upload"
+                                onChange={({file}) => this.modifyFiles(file)}
                                 listType = 'text'
                                 text="Прикрепить файл"/>
                     )}

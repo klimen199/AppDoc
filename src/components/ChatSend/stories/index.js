@@ -9,8 +9,8 @@ storiesOf('ChatSend', module)
             <ChatSend send={message => console.log(message)}
                         disable={false}
                         closeVisit = {() => console.log('close visit')}
-                        uploadFiles = {(arr) => console.log('files:',arr)}
-                        uploadConclusion = {(arr) => console.log('conclusions:',arr)}
+                        uploadFiles = {(arr) => console.log('files:',arr.thumbUrl.substr(0,50))}
+                        uploadConclusion = {(arr) => console.log('conclusions:',arr.thumbUrl.substr(0,50))}
             />
         </div>
     ))
