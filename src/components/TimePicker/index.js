@@ -20,13 +20,13 @@ class TimePicker extends React.Component{
         let area = this.props.availableArea;
         for(let i = 0; i < area.length; i++){
             area[i].from = moment(+area[i].from );
-            area[i].to = moment(+area[i].to );
+            area[i].to = moment(+area[i].to);
         }
-        this.startValue = moment(+this.props.value );
+        //this.startValue = moment(+this.props.value * 1000);
     };
 
     render(){
-        this.transformDate();
+        this.props.availableArea && this.transformDate();
         const {range,defaultValue} = this.props;
 
         return (
@@ -63,12 +63,13 @@ TimePicker.propTypes = {
 
 TimePicker.defaultProps = {
     //defaultValue: null,
-    availableArea: [
-        {
-            from:1395954000000,
-            to:1395954000000-1,
-        }
-    ],
+    // availableArea: [
+    //     {
+    //         from:1395954000000,
+    //         to:1395954000000-1,
+    //     }
+    // ],
+    availableArea: [],
     range: false,
     rangeSet: {},
     isReset: false,

@@ -10,23 +10,30 @@ import PropTypes from "prop-types";
 class DefaultTp extends React.Component {
     constructor(props) {
         super(props);
+        let ar = [];
+        for(let i = 0; i < 60; i++)
+            ar.push(i);
         this.state = {
             startValue: moment("07:06", "hh:mm"),
             curValue: this.props.value || null,
             trueHour: this.getAvailableHour(),
             falseHour: this.getNotAvailableHour(),
             trueMin: [],
-            falseMin: [],
+            falseMin: ar,
         };
     };
 
 
 
     getNotAvailableHour = () => { // получить массив из не доступных часов
-        return this.falseHour;
+        if(this.props.availableArea.length)
+            return this.falseHour;
+
+        return [...Array.from(Array(24).keys())];
     };
 
     getAvailableHour = () => { // получить массив из доступных часов
+       
         const area = this.props.availableArea;
         let errorHour = [];
         let availableHour = [];
@@ -69,7 +76,7 @@ class DefaultTp extends React.Component {
                 countQqual++
             }
         };
-        if( countQqual > 1) errorMin = [];
+       // if( countQqual > 1) errorMin = [];
         return errorMin;
     };
 
@@ -84,19 +91,29 @@ class DefaultTp extends React.Component {
 
     onChange = (field, value) => {
         //начальная проверка
+        
         const hourCheck = value._d.getHours();
         let minCheck = value._d.getMinutes();
         const array = this.getAvailableHour();
         const arrayMin = this.getNotAvailableMin(parseInt(value.format('HH')));
         const arrayGoodMin = this.getAvailableMin(arrayMin);
-
+        
         if(arrayGoodMin.indexOf(minCheck) === -1 ){
+            
             value.minute(arrayGoodMin[0]); //1-ая доступная минута
-            minCheck = arrayGoodMin[0];
+            minCheck = arrayGoodMin[0]; // по умолчанию - первая
+            for(let i = 0; i < arrayGoodMin.length; i++){
+                if(arrayGoodMin[i] % this.props.minuteStep === 0){
+                    value.minute(arrayGoodMin[i]); //кратна
+                    minCheck = arrayGoodMin[i];
+                    break;
+                }
+            }
         }
         this.setState({falseMin : arrayMin });
         if (array.indexOf(hourCheck) === -1 || arrayMin.indexOf(minCheck) !== -1)
             return;
+
 
         if (!value) {
             this.setState({
@@ -114,15 +131,15 @@ class DefaultTp extends React.Component {
                 const {defaultStartValue} = rangeSet;
                 start = defaultStartValue || value;
             }
-
-            this.props.onChange([start, value]);
+            //новое значение в свойстве _d
+            this.props.onChange(value);
         }
         else {
             this.setState({
                 [field]: value,
                 curValue: value,
             });
-            this.props.onChange([value, value]);
+            this.props.onChange(value);
         }
     };
 
@@ -144,7 +161,6 @@ class DefaultTp extends React.Component {
 
     render() {
         const {format, placeholder, minuteStep} = this.props;
-
         const myprops = (this.state.curValue) ?
             {
                 format : format,
