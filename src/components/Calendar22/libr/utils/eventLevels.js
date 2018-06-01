@@ -75,7 +75,6 @@ export function inRange(e, start, end, { startAccessor, endAccessor }, editor) {
   let startsBeforeEnd;
   let endsAfterStart;
 
-  
     if (editor && eStart && eEnd) {
 
         startsBeforeEnd =
