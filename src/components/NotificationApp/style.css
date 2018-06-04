@@ -11,8 +11,6 @@
   color: #eee;
 }
 .notific_component .notific_container {
-  display: inline-block;
-  position: relative;
   padding: 10px;
 }
 .notific_component .notific_container .notific_number {

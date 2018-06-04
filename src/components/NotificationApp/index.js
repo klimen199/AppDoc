@@ -63,32 +63,31 @@ class NotificationApp extends React.Component {
         if(this.state.countNotific === 0)
             styleNotf = { 'backgroundColor': 'transparent'};
 
+
         return (
         <div className="notific_component">
-           
-
-            <div>
+            <div >
                 <Popover
-
                     classname="notific_popover"
-                    content={<NotificationCard
-                        data = {this.data} />}
+                    content={this.state.visible && <NotificationCard
+                        data = {this.data} top={this.props.top} />}
                     trigger="click"
                     visible={this.state.visible}
                     onVisibleChange={this.handleVisibleChange}
                     placement="leftBottom"
                 >
-                    <div className="notific_container" >
-                        <Icon svg type='notification' size={25} />
-                        <div className="notific_number" style={styleNotf}>
-                            <p className="count_notific">
-                                {count}
-                            </p>
+                   
+                        <div className="notific_container" >
+                            <Icon svg type='notification' size={25} />
+                            <div className="notific_number" style={styleNotf}>
+                                <p className="count_notific">
+                                    {count}
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                  
                 </Popover>
             </div>
-
         </div>
 
     );
