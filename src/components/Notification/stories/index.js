@@ -53,6 +53,7 @@ storiesOf('Notification', module)
                 time="15:50"
                 thisTime="10:50"
                 desc="Иванов Александр"
+                file={[{},{}]}
                 watch= {false}
             />
         </div>

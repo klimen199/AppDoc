@@ -19,12 +19,16 @@ const NotificationItem = (props) => {
                     e.nativeEvent.stopImmediatePropagation();
                 }}
             >
-                <DownloadLink
-                    btnText="Прикрепленный файл с длинным предлинным названием.doc"
-                    size="default"
-                    type="link"
-                    download
-                />
+                {props.file.map((el,i) => {
+                    return (<DownloadLink
+                        key={i}
+                        btnText={el.btnText ? el.btnText : "undefined name"}
+                        href = {el.href ? el.href : ""}
+                        size="default"
+                        type="link"
+                        download
+                    />)
+                })}
                 <Button
                     size='file'
                     type='file'
@@ -75,6 +79,7 @@ NotificationItem.propTypes ={
     thisTime: PropTypes.string,
     desc: PropTypes.string,
     watch: PropTypes.bool, // просмотрена запись - да(true)
+    file: PropTypes.array,
     getId: PropTypes.func,
 }
 
@@ -86,6 +91,7 @@ NotificationItem.defaultProps = {
     thisTime: '',
     desc: '',
     watch: false,
+    file: [],
     getId: () => {},
 }
 
