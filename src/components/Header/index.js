@@ -16,7 +16,7 @@ import '../../icon/style.css'
 class Header extends React.Component{
 
     render(){
-        const {content} = this.props;
+        const {content,notifications} = this.props;
         const rootClass = cn('header');
 
         return (
