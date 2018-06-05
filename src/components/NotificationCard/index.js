@@ -19,6 +19,7 @@ class NotificationCard extends React.Component{
     };
 
     render(){
+        console.log('NotificationCard', this.props.data)
         return (
             <div className='notification-card'>
                 <Card title="Уведомления">

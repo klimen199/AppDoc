@@ -11,11 +11,9 @@ import moment from "moment/moment";
 class NotificationApp extends React.Component {
     constructor(props) {
         super(props);
-        this.data = this.props.data;
         this.state = {
-            countNotific: this.getDataLength(),
             visible: false,
-            dataWatched: false,
+            notif: this.props.data,
         };
 
 
@@ -23,40 +21,34 @@ class NotificationApp extends React.Component {
 
     getDataLength = () => {
         let count = 0;
-        for(let i = 0; i < this.data.length; i++){
-            if(!this.data[i].watch) count++
+        for(let i = 0; i < this.state.notif.length; i++){
+            if(!this.state.notif[i].watch) count++
         }
         return count;
     };
-    setDataWatched = () => {
-        for(let i = 0; i < this.data.length; i++){
-            this.data[i].watch = true;
-        }
-        this.setState({countNotific : 0});
-    };
+
 
 	handleVisibleChange = () => {
-	    if(this.state.dataWatched) this.setDataWatched();
-		this.setState({visible: !this.state.visible, dataWatched : true });
+		this.setState({visible: !this.state.visible });
 	};
 
     render() {
-        const {countNotific: count} = this.state;
 
+        console.log('NotificationApp', this.state.notif)
         return (
         <div>
            <div className="notific_container" onClick={this.handleVisibleChange}>
                <Icon svg type='notification' size={25} />
                <div className="notific_number">
                    <p className="count_notific">
-                       {count}
+                       {this.getDataLength()}
                    </p>
                </div>
            </div>
 
             <Popover
                 classname="notific_popover"
-                content={<NotificationCard data = {this.data}
+                content={<NotificationCard data = {this.state.notif}
                                            onClose={() => this.setState({visible: false})}/>}
                 trigger="click"
                 visible={this.state.visible}
