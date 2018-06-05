@@ -102,11 +102,13 @@ storiesOf('Notification', module)
             <NotificationItem
                 status='call'
                 title="Экстренный вызов"
-                date='26.11.2018'
-                time="15:50"
-                thisTime="10:50"
+                time={1528189810}
+                thisTime={1528189810}
                 desc="Иванов Александр"
                 watch= {false}
+                id={222}
+
+                getId = {(id) => console.log(id)}
             />
         </div>
     ))
