@@ -17,8 +17,7 @@ class NotificationApp extends React.Component {
             visible: false,
             dataWatched: false,
         };
-
-
+        this.setChange2 = false;
     };
 
     getDataLength = () => {
@@ -32,37 +31,63 @@ class NotificationApp extends React.Component {
         for(let i = 0; i < this.data.length; i++){
             this.data[i].watch = true;
         }
-        this.setState({countNotific : 0});
+        this.setState({countNotific : 0, dataWatched : true});
     };
 
-	handleVisibleChange = () => {
-	    if(this.state.dataWatched) this.setDataWatched();
-		this.setState({visible: !this.state.visible, dataWatched : true });
+	handleVisibleChange = (visible) => {
+       console.log("visible", visible);
+       this.setState({visible});
+        //console.log("change1");
+	   // if(!this.state.dataWatched) this.setDataWatched();
+        
+        //if(this.setChange2 === false){
+           
+        //    this.setState({visible:  !this.state.visible});
+       
+       
+        //}
+        //this.setChange2 = false;
 	};
 
+    handleVisibleChange2 = () => {
+        console.log("change2");
+        this.setChange2 = true;
+        this.setState({visible:  !this.state.visible});
+    };
     render() {
+        console.log(this.state.visible);
         const {countNotific: count} = this.state;
 
-        return (
-        <div>
-           <div className="notific_container" onClick={this.handleVisibleChange}>
-               <Icon svg type='notification' size={25} />
-               <div className="notific_number">
-                   <p className="count_notific">
-                       {count}
-                   </p>
-               </div>
-           </div>
 
-            <Popover
-                classname="notific_popover"
-                content={<NotificationCard data = {this.data}
-                                           onClose={() => this.setState({visible: false})}/>}
-                trigger="click"
-                visible={this.state.visible}
-                onVisibleChange={this.handleVisibleChange}
-                placement="leftBottom"
-            />
+        let styleNotf = null;
+        if(this.state.countNotific === 0)
+            styleNotf = { 'backgroundColor': 'transparent'};
+
+
+        return (
+        <div className="notific_component">
+            <div >
+                <Popover
+                    classname="notific_popover"
+                    content={this.state.visible && <NotificationCard
+                        data = {this.data} top={this.props.top} />}
+                    trigger="click"
+                    visible={this.state.visible}
+                    onVisibleChange={this.handleVisibleChange}
+                    placement="leftBottom"
+                >
+                   
+                        <div className="notific_container" >
+                            <Icon svg type='notification' size={25} />
+                            <div className="notific_number" style={styleNotf}>
+                                <p className="count_notific">
+                                    {count}
+                                </p>
+                            </div>
+                        </div>
+                  
+                </Popover>
+            </div>
         </div>
 
     );
