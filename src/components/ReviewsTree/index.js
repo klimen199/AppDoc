@@ -109,14 +109,12 @@ class ReviewsTree extends React.Component{
     render(){
         const {data} = this.props;
 
-        const DPstyle = { display: this.state.displayDP ? 'block' : 'none', };
-
         return (
             <Card title="Все отзывы"
                   className="reviewsTree"
                   extra={data.length}>
                 <Tabs onChange={this.tabChangeHadler}
-                      tabBarExtraContent={<DatePicker style={DPstyle} small onChange={this.dpHandler} defaultValue={this.state.range}/>}>
+                      tabBarExtraContent={this.state.displayDP && <DatePicker small onChange={this.dpHandler} defaultValue={this.state.range}/>}>
                     <TabPane tab="Все" key="all">
                         {this.renderRevs(data)}
                         </TabPane>
