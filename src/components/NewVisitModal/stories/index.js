@@ -20,6 +20,7 @@ storiesOf('Modal - NewVisitModal', module)
                            userName='Петров-Иванов Александр Константинович'
                            date={new Date(2018,1,4,8,10)}
                            patients={patients}
+                           isChoosebleTime={true}
                            onSave = {(obj) => console.log(obj)}
             />
         </div>

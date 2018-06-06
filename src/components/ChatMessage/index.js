@@ -9,7 +9,7 @@ import '../../icon/style.css'
 
 class ChatMessage extends React.Component {
     render() {
-        const {message, size, time, online, img, isMy} = this.props;
+        const {text, size, date, online, img, isMy} = this.props;
         const rootClass = isMy ? 'message__out' : 'message__in';
 
         return (
@@ -20,13 +20,13 @@ class ChatMessage extends React.Component {
                                          size={size}/>}
                 <div className={`${rootClass}-area`}>
                     {
-                        time && <div className={`${rootClass}-time`}>
-                            {moment(time).format('HH:mm')}
+                        date && <div className={`${rootClass}-time`}>
+                            {moment(date*1000).format('HH:mm')}
                         </div>
                     }
                     <div className={`${rootClass}-box`}>
                         <div className={`${rootClass}-attached`}>
-                            {message}
+                            {text}
                         </div>
                     </div>
                 </div>
@@ -37,17 +37,17 @@ class ChatMessage extends React.Component {
 
 ChatMessage.propTypes = {
     img: PropTypes.string,
-    message: PropTypes.string,
+    text: PropTypes.string,
     isMy: PropTypes.bool,
-    time: PropTypes.number,
+    date: PropTypes.number,
 };
 
 ChatMessage.defaultProps = {
     img: '',
-    message: '',
+    text: '',
     isMy: false,
     size: 'small',
-    time: null,
+    date: 0,
 };
 
 export default ChatMessage

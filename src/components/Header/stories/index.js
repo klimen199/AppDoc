@@ -11,6 +11,7 @@ storiesOf('Header', module)
             <Header 
                 content="15.09.2017"
                 data={patientsArr}
+                notifications = {notificationArr}
                 onAdd = {(id, name) => console.log('add',id, name)}
                 onGoto = {(id) => console.log('goto',id)}
                 findName = {(name) => console.log(name)}

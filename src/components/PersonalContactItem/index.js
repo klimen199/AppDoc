@@ -20,15 +20,7 @@ class PersonalContactItemForm extends React.Component{
 
 
     onSave = (values) => {
-        let pr = JSON.parse(JSON.stringify(this.props.profileDoctor));
-        //let pr = clone( this.props.profileDoctor);
-        //let pr = {...this.props.profileDoctor};
-
-       /* let array = values.fioField.match(/[А-ЯЁ][а-яё-]+/ig);
-        pr.secondname = array[0];
-        pr.firstname = array[1];
-        pr.patronymic = array[2];*/
-
+        let pr = this.props.profileDoctor;
         pr.fio = values.fioField;
 
         pr.phone = values.phoneField;
@@ -45,18 +37,14 @@ class PersonalContactItemForm extends React.Component{
                 let newProfile = this.onSave(values);
                 this.props.form.resetFields();
                 this.props.onSubmit(newProfile);
-                //console.log("get", newProfile);
             }
         });
     };
 
     render(){
         const { getFieldDecorator } = this.props.form;
-        const {/*secondname, firstname, patronymic,*/ fio, phone, email, oldPassword, newPassword} = this.props.profileDoctor;
-
-      //  const {secondname, firstname, patronymic, phone, email, oldPassword, newPassword} = this.props;
+        const { fio, phone, email, oldPassword, newPassword} = this.props.profileDoctor;
         const rootClass = cn('personal-contact');
-      /*  let fio = `${secondname} ${firstname} ${patronymic}`;*/
       
         return (
             <Form className={rootClass} onSubmit={this.handleSubmit} >

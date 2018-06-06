@@ -16,14 +16,6 @@ export const notificationArr = [
         status: 'new',
         watch: true,
     },{
-        title: "Прием начинается через 5 минут",
-        time: "15:50",
-        thisTime: "15:45",
-        desc: "Иванов Александр",
-        date: '26.11.2018',
-        status: 'five',
-        watch: true,
-    },{
         title: "Экстренный вызов",
         time: "15:50",
         thisTime: "15:45",

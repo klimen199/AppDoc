@@ -7,8 +7,10 @@ storiesOf('ChatSend', module)
     .add('default', () => (
         <div>
             <ChatSend send={message => console.log(message)}
-                        disable={true}
+                        disable={false}
                         closeVisit = {() => console.log('close visit')}
+                        uploadFiles = {(arr) => console.log('files:',arr.thumbUrl.substr(0,50))}
+                        uploadConclusion = {(arr) => console.log('conclusions:',arr.thumbUrl.substr(0,50))}
             />
         </div>
     ))

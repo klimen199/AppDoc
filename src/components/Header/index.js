@@ -13,13 +13,10 @@ import './style.css'
 import '../../icon/style.css'
 
 
-import {notificationArr} from './stories/mock-data'
-import {patientsArr} from './stories/mock-data'
-
 class Header extends React.Component{
 
     render(){
-        const {content} = this.props;
+        const {content,notifications} = this.props;
         const rootClass = cn('header');
 
         return (
@@ -39,13 +36,13 @@ class Header extends React.Component{
                     />
                 </div>
                 <div className='header-notification'>
-                    <NotificationApp  data={notificationArr}>
+                    <NotificationApp  data={notifications}>
                          <Icon 
                             svg 
                             type='notification' 
                             size={20}
                             title='Уведомления'
-                            onClick={() => notificationArr}
+                            //onClick={() => notificationArr}
                         />
                     </NotificationApp>
                 </div>
@@ -68,12 +65,14 @@ class Header extends React.Component{
 
 Header.propTypes = {
     content: PropTypes.string,
+    notifications: PropTypes.array,
     logout: PropTypes.func,
 
 };
 
 Header.defaultProps = {
     content: 'small',
+    notifications: [],
     logout: () => {},
 };
 

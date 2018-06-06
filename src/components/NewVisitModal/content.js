@@ -7,6 +7,7 @@ import Button from '../Button'
 import Radio from '../Radio'
 import Select from '../Select'
 import Icon from '../Icon'
+import TimePicker from '../TimePicker'
 
 const FormItem = Form.Item;
 
@@ -17,13 +18,28 @@ class ContentForm extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        let response = {
-            ...this.props.form.getFieldsValue(),
-            comment: this.state.message,
-            date: (this.props.date).getTime()/1000,
-        };
-        console.log(response)
-        this.props.onSave(response);
+        this.props.form.validateFieldsAndScroll((err, values) => {
+            if (!err) {
+                let newDate = this.props.date;
+
+                let response = this.props.isChoosebleTime ? (
+                    newDate.setHours(values.time[1].format('HH')),
+                    newDate.setMinutes(values.time[1].format('mm')),
+                    {
+                        ...this.props.form.getFieldsValue(),
+                        comment: this.state.message,
+                        date: Math.floor((newDate).getTime()/1000),
+                    }
+                ):(
+                    {
+                        ...this.props.form.getFieldsValue(),
+                        comment: this.state.message,
+                        date: Math.floor((this.props.date).getTime()/1000),
+                    }
+                );
+                this.props.onSave(response);
+            }
+          });
     };
 
     componentWillReceiveProps(nextProps){
@@ -48,6 +64,20 @@ class ContentForm extends React.Component {
         const {getFieldDecorator} = this.props.form;
         const {visible, date, time} = this.props;
 
+        let timeElement = this.props.isChoosebleTime 
+            ? <div className='modal-time'><FormItem>
+                {getFieldDecorator('time',{
+                    rules: [{required: true, message: 'Введите время',}],
+                })(
+                    <TimePicker placeholder='Время приёма' 
+                                onChange={time => this.setState({time})}/>
+                )}
+            </FormItem> </div>
+            : <div className='modal-time'>
+                <Icon svg type='alarm' size={26}/>
+                <div className='modal-result'>{moment(date).format('HH:mm')}</div>
+            </div>;
+
         return (
             <Form onSubmit={this.handleSubmit}
                   className="NewVisitModal">
@@ -58,14 +88,13 @@ class ContentForm extends React.Component {
                         <Icon svg type='calendar' size={26}/>
                         <div className='modal-result'>{moment(date).format('DD MMMM')}</div>
                     </div>
-                    <div className='modal-time'>
-                        <Icon svg type='alarm' size={26}/>
-                        <div className='modal-result'>{moment(date).format('HH:mm')}</div>
-                    </div>
+                    {timeElement}
                 </div>
 
                 <FormItem>
-                    {getFieldDecorator('id_user')(
+                    {getFieldDecorator('id_user',{
+                        rules: [{required: true, message: ' ',}],
+                    })(
                         <Select placeholder="ФИО">
                             {this.renderOptions()}
                         </Select>

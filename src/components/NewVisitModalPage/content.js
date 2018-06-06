@@ -13,10 +13,37 @@ import TimePicker from '../TimePicker'
 const FormItem = Form.Item;
 
 class ContentForm extends React.Component {
-    state = {
-        time: null,
-        message: '',
-    }
+    constructor(props) {
+        super(props);
+        this.state = {
+            time: null,
+            message: '',
+            currentTime: moment(),
+        };
+    };
+
+    onChangeTime = (start, value) => {
+        let paramDate = moment(+this.state.currentTime.format('x'));
+
+        paramDate.hour(start._d.getHours());
+        paramDate.minute(start._d.getMinutes());
+        paramDate.second(0);
+        this.setState({currentTime: paramDate});
+    };
+
+    onChangeDate = (date) => {
+        let paramDate = moment(+this.state.currentTime.format('x'));
+
+        const bufHours = paramDate._d.getHours();   
+        const bufMinutes = paramDate._d.getMinutes();   
+
+        paramDate = date;
+        paramDate.hour(bufHours);
+        paramDate.minute(bufMinutes);
+        paramDate.second(0);
+        this.setState({currentTime: paramDate});
+        this.props.onChangeDate(+paramDate.format('x'));
+    };
 
     componentWillReceiveProps(nextProps){
         nextProps.visible == false ? (this.setState({message: ''}), this.props.form.resetFields()) : null;
@@ -25,20 +52,15 @@ class ContentForm extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
-            if (!err) {
-              
-                let date = values.day.format("DD:MM:YYYY") + " " 
-                        + values.time.format("HH:mm");
-                const dateMoment = moment(date, "DD:MM:YYYY HH:mm");        
-
+            if (!err) {    
+                let paramDate = this.state.currentTime;
                 let response = {
                     id: this.props.id,
                     comment: this.state.message,
-                    date: moment(date, "DD:MM:YYYY HH:mm").unix(),
+                    date: +paramDate.format('X'), //формат для сервера,
                     type: values.radio ,
                 };
                 this.props.onSave(response);
-
             }
           });
     };
@@ -47,41 +69,31 @@ class ContentForm extends React.Component {
         const {getFieldDecorator} = this.props.form;
         const {visible, date, time, userName, defaultDate} = this.props;
 
+
         return (
             <Form onSubmit={this.handleSubmit}
                   className="NewVisitModal">
-
-               {/* <FormItem>
-                    {getFieldDecorator('name',{
-                        initialValue: userName,
-                        rules: [{
-                            required: true, message: 'Ввведите имя',
-                        }],
-                    })(*/}
-                        <Input addonBefore="ФИО" value={userName} readOnly/>
-                    {/*})}
-                </FormItem>*/}
+                <Input addonBefore="ФИО" value={userName} readOnly/>
 
                 <div className='flex-row'>
                     <FormItem>
                         {getFieldDecorator('day', {
-                            
-                            rules: [{
-                                required: true, message: 'Введите дату',
-                            }],
+                            rules: [{required: true, message: 'Введите дату',}],
                         })(
-                            <DatePicker placeholder="Дата приёма"/>
+                            <DatePicker placeholder="Дата приёма"
+                                        onChange={this.onChangeDate} />
                         )}
                     </FormItem>
-
+                    
                     <FormItem>
                         {getFieldDecorator('time',{
-                            rules: [{
-                                required: true, message: 'Введите время',
-                            }],
+                            rules: [{required: true, message: 'Введите время',}],
                         })(
-                            <TimePicker placeholder='Время приёма' 
-                                        onChange={time => this.setState({time})}/>
+                            <TimePicker format="HH:mm"
+                                        minuteStep={5}
+                                        availableArea={this.props.availableArea}
+                                        placeholder='Время приёма' 
+                                        onChange={this.onChangeTime}/>
                         )}
                     </FormItem>
                 </div>

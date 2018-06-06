@@ -5,188 +5,94 @@ import moment from 'moment'
 import Button from '../Button'
 import Icon from '../Icon'
 import DownloadLink from '../DownloadLink'
+import Hoc from '../Hoc'
 
 import './style.css'
 
-
 const NotificationItem = (props) => {
 
-    let renderType1 = () =>{
+    let renderLinks = () =>{
         return (
-            <div>
-                <div className='notification-icon'><Icon svg type='notification' size={20} /></div>
-                <div className='notification-row'>
-                    <div className='notification-title'>{title}</div>
-                    <div className='notification-time'>
-                        {thisTime}
-                    </div>
-                </div>
-                <div className='notification-info'>{desc} {date} {time}</div>
-            </div>
-        );
-    };
-
-    let renderType2 = () =>{
-        return (
-            <div>
-                <div className='notification-icon'> <Icon svg type='order-form' size={20} /></div>
-                <div className='notification-row'>
-                    <div className='notification-title'>{title}</div>
-                    <div className='notification-time'>
-                        {thisTime}
-                    </div>
-                </div>
-                <div className='notification-info'>{desc} {date} {time}</div>
-                <div className='notification-links'>
-                    <DownloadLink
-                        btnText="Прикрепленный файл с длинным предлинным названием.doc"
+            <div className='notification-links'
+                onClick = {e => {
+                    e.stopPropagation();
+                    e.nativeEvent.stopImmediatePropagation();
+                }}
+            >
+                {props.file.map((el,i) => {
+                    return (<DownloadLink
+                        key={i}
+                        btnText={el.btnText ? el.btnText : "undefined name"}
+                        href = {el.href ? el.href : ""}
                         size="default"
                         type="link"
                         download
-                    />
-                    <Button
-                        size='file'
-                        type='file'
-                        icon='download'
-                        iconSize={20}
-                        svg
-                        title='Скачать всё'
-                    />
-                </div>
+                    />)
+                })}
+                <Button
+                    size='file'
+                    type='file'
+                    icon='download'
+                    iconSize={20}
+                    svg
+                    title='Скачать всё'
+                />
             </div>
         );
     };
 
-    let renderType3 = () =>{
-        return (
-            <div>
-                <div className='notification-icon'><Icon svg type='notification' size={20} /></div>
-                <div className='notification-row'>
-                    <div className='notification-title'>{title}</div>
-                    <div className='notification-time'>
-                        {thisTime}
-                    </div>
-                </div>
-                <div className='notification-info'>{desc} {date} {time}</div>
-            </div>
-        );
-    };
+    const {id, title, desc, time, thisTime, status, watch, getId} = props;
+    let iconType = 'notification';
+    let links;
 
-    let renderType4 = () =>{
-        return (
-            <div>
-                <div className='notification-icon'><Icon svg type='notification' size={20} /></div>
-                <div className='notification-row'>
-                    <div className='notification-title'>{title} {time}</div>
-                    <div className='notification-time'>
-                        {thisTime}
-                    </div>
-                </div>
-                <div className='notification-info'>{desc} {date} {time}</div>
-            </div>
-        );
-    };
-
-    let renderType5 = () =>{
-        return (
-            <div>
-                <div className='notification-icon'><Icon svg type='notification' size={20} /></div>
-                <div className='notification-row'>
-                    <div className='notification-title'>{title} {time}</div>
-                    <div className='notification-time'>
-                        {thisTime}
-                    </div>
-                </div>
-                <div className='notification-info'>{desc} {date} {time}</div>
-            </div>
-        );
-    };
-
-    let renderType6 = () =>{
-        return (
-            <div>
-                <div className='notification-icon'><Icon svg type='notification' size={20} /></div>
-                <div className='notification-row'>
-                    <div className='notification-title'>Внимание! {title}</div>
-                    <div className='notification-time'>
-                        {thisTime}
-                    </div>
-                </div>
-                <div className='notification-info'>{desc} {date} {time}</div>
-            </div>
-        );
-    };
-
-    const {title, desc, date, time, thisTime, status, watch} = props;
-    let addClass = '';
-    let renderType = renderType1();
     switch (status) {
-        case 'new':
-            addClass = `new`;
-            //renderType = renderType1();
-            break;
-        case 'cancel':
-            addClass = `cancel`;
-            //renderType = renderType1();
-            break;
         case 'research':
-            addClass = `research`;
-            renderType = renderType2();
+            iconType = 'order-form';
+        case 'cancel':
+            links = renderLinks();
             break;
-        case 'five':
-            addClass = `five`;
-            renderType = renderType3();
-            break;
-        case 'tomorrow':
-            addClass = `tomorrow`;
-            renderType = renderType4();
-            break;
-        case 'negative':
-            addClass = `negative`;
-            renderType = renderType5();
-            break;
-        case 'call':
-            addClass = `call`;
-            renderType = renderType6();
-            break;
-
     }
 
-    let rootClass = null;
-    if(!watch)
-        rootClass =  cn( `notification-item` ,`notification-${addClass}`);
-    else {
-        rootClass = cn( `notification-item` ,`notification-watch`);
-    }
+    let rootClass = (!watch) ? cn( `notification-item` ,`notification-${status}`) : cn( `notification-item` ,`notification-watch`);
 
     return (
-                <div className={rootClass}>
-                    {renderType}
+                <div className={rootClass} 
+                    onClick={(!watch) && (() => {getId(id)})}
+                >
+                    <div className='notification-icon'>
+                        <Icon svg type={iconType} size={20} />
+                    </div>
+                    <div className='notification-row'>
+                        <div className='notification-title'>{title} {time ? `- ${moment((+time)*1000).format('HH:mm')}` : ''}</div>
+                        <div className='notification-time'>{moment((+thisTime)*1000).format('HH:mm')}</div>
+                    </div>
+                    <div className='notification-info'>{desc} {moment((+time)*1000).format('DD.MM.YYYY HH:mm')}</div>
+                    {links}
                 </div>
-
     );
 }
 
 NotificationItem.propTypes ={
-	status: PropTypes.oneOf(['new', 'cancel',
-        'research','five','tomorrow', 'negative', 'call']),
+	status: PropTypes.oneOf(['new', 'cancel','research','five','tomorrow', 'negative', 'call','default']),
     title: PropTypes.string,
     time: PropTypes.string,
     thisTime: PropTypes.string,
-    date: PropTypes.string,
     desc: PropTypes.string,
-    start: PropTypes.instanceOf(Date),
     watch: PropTypes.bool, // просмотрена запись - да(true)
+    file: PropTypes.array,
+    getId: PropTypes.func,
 }
 
 NotificationItem.defaultProps = {
+    id: 0,
     title: '',
     time: '',
     status: 'default',
     thisTime: '',
-    date: '',
     desc: '',
     watch: false,
+    file: [],
+    getId: () => {},
 }
 
 export default NotificationItem

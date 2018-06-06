@@ -85,7 +85,8 @@ class HistoryReceptionsItems extends React.Component{
                     <Rate defaultValue={rating} disabled/>
                     <div className="patient-review">{review}</div>
                 </div>
-                <div className="flex-col">
+                <div className="flex-col"
+                        onClick = {this.handleClick}>
                     <PopoverFile placement="bottomRight" content={content} trigger="click"/>                         
                 </div>
             </div>
@@ -94,6 +95,7 @@ class HistoryReceptionsItems extends React.Component{
 }
 
 HistoryReceptionsItems.propTypes = {
+    id: PropTypes.number,
     status: PropTypes.oneOf(['new', 'topical', 'completed', 'extra']),
     type: PropTypes.string.isRequired,
     diagnostic: PropTypes.string,
@@ -107,6 +109,7 @@ HistoryReceptionsItems.propTypes = {
 };
 
 HistoryReceptionsItems.defaultProps = {
+    id: 0,
     size: 'small',
     status: 'new',
     diagnostic: '-',

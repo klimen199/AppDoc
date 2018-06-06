@@ -23,7 +23,7 @@ class PersonalInformation extends React.Component{
         return (
             <div className={rootClass}>
                 <Accordion defaultActiveKey={['1']}>
-                    <Panel header="Опыт работы" key="1">
+                    <Panel header="Дополнительная информация" key="1">
                         <PersonalInformationItem
                             profileDoctor={this.props.profileDoctor}
                             onSubmit={this.props.onSubmit}

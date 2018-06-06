@@ -6,6 +6,8 @@ import Upload from '../Upload'
 import DatePicker from '../DatePicker'
 import Button from '../Button'
 
+import {previewFile} from '../../helpers/modifyFiles'
+
 const FormItem = Form.Item;
 
 class ContentForm extends React.Component{
@@ -36,7 +38,7 @@ class ContentForm extends React.Component{
 
         let response = {
             file: this.props.form.getFieldValue('file') 
-                ? this.props.form.getFieldValue('file').fileList 
+                ? ( this.props.form.getFieldValue('file').fileList) 
                 : [],
             comment: this.state.message,
             range: rangeArr,
@@ -126,6 +128,17 @@ class ContentForm extends React.Component{
         }
     }
 
+    modifyFiles = (file) => {
+        if(!file.thumbUrl && !file.modify){
+            file.modify = true;
+            let that = this;
+            previewFile(file.originFileObj, function (previewDataUrl) {
+                file.thumbUrl = previewDataUrl;
+            });
+        }
+        
+    }
+
     render(){
         const { getFieldDecorator } = this.props.form;
 
@@ -140,7 +153,9 @@ class ContentForm extends React.Component{
 
                 <FormItem>
                     {getFieldDecorator('file')(
-                        <Upload className="cancelVisitModal-upload" 
+                        <Upload className="cancelVisitModal-upload"
+                                onChange={({file}) => this.modifyFiles(file)}
+                                listType = 'text'
                                 text="Прикрепить файл"/>
                     )}
                 </FormItem>

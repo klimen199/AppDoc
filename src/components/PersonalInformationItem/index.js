@@ -22,8 +22,7 @@ class PersonalInformationItemForm extends React.Component{
         }
     }
     addPersonInfo = (values) => {
-        let pr = JSON.parse(JSON.stringify(this.props.profileDoctor));
-      //  let pr = {...this.props.profileDoctor};
+        let pr = this.props.profileDoctor;
         pr.langData = values.languagesField;
         pr.priceData = values.priceField;
 
@@ -41,7 +40,6 @@ class PersonalInformationItemForm extends React.Component{
                 let newProfile = this.addPersonInfo(values);
                 this.props.form.resetFields();
                 this.props.onSubmit(newProfile);
-                //console.log("get", newProfile);
             }
         });
     };

@@ -16,6 +16,7 @@ storiesOf('HistoryReceptionsItems', module)
                 conclusion='Lorem ipsum dolor sit amet, consectetuer adipiscing elit'
                 conclusionDownload='Заключение 252525.pdf'
                 review='Lorem ipsum dolor sit amet, consectetuer...'
+                onGotoChat={(id)=>console.log('gotoChat',id)}
             />
         </div>
     ))

@@ -73,6 +73,16 @@ const events1 = [
 
 const schedules1 = [
     {
+        date:1527022800,
+        id_doc:2697,
+        isEditable: '1',
+        intervalOb: [],
+        intervalEx: [],
+        intervalTime: "0",
+        type: "chat",
+        isDayOff: "0"
+    },
+    {
         id: 12,
         isEditable: '0',
         intervalOb: [{

@@ -72,15 +72,13 @@ class PersonalExperienceItemForm extends React.Component{
                 this.props.form.resetFields();
                 this.setState({experBlock : 0});
                 this.props.onSubmit(newProfile);
-                //console.log("get", newProfile);
             }
         });
     };
 
 
     deleteWork = (id) => {
-        let newProfile = JSON.parse(JSON.stringify(this.props.profileDoctor));
-        //let newProfile = {...this.props.profileDoctor};
+        let newProfile = this.props.profileDoctor;
 
         this.setState({idDeleteWork: id});
         let newArray = [];
@@ -90,10 +88,8 @@ class PersonalExperienceItemForm extends React.Component{
         newProfile.arrayExpWork = newArray;
 
         this.props.onSubmit(newProfile);
-        //console.log("get", newProfile);
     };
 
-    // для upload
     normFile = (e) => {
         if (Array.isArray(e)) {
             return e;
@@ -210,7 +206,6 @@ class PersonalExperienceItemForm extends React.Component{
                 return (
                     <div key={elem.id}>
                         <div className="personal-item">
-                            { !elem.isWorking || <div className="personal-title">Текущее место работы</div>}
                             <Button
                                 onClick={() => this.deleteWork(elem.id)}
                                 className="personal-delete"
@@ -224,8 +219,8 @@ class PersonalExperienceItemForm extends React.Component{
                         </div>
                         <div className="personal-item mb-35">
                             <div className="personal-info"><b>{elem.post}</b></div>
-                            <div className="personal-info">{elem.placeOfWord}</div>
-                            <div className="personal-info">{elem.dateStart} - {elem.thisTime}</div>
+                            <div className="personal-info"><p>{elem.placeOfWord}</p></div>
+                            <div className="personal-info"><p>{elem.dateStart.format('YYYY')} - настоящее время</p></div>
                         </div>
                     </div> );
             });
@@ -237,9 +232,9 @@ class PersonalExperienceItemForm extends React.Component{
                 <Form className={rootClass} onSubmit={this.handleSubmit}>
                     <div className="personal-block">
                         <div className="personal-item">
-                            <div className="expWork">Опыт работы ({expWork} лет)</div>
+                            <div className="expWork">Опыт работы ( {expWork} )</div>
                         </div>
-
+                        <div className="personal-title">Текущее место работы</div>
 
                         {works}
                         <div className="personal-item">

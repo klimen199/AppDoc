@@ -17,8 +17,7 @@ import '../../icon/style.css'
 class PersonalEducation extends React.Component{
 
     render(){
-       // const {mainInstitution,  mainSpecialty, secondInstitution, secondSpecialty, mainDateStart, mainDateEnd, dateStart, dateEnd, degree} = this.props;
-        const rootClass = cn('personal-education-all');
+       const rootClass = cn('personal-education-all');
         const Panel = Accordion.Panel;
         return (
             <div className={rootClass}>
