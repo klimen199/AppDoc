@@ -19,10 +19,14 @@ class NotificationApp extends React.Component {
 
     };
 
+    /*shouldComponentUpdate(nextProps, nextState){
+
+    }*/
+
     getDataLength = () => {
         let count = 0;
-        for(let i = 0; i < this.state.notif.length; i++){
-            if(!this.state.notif[i].watch) count++
+        for(let i = 0; i < this.props.data.length; i++){
+            if(!this.props.data[i].watch) count++
         }
         return count;
     };
@@ -30,11 +34,11 @@ class NotificationApp extends React.Component {
 
 	handleVisibleChange = () => {
 		this.setState({visible: !this.state.visible });
-	};
+    };
 
     render() {
 
-        console.log('NotificationApp', this.state.notif)
+        console.log('NotificationApp', this.props.data)
         return (
         <div>
            <div className="notific_container" onClick={this.handleVisibleChange}>
@@ -48,7 +52,7 @@ class NotificationApp extends React.Component {
 
             <Popover
                 classname="notific_popover"
-                content={<NotificationCard data = {this.state.notif}
+                content={<NotificationCard data = {this.props.data}
                                            onClose={() => this.setState({visible: false})}/>}
                 trigger="click"
                 visible={this.state.visible}
