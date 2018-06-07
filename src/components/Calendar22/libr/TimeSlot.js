@@ -39,9 +39,7 @@ export default class TimeSlot extends Component {
 
         return (
             <Wrapper value={value} resource={resource}>
-                {
-                    cont
-                }
+                {cont}
             </Wrapper>
         )
     }

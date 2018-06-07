@@ -182,7 +182,7 @@
   line-height: 52px;
 }
 .rbc-day-slot.rbc-time-column .rbc-timeslot-group-NOT {
-  background-color: #d7d7d7;
+  background-color: #eeeeee;
 }
 .rbc-day-slot.rbc-time-column .rbc-timeslot-group-OK:hover {
   position: relative;

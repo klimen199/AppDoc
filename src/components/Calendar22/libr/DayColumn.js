@@ -244,7 +244,9 @@ class DayColumn extends React.Component {
               /*[isRtl ? 'right' : 'left']: `${Math.max(0, xOffset)}%`,*/
             }}
             title={(typeof label === 'string' ? label + ': ' : '') + fio}
-            onClick={e => this.onEventClickHandler(event, e)}
+            onClick={e => {
+              this.onEventClickHandler(event, e)
+            }}
             onDoubleClick={e => this._doubleClick(event, e)}
             className={cn('rbc-event', className, {
               /*'rbc-selected': _isSelected,*/
@@ -288,24 +290,6 @@ class DayColumn extends React.Component {
       longPressThreshold: this.props.longPressThreshold,
     }))
 
-    let maybeSelect = (box, type) => {
-      let onSelecting = this.props.onSelecting
-      let current = this.state || {}
-      let state = selectionState(box)
-      let { startDate: start, endDate: end } = state
-
-      if (onSelecting) {
-        if (
-          (dates.eq(current.startDate, start, 'minutes') &&
-            dates.eq(current.endDate, end, 'minutes')) ||
-          onSelecting({ start, end }) === false
-        )
-          return
-      }
-
-      this.setState(state)
-    }
-
     let selectionState = ({ y }) => {
       let { step, min, max } = this.props
       let { top, bottom } = getBoundsForNode(node)
@@ -339,30 +323,13 @@ class DayColumn extends React.Component {
 
     let selectorClicksHandler = (box, actionType) => {
         if (!isEvent(findDOMNode(this), box))
-        this._selectSlot({ ...selectionState(box), action: actionType })
-
+        this._selectSlot({ ...selectionState(box), action: actionType });
       this.setState({ selecting: false })
     }
-
-    // selector.on('selecting', maybeSelect)
-    // selector.on('selectStart', maybeSelect)
-    //
-    // selector.on('beforeSelect', box => {
-    //     if (this.props.selectable !== 'ignoreEvents') return
-    //
-    //   return !isEvent(findDOMNode(this), box)
-    // })
 
     selector.on('click', box => selectorClicksHandler(box, 'click'))
 
     selector.on('doubleClick', box => selectorClicksHandler(box, 'doubleClick'))
-
-    // selector.on('select', () => {
-    //     if (this.state.selecting) {
-    //     this._selectSlot({ ...this.state, action: 'select' })
-    //     this.setState({ selecting: false })
-    //   }
-    // })
   }
 
   _teardownSelectable = () => {

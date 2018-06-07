@@ -77,8 +77,6 @@ export default class TimeColumn extends Component {
       resource,
     } = this.props;
 
-    console.log(this.props)
-
       let timeslots = 1;
 
     const totalMin = dates.diff(min, max, 'minutes')

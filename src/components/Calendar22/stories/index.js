@@ -222,7 +222,7 @@ storiesOf('Calendar22', module)
                          onSelectSlot={action('Slot info')}
 
                          min={new Date(new Date().setHours(8,0,0,0))}
-                         max={new Date(new Date().setHours(11,1,0,0))}
+                         max={new Date(new Date().setHours(14,50,0,0))}
                          step = {5}
                          events = {events1}
                          intervals={intervals}

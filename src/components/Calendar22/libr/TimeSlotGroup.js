@@ -66,16 +66,12 @@ export default class TimeSlotGroup extends Component {
     }
     return ret
   }
+
   render() {
     const {intervals, value} = this.props;
-    //console.log(this.props.intervals);
     let flag = intervals.some(el => {
-        /*console.log(value)
-        console.log(el.start*1000)
-      console.log(value > el.start*1000)*/
-      return (value > el.start*1000) || value < (el.end * 1000)
+      return (value >= el.start*1000) && value < (el.end * 1000)
     });
-    console.log(flag)
     let cellClass = cn('rbc-timeslot-group', flag ? 'rbc-timeslot-group-OK' : 'rbc-timeslot-group-NOT');
     return <div className={cellClass}>{this.renderSlices()}</div>
   }
