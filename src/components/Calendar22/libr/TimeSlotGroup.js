@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
+import cn from 'classnames'
 import TimeSlot from './TimeSlot'
 import date from './utils/dates.js'
 import localizer from './localizer'
@@ -59,13 +60,23 @@ export default class TimeSlotGroup extends Component {
         sliceValue,
         'HH:mm',
         this.props.culture
-      )
+      );
       ret.push(this.renderSlice(i, content, sliceValue))
       sliceValue = date.add(sliceValue, sliceLength, 'minutes')
     }
     return ret
   }
   render() {
-    return <div className="rbc-timeslot-group">{this.renderSlices()}</div>
+    const {intervals, value} = this.props;
+    //console.log(this.props.intervals);
+    let flag = intervals.some(el => {
+        /*console.log(value)
+        console.log(el.start*1000)
+      console.log(value > el.start*1000)*/
+      return (value > el.start*1000) || value < (el.end * 1000)
+    });
+    console.log(flag)
+    let cellClass = cn('rbc-timeslot-group', flag ? 'rbc-timeslot-group-OK' : 'rbc-timeslot-group-NOT');
+    return <div className={cellClass}>{this.renderSlices()}</div>
   }
 }

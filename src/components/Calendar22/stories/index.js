@@ -70,6 +70,23 @@ const events1 = [
         comment: 'Most important meal of the day',
     },
 ];
+const intervals = [{
+    start: new Date(2018, 0, 23, 8, 0, 0).getTime()/1000,
+    end: new Date(2018, 0, 23, 9, 0, 0).getTime()/1000,
+},{
+    start: new Date(2018, 0, 23, 10, 0, 0).getTime()/1000,
+    end: new Date(2018, 0, 23, 11, 0, 0).getTime()/1000,
+},{
+    start: new Date(2018, 0, 24, 9, 0, 0).getTime()/1000,
+    end: new Date(2018, 0, 24, 10, 0, 0).getTime()/1000,
+},{
+    start: new Date(2018, 0, 25, 8, 10, 0).getTime()/1000,
+    end: new Date(2018, 0, 25, 9, 0, 0).getTime()/1000,
+},{
+    start: new Date(2018, 0, 25, 9, 30, 0).getTime()/1000,
+    end: new Date(2018, 0, 25, 10, 0, 0).getTime()/1000,
+}];
+
 const schedules2 = [
     {
         date:1527022800,
@@ -204,9 +221,11 @@ storiesOf('Calendar22', module)
                          onSelectEvent={action('Receive 1 obj')}
                          onSelectSlot={action('Slot info')}
 
+                         min={new Date(new Date().setHours(8,0,0,0))}
+                         max={new Date(new Date().setHours(11,1,0,0))}
                          step = {5}
                          events = {events1}
-                         schedules={schedules2}
+                         intervals={intervals}
                          defaultDate={new Date(2018, 0, 22)}
                          onPopoverClose={action('onPopoverClose')}
                          onPopoverEmail={action('onPopoverEmail')}
