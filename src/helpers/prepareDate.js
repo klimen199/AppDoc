@@ -1,13 +1,9 @@
 import moment from 'moment'
 
-/**
- * преобразование timestamp в строку вида '%n дней назад'
- * @param timestamp {number}
- * @return {string}
- */
 export function dateToString(timestamp) {
-    let now = new Date();
-    const dist = now - timestamp;
+    let now = new Date(),
+        tmp = timestamp*1000;
+    const dist = now - tmp;
     const minute = 60 * 1000;
     const hour = minute * 60;
     const day = hour * 24;
@@ -15,28 +11,28 @@ export function dateToString(timestamp) {
     moment.locale('ru');
 
     if (dist < (minute - 1)) {
-        return moment(timestamp)
+        return moment(tmp)
             .startOf('second')
             .fromNow()
     }
 
     if (dist < (hour - 1)) {
-        return moment(timestamp)
+        return moment(tmp)
             .startOf('minute')
             .fromNow()
     }
 
     if (dist < (6*hour - 1)) {
-        return moment(timestamp)
+        return moment(tmp)
             .startOf('hour')
             .fromNow()
     }
 
-    if (dist < (day-1) && now.getDate() === timestamp.getDate()) {
-        return moment(timestamp)
+    if (dist < (day-1) && now.getDate() === tmp.getDate()) {
+        return moment(tmp)
             .format('HH:mm');
     }
 
-    return moment(timestamp)
+    return moment(tmp)
         .format('HH:mm DD.MM.YYYY');
 }

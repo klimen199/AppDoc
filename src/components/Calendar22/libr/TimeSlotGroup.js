@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
+import cn from 'classnames'
 import TimeSlot from './TimeSlot'
 import date from './utils/dates.js'
 import localizer from './localizer'
@@ -37,9 +38,10 @@ export default class TimeSlotGroup extends Component {
     return (
       <TimeSlot
         key={slotNumber}
+        slotNumber={slotNumber}
         slotPropGetter={slotPropGetter}
         dayWrapperComponent={dayWrapperComponent}
-        showLabel={showLabels && !slotNumber}
+        showLabel={showLabels}
         content={content}
         culture={culture}
         isNow={isNow}
@@ -58,13 +60,19 @@ export default class TimeSlotGroup extends Component {
         sliceValue,
         'HH:mm',
         this.props.culture
-      )
+      );
       ret.push(this.renderSlice(i, content, sliceValue))
       sliceValue = date.add(sliceValue, sliceLength, 'minutes')
     }
     return ret
   }
+
   render() {
-    return <div className="rbc-timeslot-group">{this.renderSlices()}</div>
+    const {intervals, value} = this.props;
+    let flag = intervals.some(el => {
+      return (value >= el.start*1000) && value < (el.end * 1000)
+    });
+    let cellClass = cn('rbc-timeslot-group', flag ? 'rbc-timeslot-group-OK' : 'rbc-timeslot-group-NOT');
+    return <div className={cellClass}>{this.renderSlices()}</div>
   }
 }

@@ -10,12 +10,10 @@
   font-size: 1.25rem;
   color: #eee;
 }
-.notific_container {
-  display: inline-block;
-  position: relative;
+.notific_component .notific_container {
   padding: 10px;
 }
-.notific_container .notific_number {
+.notific_component .notific_container .notific_number {
   position: absolute;
   top: -10px;
   right: -10px;
@@ -29,4 +27,5 @@
   -moz-border-radius: 60px;
   -webkit-border-radius: 60px;
   border-radius: 60px;
+  font-weight: bold;
 }

@@ -3,8 +3,6 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import TreatmentTableItem from '../';
 
-import {filesArr} from './mock-data'
-
 const filse =[
         {
             btnText: "Файл1.doc",

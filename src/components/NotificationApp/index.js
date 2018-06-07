@@ -9,14 +9,14 @@ import './style.css'
 import moment from "moment/moment";
 
 class NotificationApp extends React.Component {
-    constructor(props) {
+  constructor(props) {
         super(props);
         this.state = {
+            countNotific: this.getDataLength(),
             visible: false,
-            notif: this.props.data,
+            dataWatched: false,
         };
-
-
+        this.setChange2 = false;
     };
 
     /*shouldComponentUpdate(nextProps, nextState){
