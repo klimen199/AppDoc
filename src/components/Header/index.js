@@ -19,6 +19,8 @@ class Header extends React.Component{
         const {content,notifications} = this.props;
         const rootClass = cn('header');
 
+        console.log('Header', notifications)
+
         return (
             <div className={rootClass}>
                 <div className='header-search'>
