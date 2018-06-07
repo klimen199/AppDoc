@@ -19,8 +19,7 @@ class BigCalendar extends React.Component{
 
     selectHandler = (range, slotInfo,selecting, schedule) => {
         if (slotInfo.action === 'click'){
-            this.props.onMonthSelect(range, schedule)
-            // console.log('RETURN', range)
+            this.props.onMonthSelect(range, schedule);
             return
         }
         if (selecting === true && this.state.dayRange.length !== 0){
@@ -28,9 +27,8 @@ class BigCalendar extends React.Component{
         }
         else{
             if (range.length !== 0) {
-                this.setState({dayRange: this.state.dayRange.concat(range)})
-                this.props.onMonthSelect(this.state.dayRange)
-                    // console.log('RETURN', this.state.dayRange)
+                this.setState({dayRange: this.state.dayRange.concat(range)});
+                this.props.onMonthSelect(this.state.dayRange);
             }
         }
     };
@@ -40,44 +38,40 @@ class BigCalendar extends React.Component{
             start: new Date((+start)*1000),
             end: new Date((+end)*1000),
         }
-    }
+    };
 
     changeSchedule = () => {
-        let newSched = this.props.schedules ? this.props.schedules.map((sched)=>{
-            const {intervalOb,intervalEx} = sched;
-            let newIntervalOb = [];
-            for(let i = 0, len = intervalOb.length; i < len; i++){
-                let interv = intervalOb[i];
-                newIntervalOb.push(this.changeIntervalDate(interv.start, interv.end))
-            }
+        return this.props.schedules ? this.props.schedules.map((sched)=>{
+                const {intervalOb,intervalEx} = sched;
+                let newIntervalOb = [];
+                for(let i = 0, len = intervalOb.length; i < len; i++){
+                    let interv = intervalOb[i];
+                    newIntervalOb.push(this.changeIntervalDate(interv.start, interv.end))
+                }
 
-            let newIntervalEx = [];
-            for(let i = 0, len = intervalEx.length; i < len; i++){
-                let interv = intervalEx[i];
-                newIntervalEx.push(this.changeIntervalDate(interv.start, interv.end))
-            }
+                let newIntervalEx = [];
+                for(let i = 0, len = intervalEx.length; i < len; i++){
+                    let interv = intervalEx[i];
+                    newIntervalEx.push(this.changeIntervalDate(interv.start, interv.end))
+                }
 
-            return {
-                ...sched,
-                intervalOb: newIntervalOb,
-                intervalEx: newIntervalEx,
-            }
+                return {
+                    ...sched,
+                    intervalOb: newIntervalOb,
+                    intervalEx: newIntervalEx,
+                }
 
-        }) : [];
-
-        return newSched;
-    }
+            }) : [];
+    };
 
     changeEvents = () => {
-        let newEvents = this.props.events ? this.props.events.map((event) => {
-            return {
-                ...event,
-                ...this.changeIntervalDate(event.start, event.end),
-            }
-        }) : [];
-
-        return newEvents;
-    }
+        return this.props.events ? this.props.events.map((event) => {
+                return {
+                    ...event,
+                    ...this.changeIntervalDate(event.start, event.end),
+                }
+            }) : [];
+    };
     
     render() {       
 
@@ -88,7 +82,7 @@ class BigCalendar extends React.Component{
             : {
                 ...this.props,
                 events: this.changeEvents(),
-            }
+            };
 
         return (<div>
             {
@@ -106,6 +100,8 @@ class BigCalendar extends React.Component{
                     :
                     <Calendar
                         events={this.changeEvents()}
+                        intervals={this.props.intervals}
+                        schedules={this.changeSchedule()}
                         defaultView={'week'}
                         views={['day', 'week', 'month']}
 
@@ -126,6 +122,7 @@ BigCalendar.propTypes = {
             intervalEx: PropTypes.array,
         })
     ),
+    intervals: PropTypes.array,
     receptionNum: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number,
@@ -139,6 +136,7 @@ BigCalendar.propTypes = {
 BigCalendar.defaultProps = {
     events: [],
     schedules: [],
+    intervals: [],
     receptionNum: 0,
     editor: false,
     onPopoverClose: () => {},

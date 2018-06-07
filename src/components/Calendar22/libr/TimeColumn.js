@@ -54,6 +54,7 @@ export default class TimeColumn extends Component {
         step={step}
         slotPropGetter={slotPropGetter}
         dayPropGetter={dayPropGetter}
+        intervals={this.props.intervals}
         culture={culture}
         timeslots={timeslots}
         resource={resource}
@@ -73,13 +74,12 @@ export default class TimeColumn extends Component {
       min,
       max,
       step,
-      // timeslots,
       resource,
-    } = this.props
+    } = this.props;
 
       let timeslots = 1;
 
-    const totalMin = dates.diff(min.setHours(8,0,0,0), max, 'minutes')
+    const totalMin = dates.diff(min, max, 'minutes')
 
     const numGroups = Math.ceil(totalMin / (step * timeslots))
     const renderedSlots = []
