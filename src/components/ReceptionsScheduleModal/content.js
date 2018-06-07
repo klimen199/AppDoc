@@ -173,6 +173,10 @@ class ContentForm extends React.Component {
                                     isReset={this.state.isReset}
                                     rangeSet={timeSet[i]}
                                     delimiter='&mdash;'
+                                    availableArea={[{
+                                        from : 1528318800000,
+                                        to   : 1528318800000-1
+                                    }]}
                         />
                     )}
                 </FormItem>)
