@@ -23,13 +23,11 @@ class ChatSend extends React.Component{
     }
 
     modifyFiles = (file, isConclusion) => {
-        //console.log('in mpdify')
         let that = this;
         //fileList.map(file => {
             this.setState({isGenerated: false})
             previewFile(file.originFileObj, function (previewDataUrl) {
                 file.thumbUrl = previewDataUrl;
-                console.log('ready');
                 /*that.setState((prev) => {
                     return {
                         ...prev,
@@ -44,10 +42,7 @@ class ChatSend extends React.Component{
                         isConclusion: isConclusion,
                     },
                 });
-                //console.log(file.thumbUrl)
-                //console.log(fileList.length, that.state.generatedList.length + 1)
                 /*if (fileList.length == that.state.generatedList.length + 1){
-                    console.log('eeeeeee')
                     that.pushFiles([...that.state.generatedList, file], isConclusion);
                 }*/
             });
@@ -56,7 +51,6 @@ class ChatSend extends React.Component{
     
     uploadFiles = (e, isConclusion) => {
         this.setState({isGenerated: false}) 
-        console.log(e)       
         isConclusion
                 ? this.setState(state => {return {
                     conclusionList:[...state.conclusionList, e.file], 
@@ -79,11 +73,8 @@ class ChatSend extends React.Component{
 
     pushFiles = (e, isConclusion) => {
         
-        console.log('in push')
-            //console.log('[push]', e.file);
             this.modifyFiles(e.file, isConclusion);
-            /*console.log(this.state.isGenerated);
-            if(this.state.isGenerated){
+            /*if(this.state.isGenerated){
                 isConclusion ? 
                 (
                     this.props.uploadConclusion(_file)
@@ -93,8 +84,6 @@ class ChatSend extends React.Component{
                     //this.setState({fileList: []})
                 );
             }*/
-            
-        
     }
 
     sendHandler = () => {        
@@ -115,15 +104,7 @@ class ChatSend extends React.Component{
         const {message, attachment, disable} = this.props;
         const rootClass = cn('message__send');
 
-        //console.log('fileList', this.state.fileList);
-        /*if(this.state.fileList.length){
-            this.pushFiles(this.state.fileList)
-        }*/
-        /*this.state.isGenerated ? 
-                console.log('rendered') : console.log('not rendered');*/
-
                 if(this.state.isGenerated && this.state.fileInfo){
-                    console.log('send it')
                     this.state.fileInfo.isConclusion ? 
                     (
                         this.props.uploadConclusion(this.state.fileInfo.fileSend)
@@ -159,9 +140,10 @@ class ChatSend extends React.Component{
                 </div>
                 <div className='message__send-btns'>
                     <Upload //multiple={true}
+                    disable = {true}
                         showUploadList={false}
                         fileList={this.state.conclusionList}
-                        onChange = {(e) => this.pushFiles(e,true)}>
+                        onChange = {(e) => !disable && this.pushFiles(e,true)}>
                         <Button
                                 btnText=''
                                 size='small'
@@ -175,7 +157,9 @@ class ChatSend extends React.Component{
                         //multiple={true}
                         showUploadList={false}
                         fileList={this.state.fileList}
-                        onChange = {(e) => this.pushFiles(e)}>
+                        onChange = {(e) => {
+                            !disable && this.pushFiles(e)
+                        }}>
                         <Button
                             btnText=''
                             size='small'
