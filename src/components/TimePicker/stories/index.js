@@ -49,7 +49,7 @@ storiesOf('TimePicker', module)
                         rangeSet={rangeSet}
                         delimiter="&mdash;"
                         onChange={action('Time picked')}
-                        availableArea={[
+                        /*availableArea={[
                             {
                                 from : 1395985227000,
                                 to   : 1395990227000
@@ -62,7 +62,7 @@ storiesOf('TimePicker', module)
                                 from : 1396020027000,
                                 to   : 1396025327000
                             }
-                        ]}/>
+                        ]}*//>
 
         </div>
     ));
