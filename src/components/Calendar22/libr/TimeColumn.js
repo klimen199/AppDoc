@@ -65,6 +65,7 @@ export default class TimeColumn extends Component {
   }
 
   render() {
+    console.log(this.props)
     const {
       className,
       children,

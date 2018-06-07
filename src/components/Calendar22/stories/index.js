@@ -70,7 +70,54 @@ const events1 = [
         comment: 'Most important meal of the day',
     },
 ];
-
+const schedules2 = [
+    {
+        date:1527022800,
+        id_doc:2697,
+        isEditable: '1',
+        intervalOb: [],
+        intervalEx: [],
+        intervalTime: "0",
+        type: "chat",
+        isDayOff: "0"
+    },
+    {
+        id: 12,
+        isEditable: '0',
+        intervalOb: [{
+            start: new Date(2018, 0, 23, 8, 0, 0).getTime()/1000,
+            end: new Date(2018, 0, 23, 9, 0, 0).getTime()/1000,
+        },{
+            start: new Date(2018, 0, 23, 10, 0, 0).getTime()/1000,
+            end: new Date(2018, 0, 23, 11, 0, 0).getTime()/1000,
+        }],
+        intervalEx: [],
+    },
+    {
+        id: 12,
+        isEditable: '0',
+        intervalOb: [{
+            start: new Date(2018, 0, 24, 9, 0, 0).getTime()/1000,
+            end: new Date(2018, 0, 24, 10, 0, 0).getTime()/1000,
+        }],
+        intervalEx: [],
+    },
+    {
+        id: 13,
+        isEditable: '1',
+        intervalOb: [{
+            start: new Date(2018, 0, 25, 8, 10, 0).getTime()/1000,
+            end: new Date(2018, 0, 25, 9, 0, 0).getTime()/1000,
+        },{
+            start: new Date(2018, 0, 25, 9, 30, 0).getTime()/1000,
+            end: new Date(2018, 0, 25, 10, 0, 0).getTime()/1000,
+        }],
+        intervalEx: [{
+            start: new Date(2018, 0, 25, 10, 30, 0).getTime()/1000,
+            end: new Date(2018, 0, 25, 11, 0, 0).getTime()/1000,
+        }],
+    },
+];
 const schedules1 = [
     {
         date:1527022800,
@@ -159,6 +206,7 @@ storiesOf('Calendar22', module)
 
                          step = {5}
                          events = {events1}
+                         schedules={schedules2}
                          defaultDate={new Date(2018, 0, 22)}
                          onPopoverClose={action('onPopoverClose')}
                          onPopoverEmail={action('onPopoverEmail')}

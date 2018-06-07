@@ -37,9 +37,10 @@ export default class TimeSlotGroup extends Component {
     return (
       <TimeSlot
         key={slotNumber}
+        slotNumber={slotNumber}
         slotPropGetter={slotPropGetter}
         dayWrapperComponent={dayWrapperComponent}
-        showLabel={showLabels && !slotNumber}
+        showLabel={showLabels}
         content={content}
         culture={culture}
         isNow={isNow}

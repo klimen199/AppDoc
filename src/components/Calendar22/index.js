@@ -76,6 +76,7 @@ class BigCalendar extends React.Component{
             }
         }) : [];
 
+        console.log(newEvents)
         return newEvents;
     }
     
@@ -106,6 +107,7 @@ class BigCalendar extends React.Component{
                     :
                     <Calendar
                         events={this.changeEvents()}
+                        schedules={this.changeSchedule()}
                         defaultView={'week'}
                         views={['day', 'week', 'month']}
 
