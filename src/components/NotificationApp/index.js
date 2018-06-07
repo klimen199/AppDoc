@@ -9,19 +9,12 @@ import './style.css'
 import moment from "moment/moment";
 
 class NotificationApp extends React.Component {
-  constructor(props) {
+    constructor(props) {
         super(props);
         this.state = {
-            countNotific: this.getDataLength(),
             visible: false,
-            dataWatched: false,
         };
-        this.setChange2 = false;
     };
-
-    /*shouldComponentUpdate(nextProps, nextState){
-
-    }*/
 
     getDataLength = () => {
         let count = 0;
@@ -32,39 +25,46 @@ class NotificationApp extends React.Component {
     };
 
 
-	handleVisibleChange = () => {
-		this.setState({visible: !this.state.visible });
-    };
+	handleVisibleChange = (visible) => {
+       this.setState({visible});
+	};
 
     render() {
+        let styleNotf = null;
+        let notifCount = this.getDataLength();
+        if(notifCount === 0)
+            styleNotf = { 'backgroundColor': 'transparent'};
 
-        console.log('NotificationApp', this.props.data)
+
         return (
-        <div>
-           <div className="notific_container" onClick={this.handleVisibleChange}>
-               <Icon svg type='notification' size={25} />
-               <div className="notific_number">
-                   <p className="count_notific">
-                       {this.getDataLength()}
-                   </p>
-               </div>
-           </div>
-
-            <Popover
-                classname="notific_popover"
-                content={<NotificationCard data = {this.props.data}
-                                           onClose={() => this.setState({visible: false})}/>}
-                trigger="click"
-                visible={this.state.visible}
-                onVisibleChange={this.handleVisibleChange}
-                placement="leftBottom"
-            />
+        <div className="notific_component">
+            <div >
+                <Popover
+                    classname="notific_popover"
+                    content={this.state.visible && <NotificationCard
+                        data = {this.props.data} top={this.props.top} />}
+                    trigger="click"
+                    visible={this.state.visible}
+                    onVisibleChange={this.handleVisibleChange}
+                    placement="leftBottom"
+                >
+                   
+                        <div className="notific_container" >
+                            <Icon svg type='notification' size={25} />
+                            <div className="notific_number" style={styleNotf}>
+                                <p className="count_notific">
+                                    {notifCount}
+                                </p>
+                            </div>
+                        </div>
+                  
+                </Popover>
+            </div>
         </div>
 
     );
   }
 }
-
 
 NotificationApp.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),

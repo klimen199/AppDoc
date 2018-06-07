@@ -63,8 +63,12 @@ const NotificationItem = (props) => {
                         <Icon svg type={iconType} size={20} />
                     </div>
                     <div className='notification-row'>
-                        <div className='notification-title'>{title} {time ? `- ${moment((+time)*1000).format('HH:mm')}` : ''}</div>
-                        <div className='notification-time'>{moment((+thisTime)*1000).format('HH:mm')}</div>
+                        <div className='notification-title'>
+                            {title} 
+                            {(status != 'negative' && status != 'research' && time) 
+                                ? `- ${moment((+time)*1000).format('HH:mm')}` : ''}
+                            </div>
+                        {<div className='notification-time'>{moment((+thisTime)*1000).format('HH:mm')}</div>}
                     </div>
                     <div className='notification-info'>{desc} {moment((+time)*1000).format('DD.MM.YYYY HH:mm')}</div>
                     {links}
