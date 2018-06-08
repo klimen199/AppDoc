@@ -54,10 +54,11 @@ const NotificationItem = (props) => {
     }
 
     let rootClass = (!watch) ? cn( `notification-item` ,`notification-${status}`) : cn( `notification-item` ,`notification-watch`);
-
+    let madeDate = new Date((+thisTime)*1000),
+        now = new Date();
     return (
                 <div className={rootClass} 
-                    onClick={(!watch) && (() => {getId(id)})}
+                    onClick={(!watch) ? (() => {getId(id)}) : undefined}
                 >
                     <div className='notification-icon'>
                         <Icon svg type={iconType} size={20} />
@@ -68,7 +69,12 @@ const NotificationItem = (props) => {
                             {(status != 'negative' && status != 'research' && time) 
                                 ? `- ${moment((+time)*1000).format('HH:mm')}` : ''}
                             </div>
-                        {<div className='notification-time'>{moment((+thisTime)*1000).format('HH:mm')}</div>}
+                        {<div className='notification-time'>
+                            {(madeDate.getDate() === now.getDate() && madeDate.getMonth() === now.getMonth()) 
+                                ? moment((+thisTime)*1000).format('HH:mm')
+                                : moment((+thisTime)*1000).format('DD.MM.YY HH:mm')
+                            }
+                        </div>}
                     </div>
                     <div className='notification-info'>{desc} {moment((+time)*1000).format('DD.MM.YYYY HH:mm')}</div>
                     {links}

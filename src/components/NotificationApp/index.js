@@ -42,7 +42,9 @@ class NotificationApp extends React.Component {
                 <Popover
                     classname="notific_popover"
                     content={this.state.visible && <NotificationCard
-                        data = {this.props.data} top={this.props.top} />}
+                        data = {this.props.data} 
+                        top={this.props.top} 
+                        getId={this.props.getId}/>}
                     trigger="click"
                     visible={this.state.visible}
                     onVisibleChange={this.handleVisibleChange}

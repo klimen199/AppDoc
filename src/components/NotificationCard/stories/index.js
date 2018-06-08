@@ -8,6 +8,6 @@ import {notificationArr} from './mock-data'
 storiesOf('NotificationCard', module)
     .add('default', () => (
         <div>
-            <NotificationCard data={notificationArr}/>
+            <NotificationCard data={notificationArr} getId={(id) => console.log(id)}/>
         </div>
     ))

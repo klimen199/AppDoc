@@ -15,6 +15,8 @@ storiesOf('Notification', module)
             	thisTime="10:50"
             	desc="Иванов Александр"
                 watch= {true}
+
+                getId = {(id) => console.log(id)}
             />
         </div>
     ))

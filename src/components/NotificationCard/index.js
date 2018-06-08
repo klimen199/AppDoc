@@ -6,36 +6,37 @@ import NotificationItem from '../Notification'
 import './style.css'
 
 
-class NotificationCard extends React.Component{
+const NotificationCard = (props) => {
 
-    notificationRender = (dataArr) => {
+    const notificationRender = (dataArr) => {
         let notificationArr = [];
-
         dataArr.map((item, index) => {
-            notificationArr.push(<NotificationItem {...item} key={item.id + ''+index}/>)
+            notificationArr.push(<NotificationItem {...item} 
+                getId={props.getId} 
+                key={item.id + ''+index}/>)
         });
-
         return notificationArr;
     };
 
-    render(){
-        console.log('NotificationCard', this.props.data)
+    
         return (
             <div className='notification-card'>
                 <Card title="Уведомления">
-                    {this.notificationRender(this.props.data)}
+                    {notificationRender(props.data)}
                 </Card>
             </div>
         );
-    }
+    
 }
 
 NotificationCard.propTypes ={
     data: PropTypes.arrayOf(PropTypes.object),
+    getId: PropTypes.func,
 }
 
 NotificationCard.defaultProps = {
     data: [],
+    getId: () => {},
 }
 
 export default NotificationCard
