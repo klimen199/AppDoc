@@ -483,3 +483,15 @@ button.rbc-input::-moz-focus-inner {
   left: 0;
   right: -3px;
 }
+
+.calendar-empty-content{
+  text-align: center;
+  padding: 20px 0;
+}
+.calendar-empty-content > .warning {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.calendar-empty-content > .decision {
+  font-size: 16px;
+}

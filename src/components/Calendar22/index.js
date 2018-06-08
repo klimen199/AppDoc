@@ -100,7 +100,6 @@ class BigCalendar extends React.Component{
                     :
                     <Calendar
                         events={this.changeEvents()}
-                        intervals={this.props.intervals}
                         schedules={this.changeSchedule()}
                         defaultView={'week'}
                         views={['day', 'week', 'month']}
@@ -130,6 +129,7 @@ BigCalendar.propTypes = {
     editor: PropTypes.bool,
     onPopoverClose: PropTypes.func,
     onPopoverEmail: PropTypes.func,
+    gotoEditor: PropTypes.func,
 };
 
 
@@ -141,6 +141,7 @@ BigCalendar.defaultProps = {
     editor: false,
     onPopoverClose: () => {},
     onPopoverEmail: () => {},
+    gotoEditor: () => {},
 };
 
 
