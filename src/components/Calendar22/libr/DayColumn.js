@@ -228,13 +228,12 @@ class DayColumn extends React.Component {
         )
 
       let { height, top, width, xOffset } = style
-
       return (
         <EventWrapper event={event} key={'evt_' + idx}>
           <PopoverApp data={this.state.event}
                       onClose={this.props.onPopoverClose}
                       onEmail={this.props.onPopoverEmail}
-                      onPhone={this.props.onPopoverPhone}
+                      onGoto={this.props.onGotoPatient}
           >
           <div
             style={{
