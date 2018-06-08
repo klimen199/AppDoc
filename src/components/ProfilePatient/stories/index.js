@@ -7,11 +7,11 @@ storiesOf('ProfilePatient', module)
     .add('ProfilePatient', () => (
         <div>
             <ProfilePatient
-                status='online'
+                status={true}
             	name= "тестовый пациент"
             	img="https://24smi.org/public/media/resize/660x-/person/2017/10/25/cdRRFH0JWoYv_supermen.jpg"
             	lastDate={1523610900}
-            	doctorType="врач-терапевт"
+            	speciality={['Медик',"Доктор"]}
             	doctor="Тимошенко Т.И"
             	birthday={631271421}
             	age="18"

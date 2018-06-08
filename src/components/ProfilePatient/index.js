@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import cn from 'classnames'
 import moment from 'moment'
 
 import ProfileAvatar from '../ProfileAvatar'
@@ -12,7 +11,6 @@ import NewVisitModalPage from '../NewVisitModalPage'
 import ScrollArea from 'react-scrollbar'
 import './style.css'
 import '../../icon/style.css'
-import { fn } from 'moment';
 
 class ProfilePatient extends React.Component{
     state = {
@@ -28,12 +26,15 @@ class ProfilePatient extends React.Component{
     }
 
     render(){
-        const {name, img, status, lastDate, doctorType, doctor, birthday, age, height, weight} = this.props;
-        const rootClass = cn('profile-patient');
-        const [fname, ...rest] = name.split(' ')
+        const {name, img, status, lastDate, speciality, doctor, birthday, age, height, weight} = this.props;
+        const [fname, ...rest] = name.split(' ');
+        let doctorType = '';
+        Array.isArray(speciality) && speciality.forEach(el => {
+            doctorType += el + ', ';
+        });
 
         return (
-            <div className={rootClass}>
+            <div className='profile-patient'>
                 <Card title="Общая информация" className="patient-card">
                     <ScrollArea
                             speed={0.5}
@@ -133,7 +134,7 @@ ProfilePatient.propTypes = {
     img: PropTypes.string,
     status: PropTypes.string,
     lastDate: PropTypes.number,
-    doctorType: PropTypes.string,
+    speciality: PropTypes.array,
     doctor: PropTypes.string,
     birthday: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     age: PropTypes.string,
@@ -146,7 +147,7 @@ ProfilePatient.defaultProps = {
     img: '',
     status: '',
     lastDate: 0,
-    doctorType: '',
+    speciality: [],
     doctor: '',
     birthday: 0,
     age: '',
