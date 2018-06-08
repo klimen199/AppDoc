@@ -26,11 +26,6 @@ class PopoverApp extends React.Component {
         this.setState({visible: false})
     };
 
-	handlePhone = () => {
-        this.props.onPhone();
-        this.setState({visible: false})
-    };
-
   render() {
 
     return (
@@ -38,7 +33,7 @@ class PopoverApp extends React.Component {
         content={<PopoverBody {...this.props.data}
                               onClose={this.handleClose}
                               onEmail={this.handleEmail}
-                              onPhone={this.handlePhone}
+                              onGoto={this.props.onGoto}
         />}
         trigger="click"
         visible={this.state.visible}

@@ -10,13 +10,15 @@ storiesOf('PopoverBody', module)
     .add('PopoverBody', () => (
         <div style={{ padding: '30px' }}>
             <PopoverBody
-            	name={dataArr.name}
+                fio='Андреев Владислав'
+                id_user="2749"
+                type="voice"
             	date={dataArr.date}
             	time={dataArr.time} 
             	text={dataArr.text}
                 onPhone = {action('onPhone')}
                 onEmail = {action('onPhone')}
-                onGoto={()=>console.log('click')}
+                onGoto={(id)=>console.log('click', id)}
             />
         </div>
     ))
