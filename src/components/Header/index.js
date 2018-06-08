@@ -13,22 +13,19 @@ import './style.css'
 import '../../icon/style.css'
 
 
-class Header extends React.Component{
+const Header = (props) => {
 
-    render(){
-        const {content,notifications} = this.props;
-        const rootClass = cn('header');
-
-        console.log('Header', notifications)
+    
+        const {content,notifications} = props;
 
         return (
-            <div className={rootClass}>
+            <div className={'header'}>
                 <div className='header-search'>
                     <AutoComplete
-                        onAdd = {this.props.onAdd}
-                        onGoto = {this.props.onGoto}
-                        findName= {this.props.findName}
-                        data={this.props.data}
+                        onAdd = {props.onAdd}
+                        onGoto = {props.onGoto}
+                        findName= {props.findName}
+                        data={props.data}
                     />
                 </div>
                 <div className='header-call'>
@@ -38,13 +35,12 @@ class Header extends React.Component{
                     />
                 </div>
                 <div className='header-notification'>
-                    <NotificationApp  data={notifications}>
+                    <NotificationApp  data={notifications} getId={props.getNotifId}>
                          <Icon 
                             svg 
                             type='notification' 
                             size={20}
                             title='Уведомления'
-                            //onClick={() => notificationArr}
                         />
                     </NotificationApp>
                 </div>
@@ -57,12 +53,11 @@ class Header extends React.Component{
                         iconSize={20}
                         svg
                         title='Выход'
-                        onClick={this.props.logout}
+                        onClick={props.logout}
                     />
                 </div>
             </div>
         )
-    }
 }
 
 Header.propTypes = {

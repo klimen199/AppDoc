@@ -16,7 +16,7 @@ storiesOf('NotificationApp', module)
         <div>
             <div style={{ width: '300px', height: '1000px'}}> dsd</div>
             <div style={{ padding: '30px', marginLeft:'900px',marginTop:'100px', position:'fixed' , left:'0', top:'0' }}>
-                <NotificationApp  data={notificationArr} top="29%"/>
+                <NotificationApp  data={notificationArr} top="29%" getId={id => console.log(id)}/>
             </div>
             <div style={{ width: '300px', height: '1000px'}}> dsd</div>
         </div>
