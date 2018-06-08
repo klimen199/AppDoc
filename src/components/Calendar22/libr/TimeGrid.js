@@ -9,6 +9,7 @@ import DayColumn from './DayColumn'
 import TimeColumn from './TimeColumn'
 import Header from './Header'
 import Icon from '../../Icon'
+import Button from '../../Button'
 
 import getWidth from 'dom-helpers/query/width'
 import scrollbarSize from 'dom-helpers/util/scrollbarSize'
@@ -102,8 +103,8 @@ export default class TimeGrid extends Component {
     }
     this.applyScroll()
 
-    this.positionTimeIndicator()
-    this.triggerTimeIndicatorUpdate()
+    //this.positionTimeIndicator()
+    //this.triggerTimeIndicatorUpdate()
   }
 
   componentWillUnmount() {
@@ -116,7 +117,7 @@ export default class TimeGrid extends Component {
     }
 
     this.applyScroll()
-    this.positionTimeIndicator()
+    //this.positionTimeIndicator()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -179,13 +180,15 @@ export default class TimeGrid extends Component {
       this.props.now,
       resources || [null]
     )
-
     return (
       <div className="rbc-time-view">
         {this.renderHeader(range, allDayEvents, width, resources)}
 
-        <div ref="content" className="rbc-time-content">
-          <div ref="timeIndicator" className="rbc-current-time-indicator" />
+{
+  this.props.intervals.length ? 
+  (
+    <div ref="content" className="rbc-time-content">
+          {/*<div ref="timeIndicator" className="rbc-current-time-indicator" />*/}
 
           <TimeColumn
             {...this.props}
@@ -196,6 +199,21 @@ export default class TimeGrid extends Component {
           />
           {eventsRendered}
         </div>
+  ) : (
+    <div ref="content" className="calendar-empty-content">
+      <div className="warning">График не заполнен.</div>
+      <div className="decision">Для его редактирования перейдите в 
+      <Button
+                    btnText='Редактор графика'
+                    size='go'
+                    type='go'
+                    svg
+                    onClick={this.props.gotoEditor}
+            />.</div>
+    </div>
+  )
+}
+        
       </div>
     )
   }
@@ -411,7 +429,7 @@ export default class TimeGrid extends Component {
     }
   }
 
-  positionTimeIndicator() {
+  /*positionTimeIndicator() {
     const { rtl, min, max } = this.props
     const now = new Date()
 
@@ -434,14 +452,14 @@ export default class TimeGrid extends Component {
     } else {
       timeIndicator.style.display = 'none'
     }
-  }
+  }*/
 
-  triggerTimeIndicatorUpdate() {
+  /*triggerTimeIndicatorUpdate() {
     // Update the position of the time indicator every minute
     this._timeIndicatorTimeout = window.setTimeout(() => {
       this.positionTimeIndicator()
 
       this.triggerTimeIndicatorUpdate()
     }, 60000)
-  }
+  }*/
 }
