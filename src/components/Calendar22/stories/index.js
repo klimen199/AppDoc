@@ -12,7 +12,7 @@ const events1 = [
         start: new Date(2018, 0, 12, 10, 30, 0, 0).getTime()/1000,
         end: new Date(2018, 0, 12, 10, 50, 0, 0).getTime()/1000,
         comment: 'Pre-meeting meeting, to prepare for the meeting',
-        type: 'voice'
+        type: 'video'
     },
     {
         id: 7,
@@ -20,7 +20,7 @@ const events1 = [
         start: new Date(2018, 0, 11, 12, 0, 0, 0).getTime()/1000,
         end: new Date(2018, 0, 11, 12, 10, 0, 0).getTime()/1000,
         comment: 'Power lunch',
-        type: 'voice'
+        type: 'video'
     },
     {
         id: 8,
@@ -28,7 +28,7 @@ const events1 = [
         start: new Date(2018, 0, 12, 9, 0, 0, 0).getTime()/1000,
         end: new Date(2018, 0, 12, 9, 10, 0, 0).getTime()/1000,
         comment: 'Most important meal of the day',
-        type: 'voice'
+        type: 'video'
     },
     {
         id: 9,
@@ -36,7 +36,7 @@ const events1 = [
         start: new Date(2018, 0, 12, 9, 30, 0, 0).getTime()/1000,
         end: new Date(2018, 0, 12, 9, 35, 0, 0).getTime()/1000,
         comment: 'Most important meal of the day',
-        type: 'voice'
+        type: 'video'
     },
     {
         id: 10,
@@ -44,7 +44,7 @@ const events1 = [
         start: new Date(2018, 0, 12, 10, 0, 0, 0).getTime()/1000,
         end: new Date(2018, 0, 12, 10, 5, 0, 0).getTime()/1000,
         comment: 'Most important meal of the day',
-        type: 'voice'
+        type: 'video'
     },
     {
         id: 11,
@@ -52,7 +52,7 @@ const events1 = [
         start: new Date(2018, 0, 13, 9, 0, 0).getTime()/1000,
         end: new Date(2018, 0, 13, 9, 5, 0).getTime()/1000,
         comment: 'Most important meal of the day',
-        type: 'voice'
+        type: 'video'
     },
     {
         id: 12,
@@ -60,7 +60,7 @@ const events1 = [
         start: new Date(2018, 0, 23, 8, 0, 0).getTime()/1000,
         end: new Date(2018, 0, 23, 8, 10, 0).getTime()/1000,
         comment: 'Most important meal of the day',
-        type: 'voice'
+        type: 'video'
     },
     {
         id: 13,
@@ -68,7 +68,7 @@ const events1 = [
         start: new Date(2018, 0, 23, 8, 10, 0).getTime()/1000,
         end: new Date(2018, 0, 23, 8, 15, 0).getTime()/1000,
         comment: 'Most important meal of the day',
-        type: 'voice'
+        type: 'video'
     },
     {
         id: 14,
@@ -76,7 +76,7 @@ const events1 = [
         start: new Date(2018, 0, 25, 8, 40, 0).getTime()/1000,
         end: new Date(2018, 0, 25, 8, 50, 0).getTime()/1000,
         comment: 'Most important meal of the day',
-        type: 'voice'
+        type: 'video'
     },
 ];
 const intervals = [{

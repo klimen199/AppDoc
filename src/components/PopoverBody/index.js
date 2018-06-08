@@ -22,7 +22,9 @@ const PopoverBody = (props) => {
 			<div onClick={() => onGoto(id)} className='go-to calendar-name'>{fio}</div>
 			<div className='calendar-date'>
 				{moment(start).format('DD MMMM')}
-				<Icon svg type={key_val[props.type]} size={21} />
+				<div className = 'iconwrapper'>
+					<Icon svg type={key_val[props.type]} size={21} />
+				</div>
 				
 			</div>
 
