@@ -138,8 +138,8 @@ ProfilePatient.propTypes = {
     doctor: PropTypes.string,
     birthday: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     age: PropTypes.string,
-    height: PropTypes.string,
-    weight: PropTypes.string
+    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    weight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 ProfilePatient.defaultProps = {
