@@ -53,7 +53,7 @@ class NotificationItem extends React.Component{
             case 'research':
                 iconType = 'order-form';
             case 'cancel':
-                links = renderLinks();
+                links = this.renderLinks();
                 break;
         }
     //false   false
