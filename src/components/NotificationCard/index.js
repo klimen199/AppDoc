@@ -13,7 +13,7 @@ const NotificationCard = (props) => {
         dataArr.map((item, index) => {
             notificationArr.push(<NotificationItem {...item} 
                 getId={props.getId} 
-                key={item.id + ''+index}/>)
+                key={item.id}/>)
         });
         return notificationArr;
     };
