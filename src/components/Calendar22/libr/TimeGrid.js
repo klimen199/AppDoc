@@ -98,9 +98,9 @@ export default class TimeGrid extends Component {
   componentDidMount() {
     this.checkOverflow()
 
-    if (this.props.width == null) {
+    /*if (this.props.width == null) {
       this.measureGutter()
-    }
+    }*/
     this.applyScroll()
 
     //this.positionTimeIndicator()
@@ -112,9 +112,9 @@ export default class TimeGrid extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.width == null && !this.state.gutterWidth) {
+    /*if (this.props.width == null && !this.state.gutterWidth) {
       this.measureGutter()
-    }
+    }*/
 
     this.applyScroll()
     //this.positionTimeIndicator()
@@ -384,7 +384,7 @@ export default class TimeGrid extends Component {
     notify(this.props.onDoubleClickEvent, args)
   }
 
-  measureGutter() {
+  /*measureGutter() {
     let width = this.state.gutterWidth
     let gutterCells = this._gutters
 
@@ -395,7 +395,7 @@ export default class TimeGrid extends Component {
         this.setState({ gutterWidth: width })
       }
     }
-  }
+  }*/
 
   applyScroll() {
     if (this._scrollRatio) {
