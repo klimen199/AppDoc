@@ -275,7 +275,7 @@ class Calendar extends React.Component {
     )
   }
 
-  handleNavigate = (action, newDate) => {
+  handleNavigate = (action, newDate, isOnDay) => {
     let { view, date, onNavigate, ...props } = this.props
     let ViewComponent = this.getView()
 
@@ -285,12 +285,13 @@ class Calendar extends React.Component {
       date: newDate || date,
     })
 
-    onNavigate(date, view, action)
+    onNavigate(date, view, action, isOnDay)
   }
 
-  handleViewChange = view => {
+  handleViewChange = (view, date) => {
     if (view !== this.props.view && isValidView(view, this.props)) {
-      this.props.onView(view)
+      //console.log('handleViewChange',date)
+      this.props.onView(view, date)
     }
   }
 
@@ -316,9 +317,10 @@ class Calendar extends React.Component {
       onDrillDown(date, view, this.drilldownView)
       return
     }
-    if (view) this.handleViewChange(view)
+    if (view) this.handleViewChange(view, date)
+    console.log(navigate.DATE, date)
 
-    this.handleNavigate(navigate.DATE, date)
+    this.handleNavigate(navigate.DATE, date, true)
   }
 }
 

@@ -240,6 +240,7 @@ storiesOf('Calendar22', module)
                          onPopoverClose={action('onPopoverClose')}
                          onPopoverEmail={action('onPopoverEmail')}
                          onGotoPatient={(id) => console.log('goto patient', id)}
+                         onNavigate={(date) => console.log('navigate',date)}
             />
         </div>
     ))
