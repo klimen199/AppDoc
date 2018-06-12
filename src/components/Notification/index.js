@@ -9,9 +9,12 @@ import Hoc from '../Hoc'
 
 import './style.css'
 
-const NotificationItem = (props) => {
+class NotificationItem extends React.Component{
+    state = {
+        watchInverse: false,
+    }
 
-    let renderLinks = () =>{
+    renderLinks = () =>{
         return (
             <div className='notification-links'
                 onClick = {e => {
@@ -19,7 +22,7 @@ const NotificationItem = (props) => {
                     e.nativeEvent.stopImmediatePropagation();
                 }}
             >
-                {props.file.map((el,i) => {
+                {this.props.file.map((el,i) => {
                     return (<DownloadLink
                         key={i}
                         btnText={el.btnText ? el.btnText : "undefined name"}
@@ -41,45 +44,51 @@ const NotificationItem = (props) => {
         );
     };
 
-    const {id, title, desc, time, thisTime, status, watch, getId} = props;
-    let iconType = 'notification';
-    let links;
-
-    switch (status) {
-        case 'research':
-            iconType = 'order-form';
-        case 'cancel':
-            links = renderLinks();
-            break;
+    render() {
+        const {id, title, desc, time, thisTime, status, watch, getId} = this.props;
+        let iconType = 'notification';
+        let links;
+    
+        switch (status) {
+            case 'research':
+                iconType = 'order-form';
+            case 'cancel':
+                links = renderLinks();
+                break;
+        }
+    //false   false
+        let flag = this.state.watchInverse ? watch : !watch;
+        let rootClass = (flag) ? cn( `notification-item` ,`notification-${status}`) : cn( `notification-item` ,`notification-watch`);
+        let madeDate = new Date((+thisTime)*1000),
+            now = new Date();
+        return (
+                    <div className={rootClass} 
+                        onClick={(flag) ? (() => {
+                            getId(id);
+                            this.setState({watchInverse: true});
+                        }) : undefined}
+                    >
+                        <div className='notification-icon'>
+                            <Icon svg type={iconType} size={20} />
+                        </div>
+                        <div className='notification-row'>
+                            <div className='notification-title'>
+                                {title} 
+                                {(status != 'negative' && status != 'research' && time) 
+                                    ? `- ${moment((+time)*1000).format('HH:mm')}` : ''}
+                                </div>
+                            {<div className='notification-time'>
+                                {(madeDate.getDate() === now.getDate() && madeDate.getMonth() === now.getMonth()) 
+                                    ? moment((+thisTime)*1000).format('HH:mm')
+                                    : moment((+thisTime)*1000).format('DD.MM.YY HH:mm')
+                                }
+                            </div>}
+                        </div>
+                        <div className='notification-info'>{desc} {moment((+time)*1000).format('DD.MM.YYYY HH:mm')}</div>
+                        {links}
+                    </div>
+        );
     }
-
-    let rootClass = (!watch) ? cn( `notification-item` ,`notification-${status}`) : cn( `notification-item` ,`notification-watch`);
-    let madeDate = new Date((+thisTime)*1000),
-        now = new Date();
-    return (
-                <div className={rootClass} 
-                    onClick={(!watch) ? (() => {getId(id)}) : undefined}
-                >
-                    <div className='notification-icon'>
-                        <Icon svg type={iconType} size={20} />
-                    </div>
-                    <div className='notification-row'>
-                        <div className='notification-title'>
-                            {title} 
-                            {(status != 'negative' && status != 'research' && time) 
-                                ? `- ${moment((+time)*1000).format('HH:mm')}` : ''}
-                            </div>
-                        {<div className='notification-time'>
-                            {(madeDate.getDate() === now.getDate() && madeDate.getMonth() === now.getMonth()) 
-                                ? moment((+thisTime)*1000).format('HH:mm')
-                                : moment((+thisTime)*1000).format('DD.MM.YY HH:mm')
-                            }
-                        </div>}
-                    </div>
-                    <div className='notification-info'>{desc} {moment((+time)*1000).format('DD.MM.YYYY HH:mm')}</div>
-                    {links}
-                </div>
-    );
 }
 
 NotificationItem.propTypes ={
