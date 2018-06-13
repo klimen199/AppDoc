@@ -32,6 +32,9 @@ const Header = (props) => {
                     <SwitchPanel 
                         icon='emergency-call'
                         title="Экстренные вызовы"
+                        onChange={props.onChange}
+                        checked={props.checked}
+                        disabled={props.disabled}
                     />
                 </div>
                 <div className='header-notification'>
