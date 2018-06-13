@@ -35,7 +35,10 @@ const Header = (props) => {
                     />
                 </div>
                 <div className='header-notification'>
-                    <NotificationApp  data={notifications} getId={props.getNotifId}>
+                    <NotificationApp  
+                        data={notifications} 
+                        getNotifications={props.getNotifications}
+                        getId={props.getNotifId}>
                          <Icon 
                             svg 
                             type='notification' 
