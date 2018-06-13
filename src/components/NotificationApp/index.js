@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import NotificationCard from '../NotificationCard'
-import Notification from '../Notification'
 import Icon from '../Icon'
 import { Popover } from 'antd';
 
 import './style.css'
-import moment from "moment/moment";
 
 class NotificationApp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             visible: false,
+            inverseCount: 0,
         };
     };
 
@@ -27,11 +26,17 @@ class NotificationApp extends React.Component {
 
 	handleVisibleChange = (visible) => {
        this.setState({visible});
-	};
+       (visible == false) && (this.state.inverseCount != 0) && this.props.getNotifications();
+    };
+    
+    componentWillReceiveProps(nexProps){
+        console.log('[componentWillReceiveProps]', nexProps);
+        this.setState({inverseCount: 0})
+    }
 
     render() {
         let styleNotf = null;
-        let notifCount = this.getDataLength();
+        let notifCount = this.getDataLength() - this.state.inverseCount;
         if(notifCount === 0)
             styleNotf = { 'backgroundColor': 'transparent'};
 
@@ -44,7 +49,10 @@ class NotificationApp extends React.Component {
                     content={this.state.visible && <NotificationCard
                         data = {this.props.data} 
                         top={this.props.top} 
-                        getId={this.props.getId}/>}
+                        getId={(id) => {
+                            this.props.getId(id);
+                            this.setState(prevState => {return {...prevState, inverseCount: prevState.inverseCount + 1}})
+                        }}/>}
                     trigger="click"
                     visible={this.state.visible}
                     onVisibleChange={this.handleVisibleChange}
