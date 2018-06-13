@@ -6,42 +6,38 @@ import './styles.css'
 import Switch from '../Switch'
 import Icon from '../Icon'
 
-class SwitchPanel extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            isChecked: props.defaultChecked,
-        };
-    }
+const SwitchPanel = (props) => {
 
-    render(){
-        const {icon, title, disabled, defaultChecked} = this.props;
-        const rootClass = this.state.isChecked ? 'switch-panel switch-panel-checked' : 'switch-panel';
+        const {icon, title, disabled, checked, defaultChecked, onChange} = props;
 
         return (
-            <div className={rootClass}>
+            <div className={checked ? 'switch-panel switch-panel-checked' : 'switch-panel'}>
                 {icon && (<Icon type={icon} />)}
                 <span className="switch-panel-title">{title}</span>
-                <Switch defaultChecked={defaultChecked}
+                <Switch 
+                        checked = {checked}
                         disabled = {disabled}
-                        onChange={(e) => this.setState({isChecked:e})}/> 
+                        onChange={onChange}/> 
             </div>
         )
-    }
 }
 
 SwitchPanel.propTypes = {
     icon: PropTypes.string,
     title: PropTypes.string,
     defaultChecked: PropTypes.bool,
+    checked: PropTypes.bool,
     disabled: PropTypes.bool,
+    onChange: PropTypes.func,
 }
 
 SwitchPanel.defaultProps = {
     icon: '',
     title: '',
     defaultChecked: false,
+    checked: false,
     disabled: false,
+    onChange: () => {},
 }
 
 export default SwitchPanel;
