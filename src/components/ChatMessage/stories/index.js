@@ -24,5 +24,9 @@ storiesOf('ChatMessage', module)
                 message="Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных домах."
                 time={Date.now()}
             />
+            <ChatMessage 
+                isDate = {true}
+                date={1517432400}
+            />
         </div>
     ))
