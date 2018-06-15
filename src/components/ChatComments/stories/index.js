@@ -27,5 +27,9 @@ storiesOf('ChatComments', module)
                     }
                 ]}
             />
+            <ChatComments 
+                comments="" 
+                files={[]}
+            />
         </div>
     ))
