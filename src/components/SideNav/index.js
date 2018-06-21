@@ -13,12 +13,9 @@ import Button from "../Button"
 const SideNav = props => {
 
     const renderMenuItems = (menuItems) =>{
-        let items = [];
-
-        menuItems.map(({name, title, iconType, svg}) => {
+        return menuItems.map(({name, title, iconType, svg}) => {
             const path = `/${name}`;
-
-            items.push(<Menu.Item key={path}>
+            return (<Menu.Item key={path}>
                 <NavLink exact to={path} activeClassName="selectedNavLink">
                     <div className='sidenav-root-menu-item'>
                         {iconType && <Icon type={iconType} size={26} svg={svg}/>}
@@ -29,13 +26,9 @@ const SideNav = props => {
                 </NavLink>
             </Menu.Item>);
         });
-        return items;
     };
 
-
-    
         const {isShort, menuItems, onClick, isUser} = props;
-
         const rootClass = cn('sidenav-root', {'sidenav-root-short' : isShort});
         const menuClass = 'sidenav-root-menu' + (isShort ? '-short':'');
 
