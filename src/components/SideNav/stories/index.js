@@ -6,13 +6,13 @@ import { MemoryRouter } from 'react-router';
 
 
 import SideNav from '../';
-import {menuItems} from './mock-data'
+import {menuItems, menuItemsUser} from './mock-data'
 
 storiesOf('SideNav', module)
     .addDecorator(story => (
         <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>
     ))
-    .add('default', () => (
+    .add('doc', () => (
         <div style={{height: 500}}>
             {/*<div style={{backgroundColor:'yellow',height:50, padding:15}}>Top panel with Logo</div>*/}
             <SideNav menuItems={menuItems}
@@ -25,7 +25,7 @@ storiesOf('SideNav', module)
                      online/>
         </div>
     ))
-    .add('test', () => (
+    .add('doc small', () => (
     <div style={{height: 500}}>
         {/*<div style={{backgroundColor:'yellow',height:50, padding:15}}>Top panel with Logo</div>*/}
         <SideNav menuItems={menuItems}
@@ -34,6 +34,33 @@ storiesOf('SideNav', module)
                  specialty={["терапевт","хирург"]}
                  rateValue={4}
                  timesRated={34}
+                 isShort={true}
+                 online/>
+    </div>
+))
+.add('user', () => (
+    <div style={{height: 500}}>
+        {/*<div style={{backgroundColor:'yellow',height:50, padding:15}}>Top panel with Logo</div>*/}
+        <SideNav menuItems={menuItemsUser}
+                 img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
+                 name='Ивано Иван Иванович'
+                 specialty={["терапевт","хирург","Массажист"]}
+                 rateValue={2}
+                 timesRated={34}
+                 onLogoClick = {() => {console.log('logo click')}}
+                 online/>
+    </div>
+))
+.add('user small', () => (
+    <div style={{height: 500}}>
+        {/*<div style={{backgroundColor:'yellow',height:50, padding:15}}>Top panel with Logo</div>*/}
+        <SideNav menuItems={menuItemsUser}
+                 img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
+                 name='Ивано Иван Иванович'
+                 specialty={["терапевт","хирург","Массажист"]}
+                 rateValue={2}
+                 timesRated={34}
+                 onLogoClick = {() => {console.log('logo click')}}
                  isShort={true}
                  online/>
     </div>

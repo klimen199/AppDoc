@@ -12,5 +12,12 @@ storiesOf('ChatSend', module)
                         uploadFiles = {(arr) => console.log('files:',arr.thumbUrl.substr(0,50))}
                         uploadConclusion = {(arr) => console.log('conclusions:',arr.thumbUrl.substr(0,50))}
             />
+            <ChatSend send={message => console.log(message)}
+                        disable={false}
+                        isUser={true}
+                        makeReview = {() => console.log('make review')}
+                        uploadFiles = {(arr) => console.log('files:',arr.thumbUrl.substr(0,50))}
+                        uploadConclusion = {(arr) => console.log('conclusions:',arr.thumbUrl.substr(0,50))}
+            />
         </div>
     ))

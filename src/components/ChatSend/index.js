@@ -144,14 +144,14 @@ class ChatSend extends React.Component{
                         showUploadList={false}
                         fileList={this.state.conclusionList}
                         onChange = {(e) => !disable && this.pushFiles(e,true)}>
-                        <Button
+                        {!this.props.isUser && (<Button
                                 btnText=''
                                 size='small'
                                 type='no-brd'
                                 icon='result'
                                 title='Добавить заключение'
                                 onClick={e => e.preventDefault()}
-                            />
+                        />)}
                     </Upload>
                     <Upload
                         //multiple={true}
@@ -175,13 +175,21 @@ class ChatSend extends React.Component{
                         disable = {disable}
                         onClick = {this.sendHandler}
                     />}
-                    <Button
+                    {this.props.isUser ? 
+                    (<Button
+                        btnText='оставить отзыв'
+                        size='default'
+                        type='yellow'
+                        disable = {disable}
+                        onClick={this.props.makeReview}
+                    />)
+                    : (<Button
                         btnText='завершить прием'
                         size='default'
                         type='yellow'
                         disable = {disable}
                         onClick={this.props.closeVisit}
-                    />
+                    />)}
                 </div>
             </div>
         )
@@ -194,6 +202,8 @@ ChatSend.propTypes = {
     disable: PropTypes.bool,
     send: PropTypes.func,
     closeVisit: PropTypes.func,
+    isUser: PropTypes.bool,
+    makeReview: PropTypes.func,
 };
 
 ChatSend.defaultProps = {
@@ -202,6 +212,8 @@ ChatSend.defaultProps = {
     disable: true,
     send: () => {},
     closeVisit: () => {},
+    isUser: false,
+    makeReview: () => {},
 };
 
 export default ChatSend
