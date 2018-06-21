@@ -62,6 +62,9 @@
   height: 45px;
   width: 210px;
 }
+.sidenav-root .logo-img:hover {
+  cursor: pointer;
+}
 .sidenav-root-short {
   width: 170px;
 }
