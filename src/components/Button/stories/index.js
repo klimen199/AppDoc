@@ -149,6 +149,20 @@ storiesOf('Button', module)
             />
             <br/>
             <Button
+                    btnText='ЗАПИСАТЬСЯ НА ПРИЕМ'
+                    size='small'
+                    type='float'
+                    icon='form'
+            />
+            <br/>
+            <Button
+                    btnText='ЭКСТРЕННЫЙ ВЫЗОВ'
+                    size='small'
+                    type='emergensy'
+                    icon='emergency-call'
+            />
+            <br/>
+            <Button
                     btnText='Добавить'
                     size='default'
                     type='blue'

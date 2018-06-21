@@ -22,7 +22,7 @@ const Button = props =>{
                     style={props.style}
             >
                 {icon && (
-                    <Icon svg={svg} type={icon} size={iconSize}/>
+                    <Icon key={btnText+icon} svg={svg} type={icon} size={iconSize}/>
                 )}
                 
                 {type !== 'icon' 

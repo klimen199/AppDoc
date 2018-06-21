@@ -157,6 +157,15 @@
   background-color: #0495ff;
   color: #fff;
 }
+.btn-type-emergensy {
+  background-color: transparent;
+  color: #ef5350;
+  border: 1px solid #ef5350;
+}
+.btn-type-emergensy:hover {
+  background-color: #ef5350;
+  color: #fff;
+}
 .btn-type-no-brd {
   background-color: transparent;
   color: #0495ff;
