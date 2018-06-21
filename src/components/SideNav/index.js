@@ -8,13 +8,14 @@ import './styles.css'
 import {Menu} from 'antd'
 import DoctorProfileCard from '../DoctorProfileCard'
 import Icon from '../Icon'
+import Button from "../Button"
 
-class SideNav extends React.Component{
+const SideNav = props => {
 
-    renderMenuItems = (menuItems) =>{
+    const renderMenuItems = (menuItems) =>{
         let items = [];
 
-        menuItems.map(({name, title, iconType, svg, onClick}) => {
+        menuItems.map(({name, title, iconType, svg}) => {
             const path = `/${name}`;
 
             items.push(<Menu.Item key={path}>
@@ -32,16 +33,15 @@ class SideNav extends React.Component{
     };
 
 
-    render(){
-        const {isShort} = this.props,
-            {menuItems, onClick} = this.props;
+    
+        const {isShort, menuItems, onClick, isUser} = props;
 
         const rootClass = cn('sidenav-root', {'sidenav-root-short' : isShort});
         const menuClass = 'sidenav-root-menu' + (isShort ? '-short':'');
 
         return (
             <div className={rootClass}>
-                <div className="logo" onClick={this.props.onLogoClick}><span className="logo-img"></span></div>
+                <div className="logo" onClick={props.onLogoClick}><span className="logo-img"></span></div>
                 <button onClick={onClick}
                         className="sidenav-root-btn">
                     {
@@ -53,7 +53,7 @@ class SideNav extends React.Component{
                     }
                 </button>
                 <div className='overwlow-a-y'>
-                    <DoctorProfileCard {...this.props}
+                    <DoctorProfileCard {...props}
                                         online={true}
                                        short={isShort}/>
 
@@ -61,12 +61,20 @@ class SideNav extends React.Component{
                         mode="inline"
                         className={menuClass}
                     >
-                        {this.renderMenuItems(menuItems)}
+                        {renderMenuItems(menuItems)}
                     </Menu>
+                    {isUser && <div className="site-link"><Button
+                            btnText={isShort ? "" : 'Перейти на сайт'}
+                            size='go'
+                            type='go'
+                            icon='circle_arrow_right'
+                            svg
+                            onClick={props.gotoSite}
+                    /></div>}
                 </div>
             </div>
         )
-    }
+    
 }
 
 SideNav.propTypes = {
@@ -82,6 +90,7 @@ SideNav.propTypes = {
     name: PropTypes.string,
     specialty: PropTypes.array,
     isShort: PropTypes.bool,
+    isUser: PropTypes.bool,
     rateValue: PropTypes.number,
     timesRated: PropTypes.number,
     onClick: PropTypes.func,
@@ -91,6 +100,7 @@ SideNav.propTypes = {
 SideNav.defaultProps = {
     menuItems: [],
     isShort: false,
+    isUser: false,
     timesRated: 0,
     rateValue: 0,
     name: '',

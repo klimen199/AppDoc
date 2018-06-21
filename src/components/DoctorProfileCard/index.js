@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import ProfileAvatar from '../ProfileAvatar'
 import RatePanel from '../RatePanel'
+import Hoc from "../Hoc"
 import './styles.css'
 
 class DoctorProfileCard extends React.Component{
@@ -16,20 +17,30 @@ class DoctorProfileCard extends React.Component{
     }
 
     render(){
-        const {img, short, name, specialty,online} = this.props;
+        const {short, name, specialty, isUser} = this.props;
         let spec = specialty.map(function(elem) {
             return elem.toUpperCase();
         });
         spec = spec.join(", ");
 
-        const rootClass = short ? "doctorProfileCard-short" : "doctorProfileCard";
+        const rootClass = short ?
+            (isUser ? 
+            "patientProfileCard-short" : "doctorProfileCard-short")
+            : (isUser ? 
+                "patientProfileCard" : "doctorProfileCard");
 
         return (
             <div className={rootClass}>
                 <ProfileAvatar owner="doctor" {...this.props} short={short} size={(short ? 'medium' : 'large')}/>
-                <div className={rootClass + '-name'}>{name}</div>
-                <div className={rootClass + '-specialty'}>{spec}</div>
-                <RatePanel {...this.props} disable={true}/>
+                <div className={'doctorProfileCard-name'}>{name}</div>
+                {
+                    isUser ? null : (
+                        <Hoc>
+                            <div className={'doctorProfileCard-specialty'}>{spec}</div>
+                            <RatePanel {...this.props} disable={true}/>
+                        </Hoc>
+                    )
+                }
             </div>
         )
     }
@@ -41,13 +52,14 @@ DoctorProfileCard.propTypes = {
     short: PropTypes.bool,
     rateValue: PropTypes.number,
     timesRated: PropTypes.number,
+    isUser: PropTypes.bool,
 };
 
 DoctorProfileCard.defaultProps = {
-    img: '',
     name: '',
     specialty: [],
     short: false,
+    isUser: false,
 };
 
 export default DoctorProfileCard;
