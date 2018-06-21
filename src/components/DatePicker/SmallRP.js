@@ -27,7 +27,7 @@ class SmallRP extends React.Component{
     render() {
 
         return (
-            <div style={{width:240}}>
+            <div style={{width:250}}>
                 <Icon type="calendar" svg size={19}/>
                 <div className={this.props.className}>
                     <RangePicker format={this.props.format}
