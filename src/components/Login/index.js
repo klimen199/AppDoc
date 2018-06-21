@@ -62,7 +62,7 @@ class LoginForm extends React.Component{
                     {getFieldDecorator('userName', {
                         rules: [{ required: true, message: 'Введите ваш логин или e-mail, пожалуйста' }],
                     })(
-                        <Input addonBefore='* E-mail или логин'
+                        <Input placeholder='* E-mail или логин'
                                className='login-form-item'/>
                     )}
                 </FormItem>
@@ -70,7 +70,7 @@ class LoginForm extends React.Component{
                     {getFieldDecorator('password', {
                         rules: [{ required: true, message: 'Введите ваш пароль, пожалуйста' }],
                     })(
-                        <Input addonBefore='* Пароль'
+                        <Input placeholder='* Пароль'
                                addonAfter={<NavLink className="login-form-navlink"
                                                     to={urlForget}>Забыли пароль?</NavLink>}
                                type="password"
