@@ -43,9 +43,11 @@ storiesOf('SideNav', module)
         {/*<div style={{backgroundColor:'yellow',height:50, padding:15}}>Top panel with Logo</div>*/}
         <SideNav menuItems={menuItemsUser}
                  img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
-                 name='Ивано Иван Иванович'
+                 name='Иванasdfafо Иван Иванович'
                  specialty={["терапевт","хирург","Массажист"]}
                  rateValue={2}
+                 isUser = {true}
+                 gotoSite={() => console.log("goto site")}
                  timesRated={34}
                  onLogoClick = {() => {console.log('logo click')}}
                  online/>
@@ -56,9 +58,10 @@ storiesOf('SideNav', module)
         {/*<div style={{backgroundColor:'yellow',height:50, padding:15}}>Top panel with Logo</div>*/}
         <SideNav menuItems={menuItemsUser}
                  img="https://www.proza.ru/pics/2017/06/03/1990.jpg"
-                 name='Ивано Иван Иванович'
+                 name='Иваноdfghjkl Иван Иванович'
                  specialty={["терапевт","хирург","Массажист"]}
                  rateValue={2}
+                 isUser ={true}
                  timesRated={34}
                  onLogoClick = {() => {console.log('logo click')}}
                  isShort={true}

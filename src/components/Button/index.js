@@ -7,30 +7,32 @@ import Icon from '../Icon'
 import './style.css'
 import '../../icon/style.css'
 
-class Button extends React.Component{
+const Button = props =>{
 
-    render(){
 
-        const {className, type, size, btnText, icon, iconSize, title, svg, disable, onClick} = this.props;
+        const {className, type, size, btnText, icon, iconSize, title, svg, disable, onClick} = props;
 
         const rootClass = cn( `${className}`, 'btn',`btn-size-${size}`, `btn-type-${type}`)
-        let btnTextStyle = {}
 
         return (
             <button className={rootClass}
                     title={title}
                     onClick={onClick}
                     {...(disable ? { disabled: true } : {})}
-                    style={this.props.style}
+                    style={props.style}
             >
                 {icon && (
                     <Icon svg={svg} type={icon} size={iconSize}/>
                 )}
                 
-                {type !== 'icon' && <span style={btnTextStyle}>{btnText}</span>}
+                {type !== 'icon' 
+                    && btnText !== "" 
+                    && <span style={type ==="go" ? {marginRight:10} : {}}>
+                        {btnText}
+                    </span>}
             </button>
         )
-    }
+
 }
 
 Button.propTypes ={
