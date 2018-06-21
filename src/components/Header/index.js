@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import cn from 'classnames'
 
 import Button from '../Button'
-import Input from '../Input'
 import Icon from '../Icon'
 import SwitchPanel from '../SwitchPanel'
 import NotificationApp from '../NotificationApp'
 import AutoComplete from '../AutoComplete'
+import Hoc from "../Hoc"
 
 import './style.css'
 import '../../icon/style.css'
@@ -16,7 +15,7 @@ import '../../icon/style.css'
 const Header = (props) => {
 
     
-        const {content,notifications} = props;
+        const {notifications, isUser, onEmergCall, onAddVisit} = props;
 
         return (
             <div className={'header'}>
@@ -29,13 +28,26 @@ const Header = (props) => {
                     />
                 </div>
                 <div className='header-call'>
-                    <SwitchPanel 
-                        icon='emergency-call'
-                        title="Экстренные вызовы"
-                        onChange={props.onChange}
-                        checked={props.checked}
-                        disabled={props.disabled}
-                    />
+                    {isUser ? 
+                        <Hoc>
+                            <Button btnText='ЭКСТРЕННЫЙ ВЫЗОВ'
+                                onClick={onEmergCall}
+                                size='small'
+                                type='emergensy'
+                                icon='emergency-call'/>
+                            <Button btnText='ЗАПИСАТЬСЯ НА ПРИЕМ'
+                                onClick={onAddVisit}
+                                size='small'
+                                type='float'
+                                icon='form'/>
+                        </Hoc> 
+                        : <SwitchPanel 
+                            icon='emergency-call'
+                            title="Экстренные вызовы"
+                            onChange={props.onChange}
+                            checked={props.checked}
+                            disabled={props.disabled}/>
+                    }
                 </div>
                 <div className='header-notification'>
                     <NotificationApp  
@@ -67,16 +79,16 @@ const Header = (props) => {
 }
 
 Header.propTypes = {
-    content: PropTypes.string,
     notifications: PropTypes.array,
     logout: PropTypes.func,
+    isUser: PropTypes.bool,
 
 };
 
 Header.defaultProps = {
-    content: 'small',
     notifications: [],
     logout: () => {},
+    isUser: false,
 };
 
 export default Header
