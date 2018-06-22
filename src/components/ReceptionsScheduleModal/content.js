@@ -1,6 +1,5 @@
-import React from 'react';
-
-import {Form} from 'antd';
+import React from 'react'
+import {Form} from 'antd'
 import DatePicker from '../DatePicker'
 import Tabs from '../Tabs'
 import TimePicker from '../TimePicker'
@@ -8,6 +7,7 @@ import Radio from '../Radio'
 import Select from '../Select'
 import Checkbox from '../Checkbox'
 import Button from '../Button'
+import moment from "moment/moment";
 
 const FormItem = Form.Item;
 
@@ -21,6 +21,7 @@ class ContentForm extends React.Component {
             },
             shouldDPUpdate: false,
             isReset: false,
+            isOffTime: false
         }
     }
 
@@ -59,6 +60,27 @@ class ContentForm extends React.Component {
         }
 
     };
+    // initializeTP = (set, flag) => {
+    //     if (set.length) {
+    //         for (let i = 0; i < this.state.tpNum[flag]; i++) {
+    //             if(set[i]){
+    //                 let {defaultStartValue, defaultEndValue} = set[i];
+    //                 this.props.form.setFieldsValue({
+    //                     [flag + 'Tp' + i]: [defaultStartValue, defaultEndValue]
+    //                 });
+    //             }
+    //         }
+    //     }
+    //     else {
+    //         for (let i = 0; i < this.state.tpNum[flag]; i++) {
+    //             this.props.form.setFieldsValue({
+    //                 [flag + 'Tp' + i]: [null, null]
+    //             });
+    //         }
+    //     }
+    //
+    // };
+
 
     componentDidMount() {
         this.changeFieldsVal()
@@ -112,10 +134,17 @@ class ContentForm extends React.Component {
 
 
         if(this.props.visible === false && prevProps.visible === true){
-            this.setState({isReset: false,})
+            this.setState({isReset: false})
         }
     }
 
+    handleCheckboxClick = () => {
+        this.setState({isReset: !this.state.isReset});
+    };
+
+    handleTPChange = () => {
+        this.setState({isReset: false});
+    };
     handleSubmit = (e) => {
         e.preventDefault();
         const {day, isDayOff, intervalTime, type, ...rest} = this.props.form.getFieldsValue();
@@ -165,13 +194,15 @@ class ContentForm extends React.Component {
     renderTp = (tab, timeSet, fieldDecorator) => {
         let tpArr = [];
         const tpNum = this.state.tpNum[tab];
+        console.log(tpNum);
         for (let i = 0; i < tpNum; i++) {
             tpArr.push(
                 <FormItem key={tab + i}>
                     {fieldDecorator(`${tab}Tp${i}`)(
-                        <TimePicker range
+                        <TimePicker onChange={this.handleTPChange}
+                                    range
                                     isReset={this.state.isReset}
-                                    rangeSet={timeSet[i]}
+                                    rangeSet={timeSet[i] || undefined}
                                     delimiter='&mdash;'
                                     availableArea={[{
                                         from : 1528318800000,
@@ -202,18 +233,19 @@ class ContentForm extends React.Component {
     renderOptions = (selOptions) => {
         let options = [];
         selOptions.map((el) => {
-            options.push(<Select.Option value={el}
-                                        key={el}>
-                {el}</Select.Option>)
+            options.push(<Select.Option value={el*5}
+                                        key={el*5}>
+                {el*5}</Select.Option>)
         });
 
         return options;
     };
 
     render() {
+        console.log(this.state.tpNum);
         const {getFieldDecorator} = this.props.form;
         const {dateSet, selOptions} = this.props;
-
+        let timePickerValueExtra = null, timePickerValue = null;
         return (
             <Form onSubmit={this.handleSubmit}
                   className="receptionsScheduleModal">
@@ -231,47 +263,41 @@ class ContentForm extends React.Component {
                       className="receptionsScheduleModal-tabs">
                         <Tabs.TabPane tab="Плановые приемы"
                                   key="1">
-                        {this.renderTpBlock(
-                            'call',
-                            this.props.timeSetReception,
-                            getFieldDecorator
-                        )}
-                        <FormItem>
-                            {getFieldDecorator('type', {
-                                initialValue: 'chat'
-                            })(
-                                <Radio icons={['chat1','telephone', "video-camera"]}/>
+                            {this.renderTpBlock(
+                                'call',
+                                this.props.timeSetCall,
+                                getFieldDecorator
                             )}
-                        </FormItem>
-                        <FormItem>
-                            {getFieldDecorator('intervalTime')(
-                                <Select placeholder="Длительность приема">
-                                    {this.renderOptions(selOptions)}
-                                </Select>
-                            )}
-                        </FormItem>
-                        <Button onClick={(e) => this.addTp('call', e)}
-                                btnText='Добавить интервал'
-                                iconSize={30}
-                                size='file'
-                                type='file'
-                                icon='add-button'
-                                svg/>
-                        <FormItem>
-                            {getFieldDecorator('isDayOff', {
-                                valuePropName: 'checked',
-                                initialValue: false,
-                            })(
-                                <Checkbox>Выходной</Checkbox>
-                            )}
-                        </FormItem>
-                    </Tabs.TabPane>
+                            <FormItem>
+                                {getFieldDecorator('type', {
+                                    initialValue: 'chat'
+                                })(
+                                    <Radio icons={['chat1','telephone', "video-camera"]}/>
+                                )}
+                            </FormItem>
+                            <FormItem>
+                                {getFieldDecorator('intervalTime', {
+                                    initialValue: 5
+                                })(
+                                    <Select  placeholder="Длительность приема">
+                                        {this.renderOptions(selOptions)}
+                                    </Select>
+                                )}
+                            </FormItem>
+                                <Button onClick={(e) => this.addTp('call', e)}
+                                        btnText='Добавить интервал'
+                                        iconSize={30}
+                                        size='file'
+                                        type='file'
+                                        icon='add-button'
+                                        svg/>
+                        </Tabs.TabPane>
 
                     <Tabs.TabPane tab="Экстренные вызовы"
                                   key="2">
                         {this.renderTpBlock(
                             'reception',
-                            this.props.timeSetCall,
+                            this.props.timeSetReception,
                             getFieldDecorator
                         )}
                         <Button className='mb-1r'
@@ -285,7 +311,10 @@ class ContentForm extends React.Component {
                         />
                     </Tabs.TabPane>
                 </Tabs>
-                <Button 
+                <FormItem>
+                        <Checkbox checked={this.state.isReset} onClick={this.handleCheckboxClick}>Выходной</Checkbox>
+                </FormItem>
+                <Button
                         htmlType="submit"
                         btnText='Сохранить'
                         size='default'

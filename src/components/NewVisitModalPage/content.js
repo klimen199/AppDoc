@@ -26,7 +26,7 @@ class ContentForm extends React.Component {
         let paramDate = moment(+this.state.currentTime.format('x'));
 
         paramDate.hour(start._d.getHours());
-        paramDate.minute(start._d.getMinutes());
+        paramDate.minute(start. d.getMinutes());
         paramDate.second(0);
         this.setState({currentTime: paramDate});
     };
