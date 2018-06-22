@@ -60,26 +60,6 @@ class ContentForm extends React.Component {
         }
 
     };
-    // initializeTP = (set, flag) => {
-    //     if (set.length) {
-    //         for (let i = 0; i < this.state.tpNum[flag]; i++) {
-    //             if(set[i]){
-    //                 let {defaultStartValue, defaultEndValue} = set[i];
-    //                 this.props.form.setFieldsValue({
-    //                     [flag + 'Tp' + i]: [defaultStartValue, defaultEndValue]
-    //                 });
-    //             }
-    //         }
-    //     }
-    //     else {
-    //         for (let i = 0; i < this.state.tpNum[flag]; i++) {
-    //             this.props.form.setFieldsValue({
-    //                 [flag + 'Tp' + i]: [null, null]
-    //             });
-    //         }
-    //     }
-    //
-    // };
 
 
     componentDidMount() {
@@ -194,7 +174,6 @@ class ContentForm extends React.Component {
     renderTp = (tab, timeSet, fieldDecorator) => {
         let tpArr = [];
         const tpNum = this.state.tpNum[tab];
-        console.log(tpNum);
         for (let i = 0; i < tpNum; i++) {
             tpArr.push(
                 <FormItem key={tab + i}>
@@ -202,7 +181,7 @@ class ContentForm extends React.Component {
                         <TimePicker onChange={this.handleTPChange}
                                     range
                                     isReset={this.state.isReset}
-                                    rangeSet={timeSet[i] || undefined}
+                                    rangeSet={timeSet[i]}
                                     delimiter='&mdash;'
                                     availableArea={[{
                                         from : 1528318800000,
@@ -242,7 +221,6 @@ class ContentForm extends React.Component {
     };
 
     render() {
-        console.log(this.state.tpNum);
         const {getFieldDecorator} = this.props.form;
         const {dateSet, selOptions} = this.props;
         let timePickerValueExtra = null, timePickerValue = null;
