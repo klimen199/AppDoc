@@ -212,9 +212,9 @@ class ContentForm extends React.Component {
     renderOptions = (selOptions) => {
         let options = [];
         selOptions.map((el) => {
-            options.push(<Select.Option value={el*5}
-                                        key={el*5}>
-                {el*5}</Select.Option>)
+            options.push(<Select.Option value={+selOptions[el-1]}
+                                        key={+selOptions[el-1]}>
+                {+selOptions[el-1]}</Select.Option>)
         });
 
         return options;
@@ -255,7 +255,7 @@ class ContentForm extends React.Component {
                             </FormItem>
                             <FormItem>
                                 {getFieldDecorator('intervalTime', {
-                                    initialValue: 5
+                                    initialValue: selOptions[0] || 5
                                 })(
                                     <Select  placeholder="Длительность приема">
                                         {this.renderOptions(selOptions)}
