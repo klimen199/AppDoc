@@ -20,6 +20,7 @@ class RangeTp extends React.Component {
             falseMin: ar,
 
         };
+
     };
 
     getNotAvailableHour = () => { // получить массив из не доступных часов
@@ -150,6 +151,15 @@ class RangeTp extends React.Component {
                 endValue: null,
             })
         }
+
+        if((nextProps.rangeSet.defaultStartValue !== this.props.rangeSet.defaultStartValue) ||
+            (nextProps.rangeSet.defaultEndValue !== this.props.rangeSet.defaultEndValue)) {
+            this.setState ({
+                startValue: nextProps.rangeSet.defaultStartValue,
+                endValue: nextProps.rangeSet.defaultEndValue
+            })
+        }
+
     }
 
     render() {
@@ -164,7 +174,8 @@ class RangeTp extends React.Component {
                 value: this.state.startValue
             } :
             {
-                placeholder: this.props.rangeSet.placeholderStart
+                placeholder: this.props.rangeSet.placeholderStart,
+                value: null
             };
         const myprops2 = ( this.state.endValue) ?
             {
@@ -172,7 +183,8 @@ class RangeTp extends React.Component {
                 value: this.state.endValue
             } :
             {
-                placeholder: this.props.rangeSet.placeholderEnd
+                placeholder: this.props.rangeSet.placeholderEnd,
+                value: null
             };
 
 
