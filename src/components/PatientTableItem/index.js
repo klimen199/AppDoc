@@ -48,7 +48,7 @@ class PatientTableItem extends React.Component{
                 <div className="flex-col">
                     <Button onClick={(e) => {
                             e.preventDefault();
-                            this.setModal2Visible(true, id, name)
+                            this.props.setModal2Visible(true, id, name)
                         }}
                         size='file'
                         type='file'
