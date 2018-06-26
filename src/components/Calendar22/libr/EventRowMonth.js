@@ -9,6 +9,9 @@ class EventRowMonth extends React.Component {
     constructor(props){
         super(props);
         this.now = new Date();
+        this.state = {
+            activeDate: 0,
+        }
     }
 
     isSegmentInSlot = (seg, slot) => seg.left <= slot && seg.right >= slot;
@@ -23,8 +26,6 @@ class EventRowMonth extends React.Component {
         while (current <= slotCount) {
             let { event } =
             rowSegments.filter(seg => this.isSegmentInSlot(seg, current))[0] || {}
-
-            
 
             if (!event) {
                 row.push(null)
@@ -57,6 +58,24 @@ class EventRowMonth extends React.Component {
         return row;
     };
 
+    renderOneVisit = (el, i) => {
+        return (
+            <div className="user-visit">
+                    <div className="vis-info">
+                        {moment(el.ev[0].event.start).format("HH:mm")
+                            } - {
+                        moment(el.ev[0].event.end).format("HH:mm")} 
+                     </div>
+                    <div className="vis-info">{el.ev[0].event.doctorType} </div>
+                    <div className="vis-info">{el.ev[0].event.fio}</div>
+                    {el.gap > 1 && 
+                        <div className="vis-info vis-info-btn"
+                            onClick={() => {this.setState({activeDate: el.date.getDate()})}}>
+                            &#x2550;
+                        </div>}
+            </div>
+        )
+    }
     userDiv = (el, i) => {
         console.log(el)
         return (
@@ -71,7 +90,11 @@ class EventRowMonth extends React.Component {
                      </div>
                     <div className="vis-info">{el.ev[0].event.doctorType} </div>
                     <div className="vis-info">{el.ev[0].event.fio}</div>
-                    {el.gap > 1 && <div className="vis-info vis-info-btn">&#x2550;</div>}
+                    {el.gap > 1 && 
+                        <div className="vis-info vis-info-btn"
+                            onClick={() => {this.setState({activeDate: el.date.getDate()})}}>
+                            &#x2550;
+                        </div>}
                 </div>
             </div>
         )
@@ -219,7 +242,8 @@ class EventRowMonth extends React.Component {
 
 
 
-        return <div className="month-row">
+        return <div className="month-row" 
+            style={this.props.isUser ? {zIndex: 8}:{}}>
             {editor
                 ? this.renderEditorRow(row)
                 : this.renderRow(row)}

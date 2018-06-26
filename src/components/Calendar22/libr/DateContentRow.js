@@ -196,7 +196,7 @@ class DateContentRow extends React.Component {
     while (levels.length < minRows) levels.push([]);
 
     return (
-      <div className={className}>
+      <div className={className} style={this.props.isUser ? {overflow: "visible"}:{cursor: "pointer"}}>
         <BackgroundCells
           date={date}
           rtl={rtl}
