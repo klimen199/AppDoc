@@ -54,19 +54,24 @@ class EventRowMonth extends React.Component {
             currentInSeg++;
             current++
         }
-
-        console.log(row)
-
         return row;
     };
 
     userDiv = (el, i) => {
+        console.log(el)
         return (
             <div className="user-month-row-segment"
                     style={{width: `${100 / 7}%`}}>
                 {el.gap > 1 && <div className="user-visit-gap">{el.gap}</div>}
                 <div className="user-visit">
-
+                    <div className="vis-info">
+                        {moment(el.ev[0].event.start).format("HH:mm")
+                            } - {
+                        moment(el.ev[0].event.end).format("HH:mm")} 
+                     </div>
+                    <div className="vis-info">{el.ev[0].event.doctorType} </div>
+                    <div className="vis-info">{el.ev[0].event.fio}</div>
+                    {el.gap > 1 && <div className="vis-info vis-info-btn">&#x2550;</div>}
                 </div>
             </div>
         )

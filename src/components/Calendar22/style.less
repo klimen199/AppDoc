@@ -184,12 +184,24 @@
         position: relative;
 
         .user-visit{
-            font-size: 32px;
-            background-color: @blue;
+            font-size: 12px;
+            background-color: #0495ff;
             border: 0px;
             border-radius: 5px;
             height: 90%;
             margin: 5% 10px 5% 10px;
+            
+
+            .vis-info{
+                color: white;
+                white-space: nowrap;
+                overflow: hidden; 
+                text-overflow: ellipsis; 
+
+                &-btn {
+                    text-align: center;
+                }
+            }
 
             &-gap{
                 position: absolute;
@@ -197,7 +209,7 @@
                 width: 25px;
                 right: 15px;
                 top: -25px;
-                background-color: @blue;
+                background-color: #0495ff;
                 color: white;
                 border-radius: 50%;
                 text-align: center;
