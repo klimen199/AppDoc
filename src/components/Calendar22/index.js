@@ -86,32 +86,39 @@ class BigCalendar extends React.Component{
 
         return (<div>
             {
-                this.props.editor ?
+                this.props.isUser ?
                     <Calendar
                         className='calendar-editor'
-                        schedules={this.changeSchedule()}
+                        //schedules={this.changeSchedule()}
                         view={'month'}
-                        onView={() => {
-                        }}
-                        onSelecting={(r,slot,selecting, schedule) =>
-                            this.selectHandler(r, slot,selecting, schedule)}
-                        {...prop}
-                    />
+                        onView={() => {}}
+                        {...prop}/>
                     :
-                    <Calendar
-                        events={this.changeEvents()}
-                        schedules={this.changeSchedule()}
-                        defaultView={'week'}
-                        views={['day', 'week', 'month']}
+                    this.props.editor ?
+                        <Calendar
+                            className='calendar-editor'
+                            schedules={this.changeSchedule()}
+                            view={'month'}
+                            onView={() => {
+                            }}
+                            onSelecting={(r,slot,selecting, schedule) =>
+                                this.selectHandler(r, slot,selecting, schedule)}
+                            {...prop}/>
+                        :
+                        <Calendar
+                            events={this.changeEvents()}
+                            schedules={this.changeSchedule()}
+                            defaultView={'week'}
+                            views={['day', 'week', 'month']}
 
-                        {...prop}
-                    />
+                            {...prop}/>
             }
         </div>);
     }
 }
 
 BigCalendar.propTypes = {
+    isUser: PropTypes.bool,
     events: PropTypes.array,
     schedules: PropTypes.arrayOf(
         PropTypes.shape({
@@ -134,6 +141,7 @@ BigCalendar.propTypes = {
 
 
 BigCalendar.defaultProps = {
+    isUser: false,
     events: [],
     schedules: [],
     intervals: [],

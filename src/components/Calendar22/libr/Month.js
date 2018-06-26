@@ -166,7 +166,8 @@ class MonthView extends React.Component {
       now,
       date,
       longPressThreshold,
-        editor
+        editor,
+        isUser,
     } = this.props;
 
     const { needLimitMeasure, rowLimit } = this.state;
@@ -203,6 +204,7 @@ class MonthView extends React.Component {
         renderHeader={this.readerDateHeading}
         renderForMeasure={needLimitMeasure}
         onShowMore={this.handleShowMore}
+        isUser={isUser}
 
         schedules={schedules}
         editor={editor}

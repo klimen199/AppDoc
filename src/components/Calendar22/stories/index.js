@@ -221,6 +221,45 @@ const schedules1 = [
 ];
 
 
+const patientEvent = [
+    {
+        id: 6,
+        fio: 'Иванова Александра',
+        doctorType: "терапевт",
+        start: new Date(2018, 5, 12, 10, 30, 0, 0).getTime()/1000,
+        end: new Date(2018, 5, 12, 10, 50, 0, 0).getTime()/1000,
+        type: 'video',
+        comment: 'Pre-meeting meeting, to prepare for the meeting',
+    },
+    {
+        id: 7,
+        fio: 'Иванова Александра',
+        doctorType: "терапевт какой-то там",
+        start: new Date(2018, 5, 12, 11, 30, 0, 0).getTime()/1000,
+        end: new Date(2018, 5, 12, 11, 50, 0, 0).getTime()/1000,
+        type: 'voice',
+        comment: 'Pre-meeting meeting, to prepare for the meeting',
+    },
+    {
+        id: 9,
+        fio: 'Иванова Александра',
+        doctorType: "терапевт какой-то там",
+        start: new Date(2018, 5, 13, 11, 30, 0, 0).getTime()/1000,
+        end: new Date(2018, 5, 13, 11, 50, 0, 0).getTime()/1000,
+        type: 'voice',
+        comment: 'Pre-meeting meeting, to prepare for the meeting',
+    },
+    {
+        id: 8,
+        fio: 'Иванов Александр',
+        doctorType: "терапевт",
+        start: new Date(2018, 5, 29, 10, 30, 0, 0).getTime()/1000,
+        end: new Date(2018, 5, 29, 10, 50, 0, 0).getTime()/1000,
+        type: 'chat',
+        comment: 'Pre-meeting meeting, to prepare for the meeting',
+    },
+]
+
 storiesOf('Calendar22', module)
     .add('default', () => (
         <div style={{backgroundColor: '#cccbcb', padding: 20}}>
@@ -254,6 +293,15 @@ storiesOf('Calendar22', module)
                              if(date.length !== 0) console.log(date, schedule)
                          }}
                          schedules={schedules1}
+            />
+        </div>
+    ))
+    .add('user', () => (
+        <div style={{backgroundColor: '#cccbcb', padding: 20}}>
+            <BigCalendar receptionNum={23}
+                         isUser = {true}
+                         
+                         events={patientEvent}
             />
         </div>
     ));
