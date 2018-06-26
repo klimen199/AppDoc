@@ -91,7 +91,7 @@ class ContentForm extends React.Component {
                         })(
                             <TimePicker format="HH:mm"
                                         minuteStep={5}
-                                        availableArea={this.props.intervals}
+                                        availableArea={this.props.availableArea}
                                         placeholder='Время приёма' 
                                         onChange={this.onChangeTime}/>
                         )}
