@@ -42,7 +42,7 @@ class ContentForm extends React.Component {
         paramDate.minute(bufMinutes);
         paramDate.second(0);
         this.setState({currentTime: paramDate});
-        this.props.onChangeDate(+paramDate.format('x'));
+        this.props.onChangeDate(date);
     };
 
     componentWillReceiveProps(nextProps){
@@ -81,7 +81,7 @@ class ContentForm extends React.Component {
                             rules: [{required: true, message: 'Введите дату',}],
                         })(
                             <DatePicker placeholder="Дата приёма"
-                                        onChange={this.onChangeDate} />
+                                        onChange={this.props.onChangeDate} />
                         )}
                     </FormItem>
                     
@@ -91,7 +91,7 @@ class ContentForm extends React.Component {
                         })(
                             <TimePicker format="HH:mm"
                                         minuteStep={5}
-                                        availableArea={this.props.availableArea}
+                                        availableArea={this.props.intervals}
                                         placeholder='Время приёма' 
                                         onChange={this.onChangeTime}/>
                         )}

@@ -15,6 +15,10 @@ storiesOf('PatientTableItem', module)
                 id={2663}
                 id_zap= {0}
                 onGoto={()=>console.log('click')}
+                setModal1Visible ={(isVisible, id, name)=>
+                    console.log("setModal1Visible", "isVisible:", isVisible, "id", id, "name", name)}
+                setModal2Visible ={(isVisible, id, name)=>
+                    console.log("setModal2Visible", "isVisible:", isVisible, "id", id, "name", name)}
             />
         </div>
     ))

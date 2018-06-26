@@ -45,7 +45,8 @@ class PatientTable extends React.Component{
                                             onDelete={this.props.onDelete} 
                                             onNewVisit={this.props.onNewVisit}
                                             onNewMessage={this.props.onNewMessage}
-
+                                            setModal1Visible={this.props.setModal1Visible}
+                                            setModal2Visible={this.props.setModal2Visible}
                                             onChangeDate={this.props.onChangeDate}
                                             availableArea={this.props.availableArea}
 
