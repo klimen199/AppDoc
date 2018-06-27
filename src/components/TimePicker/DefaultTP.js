@@ -20,6 +20,7 @@ class DefaultTp extends React.Component {
             falseHour: this.getNotAvailableHour(),
             trueMin: [],
             falseMin: ar,
+            availableArea: []
         };
     };
 
@@ -154,7 +155,8 @@ class DefaultTp extends React.Component {
         if(nextProps.availableArea !== this.props.availableArea) {
             this.setState ({
                 trueHour: this.getAvailableHour(),
-                falseHour: this.getNotAvailableHour()
+                falseHour: this.getNotAvailableHour(),
+                availableArea: nextProps.availableArea
             })
         }
     }
@@ -173,11 +175,14 @@ class DefaultTp extends React.Component {
                 placeholder : placeholder,
                 minuteStep : minuteStep
             };
-
+        let falseMinutes = this.getNotAvailableMin();
+        console.log(falseMinutes);
+        let falseHours = this.getNotAvailableHour();
+        console.log(falseHours);
         return (
             <AntTimePicker {...myprops}
-                           disabledHours={()=>this.state.falseHour}
-                           disabledMinutes={()=>this.state.falseMin}
+                           disabledHours={()=> falseHours}
+                           disabledMinutes={()=>falseMinutes}
                            onChange={(val) => {
                                this.onChange('curValue', val)
                            }}
