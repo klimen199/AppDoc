@@ -78,7 +78,9 @@ class EventRowMonth extends React.Component {
                     <div className="vis-info">{el.ev[num].event.fio}</div>
                     {el.gap > 1 && isShort &&
                         (<div className="vis-info vis-info-btn"
-                            onClick={() => {
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                e.nativeEvent.stopImmediatePropagation();
                                 toNull ?
                                     this.setState({activeDate: 0})
                                     : this.setState({activeDate: el.date.getDate()})}
@@ -106,10 +108,8 @@ class EventRowMonth extends React.Component {
                 key={"lvl_"+i}
                 style={{width: `${100 / 7}%`}}>
                 {el.gap > 1 && <div className="user-visit-gap">{el.gap}</div>}
-                <PopoverApp data={this.state.event}
-                      onClose={this.props.onPopoverClose}
-                      onEmail={this.props.onPopoverEmail}
-                      onGoto={this.props.onGotoPatient}>
+                <PopoverApp data={el.ev}
+                      isUser={true}>
                     <div className="user-visit" style={this.state.activeDate === el.date.getDate() ?
                     {height: "auto"} : {}}>
                         {
