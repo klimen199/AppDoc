@@ -184,6 +184,7 @@ class MonthView extends React.Component {
     return (
       <DateContentRow
         key={weekIdx}
+        weekIdx={weekIdx}
         ref={weekIdx === 0 ? 'slotRow' : undefined}
         container={this.getContainer}
         className="rbc-month-row"

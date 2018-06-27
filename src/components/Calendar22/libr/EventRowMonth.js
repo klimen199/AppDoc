@@ -2,6 +2,7 @@ import React from 'react'
 import { eventLevels } from './utils/eventLevels'
 import cn from 'classnames'
 import Icon from '../../Icon'
+import PopoverApp from '../../Popover'
 import moment from 'moment'
 
 
@@ -58,44 +59,65 @@ class EventRowMonth extends React.Component {
         return row;
     };
 
-    renderOneVisit = (el, i) => {
+    renderOneVisit = (el, i, isShort, num = 0, toNull = false) => {
+        const key_val = {
+            'chat': 'chat1',
+            'voice': 'telephone', 
+            'video': "video-camera",
+        };
         return (
-            <div className="user-visit">
+            <div key={"uDiv_"+i+"_"+num}
+                className={"separate-visit-div"}>
+                    <Icon svg type={key_val[el.ev[num].event.type]} size={16} />
                     <div className="vis-info">
-                        {moment(el.ev[0].event.start).format("HH:mm")
+                        {moment(el.ev[num].event.start).format("HH:mm")
                             } - {
-                        moment(el.ev[0].event.end).format("HH:mm")} 
+                        moment(el.ev[num].event.end).format("HH:mm")} 
                      </div>
-                    <div className="vis-info">{el.ev[0].event.doctorType} </div>
-                    <div className="vis-info">{el.ev[0].event.fio}</div>
-                    {el.gap > 1 && 
-                        <div className="vis-info vis-info-btn"
-                            onClick={() => {this.setState({activeDate: el.date.getDate()})}}>
+                    <div className="vis-info">{el.ev[num].event.doctorType} </div>
+                    <div className="vis-info">{el.ev[num].event.fio}</div>
+                    {el.gap > 1 && isShort &&
+                        (<div className="vis-info vis-info-btn"
+                            onClick={() => {
+                                toNull ?
+                                    this.setState({activeDate: 0})
+                                    : this.setState({activeDate: el.date.getDate()})}
+                            }>
                             &#x2550;
-                        </div>}
+                        </div>)
+                    }
             </div>
         )
     }
+
+    renderAllVisits = (el, i) => {
+        let content = [];
+        for (let j =0; j < el.ev.length; j++){
+            j === el.ev.length - 1 ?
+            content.push(this.renderOneVisit(el, i, true, j, true))
+            : content.push(this.renderOneVisit(el, i, false, j)) ;
+        }
+        return content;
+    }
+
     userDiv = (el, i) => {
-        console.log(el)
         return (
             <div className="user-month-row-segment"
-                    style={{width: `${100 / 7}%`}}>
+                key={"lvl_"+i}
+                style={{width: `${100 / 7}%`}}>
                 {el.gap > 1 && <div className="user-visit-gap">{el.gap}</div>}
-                <div className="user-visit">
-                    <div className="vis-info">
-                        {moment(el.ev[0].event.start).format("HH:mm")
-                            } - {
-                        moment(el.ev[0].event.end).format("HH:mm")} 
-                     </div>
-                    <div className="vis-info">{el.ev[0].event.doctorType} </div>
-                    <div className="vis-info">{el.ev[0].event.fio}</div>
-                    {el.gap > 1 && 
-                        <div className="vis-info vis-info-btn"
-                            onClick={() => {this.setState({activeDate: el.date.getDate()})}}>
-                            &#x2550;
-                        </div>}
-                </div>
+                <PopoverApp data={this.state.event}
+                      onClose={this.props.onPopoverClose}
+                      onEmail={this.props.onPopoverEmail}
+                      onGoto={this.props.onGotoPatient}>
+                    <div className="user-visit" style={this.state.activeDate === el.date.getDate() ?
+                    {height: "auto"} : {}}>
+                        {
+                            this.state.activeDate === el.date.getDate() ?
+                                this.renderAllVisits(el, i) : this.renderOneVisit(el,i, true)
+                        }
+                    </div>
+                </PopoverApp>
             </div>
         )
     }
@@ -119,7 +141,6 @@ class EventRowMonth extends React.Component {
             </div>)
     }
     renderRow = (row) => {
-
         return row.map((el, i) => {
             let div = el ? 
                 this.props.isUser ? 

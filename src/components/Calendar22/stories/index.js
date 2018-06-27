@@ -241,6 +241,15 @@ const patientEvent = [
         comment: 'Pre-meeting meeting, to prepare for the meeting',
     },
     {
+        id: 7,
+        fio: 'Иванова А Ф',
+        doctorType: "терапевт",
+        start: new Date(2018, 5, 12, 11, 50, 0, 0).getTime()/1000,
+        end: new Date(2018, 5, 12, 11, 55, 0, 0).getTime()/1000,
+        type: 'voice',
+        comment: 'Pre-meeting meeting, to prepare for the meeting',
+    },
+    {
         id: 9,
         fio: 'Иванова Александра',
         doctorType: "терапевт какой-то там",
