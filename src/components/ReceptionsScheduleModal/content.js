@@ -20,8 +20,7 @@ class ContentForm extends React.Component {
                 'call': props.timeSetCall.length || 1,
             },
             shouldDPUpdate: false,
-            isReset: false,
-            isOffTime: false
+            isReset: true
         }
     }
 
@@ -181,7 +180,7 @@ class ContentForm extends React.Component {
                         <TimePicker onChange={this.handleTPChange}
                                     range
                                     isReset={this.state.isReset}
-                                    rangeSet={timeSet[i]}
+                                    rangeSet={this.state.isReset? {} : timeSet[i]}
                                     delimiter='&mdash;'
                                     availableArea={[{
                                         from : 1528318800000,
@@ -211,12 +210,12 @@ class ContentForm extends React.Component {
 
     renderOptions = (selOptions) => {
         let options = [];
-        selOptions.map((el) => {
-            options.push(<Select.Option value={+selOptions[el-1]}
-                                        key={+selOptions[el-1]}>
-                {+selOptions[el-1]}</Select.Option>)
+        selOptions.map((el, index) => {
+            options.push(<Select.Option value={el}
+                                        key={index.toString()}>
+                {el}
+                </Select.Option>)
         });
-
         return options;
     };
 
@@ -248,7 +247,7 @@ class ContentForm extends React.Component {
                             )}
                             <FormItem>
                                 {getFieldDecorator('type', {
-                                    initialValue: 'chat'
+                                    initialValue: this.props.initialType || 'chat'
                                 })(
                                     <Radio icons={['chat1','telephone', "video-camera"]}/>
                                 )}

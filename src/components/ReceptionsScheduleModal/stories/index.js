@@ -26,27 +26,28 @@ storiesOf('Modal - ReceptionsScheduleModal', module)
                         defaultEndValue: moment(1368781876),
                     }
                 ]}
-                    timeSetReception={[
-                        {
-                            defaultStartValue: moment(new Date(2016, 11, 11, 10, 55), "YYYY-MM-DD HH:mm"),
-                            defaultEndValue: moment(new Date(2017, 11, 11, 11, 50), "YYYY-MM-DD HH:mm"),
-                        },
-                        {
-                            defaultStartValue: moment(new Date(2016, 11, 11, 10, 55), "YYYY-MM-DD HH:mm"),
-                            defaultEndValue: moment(new Date(2017, 11, 11, 11, 51), "YYYY-MM-DD HH:mm"),
-                        },
-                        {
-                            defaultStartValue: moment(new Date(2016, 11, 11, 10, 55), "YYYY-MM-DD HH:mm"),
-                            defaultEndValue: moment(new Date(2017, 11, 11, 11, 52), "YYYY-MM-DD HH:mm"),
-                        },
-                        {
-                            defaultStartValue: moment(new Date(2016, 11, 11, 10, 55), "YYYY-MM-DD HH:mm"),
-                            defaultEndValue: moment(new Date(2017, 11, 11, 11, 53), "YYYY-MM-DD HH:mm"),
-                        },
-                    ]}
-                
+                timeSetReception={[
+                    {
+                        defaultStartValue: moment(new Date(2016, 11, 11, 10, 55), "YYYY-MM-DD HH:mm"),
+                        defaultEndValue: moment(new Date(2017, 11, 11, 11, 50), "YYYY-MM-DD HH:mm"),
+                    },
+                    {
+                        defaultStartValue: moment(new Date(2016, 11, 11, 10, 55), "YYYY-MM-DD HH:mm"),
+                        defaultEndValue: moment(new Date(2017, 11, 11, 11, 51), "YYYY-MM-DD HH:mm"),
+                    },
+                    {
+                        defaultStartValue: moment(new Date(2016, 11, 11, 10, 55), "YYYY-MM-DD HH:mm"),
+                        defaultEndValue: moment(new Date(2017, 11, 11, 11, 52), "YYYY-MM-DD HH:mm"),
+                    },
+                    {
+                        defaultStartValue: moment(new Date(2016, 11, 11, 10, 55), "YYYY-MM-DD HH:mm"),
+                        defaultEndValue: moment(new Date(2017, 11, 11, 11, 53), "YYYY-MM-DD HH:mm"),
+                    },
+                ]}
                 selOptions={options}
                 onSave={(obj) => console.log(obj)}
+                isReset={true}
+                initialType={"voice"}
             />
         </div>
     ));
