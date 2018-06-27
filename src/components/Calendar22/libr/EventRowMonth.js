@@ -108,7 +108,7 @@ class EventRowMonth extends React.Component {
                 key={"lvl_"+i}
                 style={{width: `${100 / 7}%`}}>
                 {el.gap > 1 && <div className="user-visit-gap">{el.gap}</div>}
-                <PopoverApp data={el.ev}
+                <PopoverApp events={el.ev}
                       isUser={true}>
                     <div className="user-visit" style={this.state.activeDate === el.date.getDate() ?
                     {height: "auto"} : {}}>

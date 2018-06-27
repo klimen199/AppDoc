@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import Button from '../Button'
 import Icon from '../Icon'
+import Hoc from "../Hoc"
 
 import './style.css'
 
@@ -10,15 +11,14 @@ import './style.css'
 const PopoverBody = (props) => {
 
 	  const {id, fio, comment, start, end, onEmail, onGoto} = props;
-	  const icons = ['chat1', 'telephone', "video-camera"];
 	  const key_val = {
 		'chat' : 'chat1',
 		'voice': 'telephone', 
 		'video': "video-camera",
 	}
 
-    return (
-      <div className='calendar-body'>
+	const docRender = () => {
+		return (<Hoc>
 			<div onClick={() => onGoto(id)} className='go-to calendar-name'>{fio}</div>
 			<div className='calendar-date'>
 				{moment(start).format('DD MMMM')}
@@ -53,7 +53,13 @@ const PopoverBody = (props) => {
 					iconSize={18}
 				/>
 			</div>
-		</div>
+		</Hoc>)
+	}
+
+    return (
+      <div className='calendar-body'>
+	  	{props.isUser ? null : docRender()}
+	  </div>
     );
 };
 
