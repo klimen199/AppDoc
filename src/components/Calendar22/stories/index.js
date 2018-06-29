@@ -276,6 +276,54 @@ let a = `[
         {"id_doc":2697,"isEditable":0,"isDayOff":"0","intervalTime":"0","date":1530046800,"intervalOb":[{"start":"1530130200","end":"1530131400"}],"intervalEx":[],"type":"chat"}]`
     
 
+const patientEvent = [
+    {
+        id: 6,
+        fio: 'Иванова Александра',
+        doctorType: "терапевт",
+        start: new Date(2018, 5, 12, 10, 30, 0, 0).getTime()/1000,
+        end: new Date(2018, 5, 12, 10, 50, 0, 0).getTime()/1000,
+        type: 'video',
+        comment: 'Pre-meeting meeting, to prepare for the meeting',
+    },
+    {
+        id: 7,
+        fio: 'Иванова Александра',
+        doctorType: "терапевт какой-то там",
+        start: new Date(2018, 5, 12, 11, 30, 0, 0).getTime()/1000,
+        end: new Date(2018, 5, 12, 11, 50, 0, 0).getTime()/1000,
+        type: 'voice',
+        comment: 'Pre-meeting meeting, to prepare for the meeting',
+    },
+    {
+        id: 7,
+        fio: 'Иванова А Ф',
+        doctorType: "терапевт",
+        start: new Date(2018, 5, 12, 11, 50, 0, 0).getTime()/1000,
+        end: new Date(2018, 5, 12, 11, 55, 0, 0).getTime()/1000,
+        type: 'voice',
+        comment: 'Pre-meeting meeting, to prepare for the meeting',
+    },
+    {
+        id: 9,
+        fio: 'Иванова Александра',
+        doctorType: "терапевт какой-то там",
+        start: new Date(2018, 5, 13, 11, 30, 0, 0).getTime()/1000,
+        end: new Date(2018, 5, 13, 11, 50, 0, 0).getTime()/1000,
+        type: 'voice',
+        comment: 'Pre-meeting meeting, to prepare for the meeting',
+    },
+    {
+        id: 8,
+        fio: 'Иванов Александр',
+        doctorType: "терапевт",
+        start: new Date(2018, 5, 29, 10, 30, 0, 0).getTime()/1000,
+        end: new Date(2018, 5, 29, 10, 50, 0, 0).getTime()/1000,
+        type: 'chat',
+        comment: 'Pre-meeting meeting, to prepare for the meeting',
+    },
+]
+
 storiesOf('Calendar22', module)
     .add('default', () => (
         <div style={{backgroundColor: '#cccbcb', padding: 20}}>
@@ -311,6 +359,15 @@ storiesOf('Calendar22', module)
                          }}
                          schedules={schedules1}
                          //schedules={JSON.parse(a)}
+            />
+        </div>
+    ))
+    .add('user', () => (
+        <div style={{backgroundColor: '#cccbcb', padding: 20}}>
+            <BigCalendar receptionNum={23}
+                         isUser = {true}
+                         
+                         events={patientEvent}
             />
         </div>
     ));

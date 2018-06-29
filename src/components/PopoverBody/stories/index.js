@@ -20,5 +20,36 @@ storiesOf('PopoverBody', module)
                 onEmail = {action('onPhone')}
                 onGoto={(id)=>console.log('click', id)}
             />
+
+            <PopoverBody
+                isUser = {true}
+                events={[{
+                    id: 6,
+                    fio: 'Иванова Александра',
+                    doctorType: "терапевт",
+                    start: new Date(2018, 5, 12, 10, 30, 0, 0).getTime()/1000,
+                    end: new Date(2018, 5, 12, 10, 50, 0, 0).getTime()/1000,
+                    type: 'video',
+                    comment: 'Pre-meeting meeting, to prepare for the meeting',
+                },
+                {
+                    id: 7,
+                    fio: 'Иванова Александра',
+                    doctorType: "терапевт какой-то там",
+                    start: new Date(2018, 5, 12, 11, 30, 0, 0).getTime()/1000,
+                    end: new Date(2018, 5, 12, 11, 50, 0, 0).getTime()/1000,
+                    type: 'voice',
+                    comment: 'Pre-meeting meeting, to prepare for the meeting',
+                },
+                {
+                    id: 7,
+                    fio: 'Иванова А Ф',
+                    doctorType: "терапевт",
+                    start: new Date(2018, 5, 12, 11, 50, 0, 0).getTime()/1000,
+                    end: new Date(2018, 5, 12, 11, 55, 0, 0).getTime()/1000,
+                    type: 'voice',
+                    comment: 'Pre-meeting meeting, to prepare for the meeting',
+                },]}
+            />
         </div>
     ))

@@ -166,7 +166,8 @@ class MonthView extends React.Component {
       now,
       date,
       longPressThreshold,
-        editor
+        editor,
+        isUser,
     } = this.props;
 
     const { needLimitMeasure, rowLimit } = this.state;
@@ -188,6 +189,7 @@ class MonthView extends React.Component {
     return (
       <DateContentRow
         key={weekIdx}
+        weekIdx={weekIdx}
         ref={weekIdx === 0 ? 'slotRow' : undefined}
         container={this.getContainer}
         className="rbc-month-row"
@@ -208,6 +210,7 @@ class MonthView extends React.Component {
         renderHeader={this.readerDateHeading}
         renderForMeasure={needLimitMeasure}
         onShowMore={this.handleShowMore}
+        isUser={isUser}
 
         schedules={newSchedules}
         editor={editor}
