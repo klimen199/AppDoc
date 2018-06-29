@@ -70,6 +70,7 @@ class ContentForm extends React.Component {
                     rules: [{required: true, message: 'Введите время',}],
                 })(
                     <TimePicker placeholder='Время приёма' 
+                                availableArea = {this.props.availableArea}
                                 onChange={time => this.setState({time})}/>
                 )}
             </FormItem> </div>

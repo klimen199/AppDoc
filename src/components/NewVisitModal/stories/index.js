@@ -22,6 +22,12 @@ storiesOf('Modal - NewVisitModal', module)
                            patients={patients}
                            isChoosebleTime={true}
                            onSave = {(obj) => console.log(obj)}
+                            availableArea={[
+         {
+             from:1395954000000,
+             to:1395954000000-1,
+         }
+     ]}
             />
         </div>
     ));

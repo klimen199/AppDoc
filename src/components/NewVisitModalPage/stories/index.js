@@ -18,6 +18,12 @@ storiesOf('Modal - NewVisitModalPage', module)
                            defaultDate={new Date(2018,1,4,8,10)}
                            patients={patients}
                            onSave = {(obj) => console.log(obj)}
+                           availableArea={[
+                            {
+                                from:1395954000000,
+                                to:1395954000000-1,
+                            }
+                        ]}
             />
         </div>
     ));
