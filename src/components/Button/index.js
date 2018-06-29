@@ -37,8 +37,11 @@ const Button = props =>{
 
 Button.propTypes ={
     className: PropTypes.string,
-    type: PropTypes.oneOf(['blue','dark-blue','float','yellow','gradient','icon','light-blue', 'file', 'link', 'go','blue-float', 'no-brd', 'upload', 'transparent']),
-    size: PropTypes.oneOf(['small', 'default', 'large', 'icon', 'file', 'link', 'file all-download', 'go', 'upload', 'mini']),
+    type: PropTypes.oneOf(['blue','dark-blue','float','yellow',
+        'gradient','icon','light-blue', 'file', 'link', 'go',
+        'blue-float', 'no-brd', 'upload', 'transparent',`emergensy`]),
+    size: PropTypes.oneOf(['small', 'default', 'large', 'icon',
+        'file', 'link', 'file all-download', 'go', 'upload', 'mini']),
     btnText: PropTypes.string,
     icon: PropTypes.string,
     title: PropTypes.string,
