@@ -73,45 +73,28 @@ class BigCalendar extends React.Component{
             }) : [];
     };
     
-    render() {       
-
-        let prop = this.props.editor ? {
-                ...this.props,
-                schedules: this.changeSchedule(),
-            }
-            : {
-                ...this.props,
-                events: this.changeEvents(),
-            };
-
+    render() {      
         return (<div>
             {
                 this.props.isUser ?
                     <Calendar
-                        //className='calendar-editor'
-                        //schedules={this.changeSchedule()}
+                        {...this.props}
+                        className='calendar-editor'
+                        schedules={this.changeSchedule()}
                         view={'month'}
-                        onView={() => {}}
-                        {...prop}/>
+                        onView={() => {
+                        }}
+                        onSelecting={(r,slot,selecting, schedule) =>
+                            this.selectHandler(r, slot,selecting, schedule)}
+                    />
                     :
-                    this.props.editor ?
-                        <Calendar
-                            className='calendar-editor'
-                            schedules={this.changeSchedule()}
-                            view={'month'}
-                            onView={() => {
-                            }}
-                            onSelecting={(r,slot,selecting, schedule) =>
-                                this.selectHandler(r, slot,selecting, schedule)}
-                            {...prop}/>
-                        :
-                        <Calendar
-                            events={this.changeEvents()}
-                            schedules={this.changeSchedule()}
-                            defaultView={'week'}
-                            views={['day', 'week', 'month']}
-
-                            {...prop}/>
+                    <Calendar
+                        {...this.props}
+                        events={this.changeEvents()}
+                        schedules={this.changeSchedule()}
+                        defaultView={'week'}
+                        views={['day', 'week', 'month']}
+                    />
             }
         </div>);
     }

@@ -143,18 +143,18 @@ class DefaultTp extends React.Component {
         }
     };
 
-    disabledEndH = () => {
-        return  this.state.falseHour;
-    };
-    disabledEndM = () => {
-        return this.state.falseMin;
-    };
-
     componentWillReceiveProps(nextProps){
         if(nextProps.isReset !== this.props.isReset && nextProps.isReset === true){
             this.setState({
                 startValue: null,
                 curValue: null,
+            })
+        }
+
+        if(nextProps.availableArea !== this.props.availableArea) {
+            this.setState ({
+                trueHour: this.getAvailableHour(),
+                falseHour: this.getNotAvailableHour()
             })
         }
     }
@@ -176,8 +176,8 @@ class DefaultTp extends React.Component {
 
         return (
             <AntTimePicker {...myprops}
-                           disabledHours={() => this.disabledEndH()}
-                           disabledMinutes={() => this.disabledEndM()}
+                           disabledHours={()=>this.state.falseHour}
+                           disabledMinutes={()=>this.state.falseMin}
                            onChange={(val) => {
                                this.onChange('curValue', val)
                            }}

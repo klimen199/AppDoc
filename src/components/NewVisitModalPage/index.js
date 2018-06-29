@@ -8,7 +8,6 @@ import { PropTypes } from 'prop-types';
 const NewVisitModalPage = (props) => {
 
         const {visible, onCancel} = props;
-
         return (
             <Modal title='Запись на прием'
                    visible={visible}
