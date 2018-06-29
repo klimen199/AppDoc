@@ -6,7 +6,7 @@
         {
             "label": "Less Compile",
             "type": "shell",
-            "command": "cd src/components/SideNav && lessc styles.less styles.css",
+            "command": "cd src/components/AddNewPatient && lessc styles.less styles.css",
             "group": "build",
             "problemMatcher": []
         }
