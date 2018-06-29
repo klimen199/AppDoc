@@ -170,9 +170,14 @@ class MonthView extends React.Component {
     } = this.props;
 
     const { needLimitMeasure, rowLimit } = this.state;
+    let newSchedules;
     if(editor) {
-      schedules =  schedsForWeek(schedules, week[0], week[week.length - 1], this.props,true);
-      schedules.sort((a, b) => sortScheds(a, b, this.props))
+      //console.log('schedules',schedules)
+      newSchedules =  schedsForWeek(schedules, week[0], week[week.length - 1], this.props,true);
+      //console.log( week[0], week[week.length - 1]);
+      //console.log(newSchedules)
+      newSchedules.sort((a, b) => sortScheds(a, b, this.props))
+      //console.log("Month2",schedules)
     }
     else{
         events = eventsForWeek(events, week[0], week[week.length - 1], this.props);
@@ -204,7 +209,7 @@ class MonthView extends React.Component {
         renderForMeasure={needLimitMeasure}
         onShowMore={this.handleShowMore}
 
-        schedules={schedules}
+        schedules={newSchedules}
         editor={editor}
         onSelect={this.handleSelectEvent}
         onSelectSlot={this.handleSelectSlot}
