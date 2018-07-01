@@ -28,5 +28,11 @@ storiesOf('ChatMessage', module)
                 isDate = {true}
                 date={1517432400}
             />
+            <ChatMessage 
+                isVisEnd = {true}
+                isDate = {false}
+                date={1517432400}
+            />
+            
         </div>
     ))

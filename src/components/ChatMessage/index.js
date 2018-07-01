@@ -10,15 +10,17 @@ import '../../icon/style.css'
 
 const ChatMessage = props => {
 
-        const {text, size, date, online, img, isMy, isDate} = props;
+        const {text, size, date, online, img, isMy, isDate, isVisEnd} = props;
         const rootClass = isMy ? 'message__out' : 'message__in';
 
         return (
             <Hoc>
                 {
                     isDate ? 
-                    ( <div className='message-today'>{moment(date*1000).format("D MMMM YYYY")}</div>) :
-                (
+                    ( <div className='message-today'>{moment(date*1000).format("D MMMM YYYY")}</div>) 
+                    : isVisEnd ? 
+                    (<div className='message-visit-end'>Прием завершен</div>)
+                    : (
                     <div className={`${rootClass}-item`}>
                                 {!isMy && <ProfileAvatar owner="patient"
                                                         online={online}
@@ -51,6 +53,7 @@ ChatMessage.propTypes = {
     isMy: PropTypes.bool,
     date: PropTypes.number,
     isDate: PropTypes.bool,
+    isVisEnd: PropTypes.bool,
 };
 
 ChatMessage.defaultProps = {
@@ -60,6 +63,7 @@ ChatMessage.defaultProps = {
     size: 'small',
     date: 0,
     isDate: false,
+    isVisEnd: false,
 };
 
 export default ChatMessage
