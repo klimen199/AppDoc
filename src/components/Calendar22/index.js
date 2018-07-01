@@ -76,7 +76,7 @@ class BigCalendar extends React.Component{
     render() {      
         return (<div>
             {
-                this.props.isUser ?
+                this.props.editor ?
                     <Calendar
                         {...this.props}
                         className='calendar-editor'
@@ -101,7 +101,6 @@ class BigCalendar extends React.Component{
 }
 
 BigCalendar.propTypes = {
-    isUser: PropTypes.bool,
     events: PropTypes.array,
     schedules: PropTypes.arrayOf(
         PropTypes.shape({
@@ -124,7 +123,6 @@ BigCalendar.propTypes = {
 
 
 BigCalendar.defaultProps = {
-    isUser: false,
     events: [],
     schedules: [],
     intervals: [],
