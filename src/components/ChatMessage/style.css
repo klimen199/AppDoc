@@ -15,7 +15,10 @@
   position: relative;
   align-items: flex-start;
   width: 100%;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+}
+.message__in-item .call-info-content {
+  margin-left: 65px;
 }
 .message__in-box {
   background-color: #f5f6fa;
@@ -37,6 +40,9 @@
   color: #344051;
   line-height: 1;
 }
+.message__in-time-InCallInfo {
+  position: absolute;
+}
 .message__in-area {
   position: relative;
 }
@@ -48,8 +54,11 @@
   position: relative;
   align-items: flex-start;
   width: 100%;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   justify-content: flex-end;
+}
+.message__out-item .call-info-content {
+  margin-right: 65px;
 }
 .message__out-box {
   background-color: #e9f5fd;
@@ -69,6 +78,9 @@
   font-size: 12px;
   color: #344051;
   line-height: 1;
+}
+.message__out-time-InCallInfo {
+  position: absolute;
 }
 .message__out-area {
   position: relative;
