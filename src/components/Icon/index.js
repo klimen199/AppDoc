@@ -78,14 +78,14 @@ class Icon extends React.Component{
 
 
     render(){
-        const { svg, type, size, num, title, onClick } = this.props;
+        const { svg, type, size, num, title, onClick, style } = this.props;
 
 
         if (!this.svg)
             return (<AntdIcon onClick={onClick}
                               title={title}
                               type={type}
-                              style={{fontSize:size}} />);
+                              style={{fontSize:size, ...style}} />);
 
         const clName = cn('icon', `icon-${type}`)
 
@@ -93,7 +93,7 @@ class Icon extends React.Component{
                         title={title}
                      className={clName}
                      num={num}
-                     style={{fontSize:size}}/>
+                     style={{fontSize:size, ...style}}/>
     }
 }
 
