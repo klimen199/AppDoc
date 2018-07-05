@@ -13,7 +13,6 @@ import '../../icon/style.css'
 
 class PatientTableItem extends React.Component{
     render(){
-        console.log(this.props);
         const { id, name, age, size, time, date, online, avatar, onGoto, dateend, datestart} = this.props;
         const rootClass = cn('patient-item');
 
@@ -77,8 +76,6 @@ PatientTableItem.propTypes = {
     id: PropTypes.number,
     avatar: PropTypes.string,
     name: PropTypes.string,
-    availableArea: PropTypes.array,
-
     onChangeDate: PropTypes.func,
     onNewVisit: PropTypes.func,
     onNewMessage: PropTypes.func,
@@ -91,8 +88,6 @@ PatientTableItem.defaultProps = {
     avatar: '',
     name: '',
     size: 'small',
-    availableArea: [],
-
     onChangeDate: () => {},
     onNewVisit: () => {},
     onNewMessage: () => {},

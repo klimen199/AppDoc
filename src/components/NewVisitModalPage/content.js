@@ -42,11 +42,10 @@ class ContentForm extends React.Component {
         paramDate.minute(bufMinutes);
         paramDate.second(0);
         this.setState({currentTime: paramDate});
-        this.props.onChangeDate(date);
     };
 
     componentWillReceiveProps(nextProps){
-        nextProps.visible == false ? (this.setState({message: ''}), this.props.form.resetFields()) : null;
+        nextProps.visible === false ? (this.setState({message: ''}), this.props.form.resetFields()) : null;
     }
 
     handleSubmit = (e) => {

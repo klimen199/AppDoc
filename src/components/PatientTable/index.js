@@ -48,7 +48,6 @@ class PatientTable extends React.Component{
                                             setModal1Visible={this.props.setModal1Visible}
                                             setModal2Visible={this.props.setModal2Visible}
                                             onChangeDate={this.props.onChangeDate}
-                                            availableArea={this.props.availableArea}
 
                                             {...item}/>)
         });
@@ -97,7 +96,6 @@ class PatientTable extends React.Component{
 
 PatientTable.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
-    availableArea: PropTypes.array,
     onAdd: PropTypes.func,
     onSearch: PropTypes.func,
     onGoto: PropTypes.func,
@@ -106,7 +104,6 @@ PatientTable.propTypes = {
 
 PatientTable.defaultProps = {
     data: [],
-    availableArea: [], 
     onAdd: () => {},
     onSearch: () => {},
     onGoto: () => {},
