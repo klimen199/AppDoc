@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
 import RangeTP from './RangeTP'
 import DefaultTP from './DefaultTP'
 import  moment from 'moment'
