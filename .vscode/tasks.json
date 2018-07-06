@@ -6,7 +6,7 @@
         {
             "label": "Less Compile",
             "type": "shell",
-            "command": "cd src/components/PopoverBody && lessc style.less style.css",
+            "command": "cd src/components/ChatMessage && lessc style.less style.css",
             "group": "build",
             "problemMatcher": []
         }

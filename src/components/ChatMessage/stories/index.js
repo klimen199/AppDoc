@@ -8,25 +8,72 @@ storiesOf('ChatMessage', module)
         <div>
             <ChatMessage 
                 img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
-                message="Консультация по результатам анализа..." 
-                time={Date.now()}
+                text="Консультация по результатам анализа..." 
+                date={Date.now()}
                 isMy
             />
 
             <ChatMessage 
                 img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
-                message="Да"
-                time={Date.now()}
+                text="Да"
+                date={Date.now()}
             />
 
             <ChatMessage 
                 img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
-                message="Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных домах."
-                time={Date.now()}
+                text="Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных домах."
+                date={Date.now()}
             />
             <ChatMessage 
                 isDate = {true}
                 date={1517432400}
             />
+            <ChatMessage 
+                isVisEnd = {true}
+                isDate = {false}
+                date={1517432400}
+            />
+            <ChatMessage 
+                img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
+                type="notBegin"
+                name="иванова татьяна ивановна"
+                date={Date.now()}
+                isMy
+            />
+            <ChatMessage 
+                img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
+                type="notBegin"
+                name="иванова татьяна ивановна"
+                date={Date.now()}
+            />
+            <ChatMessage 
+                img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
+                type="begin"
+                name="иванова татьяна ивановна"
+                date={Date.now()}
+                isMy
+            />
+            <ChatMessage 
+                img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
+                type="begin"
+                name="иванова татьяна ивановна"
+                date={Date.now()}
+            />
+            <ChatMessage 
+                img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
+                type="stop"
+                name="иванова татьяна ивановна"
+                callTime="01:25"
+                date={Date.now()}
+            />
+            <ChatMessage 
+                img="https://www.proza.ru/pics/2017/06/03/1990.jpg" 
+                type="stop"
+                name="иванова татьяна ивановна"
+                callTime="01:25"
+                date={Date.now()}
+                isMy
+            />
+            
         </div>
     ))

@@ -21,7 +21,9 @@ class ContentForm extends React.Component {
             },
             shouldDPUpdate: false,
             isReset: false,
-            isOffTime: false
+            isOffTime: false,
+            timeSetCall:[],
+            timeSetReception: []
         }
     }
 
@@ -63,7 +65,11 @@ class ContentForm extends React.Component {
 
 
     componentDidMount() {
-        this.changeFieldsVal()
+        this.changeFieldsVal();
+        this.setState({
+            timeSetCall: this.props.timeSetCall,
+            timeSetReception: this.props.timeSetReception
+        })
     }
 
     componentWillReceiveProps(nextProps) {
@@ -119,11 +125,19 @@ class ContentForm extends React.Component {
     }
 
     handleCheckboxClick = () => {
-        this.setState({isReset: !this.state.isReset});
+        this.setState({
+            isReset: !this.state.isReset,
+            timeSetCall: [],
+            timeSetReception: [],
+            tpNum: {
+                'reception': 1,
+                'call': 1,
+        }});
     };
 
     handleTPChange = () => {
         this.setState({isReset: false});
+        console.log("TP changed")
     };
     handleSubmit = (e) => {
         e.preventDefault();
@@ -167,7 +181,9 @@ class ContentForm extends React.Component {
         let tpNum = this.state.tpNum;
         if (n < this.props[tab + 'Limit']) {
             tpNum[tab] = n + 1;
-            this.setState({tpNum})
+            this.setState(
+                {tpNum,
+                 isReset: false})
         }
     };
 
@@ -211,10 +227,10 @@ class ContentForm extends React.Component {
 
     renderOptions = (selOptions) => {
         let options = [];
-        selOptions.map((el) => {
-            options.push(<Select.Option value={+selOptions[el-1]}
-                                        key={+selOptions[el-1]}>
-                {+selOptions[el-1]}</Select.Option>)
+        selOptions.map((el, index) => {
+            options.push(<Select.Option value={+el}
+                                        key={index}>
+                {+el}</Select.Option>)
         });
 
         return options;
@@ -223,7 +239,6 @@ class ContentForm extends React.Component {
     render() {
         const {getFieldDecorator} = this.props.form;
         const {dateSet, selOptions} = this.props;
-        let timePickerValueExtra = null, timePickerValue = null;
         return (
             <Form onSubmit={this.handleSubmit}
                   className="receptionsScheduleModal">
@@ -243,7 +258,7 @@ class ContentForm extends React.Component {
                                   key="1">
                             {this.renderTpBlock(
                                 'call',
-                                this.props.timeSetCall,
+                                this.state.timeSetCall,
                                 getFieldDecorator
                             )}
                             <FormItem>
@@ -275,7 +290,7 @@ class ContentForm extends React.Component {
                                   key="2">
                         {this.renderTpBlock(
                             'reception',
-                            this.props.timeSetReception,
+                            this.state.timeSetReception,
                             getFieldDecorator
                         )}
                         <Button className='mb-1r'

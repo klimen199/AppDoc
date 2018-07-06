@@ -28,14 +28,14 @@ class PopoverApp extends React.Component {
 
   render() {
 
+
     //console.log(...this.props.data)
     //console.log(this.props.data)
 
+ master
     return (
       <Popover
         content={<PopoverBody {...this.props.data}
-                            events = {this.props.events}
-                              isUser={this.props.isUser}
                               onClose={this.handleClose}
                               onEmail={this.handleEmail}
                               onGoto={this.props.onGoto}
@@ -54,20 +54,16 @@ class PopoverApp extends React.Component {
 
 PopoverApp.propTypes = {
     data: PropTypes.object,
-    events: PropTypes.array,
     onClose: PropTypes.func,
     onEmail: PropTypes.func,
     onPhone: PropTypes.func,
-    isUser: PropTypes.bool,
 };
 
 PopoverApp.defaultProps = {
     data: {},
-    events: [],
     onClose: () => {},
     onEmail: () => {},
     onPhone: () => {},
-    isUser: false,
 };
 
 export default PopoverApp

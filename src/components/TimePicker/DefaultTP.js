@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {TimePicker  as AntTimePicker} from 'antd'
+import {TimePicker as AntTimePicker} from 'antd'
 import moment from "moment/moment";
 import TimePicker from "./index";
 import PropTypes from "prop-types";
@@ -10,62 +10,52 @@ import PropTypes from "prop-types";
 class DefaultTp extends React.Component {
     constructor(props) {
         super(props);
-        let ar = [];
-        for(let i = 0; i < 60; i++)
-            ar.push(i);
         this.state = {
-            startValue: moment("07:06", "hh:mm"),
-            curValue: this.props.value || null,
-            trueHour: this.getAvailableHour(),
-            falseHour: this.getNotAvailableHour(),
-            trueMin: [],
-            falseMin: ar,
+            currentValue: this.props.value || null,
+            disabledHours: [],
+            disabledMinutes: [...Array(60).keys()],
+            availableMinutes: [],
+            isReset:false
         };
     };
 
 
+    //Array(n).fill(0).map((e,i)=>m+i)
 
-    getNotAvailableHour = () => { // получить массив из не доступных часов
-        if(this.props.availableArea.length)
-            return this.falseHour;
-
-        return [...Array.from(Array(24).keys())];
-    };
-
-    getAvailableHour = () => { // получить массив из доступных часов
-       
-        const area = this.props.availableArea;
-        let errorHour = [];
-        let availableHour = [];
-        for(let hour = 0; hour < 24; hour++){
-            for(let i = 0; i < area.length; i++){
-                if(parseInt(area[i].from.format('HH')) <= hour
-                    && hour <= parseInt(area[i].to.format('HH'))){
-                    availableHour.push(hour);
-                    break;
+    getNotAvailableHours = () => { // получить массив из не доступных часов
+        if(this.props.availableArea.length) {
+            let availableHours = [];
+            let notAvailableHours = [];
+            for(let i = 0; i<this.props.availableArea.length; i++) {
+                const from = moment(this.props.availableArea[i].from).get("hour");
+                const to = moment(this.props.availableArea[i].to).get("hour");
+                let partOfAvailableHours = Array(to - from + 1).fill(0).map((e,i)=>from+i);
+                availableHours.push(...partOfAvailableHours)
+            }
+            for (let i=0; i<24; i++) {
+                if(availableHours.indexOf(i) === -1) {
+                    notAvailableHours.push(i);
                 }
             }
+            this.setState({disabledHours: notAvailableHours})
+        } else {
+            this.setState({
+                disabledHours: [...Array(24).keys()],
+                disabledMinutes: [...Array(60).keys()]
+            })
         }
-        for(let j = 0; j < 24; j++)
-            if(availableHour.indexOf(j) === -1 ) errorHour.push(j);
-
-        this.falseHour = errorHour;
-        return availableHour;
     };
 
-    // выбранный час
+
     getNotAvailableMin = (hour) => { // получить массив из доступных часов
         const area = this.props.availableArea;
         let errorMin = []; // ответ
-        let countQqual = [];
-
         for(let i = 0; i < area.length; i++) {
 
             let beforeH = parseInt(area[i].from.format('HH'));
             let beforeM = parseInt(area[i].from.format('mm'));
             if (hour === beforeH) {
                 errorMin = [...Array.from(Array(beforeM).keys())];
-                countQqual++
             }
             let afterH = parseInt(area[i].to.format('HH'));
             let afterM = parseInt(area[i].to.format('mm'));
@@ -73,115 +63,60 @@ class DefaultTp extends React.Component {
                 let buf = [...Array.from(Array(60).keys())];
                 buf = buf.splice(afterM, 60);
                 errorMin = [...errorMin, ...buf];
-                countQqual++
             }
-        };
-       // if( countQqual > 1) errorMin = [];
-        return errorMin;
-    };
 
-    getAvailableMin = (notMin) => {
-        let min = [];
-        for(let i = 0; i < 60; i++ ){
-            if( notMin.indexOf(i) === -1)
-                min.push(i);
         }
-        return min;
+        this.setState({
+            disabledMinutes: errorMin,
+        });
     };
 
-    onChange = (field, value) => {
-        //начальная проверка
-        
-        const hourCheck = value._d.getHours();
-        let minCheck = value._d.getMinutes();
-        const array = this.getAvailableHour();
-        const arrayMin = this.getNotAvailableMin(parseInt(value.format('HH')));
-        const arrayGoodMin = this.getAvailableMin(arrayMin);
-        
-        if(arrayGoodMin.indexOf(minCheck) === -1 ){
-            
-            value.minute(arrayGoodMin[0]); //1-ая доступная минута
-            minCheck = arrayGoodMin[0]; // по умолчанию - первая
-            for(let i = 0; i < arrayGoodMin.length; i++){
-                if(arrayGoodMin[i] % this.props.minuteStep === 0){
-                    value.minute(arrayGoodMin[i]); //кратна
-                    minCheck = arrayGoodMin[i];
-                    break;
-                }
-            }
+    onChange = (value) => {
+        if(value && value._d.getHours()) {
+                this.getNotAvailableMin(value._d.getHours());
+                this.setState({currentValue: moment(value, "hh:mm")})
         }
-        this.setState({falseMin : arrayMin });
-        if (array.indexOf(hourCheck) === -1 || arrayMin.indexOf(minCheck) !== -1)
-            return;
 
-
-        if (!value) {
-            this.setState({
-                startValue: value,
-                curValue: value,
-            });
-        } else if (field === 'curValue' && value) {
-            let start = this.state.startValue;
-            this.setState({
-                [field]: value,
-            });
-
-            if(!start){
-                const {rangeSet} = this.props;
-                const {defaultStartValue} = rangeSet;
-                start = defaultStartValue || value;
-            }
-            //новое значение в свойстве _d
-            this.props.onChange(value);
+        if(value === null) {
+            this.setState({currentValue: null})
         }
-        else {
-            this.setState({
-                [field]: value,
-                curValue: value,
-            });
-            this.props.onChange(value);
-        }
+        this.setState({isReset:false})
     };
 
-    disabledEndH = () => {
-        return  this.state.falseHour;
-    };
-    disabledEndM = () => {
-        return this.state.falseMin;
-    };
+    componentDidMount() {
+        this.getNotAvailableHours();
+        this.setState({isReset:this.props.isReset})
+    }
 
     componentWillReceiveProps(nextProps){
         if(nextProps.isReset !== this.props.isReset && nextProps.isReset === true){
             this.setState({
-                startValue: null,
-                curValue: null,
+                isReset: true
             })
+        }
+
+        if(nextProps.availableArea !== this.props.availableArea) {
+            this.getNotAvailableHours();
         }
     }
 
     render() {
-        const {format, placeholder, minuteStep} = this.props;
-        const myprops = (this.state.curValue) ?
-            {
-                format : format,
-                placeholder : placeholder,
-                minuteStep : minuteStep,
-                value : this.state.curValue
-            } :
-            {
-                format : format,
-                placeholder : placeholder,
-                minuteStep : minuteStep
-            };
 
+        const {format, placeholder, minuteStep} = this.props;
         return (
-            <AntTimePicker {...myprops}
-                           disabledHours={() => this.disabledEndH()}
-                           disabledMinutes={() => this.disabledEndM()}
-                           onChange={(val) => {
-                               this.onChange('curValue', val)
-                           }}
-                            />
+            <AntTimePicker
+                disabledHours={()=>this.state.disabledHours}
+                disabledMinutes={()=>this.state.disabledMinutes}
+                format={format}
+                placeholder={placeholder}
+                minuteStep={minuteStep}
+                value={this.state.currentValue&&!this.state.isReset ? this.state.currentValue : null}
+                onChange={(val) => {
+                    this.onChange(val)
+                }}
+
+            />
+
         )
     }
 }

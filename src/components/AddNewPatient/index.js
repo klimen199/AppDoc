@@ -1,11 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import cn from 'classnames'
 import ScrollArea from 'react-scrollbar'
 
 import AddNewPatientItem from '../AddNewPatientItem'
 import Modal from '../Modal'
-import Button from '../Button'
 import Input from '../Input'
 
 import './styles.css'
@@ -22,15 +20,12 @@ class AddNewPatient extends React.Component{
     
 
     patientsRender = (dataArr) => {
-        let patientsArr = [];
-
-        dataArr.map((item, index) => {
-            patientsArr.push(<AddNewPatientItem {...item} 
-                                                onAdd={this.props.onAdd} 
-                                                key={item.id + ''+index}/>)
+        return dataArr.map((item, index) => {
+            return (<AddNewPatientItem {...item} 
+                                        onAdd={this.props.onAdd} 
+                                        key={item.id + ''+index}/>)
         });
 
-        return patientsArr;
     };
 
     componentWillReceiveProps(nextProps){
@@ -62,7 +57,9 @@ class AddNewPatient extends React.Component{
                             contentClassName="content"
                             horizontal={false}
                     >
-                        {this.patientsRender(this.props.data)}
+                        {this.props.data.length === 0 ?
+                        (<div className="no-patients">Пациенты не найдены</div>)
+                        : this.patientsRender(this.props.data)}
                     </ScrollArea>
                 </div>
             </Modal>
