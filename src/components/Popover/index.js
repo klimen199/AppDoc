@@ -32,7 +32,6 @@ class PopoverApp extends React.Component {
     //console.log(...this.props.data)
     //console.log(this.props.data)
 
- master
     return (
       <Popover
         content={<PopoverBody {...this.props.data}
