@@ -22,13 +22,13 @@ class DefaultTp extends React.Component {
 
     //Array(n).fill(0).map((e,i)=>m+i)
 
-    getNotAvailableHours = () => { // получить массив из не доступных часов
-        if(this.props.availableArea.length) {
+    getNotAvailableHours = (availableArea) => { // получить массив из не доступных часов
+        if(availableArea.length) {
             let availableHours = [];
             let notAvailableHours = [];
-            for(let i = 0; i<this.props.availableArea.length; i++) {
-                const from = moment(this.props.availableArea[i].from).get("hour");
-                const to = moment(this.props.availableArea[i].to).get("hour");
+            for(let i = 0; i<availableArea.length; i++) {
+                const from = moment(availableArea[i].from).get("hour");
+                const to = moment(availableArea[i].to).get("hour");
                 let partOfAvailableHours = Array(to - from + 1).fill(0).map((e,i)=>from+i);
                 availableHours.push(...partOfAvailableHours)
             }
@@ -84,7 +84,7 @@ class DefaultTp extends React.Component {
     };
 
     componentDidMount() {
-        this.getNotAvailableHours();
+        this.getNotAvailableHours(this.props.availableArea);
         this.setState({isReset:this.props.isReset})
     }
 
@@ -96,7 +96,7 @@ class DefaultTp extends React.Component {
         }
 
         if(nextProps.availableArea !== this.props.availableArea) {
-            this.getNotAvailableHours();
+            this.getNotAvailableHours(nextProps.availableArea);
         }
     }
 
