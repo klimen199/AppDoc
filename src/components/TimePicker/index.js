@@ -33,9 +33,9 @@ class TimePicker extends React.Component{
                 {
                     range ? (
                         <RangeTP {...this.props}/>
-                        ) : (
-                            <DefaultTP {...this.props}/>
-                        )
+                    ) : (
+                        <DefaultTP {...this.props}/>
+                    )
                 }
             </div>
         )
