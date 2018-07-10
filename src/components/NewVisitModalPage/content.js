@@ -1,6 +1,5 @@
 import React from 'react';
 import moment from 'moment'
-
 import {Form} from 'antd';
 import TextArea from '../TextArea'
 import Button from '../Button'
@@ -19,29 +18,62 @@ class ContentForm extends React.Component {
             time: null,
             message: '',
             currentTime: moment(),
+            type: "chat"
         };
     };
 
-    onChangeTime = (start, value) => {
+    onChangeTime = (start) => {
         let paramDate = moment(+this.state.currentTime.format('x'));
-
+        let type;
+        let area = this.props.availableArea;
         paramDate.hour(start._d.getHours());
-        paramDate.minute(start. d.getMinutes());
+        paramDate.minute(start._d.getMinutes());
         paramDate.second(0);
-        this.setState({currentTime: paramDate});
+
+        for(let i = 0; i<area.length; i++) {
+            if(paramDate.hour()>=area[i].from.hour() && paramDate.hour()<=area[i].to.hour()) {
+                type = area[i].type;
+            }
+        }
+
+        this.setState({
+            currentTime: paramDate,
+            type: type
+        });
     };
 
     onChangeDate = (date) => {
         let paramDate = moment(+this.state.currentTime.format('x'));
 
         const bufHours = paramDate._d.getHours();   
-        const bufMinutes = paramDate._d.getMinutes();   
+        const bufMinutes = paramDate._d.getMinutes();
 
         paramDate = date;
         paramDate.hour(bufHours);
         paramDate.minute(bufMinutes);
         paramDate.second(0);
-        this.setState({currentTime: paramDate});
+        this.setState({
+            currentTime: paramDate,
+        });
+        this.props.onChangeDate();
+    };
+
+    getIconsFromType = (type) => {
+        let icons;
+        switch (type) {
+            case "chat":
+                icons = <Radio icons={['chat1']}/>;
+                break;
+            case "voice":
+                icons = <Radio icons={['chat1','telephone']}/>;
+                break;
+            case "video":
+                icons = <Radio icons={['chat1','telephone', "video-camera"]}/>;
+                break;
+            default:
+                icons = <Radio icons={['chat1']}/>;
+        }
+        return icons;
     };
 
     componentWillReceiveProps(nextProps){
@@ -56,18 +88,17 @@ class ContentForm extends React.Component {
                 let response = {
                     id: this.props.id,
                     comment: this.state.message,
-                    date: +paramDate.format('X'), //формат для сервера,
+                    date: +paramDate.format('X'), //формат для сервера
                     type: values.radio ,
                 };
                 this.props.onSave(response);
-            }
+            } else { console.log(err, "ERROR")}
           });
     };
 
     render() {
         const {getFieldDecorator} = this.props.form;
         const {visible, date, time, userName, defaultDate} = this.props;
-
 
         return (
             <Form onSubmit={this.handleSubmit}
@@ -80,7 +111,7 @@ class ContentForm extends React.Component {
                             rules: [{required: true, message: 'Введите дату',}],
                         })(
                             <DatePicker placeholder="Дата приёма"
-                                        onChange={this.props.onChangeDate} />
+                                        onChange={this.onChangeDate} />
                         )}
                     </FormItem>
                     
@@ -88,10 +119,10 @@ class ContentForm extends React.Component {
                         {getFieldDecorator('time',{
                             rules: [{required: true, message: 'Введите время',}],
                         })(
-                            <TimePicker format="HH:mm"
+                                <TimePicker format="HH:mm"
                                         minuteStep={5}
                                         availableArea={this.props.availableArea}
-                                        placeholder='Время приёма' 
+                                        placeholder='Время приёма'
                                         onChange={this.onChangeTime}/>
                         )}
                     </FormItem>
@@ -106,7 +137,7 @@ class ContentForm extends React.Component {
                     {getFieldDecorator('radio',{
                         initialValue: 'chat',
                     })(
-                        <Radio icons={['chat1','telephone', "video-camera"]}/>
+                        this.getIconsFromType(this.state.type)
                     )}
                 </FormItem>
 

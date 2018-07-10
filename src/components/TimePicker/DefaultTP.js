@@ -76,6 +76,9 @@ class DefaultTp extends React.Component {
                 this.getNotAvailableMin(value._d.getHours());
                 this.setState({currentValue: moment(value, "hh:mm")})
         }
+        if(value && value._d.getHours() && value._d.getMinutes() ) {
+            this.props.onChange(value);
+        }
 
         if(value === null) {
             this.setState({currentValue: null})
@@ -116,7 +119,6 @@ class DefaultTp extends React.Component {
                 }}
 
             />
-
         )
     }
 }
