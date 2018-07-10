@@ -75,9 +75,7 @@ class ContentForm extends React.Component {
         }
         return icons;
     };
-    componentDidMount(){
-        this.setState({type:this.state.type})
-    }
+
     componentWillReceiveProps(nextProps){
         nextProps.visible === false ? (this.setState({message: ''}), this.props.form.resetFields()) : null;
     }
